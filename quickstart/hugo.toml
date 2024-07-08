@@ -1,0 +1,4 @@
+baseURL = 'https://thomaschangsf.github.io/'
+languageCode = 'en-us'
+title = 'Thomas Chang Blog'
+theme = 'ananke'
