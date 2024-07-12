@@ -1,0 +1,2249 @@
+
+
+<!doctype html>
+
+
+
+
+
+
+<html  data-paige="Paige theme from https://github.com/willfaught/paige"   lang="en" >
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+    
+
+<meta charset="utf-8">
+
+
+
+
+    <meta content="Case Study of Various Machine Learning Systems" name="description">
+
+
+
+
+<meta content="#0d6efd" name="msapplication-TileColor">
+
+
+    <meta content="/browserconfig.xml" name="msapplication-config">
+
+
+<meta content="https://github.com/willfaught/paige" name="theme">
+<meta content="#0d6efd" name="theme-color">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+
+<meta property="og:url" content="http://localhost:1313/books/machine-learning/machine-learning-system-design-interview/">
+  <meta property="og:title" content="Machine Learning Interview">
+  <meta property="og:description" content="Case Study of Various Machine Learning Systems">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="books">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Machine Learning Interview">
+  <meta name="twitter:description" content="Case Study of Various Machine Learning Systems">
+
+
+
+    
+        <title>Machine Learning Interview · Machine Learning ·  · Paige</title>
+    
+
+    
+
+
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+
+
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+
+
+    <link href="/favicon.png" rel="icon" type="image/png">
+
+
+
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml">
+
+
+
+    <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+
+
+
+    <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+
+
+
+    <link color="#0d6efd" href="/safari-pinned-tab.svg" rel="mask-icon">
+
+
+
+    <link href="/site.webmanifest" rel="manifest">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+        
+        
+        
+    
+
+    
+        
+    
+
+    
+    
+    
+
+
+<link  crossorigin="anonymous"  href="/css/paige/bootstrap/6186ad141d391e4c0c10d2e9cb4eaeaadf75e809-paige.min.5a695f13e40d00e33dc2ef3b080efa570bbcc6991647824214ff6d7f4b20527e.css"  integrity="sha256-WmlfE&#43;QNAOM9wu87CA76Vwu8xpkWR4JCFP9tf0sgUn4="   referrerpolicy="no-referrer"  rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+    
+    
+
+
+<link  crossorigin="anonymous"  href="/css/paige/bootstrap-icons/bootstrap-icons.min.540116b7267d4b2410c74086ae6497566928c6d5715900be7ce7279ad45addcd.css"  integrity="sha256-VAEWtyZ9SyQQx0CGrmSXVmkoxtVxWQC&#43;fOcnmtRa3c0="   referrerpolicy="no-referrer"  rel="stylesheet">
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+    
+    
+
+
+<link  crossorigin="anonymous"  href="/css/paige/katex/katex.min.min.c12d9cca9aa0af743d947ef8c8f5fabaad13e5b4c9fed061fbdf7c9d3c387581.css"  integrity="sha256-wS2cypqgr3Q9lH74yPX6uq0T5bTJ/tBh&#43;998nTw4dYE="   referrerpolicy="no-referrer"  rel="stylesheet">
+
+
+
+
+
+    
+
+<style>
+
+
+.paige-figure-numbered {
+    counter-increment: paige-figure-numbered;
+}
+
+.paige-figure-numbered > div > figure > figcaption::before {
+    content: "Figure " counter(paige-figure-numbered) ": ";
+}
+
+.paige-figure-numbered > div > figure > figcaption:empty::before {
+    content: "Figure " counter(paige-figure-numbered);
+}
+
+.paige-header-link {
+    opacity: 0;
+    margin-left: 0.5rem;
+    position: absolute;
+    transition: color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.paige-header-link::after {
+    content: "#";
+}
+
+.paige-quote .blockquote-footer {
+    margin-top: 0;
+}
+
+.paige-quote blockquote {
+    border-left: 0;
+    border-right: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+#paige-content > * {
+    margin-bottom: 1rem;
+}
+
+blockquote {
+    padding: 0.5rem 1rem;
+    border-left: 0.25rem solid var(--bs-border-color);
+    border-right: 0.25rem solid var(--bs-body-bg);
+}
+
+td, th {
+    padding: 0.25rem;
+}
+
+.highlight .chroma .hl,
+.highlight .chroma .lnt {
+    display: flex;
+}
+
+.paige-figure .paige-quote,
+.paige-figure .paige-video,
+.paige-figure .highlight pre.chroma,
+.paige-figure .highlight .chroma pre,
+.paige-figure .paige-quote blockquote,
+.paige-figure figure > div > :last-child,
+.paige-gallery .paige-figure,
+.paige-gallery .paige-image,
+blockquote > p:last-of-type {
+    margin-bottom: 0;
+}
+
+.paige-figure,
+.paige-gallery,
+.paige-image,
+.paige-quote,
+.paige-video,
+table {
+    margin-bottom: 1rem;
+}
+
+.paige-header-link:focus,
+.paige-header-link:hover,
+:hover > .paige-header-link,
+:target > .paige-header-link {
+    opacity: 1;
+}
+
+
+
+
+    @media (prefers-color-scheme: dark) {
+        /* Background */ .bg { color: #c9d1d9; background-color: var(--bs-body-bg); }
+/* PreWrapper */ .chroma { color: #c9d1d9; background-color: var(--bs-body-bg); }
+/* Other */ .chroma .x {  }
+/* Error */ .chroma .err { color: #f85149 }
+/* CodeLine */ .chroma .cl {  }
+/* LineLink */ .chroma .lnlinks { outline: none; text-decoration: none; color: inherit }
+/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+/* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+/* LineHighlight */ .chroma .hl { background-color: #4f4f4d }
+/* LineNumbersTable */ .chroma .lnt { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #64686c }
+/* LineNumbers */ .chroma .ln { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #6e7681 }
+/* Line */ .chroma .line { display: flex; }
+/* Keyword */ .chroma .k { color: #ff7b72 }
+/* KeywordConstant */ .chroma .kc { color: #79c0ff }
+/* KeywordDeclaration */ .chroma .kd { color: #ff7b72 }
+/* KeywordNamespace */ .chroma .kn { color: #ff7b72 }
+/* KeywordPseudo */ .chroma .kp { color: #79c0ff }
+/* KeywordReserved */ .chroma .kr { color: #ff7b72 }
+/* KeywordType */ .chroma .kt { color: #ff7b72 }
+/* Name */ .chroma .n {  }
+/* NameAttribute */ .chroma .na {  }
+/* NameBuiltin */ .chroma .nb {  }
+/* NameBuiltinPseudo */ .chroma .bp {  }
+/* NameClass */ .chroma .nc { color: #f0883e; font-weight: bold }
+/* NameConstant */ .chroma .no { color: #79c0ff; font-weight: bold }
+/* NameDecorator */ .chroma .nd { color: #d2a8ff; font-weight: bold }
+/* NameEntity */ .chroma .ni { color: #ffa657 }
+/* NameException */ .chroma .ne { color: #f0883e; font-weight: bold }
+/* NameFunction */ .chroma .nf { color: #d2a8ff; font-weight: bold }
+/* NameFunctionMagic */ .chroma .fm {  }
+/* NameLabel */ .chroma .nl { color: #79c0ff; font-weight: bold }
+/* NameNamespace */ .chroma .nn { color: #ff7b72 }
+/* NameOther */ .chroma .nx {  }
+/* NameProperty */ .chroma .py { color: #79c0ff }
+/* NameTag */ .chroma .nt { color: #7ee787 }
+/* NameVariable */ .chroma .nv { color: #79c0ff }
+/* NameVariableClass */ .chroma .vc {  }
+/* NameVariableGlobal */ .chroma .vg {  }
+/* NameVariableInstance */ .chroma .vi {  }
+/* NameVariableMagic */ .chroma .vm {  }
+/* Literal */ .chroma .l { color: #a5d6ff }
+/* LiteralDate */ .chroma .ld { color: #79c0ff }
+/* LiteralString */ .chroma .s { color: #a5d6ff }
+/* LiteralStringAffix */ .chroma .sa { color: #79c0ff }
+/* LiteralStringBacktick */ .chroma .sb { color: #a5d6ff }
+/* LiteralStringChar */ .chroma .sc { color: #a5d6ff }
+/* LiteralStringDelimiter */ .chroma .dl { color: #79c0ff }
+/* LiteralStringDoc */ .chroma .sd { color: #a5d6ff }
+/* LiteralStringDouble */ .chroma .s2 { color: #a5d6ff }
+/* LiteralStringEscape */ .chroma .se { color: #79c0ff }
+/* LiteralStringHeredoc */ .chroma .sh { color: #79c0ff }
+/* LiteralStringInterpol */ .chroma .si { color: #a5d6ff }
+/* LiteralStringOther */ .chroma .sx { color: #a5d6ff }
+/* LiteralStringRegex */ .chroma .sr { color: #79c0ff }
+/* LiteralStringSingle */ .chroma .s1 { color: #a5d6ff }
+/* LiteralStringSymbol */ .chroma .ss { color: #a5d6ff }
+/* LiteralNumber */ .chroma .m { color: #a5d6ff }
+/* LiteralNumberBin */ .chroma .mb { color: #a5d6ff }
+/* LiteralNumberFloat */ .chroma .mf { color: #a5d6ff }
+/* LiteralNumberHex */ .chroma .mh { color: #a5d6ff }
+/* LiteralNumberInteger */ .chroma .mi { color: #a5d6ff }
+/* LiteralNumberIntegerLong */ .chroma .il { color: #a5d6ff }
+/* LiteralNumberOct */ .chroma .mo { color: #a5d6ff }
+/* Operator */ .chroma .o { color: #ff7b72; font-weight: bold }
+/* OperatorWord */ .chroma .ow { color: #ff7b72; font-weight: bold }
+/* Punctuation */ .chroma .p {  }
+/* Comment */ .chroma .c { color: #8b949e; font-style: italic }
+/* CommentHashbang */ .chroma .ch { color: #8b949e; font-style: italic }
+/* CommentMultiline */ .chroma .cm { color: #8b949e; font-style: italic }
+/* CommentSingle */ .chroma .c1 { color: #8b949e; font-style: italic }
+/* CommentSpecial */ .chroma .cs { color: #8b949e; font-weight: bold; font-style: italic }
+/* CommentPreproc */ .chroma .cp { color: #8b949e; font-weight: bold; font-style: italic }
+/* CommentPreprocFile */ .chroma .cpf { color: #8b949e; font-weight: bold; font-style: italic }
+/* Generic */ .chroma .g {  }
+/* GenericDeleted */ .chroma .gd { color: #ffa198; background-color: #490202 }
+/* GenericEmph */ .chroma .ge { font-style: italic }
+/* GenericError */ .chroma .gr { color: #ffa198 }
+/* GenericHeading */ .chroma .gh { color: #79c0ff; font-weight: bold }
+/* GenericInserted */ .chroma .gi { color: #56d364; background-color: #0f5323 }
+/* GenericOutput */ .chroma .go { color: #8b949e }
+/* GenericPrompt */ .chroma .gp { color: #8b949e }
+/* GenericStrong */ .chroma .gs { font-weight: bold }
+/* GenericSubheading */ .chroma .gu { color: #79c0ff }
+/* GenericTraceback */ .chroma .gt { color: #ff7b72 }
+/* GenericUnderline */ .chroma .gl { text-decoration: underline }
+/* TextWhitespace */ .chroma .w { color: #6e7681 }
+
+    }
+
+    @media (prefers-color-scheme: light) {
+        /* Background */ .bg { background-color: #ffffff; }
+/* PreWrapper */ .chroma { background-color: #ffffff; }
+/* Other */ .chroma .x {  }
+/* Error */ .chroma .err { color: #a61717; background-color: #e3d2d2 }
+/* CodeLine */ .chroma .cl {  }
+/* LineLink */ .chroma .lnlinks { outline: none; text-decoration: none; color: inherit }
+/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+/* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+/* LineHighlight */ .chroma .hl { background-color: #ffffcc }
+/* LineNumbersTable */ .chroma .lnt { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* LineNumbers */ .chroma .ln { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* Line */ .chroma .line { display: flex; }
+/* Keyword */ .chroma .k { color: #000000; font-weight: bold }
+/* KeywordConstant */ .chroma .kc { color: #000000; font-weight: bold }
+/* KeywordDeclaration */ .chroma .kd { color: #000000; font-weight: bold }
+/* KeywordNamespace */ .chroma .kn { color: #000000; font-weight: bold }
+/* KeywordPseudo */ .chroma .kp { color: #000000; font-weight: bold }
+/* KeywordReserved */ .chroma .kr { color: #000000; font-weight: bold }
+/* KeywordType */ .chroma .kt { color: #445588; font-weight: bold }
+/* Name */ .chroma .n {  }
+/* NameAttribute */ .chroma .na { color: #008080 }
+/* NameBuiltin */ .chroma .nb { color: #0086b3 }
+/* NameBuiltinPseudo */ .chroma .bp { color: #999999 }
+/* NameClass */ .chroma .nc { color: #445588; font-weight: bold }
+/* NameConstant */ .chroma .no { color: #008080 }
+/* NameDecorator */ .chroma .nd { color: #3c5d5d; font-weight: bold }
+/* NameEntity */ .chroma .ni { color: #800080 }
+/* NameException */ .chroma .ne { color: #990000; font-weight: bold }
+/* NameFunction */ .chroma .nf { color: #990000; font-weight: bold }
+/* NameFunctionMagic */ .chroma .fm {  }
+/* NameLabel */ .chroma .nl { color: #990000; font-weight: bold }
+/* NameNamespace */ .chroma .nn { color: #555555 }
+/* NameOther */ .chroma .nx {  }
+/* NameProperty */ .chroma .py {  }
+/* NameTag */ .chroma .nt { color: #000080 }
+/* NameVariable */ .chroma .nv { color: #008080 }
+/* NameVariableClass */ .chroma .vc { color: #008080 }
+/* NameVariableGlobal */ .chroma .vg { color: #008080 }
+/* NameVariableInstance */ .chroma .vi { color: #008080 }
+/* NameVariableMagic */ .chroma .vm {  }
+/* Literal */ .chroma .l {  }
+/* LiteralDate */ .chroma .ld {  }
+/* LiteralString */ .chroma .s { color: #dd1144 }
+/* LiteralStringAffix */ .chroma .sa { color: #dd1144 }
+/* LiteralStringBacktick */ .chroma .sb { color: #dd1144 }
+/* LiteralStringChar */ .chroma .sc { color: #dd1144 }
+/* LiteralStringDelimiter */ .chroma .dl { color: #dd1144 }
+/* LiteralStringDoc */ .chroma .sd { color: #dd1144 }
+/* LiteralStringDouble */ .chroma .s2 { color: #dd1144 }
+/* LiteralStringEscape */ .chroma .se { color: #dd1144 }
+/* LiteralStringHeredoc */ .chroma .sh { color: #dd1144 }
+/* LiteralStringInterpol */ .chroma .si { color: #dd1144 }
+/* LiteralStringOther */ .chroma .sx { color: #dd1144 }
+/* LiteralStringRegex */ .chroma .sr { color: #009926 }
+/* LiteralStringSingle */ .chroma .s1 { color: #dd1144 }
+/* LiteralStringSymbol */ .chroma .ss { color: #990073 }
+/* LiteralNumber */ .chroma .m { color: #009999 }
+/* LiteralNumberBin */ .chroma .mb { color: #009999 }
+/* LiteralNumberFloat */ .chroma .mf { color: #009999 }
+/* LiteralNumberHex */ .chroma .mh { color: #009999 }
+/* LiteralNumberInteger */ .chroma .mi { color: #009999 }
+/* LiteralNumberIntegerLong */ .chroma .il { color: #009999 }
+/* LiteralNumberOct */ .chroma .mo { color: #009999 }
+/* Operator */ .chroma .o { color: #000000; font-weight: bold }
+/* OperatorWord */ .chroma .ow { color: #000000; font-weight: bold }
+/* Punctuation */ .chroma .p {  }
+/* Comment */ .chroma .c { color: #999988; font-style: italic }
+/* CommentHashbang */ .chroma .ch { color: #999988; font-style: italic }
+/* CommentMultiline */ .chroma .cm { color: #999988; font-style: italic }
+/* CommentSingle */ .chroma .c1 { color: #999988; font-style: italic }
+/* CommentSpecial */ .chroma .cs { color: #999999; font-weight: bold; font-style: italic }
+/* CommentPreproc */ .chroma .cp { color: #999999; font-weight: bold; font-style: italic }
+/* CommentPreprocFile */ .chroma .cpf { color: #999999; font-weight: bold; font-style: italic }
+/* Generic */ .chroma .g {  }
+/* GenericDeleted */ .chroma .gd { color: #000000; background-color: #ffdddd }
+/* GenericEmph */ .chroma .ge { color: #000000; font-style: italic }
+/* GenericError */ .chroma .gr { color: #aa0000 }
+/* GenericHeading */ .chroma .gh { color: #999999 }
+/* GenericInserted */ .chroma .gi { color: #000000; background-color: #ddffdd }
+/* GenericOutput */ .chroma .go { color: #888888 }
+/* GenericPrompt */ .chroma .gp { color: #555555 }
+/* GenericStrong */ .chroma .gs { font-weight: bold }
+/* GenericSubheading */ .chroma .gu { color: #aaaaaa }
+/* GenericTraceback */ .chroma .gt { color: #aa0000 }
+/* GenericUnderline */ .chroma .gl { text-decoration: underline }
+/* TextWhitespace */ .chroma .w { color: #bbbbbb }
+
+    }
+
+
+@media (prefers-reduced-motion: reduce) {
+    .paige-header-link {
+        transition: none;
+    }
+}
+
+
+
+
+</style>
+
+
+    
+</head>
+
+    <body class="d-flex flex-column">
+
+        
+
+        <div class="container flex-fill" id="paige-root">
+            <div class="row">
+                <div class="col">
+                    
+
+
+    <header class="my-3" id="paige-header">
+        
+
+        
+
+
+
+
+        
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+
+    <nav>
+        <ul class="align-items-center justify-content-center nav ">
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/"    >Home</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/blogs/"    >Blogs</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a  aria-current="page"   class=" active  text-body-emphasis    nav-link   text-decoration-underline "  href="/books/"    >Books</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/resume/"    >Resume</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/search/"    >Search</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/tags/"    >Tags</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/content/"    >Content</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/customizations/"    >Customizations</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/layouts/"    >Layouts</a>
+
+                    
+                </li>
+            
+        </ul>
+    </nav>
+
+
+        
+
+
+    <nav aria-label="Breadcrumbs" class="mt-3" id="paige-breadcrumbs">
+        <div class="d-flex justify-content-center">
+            <ol class="breadcrumb mb-0">
+                
+
+                
+
+                
+                    
+
+                    
+
+                    <li class="breadcrumb-item"><a href="/">Paige</a></li>
+                
+                    
+
+                    
+
+                    <li class="breadcrumb-item"><a href="/books/"></a></li>
+                
+                    
+
+                    
+
+                    <li class="breadcrumb-item"><a href="/books/machine-learning/">Machine Learning</a></li>
+                
+            </ol>
+        </div>
+    </nav>
+
+
+
+        
+    </header>
+
+
+
+                    <main class="mt-3" id="paige-main">
+                        
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+        
+    
+
+
+
+
+<article  class="paige-published paige-single"  id="paige-article">
+    <div class="align-items-center d-flex flex-column mb-0">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="mw-100" id="paige-metadata">
+    
+        <h1 class="fw-bold text-center" id="paige-title">Machine Learning Interview</h1>
+    
+
+    
+        <p class="lead text-center" id="paige-description">Case Study of Various Machine Learning Systems</p>
+    
+
+    
+        <div class="mb-3">
+            
+
+            
+
+            
+
+            
+
+            
+                <p class="mb-0 text-center text-secondary" id="paige-reading-time">15 minutes</p>
+            
+        </div>
+    
+</div>
+
+        
+
+
+
+        
+
+
+    <div class="mw-100" id="paige-toc">
+        <div class="border mb-3 pe-3 ps-3 pt-3 rounded">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#defining-the-ml-objective">Defining the ML Objective</a></li>
+        <li><a href="#specify-input-and-output">Specify Input and Output</a></li>
+        <li><a href="#ml-category">ML Category</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#31-data-engineering">3.1 Data Engineering</a></li>
+        <li><a href="#32-feature-engineering">3.2 Feature Engineering</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#41-model-selection">4.1 Model Selection</a></li>
+        <li><a href="#41-model-training">4.1 Model Training</a>
+          <ol>
+            <li>
+              <ol>
+                <li><a href="#411-construct-training-data">4.1.1 Construct Training Data</a></li>
+                <li><a href="#412-choosing-the-loss-function-training-metric">4.1.2 Choosing the Loss function (==Training Metric==)</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#cross-entropy-takes-into-account-actual-vs-predicted-probabilityhpq---sum_c1px-log-qx">Cross Entropy: takes into account actual vs predicted probability$$H(P,Q) = -\sum_{c=1}P(x) \log Q(x)$$</a>
+      <ol>
+        <li>
+          <ol>
+            <li>
+              <ol>
+                <li><a href="#413-regularization">4.1.3 Regularization</a></li>
+                <li><a href="#414-optimization-todo">4.1.4 Optimization (TODO)</a></li>
+                <li><a href="#415-other-talking-points">4.1.5 Other Talking Points</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#offline-metrics">Offline Metrics</a></li>
+        <li><a href="#online-metrics">Online Metrics</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#prediction-pipeline">Prediction Pipeline</a></li>
+        <li><a href="#indexing-pipeline">Indexing Pipeline</a></li>
+        <li><a href="#nearest-neighbor-performance">Nearest Neighbor Performance</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </div>
+
+
+        
+
+
+
+
+    <div class="mw-100" id="paige-content"><hr>
+<h1 id="1-clarify-requirement">1 Clarify Requirement<a aria-label="Link to this section" class="paige-header-link" href="#1-clarify-requirement"></a></h1>
+<hr>
+<p>Chapter 2: Visual Search system
+Chapter 3: Google Street View Blurring system
+Chapter 4: Youtube Video Search
+Chapter 5: Harmful Content Detection
+Chapter 6: Video Recommendation Service
+Chapter 7: Event Recommendation Service
+Chapter 8: Ad Click Prediction
+Chapter 9: Similar Listings on Vacation Rental
+Chapter 10: Personalized News Feed
+Chapter 11: People You May Know</p>
+<hr>
+<h1 id="2-frame-as-ml">2 Frame as ML<a aria-label="Link to this section" class="paige-header-link" href="#2-frame-as-ml"></a></h1>
+<hr>
+<h3 id="defining-the-ml-objective">Defining the ML Objective<a aria-label="Link to this section" class="paige-header-link" href="#defining-the-ml-objective"></a></h3>
+<ul>
+<li>Maximize # user clicks</li>
+<li>Maximize # completed videos</li>
+<li>Maximize watch time</li>
+</ul>
+<h3 id="specify-input-and-output">Specify Input and Output<a aria-label="Link to this section" class="paige-header-link" href="#specify-input-and-output"></a></h3>
+<ul>
+<li>Late vs Early Fusion (Ch5)</li>
+</ul>
+<h3 id="ml-category">ML Category<a aria-label="Link to this section" class="paige-header-link" href="#ml-category"></a></h3>
+<ul>
+<li>High Level
+<ul>
+<li>Supervised
+<ul>
+<li>
+<p>Classification</p>
+<ul>
+<li>Single Class (aka Binary)
+<ul>
+<li>Granularity matters: in detecting harmful content, if we have a binary class (harmful/safe), it will be hard to (1) explain why post is taken down (2) improve model because which we don&rsquo;t know which class performs less well</li>
+</ul>
+</li>
+<li>Multi-class
+<ul>
+<li>if the classes are mutually exclusive</li>
+</ul>
+</li>
+<li>Multi-label
+<ul>
+<li>if the classes are not mutually exclusive</li>
+</ul>
+</li>
+<li>Multi-task (Ch 5: Detecting Harmful Content)
+<ul>
+<li>multiple models learn multiple task simultaneously; each task has a loss function we are learning</li>
+<li>Classification head : is a linear layer which projects X dimension to Y dimension to produce logits of size K, where K is the number of classes <a href="https://discuss.huggingface.co/t/what-is-the-classification-head-doing-exactly/10138/11">hf blog</a>.  This is then fed to a
+<ul>
+<li>softmax for multiclass single label</li>
+<li>sigmoid for binary or (multi class multilabel) (book Deep Learning with Python p114)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD;
+    SharedLayers--&gt;FusedFeatures;
+    ViolenceClassHead--&gt;SharedLayers;
+    NudityClassHead--&gt;SharedLayers;
+    HateClassHead--&gt;SharedLayers;
+</code></pre></li>
+</ul>
+<pre tabindex="0"><code>
+
+
+
+
+Regression
+Note: Most examples in book are supervised classification
+</code></pre></li>
+<li>Unsupervised
+<ul>
+<li>Clustering</li>
+<li>Dimension Reduction</li>
+<li>Association</li>
+</ul>
+</li>
+<li>Reinforcement Learning:
+<ul>
+<li>AI agent learns to take actions in an environment in order to maximize a particular reward</li>
+</ul>
+</li>
+<li>Generative
+<ul>
+<li>Generates new data, rather than making predictions based on existing data</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Ranking
+<ul>
+<li>Statistical (Similarity Measurement) <a href="https://wuciawe.github.io/machine%20learning/math/2016/06/09/notes-on-similarity-measurements.html">ref</a>
+<ul>
+<li>euclidean distance</li>
+<li>cosine similarity</li>
+<li>Ochiai coefficient</li>
+<li>taniomoto metric</li>
+<li>Jaccard index</li>
+<li>Pearson coefficient</li>
+<li>Spearman&rsquo;s rank correlation coefficient</li>
+<li>Hamming distance</li>
+</ul>
+</li>
+<li>(Ch2: Representation Learning)</li>
+<li>Visual Search (Ch 4)
+<ul>
+<li>Representation Learning</li>
+<li>Video Encoder</li>
+<li>Text Encoder</li>
+</ul>
+</li>
+<li>Text Search (Ch 4)
+<ul>
+<li>Inverted Index</li>
+</ul>
+</li>
+<li>Learning To Rank (Ch7)
+<ul>
+<li>Pointwise (Ch7,8,10)</li>
+<li>Pairwise</li>
+<li>Listwise</li>
+</ul>
+</li>
+<li>Session Based Recommendation</li>
+</ul>
+</li>
+<li>Fusing Layers</li>
+<li>Classification
+<ul>
+<li>Single binary classifier (Ch5)</li>
+<li>One binary classifier per class  (Ch5)</li>
+<li>Multi-label classifier (Ch5)</li>
+<li>Multi-task classifier (Ch5)
+<ul>
+<li>Shared layer</li>
+<li>Task Specific Layer</li>
+</ul>
+</li>
+<li>Non Personalized
+<ul>
+<li>Rule based</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Personalization (Ch6)
+<ul>
+<li>Content based filtering</li>
+<li>Collaborative Filtering</li>
+<li>Hybrid filtering</li>
+</ul>
+</li>
+<li>Rule Based (Ch6, 7)</li>
+<li>Embedding Based (Ch7)</li>
+</ul>
+<hr>
+<h1 id="3-data-preparation">3 Data Preparation<a aria-label="Link to this section" class="paige-header-link" href="#3-data-preparation"></a></h1>
+<hr>
+<h3 id="31-data-engineering">3.1 Data Engineering<a aria-label="Link to this section" class="paige-header-link" href="#31-data-engineering"></a></h3>
+<p><em>Data Sources</em></p>
+<ul>
+<li>Is it clean?</li>
+<li>Can it be trusted?</li>
+<li>Are there privacy issues?</li>
+</ul>
+<p><em>Data Storage</em></p>
+<ul>
+<li>SQL: Relational (Postgres)</li>
+<li>NoSQL: KeyValue(Redis, DynamoDB), Column(Cassandra, HBase), Graph(Neo4J), Document(MongoDB, DynamoDB)</li>
+</ul>
+<p><em>Data Types</em></p>
+<ul>
+<li>Structured</li>
+<li>Ex: Numerical &amp; Categorical</li>
+<li>Resides in Relational, NoSQL, DataWarehouse</li>
+<li>Models: Decision Tree, Linear Models, SVM, KNN, Naives Bayse, and Deep Learning</li>
+<li>Unstructured</li>
+<li>Ex: Audio, Video, Image, Text</li>
+<li>Resides in NoSQL DB, Data Lakes</li>
+<li>Models: Deep Learning</li>
+</ul>
+<p><em>Entities</em></p>
+<ul>
+<li>Images</li>
+<li>Users</li>
+<li>Posts</li>
+<li>Events</li>
+<li>Friendships</li>
+<li>Ads</li>
+<li>Listings</li>
+<li>EntityX-EntitY Interaction</li>
+<li>Annotated dataset</li>
+</ul>
+<h3 id="32-feature-engineering">3.2 Feature Engineering<a aria-label="Link to this section" class="paige-header-link" href="#32-feature-engineering"></a></h3>
+<p><em>Feature Engineering Operations</em></p>
+<ul>
+<li>
+<p>Handle Missing Values</p>
+</li>
+<li>
+<p>Replace with:</p>
+</li>
+<li>
+<p>default values</p>
+</li>
+<li>
+<p>mean, media, or mode (the most common value)</p>
+</li>
+<li>
+<p>Feature Scaling</p>
+</li>
+<li>
+<p>Rationale: Some ML models learn better when features values are in similar ranges</p>
+</li>
+<li>
+<p>Normalization: (aka min-max scaling)$$ z = \frac{x-x_{min} }{x_{max}-x_{min}} $$</p>
+</li>
+<li>
+<p>changes distribution</p>
+</li>
+<li>
+<p>Z-score normalization: $$ z = \frac{x-\mu }{\sigma} $$</p>
+</li>
+<li>
+<p>log scaling: good for long tail distribution</p>
+</li>
+<li>
+<p>Discretization (Bucketing)</p>
+</li>
+<li>
+<p>Encoding Categorical Features (1 hot encoding, )</p>
+</li>
+<li>
+<p>via embeddings: good for high cardinality features</p>
+</li>
+<li>
+<p>Preparing Text Data (Ch4)</p>
+<ul>
+<li>Text Normalization
+<ul>
+<li>lower case</li>
+<li>punctuation removal</li>
+<li>trim white spaces</li>
+<li>Lemmatization</li>
+<li>Stemming</li>
+</ul>
+</li>
+<li>Tokenization
+<ul>
+<li>Word</li>
+<li>Subword</li>
+<li>Character</li>
+</ul>
+</li>
+<li>Inverted Index</li>
+<li>Token To Ids
+<ul>
+<li>Lookup table</li>
+<li>hashing</li>
+</ul>
+</li>
+<li>Text Encoder (training this can be considered as modeling)
+<ul>
+<li>Statistical: BOW, TFIDF</li>
+<li>ML Based: (Ch5)
+<ul>
+<li>Embedding Layer: f(tokenId) =&gt; embedding</li>
+<li>Word2Vec: use shallow neural network leverage co-occurrence of words in ==local context==
+<ul>
+<li>Continuous Bag of Word (cBOW)</li>
+<li>Skipgram</li>
+</ul>
+</li>
+<li>Transformer: Bert, GPT3, Bloom</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Preparing Video Data (Ch2, 4)</p>
+<ul>
+<li>Decoding,Sample</li>
+<li>Resize, scale</li>
+<li>z-score normalization</li>
+<li>Correct Color Mode</li>
+<li></li>
+</ul>
+</li>
+<li>
+<p>User reaction to post (Ch5)</p>
+</li>
+<li>
+<p>Author Features (Ch5)</p>
+</li>
+<li>
+<p>Contextual Information (Ch5)</p>
+<ul>
+<li>time of day</li>
+<li>device</li>
+</ul>
+</li>
+<li>
+<p>Video Features (Ch6)</p>
+<ul>
+<li>Video ID</li>
+<li>Duration</li>
+<li>Language</li>
+<li>Titles and tags</li>
+</ul>
+</li>
+<li>
+<p>User Features (Ch6)</p>
+<ul>
+<li>Demographics</li>
+<li>Contextual</li>
+<li>Historical interactions
+<ul>
+<li>Search history</li>
+<li>Liked Videos</li>
+<li>Watched Videos</li>
+<li>Impressions</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Location Features (Ch7)</p>
+<ul>
+<li>walk score</li>
+<li>country</li>
+<li>user to location affinity</li>
+</ul>
+</li>
+<li>
+<p>Time Related Features (Ch7)</p>
+<ul>
+<li>time remaining till event</li>
+</ul>
+</li>
+<li>
+<p>Social Related Features (Ch7)</p>
+<ul>
+<li>number of people attending</li>
+</ul>
+</li>
+<li>
+<p>Event Related Features (Ch7)</p>
+</li>
+<li>
+<p>Ad Features</p>
+<ul>
+<li>Category/Subcategory</li>
+<li>Engagement numbers</li>
+<li>Image/Videos</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="4-model-development">4 Model Development<a aria-label="Link to this section" class="paige-header-link" href="#4-model-development"></a></h1>
+<hr>
+<h3 id="41-model-selection">4.1 Model Selection<a aria-label="Link to this section" class="paige-header-link" href="#41-model-selection"></a></h3>
+<p><em>Factors to consider in selecting models</em></p>
+<ul>
+<li>Amount of data the model needs</li>
+<li>Training speed</li>
+<li>Hyper-parameters to choose</li>
+<li>Possibility of continuous/lifelong learning</li>
+<li>learn a model for a large number of tasks sequentially without forgetting knowledge obtained from the preceding tasks</li>
+<li>Each data is trained only once; Available to a flavor of NN, where the typical back propagation is approximate as instantaneous <a href="https://insidebigdata.com/2019/10/29/when-dnns-become-more-human-dnns-vs-transfer-learning-vs-continual-learning/">ref</a></li>
+<li>Compute requirements/cost</li>
+<li>Model interpretability</li>
+<li>==Interview: Understand the algorithm&rsquo;s pro/con with respect to</li>
+</ul>
+<ol>
+<li>requirements: ie business -&gt; ml objective</li>
+<li>constraints: ie on mobile device==</li>
+</ol>
+<p><em>Different types of Models</em></p>
+<ul>
+<li><a href="https://medium.com/@riteshgupta.ai/10-most-common-machine-learning-algorithms-explained-2023-d7cfe41c2616">TDS: Top10 Algo</a></li>
+<li>CNN based architecture (Ch2)</li>
+<li>Text Encoder (Ch4)</li>
+<li>Statistical</li>
+<li>BoW</li>
+<li>TF-IDF</li>
+<li>ML Based</li>
+<li>Embedding Layer</li>
+<li>Word2Vec</li>
+<li>Transformer Based</li>
+<li>Video Encoder (Ch4)</li>
+<li>Video Level Models</li>
+<li>Frame level models</li>
+<li>Multi-task NN (Ch5)</li>
+<li>Matrix Factorization (Ch6)</li>
+<li>Feedback Matrix</li>
+<li>Training Loss</li>
+<li>Squared distance over observed pairs</li>
+<li>Squared distance over all pairs</li>
+<li>weighted combination of observed/un pairs</li>
+<li>Optimization Algo</li>
+<li>SGD</li>
+<li>WALS</li>
+<li>Two Tower Network (Ch6)</li>
+<li>Logistic Regression (LR) (Ch7,8)</li>
+<li>LR + Feature Crossing (Ch 8)</li>
+<li>Decision Tree (Ch7)</li>
+<li>Bagging</li>
+<li>Boosting</li>
+<li>Decision Tree</li>
+<li>GBT</li>
+<li>XGBoost: has L1 and L2 regularization</li>
+<li>Neural Network (Ch7)</li>
+<li>Deep &amp; Cross Network (Ch 8)</li>
+<li>Factorization Machines (Ch 8)</li>
+<li>Deep Factorization Machines</li>
+</ul>
+<h3 id="41-model-training">4.1 Model Training<a aria-label="Link to this section" class="paige-header-link" href="#41-model-training"></a></h3>
+<h5 id="411-construct-training-data">4.1.1 Construct Training Data<a aria-label="Link to this section" class="paige-header-link" href="#411-construct-training-data"></a></h5>
+<ol>
+<li>Collect the raw data
+<ol>
+<li>Ex: &lt;query, item1:similar, item2:nonSimilar, item3:nonSimilar&gt;</li>
+</ol>
+</li>
+<li>Identify Features and Labels
+<ul>
+<li>labels:
+<ul>
+<li>human judgments</li>
+<li>natural
+<ul>
+<li>implicit:
+<ul>
+<li>user clicks as proxy for similarity (Ch2)</li>
+</ul>
+</li>
+<li>explicit: ratings</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Select sampling strategy <a href="https://www.scribbr.com/methodology/sampling-methods/">ref</a> : select a subset of the population so we get a good representation
+<ol>
+<li>stratified sampling:  for each population class, select a subPopulation A that is proportional A&rsquo;s population in the total population</li>
+<li>cluster sampling: cluster the population, and select a portion from</li>
+</ol>
+</li>
+<li>Split the Data in training, validation, and test <a href="https://machinelearningmastery.com/train-test-split-for-evaluating-machine-learning-algorithms/">ref</a>
+<ol>
+<li>validation is for tuning hyper-parameters</li>
+<li>k-fold cross-validation procedure can help
+<ol>
+<li>if don&rsquo;t have enough data</li>
+<li>for complex computational models (large NN)</li>
+<li>This method guarantees that the score of our model does not depend on the way we picked the train and test set.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Address class imbalance (if any)
+<ol>
+<li>Upsample the minority class; under-sample the majority class</li>
+<li>Modify the loss function
+<ol>
+<li>class-balanced loss <a href="https://arxiv.org/pdf/1901.05555.pdf">paper</a></li>
+<li>focal loss <a href="https://medium.com/swlh/focal-loss-what-why-and-how-df6735f26616">ref1</a> <a href="https://arxiv.org/pdf/1708.02002.pdf">paper</a>
+<ol>
+<li>The focal loss is designed to address the class imbalance by down-weighting the easy examples such that their contribution to the total loss is small even if their number is large</li>
+<li>$$CrossEntropy = \sum_{i=0}^{i=classN} y_i \log(p_i)$$</li>
+<li>Focal loss adds a $\gamma$ scale factor (&lt;1) to down play the importance of the class we want to pay less attention to$$FocalLoss = \sum_{i=0}^{i=classN} y_i^\gamma \log(p_i)$$</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>Book
+<ul>
+<li>Hand label (Ch5)</li>
+<li>Adding Booked Listing as Global Context (Ch 9)</li>
+</ul>
+</li>
+</ul>
+<h5 id="412-choosing-the-loss-function-training-metric">4.1.2 Choosing the Loss function (==Training Metric==)<a aria-label="Link to this section" class="paige-header-link" href="#412-choosing-the-loss-function-training-metric"></a></h5>
+<ul>
+<li>IMOW: How does MLE/MAP fit into loss functions and optimization algorithm?
+<ul>
+<li>==MLE and MAP provides the theoretical framework to derive the loss function, by which optimization algorithm can be applied upon.==</li>
+</ul>
+</li>
+</ul>
+<p><em>Maximum Likelihood Estimation (MLE) Vs Maximum Posterior(MAP) Vs Expectation-Maximization Algorithm Vs Least Squared Error and Cross Entropy</em></p>
+<ul>
+<li>
+<p>Terminologies</p>
+<ul>
+<li>Likelihood :</li>
+<li>L($\mu\sigma$; data)</li>
+<li>the likelihood of parameters $\mu\sigma$ given we observed the data</li>
+<li>Probability:</li>
+<li>P(data; $\mu\sigma$)</li>
+<li>probability density of observing the data with model parameters $\mu\sigma$</li>
+</ul>
+</li>
+<li>
+<p>Both MLE and MP describe how we learn the parameters of our model to learn the likelihood function L($\mu\sigma$; data)</p>
+<ul>
+<li>MLE and MAP provide a mechanism to ==derive== the loss function.
+<ul>
+<li>With alot of math, we see parameters $\theta$ which maximize the log likelihood is to minimize the mean squared error  <a href="https://towardsdatascience.com/estimators-loss-functions-optimizers-core-of-ml-algorithms-d603f6b0161a">tds</a></li>
+<li>We then apply gradient descent on the mean squared error</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Goal of MLE is to infer parameter $\theta$ to infer the most likely likelihood function for our given probability distribution p (Bernouli, Normal, etc..).</p>
+</li>
+</ul>
+<p>$$\theta_{MLE} = {\operatorname{argmax}}  P(X|\theta)$$
+$$= {\operatorname{argmax}}  \prod p(x_i|\theta)$$
+$$= {\operatorname{argmax}} \log(  \prod p(x_i|\theta) )$$
+$$= {\operatorname{argmax}} \sum_{i} \log p(x_i|\theta) )$$</p>
+<ul>
+<li>
+<p>Similarly, Maximum Posterior learns the likelihood L($\mu\sigma$; data), but approach from Bayes Theorem
+$$p(\theta|X) = \frac{p(X|\theta) p(\theta)}{p(X)}$$ $$ p(X|\theta) p(\theta)$$
+$$= {\operatorname{argmax}} \sum_{i} \log p(x_i|\theta) + p(\theta)) )$$</p>
+<ul>
+<li>MAP is similar to MLE but has a prior term p($\theta$)</li>
+</ul>
+</li>
+<li>
+<p>In practice, while the log makes the function easier to differentiate to find the minimum, the function can be still intractable.  Expectation maximization algorithm is an ==iterative== algorithm  to estimate parameters.</p>
+</li>
+<li>
+<p>Least Squared Error vs Cross Entropy Loss</p>
+<ul>
+<li>Least Squared error and Cross entropy loss are ways to quantify the difference between between prediction and actual for  scalars and probability distribution, respectively</li>
+<li>Cross Entropy
+$$H(P,Q) = \sum_{c=1}P(x) \log Q(x)$$
+<ul>
+<li>Q = probability of prediction</li>
+<li>P = probability of tree class (true class)</li>
+<li>c is for a class</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Entropy vs Cross Entropy vs KL Divergence <a href="https://towardsdatascience.com/entropy-cross-entropy-and-kl-divergence-explained-b09cdae917a">TDS</a></p>
+<ul>
+<li>Entropy
+<ul>
+<li>How much information is gained; how much uncertainty was reduced (more bits more uncertainty reduced)</li>
+<li>$$H(P,P) = -\sum_{c=1}P(x) \log P(x)$$</li>
+<li>Example
+<ul>
+<li>If every day, there is a 35% sunshine of rain and 1% of rain , what is the entropy for 3 days? (how many bits of information)?
+$$Entropy = 3 (-0.35\log(0.35) - 0.01\log(0.01))$$
+$$Entropy = 2.33 bits$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2 id="cross-entropy-takes-into-account-actual-vs-predicted-probabilityhpq---sum_c1px-log-qx">Cross Entropy: takes into account actual vs predicted probability$$H(P,Q) = -\sum_{c=1}P(x) \log Q(x)$$<a aria-label="Link to this section" class="paige-header-link" href="#cross-entropy-takes-into-account-actual-vs-predicted-probabilityhpq---sum_c1px-log-qx"></a></h2>
+</li>
+<li>KL Divergence (aka relative entropy)
+$$KLDivergence = Entropy - CrossEntropy$$</li>
+</ul>
+</li>
+</ul>
+<p><em>SIDE: Training Metric vs Evaluation Metric</em></p>
+<ul>
+<li>Training metric is used to learn the parameters (ie cross entropy, square loss)</li>
+<li>often has good mathematical computation behavior</li>
+<li>computationally efficient (log ==&gt; multiplication becomes addition)</li>
+<li>numerically stable (underflow and overflow)</li>
+<li>Evaluation metric (ROC)</li>
+<li>closer to the ML objective</li>
+<li>==Summary of Problem Type, Last Layer, and Loss Function==</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Problem Type</th>
+<th style="text-align:center">Last Layer Activation</th>
+<th style="text-align:right">Loss Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Classification: Binary</td>
+<td style="text-align:center">Sigmoid</td>
+<td style="text-align:right">Binary Cross Entropy</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">Classification: Multi-class, single label</td>
+<td style="text-align:center">Softmax</td>
+<td style="text-align:right">Categorical Cross Entropy</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">Classification: Multi-class, Multi-label</td>
+<td style="text-align:center">Sigmoid</td>
+<td style="text-align:right">Binary Cross Entropy</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">Regression To Arbitrary Values</td>
+<td style="text-align:center">None</td>
+<td style="text-align:right">MSE</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">Regression To Values Between 0 - 1</td>
+<td style="text-align:center">Sigmoid</td>
+<td style="text-align:right">MSE or Binary Cross Entropy</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Cross entropy (Ch5)
+$$BinaryCrossEntropy =  y_i \log(p(i=1)) + (1-y_i)\log(p(i=0))$$
+$$CrossEntropy = \sum_{i=0}^{i=classN} y_i \log(p_i)$$</li>
+<li>Contrastive/Triplet Loss Loss <a href="https://lilianweng.github.io/posts/2021-05-31-contrastive/">lilian blog</a> (Ch2 Visual Representation Learning)
+<ul>
+<li>Contrastive loss takes a pair of inputs $(x_i, x_j)$ and learns a function $f_\theta(.)$ that encodes $x_i$ into an embedding vector such that minimizes the embedding distance when they are from the same class but maximizes the distance otherwise. $y_i \in {(1,&hellip;, L)}$ is a label among L class
+$$L_{contrastive}(x_i, x_j, \theta)= (y_i=y_j)(f_\theta(x_i)-f_{\theta}(x_j))^2 + (y_i!=y_j)\max(0, \epsilon-(f_\theta(x_i)-f_{\theta}(x_j))^2)$$</li>
+<li>Triplet loss takes $(anchor, x^+, x^-)$, and learns a function to minimize the distance between anchor and $x^+$ and maximize the distance between anchor and $x^-$
+$$L_{tripliet}=\sum_{x\in X} \max(0, [f(x_{anchor})-f(x^+)]^2 - [f(x_{anchor})-f(x^-)]^2 + \epsilon)$$
+<ul>
+<li>Huber Loss</li>
+<li>Residual Squared, MSE, MAE
+$$ residual_{squared} = (y_{predict} - y_{actual})^2$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$MAE= \sum_{i=0}^{i=totalPopulation} (y_{actual} - y_{predict}) $$$$MSE= \sum_{i=0}^{i=totalPopulation} (y_{actual} - y_{predict})^2 $$</p>
+<h5 id="413-regularization">4.1.3 Regularization<a aria-label="Link to this section" class="paige-header-link" href="#413-regularization"></a></h5>
+<ul>
+<li>Context: Bias Variance Tradeoff
+<ul>
+<li>
+<p>Bias quantifies how well/close a model&rsquo;s prediction captures the ==true== relationship between system&rsquo;s input and output</p>
+<ul>
+<li>Models with <strong>high bias</strong> are simple and fail to capture the complexity of the data. Hence, such models lead to a higher training and testing error. </li>
+<li><strong>Low bias</strong> corresponds to a good fit to the training dataset. Generally, more flexible models result in lower bias.</li>
+</ul>
+</li>
+<li>
+<p>Variance quantifies how well the model ==generalizes== to data set beyond the training dataset</p>
+<ul>
+<li>It is the amount by which the estimate of the true relationship would change on using a different training dataset.</li>
+</ul>
+</li>
+<li>
+<p>Perspective: Math: Using regression as an example</p>
+<ul>
+<li>𝔼|MSE| = 𝔼|$\sum_{i=0}^{i=totalPopulation} (y_{actual} - y_{predict})^2$|
+<ul>
+<li>𝔼 is expected value; in this case, it the mean of  MSE of the data set</li>
+</ul>
+</li>
+<li>The expected value can be broken down into
+<ul>
+<li>𝔼|MSE| = $bias(y_{predict})^2 + var(y_{predict}) + \sigma^2$
+<ul>
+<li>$\sigma$ is the irreducible error</li>
+</ul>
+</li>
+<li>==This is the bias variance tradeoff mathematically!!==
+<ul>
+<li>Choose the right model complexity to minimize the expected error, by choosing the right parameter to minimal bias and variance</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ref: <a href="https://medium.com/snu-ai/the-bias-variance-trade-off-a-mathematical-view-14ff9dfe5a3c#:~:text=Bias%20is%20defined%20as%20the,%5Bf%CC%82(x)%5D.">TDS</a></li>
+</ul>
+</li>
+<li>
+<p>Perspective: Bulls Eye <a href="https://towardsdatascience.com/the-bias-variance-tradeoff-cf18d3ec54f9">TDS</a></p>
+<ul>
+<li>low bias; low variance: idea</li>
+<li>low bias; hi variance: shots centered on bulls eye, but shots are spread apart</li>
+<li>hi bias; low variance: shots are close to each other, but far from bulls eye</li>
+<li>hi bias, high variance: shots are from each other and far from the bulls eye</li>
+</ul>
+</li>
+<li>
+<p>Perspective: Model Complexity</p>
+<ul>
+<li>Complex models (ie large weights, complex architecture NN) can capture the relationship between input and output during training time, but does not generalize well too future unseen data.
+<ul>
+<li>larger model (num param, large values) can overfit</li>
+<li>Overfit &ndash;&gt; start learning the noise, and won&rsquo;t generalize well.</li>
+</ul>
+</li>
+<li>Regularization penalizes complex model so we can improve generalization</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>L1 L2 <a href="https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c">ref1</a> <a href="https://www.analyticssteps.com/blogs/l2-and-l1-regularization-machine-learning">ref2</a>
+<ul>
+<li>
+<p>L1 (aka Lasso Regression):</p>
+<ul>
+<li>penalize weights in proportion to the sum of ==absolute== value of weight.</li>
+<li>L1 drive the weights of irrelevant features to 0.
+$$J = \sum_{i=0}^{numSamples}(y_i-\sum_{j=0}^{j=numParams}x_{ij}\beta_j)^2 + \lambda\sum_{j=0}^{j=numParams}|\beta_j|$$
+$$J = Cost Function$$
+$$\beta = Feature Coefficient $$
+$$\lambda = Regularization Parameter$$</li>
+</ul>
+</li>
+<li>
+<p>L2 (aka Ridge Regression):</p>
+<ul>
+<li>penalize weights in proportion to the sum of value of weight.</li>
+<li>L2 drives the ==outlier== weights to smaller value.
+$$J = \sum_{i=0}^{numSamples}(y_i-\sum_{j=0}^{j=numParams}x_{ij}\beta_j)^2 + \lambda\sum_{j=0}^{j=numParams}\beta^2_j$$</li>
+</ul>
+</li>
+<li>
+<p>L1 vs L2</p>
+<ul>
+<li>==L1 (Lasso) works as feature selection because it shrinks the less important feature&rsquo;s coefficient to 0; yielding a more sparse model==
+<ul>
+<li>why? <a href="https://towardsdatascience.com/regularization-in-machine-learning-76441ddcf99a">TDS</a>
+<ul>
+<li>L2 ridge regression coefficients have the smallest RSS(loss function) for all points that lie within the circle given by β1² + β2² ≤ s_ ; constraint is a circle</li>
+<li> L1 lasso coefficients have the smallest RSS(loss function) for all points that lie within the diamond given by |β1|+|β2|≤ s; constraint  is a diamond</li>
+<li>Visualize:
+<ul>
+<li>for 2 parameter; axises are the coefficient values</li>
+<li>L1&rsquo;s constraint of diamond has edges on the axis where the coefficient_j is 0 &ndash;&gt; remove features</li>
+</ul>
+</li>
+<li>the lasso and ridge regression coefficient estimates are given by the ==first point== at which an ellipse contacts the constraint region</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>L2 (Ridge) is better for model interpretation because it will reduce the coefficient magnitude, but not 0.  We will be able to use the coefficient (aka predictor) to understand what factors are not important.</li>
+<li>Both reduces overfit increase underfit because larger cofficient value or more parameter will give a bigger cost function.</li>
+</ul>
+</li>
+<li>
+<p>Entropy Regularization <a href="https://paperswithcode.com/method/entropy-regularization">paper</a></p>
+</li>
+<li>
+<p>Dropout</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="414-optimization-todo">4.1.4 Optimization (TODO)<a aria-label="Link to this section" class="paige-header-link" href="#414-optimization-todo"></a></h5>
+<ul>
+<li>
+<p>Once we have framed the loss function, how do we differentiate and update the parameters?</p>
+</li>
+<li>
+<p>Common Optimization Methods <a href="https://www.ruder.io/optimizing-gradient-descent/">deep overview ref</a></p>
+<ul>
+<li>SGD</li>
+<li>AdaGrad</li>
+<li>Momentum</li>
+<li>RMSProp</li>
+</ul>
+</li>
+</ul>
+<h5 id="415-other-talking-points">4.1.5 Other Talking Points<a aria-label="Link to this section" class="paige-header-link" href="#415-other-talking-points"></a></h5>
+<ul>
+<li>Training from scratch vs fine tuning</li>
+<li>Distributed training</li>
+<li>Negative Sampling (Ch 9, ==p222==)</li>
+</ul>
+<hr>
+<h1 id="5-evaluation">5 Evaluation<a aria-label="Link to this section" class="paige-header-link" href="#5-evaluation"></a></h1>
+<hr>
+<h3 id="offline-metrics">Offline Metrics<a aria-label="Link to this section" class="paige-header-link" href="#offline-metrics"></a></h3>
+<ul>
+<li>
+<p>Mean Reciprocal Rank (MRR) $$MRR = \frac{1}{m}\sum_{i=1}^{m}\frac{1}{rank_i}$$</p>
+<ul>
+<li>m = # of lists</li>
+<li>rank is the position of the ==first== relevant item</li>
+<li>Con: only consider the first relevant item</li>
+</ul>
+</li>
+<li>
+<p>Recall@k $$Recall = \frac{numReleveantItemsInTopkPositions}{totalRelevantItems}$$</p>
+<ul>
+<li>Con: for some systems, it is hard to know all the relevant items?</li>
+</ul>
+</li>
+<li>
+<p>Precision@k$$Precision = \frac{numReleveantItemsInTopkPositions}{k}$$</p>
+<ul>
+<li>Con:
+<ul>
+<li>Relevance might need more granularity (ie level of relevance)</li>
+<li>Applies to only 1 list</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Mean Average Precision: mAP</p>
+<ul>
+<li>Averages the precision over ==multiple== lists
+$$AP = \frac{\sum_{i=1}^{k}Precision@iIfItemIisRelevant}{numRelevItemInList}$$</li>
+</ul>
+</li>
+<li>
+<p>nDCG</p>
+<ul>
+<li>DCG: cumulative gain of item $$DCG_p=\sum_{i=1}^{p}\frac{rel_i}{log_2(i+1)}$$
+<ul>
+<li>p = position</li>
+<li>rel_i  is more granular, ie (1, 2,  3, 4, 5)</li>
+</ul>
+</li>
+<li>Normalized DCG (nDCG) $$nDCP_p = \frac{DCG_p}{IDCG_p}$$
+<ul>
+<li>IDCG_P is when the output of a ==perfect== ranking system</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Confusion matrix</p>
+<ul>
+<li>Used in classification</li>
+<li>can be extended to multiclass; 3 classes becomes 3x3 table <a href="https://www.analyticsvidhya.com/blog/2021/06/confusion-matrix-for-multi-class-classification/#Confusion_Matrix_for_Multi-Class_Classification">ref</a></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center">Pos Prediction</th>
+<th style="text-align:right">Neg Prediction</th>
+<th style="text-align:right">Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Pos Class</td>
+<td style="text-align:center">TP</td>
+<td style="text-align:right">FN</td>
+<td style="text-align:right"><em>Recall TPR</em></td>
+</tr>
+<tr>
+<td style="text-align:left">Neg Class</td>
+<td style="text-align:center">FP</td>
+<td style="text-align:right">TN</td>
+<td style="text-align:right"><em>FPR</em></td>
+</tr>
+<tr>
+<td style="text-align:left">Metric</td>
+<td style="text-align:center"><em>Precision</em></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+</tbody>
+</table>
+<p>$$Precision= \frac{TP}{TP + FP}$$
+$$Recall=TPR=\frac{TP}{TP + FN}$$
+$$FPR = \frac{FP}{FP + TN}$$</p>
+<pre><code>- IMOW:
+	- Precision: Of the positive predictions, how many are truly really true?
+	- Recall &amp; TPR: Of the positive class, what fraction are we prediction true?
+	- FPR: Of the negative class, what fraction are we predicting true? 
+	- note: positive class is referred as minority class
+</code></pre>
+<ul>
+<li>
+<p>F1 Score</p>
+<ul>
+<li>Combines recall and precision into 1 number
+$$F1 = \frac{2}{\frac{1}{recall}+\frac{1}{precision}}$$</li>
+</ul>
+</li>
+<li>
+<p>ROC curve &amp; ROC-AUC (Ch5)</p>
+<ul>
+<li>Summarize performance of binary classifier for ==positive== class</li>
+<li>Plot as the fraction of correct predictions for the positive class (y-axis) versus the fraction of errors for the negative class (x-axis).
+<ul>
+<li>x-axis: FPR y-axis: TPR</li>
+</ul>
+</li>
+<li>Ideal: (x=0, y=1)
+<ul>
+<li>TPR = 1; we get all the positive class right</li>
+<li>FPR=0; we have no false positives</li>
+</ul>
+</li>
+<li>==ROC analysis does not have any bias toward models that perform well on the minority class at the expense of the majority class==</li>
+<li>One point on ROC curve corresponds to 1 threshold.  ROC-AUC averages the ROC across ==all classifier== thresholds, giving us ==one== number we can compare across multiple classifiers.</li>
+</ul>
+</li>
+<li>
+<p>PR Curve  and PR-AUC (Ch5)</p>
+<ul>
+<li>
+<p>Plots Recall(x) vs Precision(y)</p>
+<ul>
+<li>Perfect skill is upper right (x-axis=recall=1,  y-axis=precision=1)</li>
+</ul>
+</li>
+<li>
+<p>Precision recall is recommended for high skewed/imbalanced datasets. Using ROC on balanced dataset can yield over-optimistic performance.</p>
+</li>
+<li>
+<p>ROC vs PR AUC <a href="https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-imbalanced-classification/">ref</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Diversity</p>
+</li>
+<li>
+<p>Bleu metrics [wiki] : (bilingual evaluation understudy)</p>
+<ul>
+<li>Typically used in machine translation</li>
+</ul>
+</li>
+<li>
+<p>ROGUE []</p>
+<ul>
+<li>The Recall-Oriented Understudy for Gisting Evaluation (ROUGE) scoring algorithm [1] <strong>calculates the similarity between a candidate document and a collection of reference documents</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="online-metrics">Online Metrics<a aria-label="Link to this section" class="paige-header-link" href="#online-metrics"></a></h3>
+<ul>
+<li>CTR</li>
+<li>Average Time Spent On X</li>
+<li>Video completion Rate</li>
+<li>Total watch time</li>
+<li>Explicit User Feedback</li>
+<li>Conversion Rate</li>
+<li>Revenue Lift</li>
+<li>Bookmark Rate</li>
+</ul>
+<hr>
+<h1 id="6-serving">6 Serving<a aria-label="Link to this section" class="paige-header-link" href="#6-serving"></a></h1>
+<hr>
+<ul>
+<li>Cloud vs On Device Deployment</li>
+<li>Model Compression <a href="https://arxiv.org/pdf/1710.09282.pdf">paper</a>
+<ul>
+<li>Knowledge distillation - Teacher Student model</li>
+<li>Model pruning - find the least useful parameter and set them to 0. Leads to sparer models
+<ul>
+<li>General: 5 Types</li>
+</ul>
+<ol>
+<li><em><em>Random</em>:</em>* Simply prune random parameters.</li>
+<li><em><em>Magnitude</em>:</em>* Prune the parameters with the least weight (e.g. their L2 norm).</li>
+<li><strong>Gradient:</strong> Prune parameters based on the accumulated gradient (requires a backward pass and therefore data).</li>
+<li><strong>Information:</strong> Leverage other information such as high-order curvature information for pruning.</li>
+<li><strong>Learned:</strong> Of course, we can also train our network to prune itself (very expensive, requires training)!</li>
+</ol>
+</li>
+<li>Pytorch: <a href="https://towardsdatascience.com/how-to-prune-neural-networks-with-pytorch-ebef60316b91">blog for pytorch api</a> supports random and magnitude
+<ul>
+<li>Types
+<ul>
+<li>(local &ndash;&gt; per layer) vs (global &ndash;&gt; multiple layers)</li>
+<li>Structured vs Unstructured
+<ul>
+<li>Unstructured Pruning refers to pruning individual atoms of parameters. E.g. individual weights in linear layers, individual filter pixels in convolution layers, some scaling floats in your custom layer, etc. The point is you prune parameters without their respective structure</li>
+<li>Structured pruning removes entire structures of parameters. This does not mean that it has to be an entire parameter, but you go beyond removing individual atoms e.g. in linear weights you’d drop entire rows or columns, or, in convolution layers entire filters</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center">Structured</th>
+<th style="text-align:right">Unstructured</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Global</td>
+<td style="text-align:center">&ndash;</td>
+<td style="text-align:right">magnitude(==only== L-1 or custom)</td>
+</tr>
+<tr>
+<td style="text-align:left">Local</td>
+<td style="text-align:center">random, magniteude(==any== L-norm or custom)</td>
+<td style="text-align:right">random, magnitude(==only== L-1 or custom)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Quantization - store the parameter with less bits.  Can be done during or post training.</li>
+<li>Testing in Production
+<ul>
+<li>Shadow deployment: 0% of user see new system</li>
+<li>A/B testing</li>
+</ul>
+</li>
+<li>Prediction Pipeline
+<ul>
+<li>Batch
+<ul>
+<li>pro: good for processing large amount of data</li>
+<li>cons:
+<ul>
+<li>we need to know in advance what is to be generated</li>
+<li>results will not be <em>near</em> real time</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Online</li>
+</ul>
+</li>
+</ul>
+<h3 id="prediction-pipeline">Prediction Pipeline<a aria-label="Link to this section" class="paige-header-link" href="#prediction-pipeline"></a></h3>
+<ul>
+<li>Embedding Service (Ch2)</li>
+<li>Nearest Neighbor Service (Ch2)</li>
+<li>Re-ranking Service (Ch2,4)</li>
+<li>Visual Search (Ch4)</li>
+<li>Text Search (Ch4)</li>
+<li>Candidate Generation (Ch 8)</li>
+<li>Ranking (Ch 8)</li>
+<li>Re-Ranking (Ch 8)</li>
+<li>Triton</li>
+</ul>
+<h3 id="indexing-pipeline">Indexing Pipeline<a aria-label="Link to this section" class="paige-header-link" href="#indexing-pipeline"></a></h3>
+<ul>
+<li>Indexing Service</li>
+</ul>
+<h3 id="nearest-neighbor-performance">Nearest Neighbor Performance<a aria-label="Link to this section" class="paige-header-link" href="#nearest-neighbor-performance"></a></h3>
+<ul>
+<li>Exact match</li>
+<li>Approximate
+<ul>
+<li>Tree based</li>
+<li>LSH based</li>
+<li>Clustering based</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="7-monitoring">7 Monitoring<a aria-label="Link to this section" class="paige-header-link" href="#7-monitoring"></a></h1>
+<hr>
+<ul>
+<li>Why system fails in Production
+<ul>
+<li>Data distribution changes from production</li>
+</ul>
+</li>
+<li>What to Monitor
+<ul>
+<li>Operation-related (Graphana)
+<ul>
+<li>Latency</li>
+<li>Throughput</li>
+<li>CPU</li>
+<li>BW</li>
+</ul>
+</li>
+<li>ML
+<ul>
+<li>monitor input</li>
+<li>drifts</li>
+<li>model accuracy</li>
+<li>model version</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Alarms
+<ul>
+<li>alarms when metric breaches a threshold?</li>
+</ul>
+</li>
+<li>OTHER CONSIDERATIONS
+<ul>
+<li>Cost
+<ul>
+<li>DynamoDB on AWS has 2 price scheme: on demand or throttled. latter is an order cheaper.</li>
+</ul>
+</li>
+<li>Infra needed</li>
+<li>Integration Points
+<ul>
+<li>How will model integrate with upstream/downstream data/service/model</li>
+</ul>
+</li>
+<li>Data Privacy
+<ul>
+<li>Ex:
+<ul>
+<li>Sending PII data to ChatGPT?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+    </div>
+</article>
+
+
+
+
+    
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+                        
+                    </main>
+
+                    
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+<footer class="mb-3" id="paige-footer">
+    
+
+    
+        <div class="mb-3" id="paige-prev-next">
+            
+
+            
+                <p class="mb-0 text-center text-secondary" id="paige-prev">
+                    &lsaquo; <a class="link-secondary" href="http://localhost:1313/books/machine-learning/hands-on-large-language-model/">Hands On Large Language Model</a>
+                </p>
+            
+        </div>
+    
+
+    
+
+    
+
+    <p class="mb-0 text-center" id="paige-credit">
+        <a class="link-secondary text-decoration-none" href="https://github.com/willfaught/paige" >Paige Theme</a>
+    </p>
+
+    
+</footer>
+
+                </div>
+            </div>
+        </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+<script  crossorigin="anonymous"   defer  integrity="sha256-gfPiYYSP&#43;RNtNeRBt45mJombFJmNf0V0Ipu785Obi0M="   referrerpolicy="no-referrer"  src="/js/paige/bootstrap/bootstrap.bundle.min.81f3e261848ff9136d35e441b78e6626899b14998d7f4574229bbbf3939b8b43.js" ></script>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+<script  crossorigin="anonymous"   defer  integrity="sha256-kqnbKZyzZFmn0J2JtRxwdeNh0b3FknYDyAd&#43;mGKI73c="   referrerpolicy="no-referrer"  src="/js/paige/katex/katex.min.min.92a9db299cb36459a7d09d89b51c7075e361d1bdc5927603c8077e986288ef77.js" ></script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+<script  crossorigin="anonymous"   defer  integrity="sha256-pQMCGuz&#43;5jpyog4zEVyH/xvxJRsPM9M7d7t6&#43;TiyEA8="  onload="renderMathInElement(document.body);"   referrerpolicy="no-referrer"  src="/js/paige/katex/auto-render.min.min.a503021aecfee63a72a20e33115c87ff1bf1251b0f33d33b77bb7af938b2100f.js" ></script>
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+<noscript>JavaScript is required</noscript>
+
+
+        
+    </body>
+</html>

@@ -7,7 +7,7 @@ timezone = "America/Los_Angeles"
 titlecasestyle = "Go"
 
 [languages.en]
-title = "An Advanced Hugo Theme"
+##title = "An Advanced Hugo Theme"
 weight = 10
 
 [[languages.en.menu.main]]
@@ -17,58 +17,58 @@ url = "/"
 weight = 10
 
 [[languages.en.menu.main]]
-identifier = "content"
-name = "Content"
-url = "/content/"
+identifier = "Blogs"
+name = "Blogs"
+url = "/blogs/"
 weight = 20
 
 [[languages.en.menu.main]]
-identifier = "layouts"
-name = "Layouts"
-url = "/layouts/"
+identifier = "books"
+name = "Books"
+url = "/books/"
 weight = 30
 
 [[languages.en.menu.main]]
-identifier = "shortcodes"
-name = "Shortcodes"
-url = "/shortcodes/"
+identifier = "Resume"
+name = "Resume"
+url = "/resume/"
 weight = 40
 
-[[languages.en.menu.main]]
-identifier = "customizations"
-name = "Customizations"
-url = "/customizations/"
-weight = 50
-
-[[languages.en.menu.main]]
-identifier = "authors"
-name = "Authors"
-url = "/authors/"
-weight = 60
-
-[[languages.en.menu.main]]
-identifier = "series"
-name = "Series"
-url = "/series/"
-weight = 70
-
-[[languages.en.menu.main]]
-identifier = "categories"
-name = "Categories"
-url = "/categories/"
-weight = 80
-
-[[languages.en.menu.main]]
-identifier = "tags"
-name = "Tags"
-url = "/tags/"
-weight = 90
 
 [[languages.en.menu.main]]
 identifier = "search"
 name = "Search"
 url = "/search/"
 weight = 100
+
+
+
+[[languages.en.menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 105
+
+
+[[languages.en.menu.main]]
+identifier = "content"
+name = "Content"
+url = "/content/"
+weight = 110
+
+
+[[languages.en.menu.main]]
+identifier = "customizations"
+name = "Customizations"
+url = "/customizations/"
+weight = 120
+
+[[languages.en.menu.main]]
+identifier = "layouts"
+name = "Layouts"
+url = "/layouts/"
+weight = 130
+
 
 [markup.goldmark.renderer]
 unsafe = true
@@ -91,22 +91,31 @@ taxonomy = ["html"]
 term = ["html"]
 
 [params.paige]
-file_edit_url = "https://github.com/willfaught/paige/edit/master/exampleSite/content/%s"
-file_history_url = "https://github.com/willfaught/paige/commits/master/exampleSite/content/%s"
-site_description = "Thomas Chang"
-site_title = "The Man"
+#file_edit_url = "https://github.com/willfaught/paige/edit/master/exampleSite/content/%s"
+#file_history_url = "https://github.com/willfaught/paige/commits/master/exampleSite/content/%s"
+#site_title = "The Man"
+#site_description = "Thomas Chang"
+math = true # Enable math typesetting
+
 
 [[params.paige.feed.atom.authors]]
-email = "example@example.com"
-name = "John Doe"
+email = "thomas.w.chang@gmail.com"
+name = "Thomas Chang"
 url = "https://example.com"
 
-[params.paige.feed.rss]
-managing_editor = "example@example.com (John Doe)"
-web_master = "example@example.com (John Doe)"
+#[params.paige.feed.rss]
+#managing_editor = "example@example.com (John Doe)"
+#web_master = "example@example.com (John Doe)"
 
-[taxonomies]
-author = "authors"
-category = "categories"
-series = "series"
-tag = "tags"
+#[taxonomies]
+#author = "authors"
+#category = "categories"
+#series = "series"
+#tag = "tags"
+
+# Disable Auuthor segment
+[[cascade]]
+[cascade._target]
+path = "{/authors,/authors/**}"
+[cascade.build]
+render = "never"
