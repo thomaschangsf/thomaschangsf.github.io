@@ -7,16 +7,17 @@ description = "Case Study of Various Machine Learning Systems"
 -----------------------------------------------
 # 1 Clarify Requirement
 -----------------------------------------------
-Chapter 2: Visual Search system
-Chapter 3: Google Street View Blurring system
-Chapter 4: Youtube Video Search
-Chapter 5: Harmful Content Detection
-Chapter 6: Video Recommendation Service
-Chapter 7: Event Recommendation Service
-Chapter 8: Ad Click Prediction
-Chapter 9: Similar Listings on Vacation Rental
-Chapter 10: Personalized News Feed
-Chapter 11: People You May Know
+- Chapter 2: Visual Search system
+- Chapter 3: Google Street View Blurring system
+- Chapter 4: Youtube Video Search
+- Chapter 5: Harmful Content Detection
+- Chapter 6: Video Recommendation Service
+- Chapter 7: Event Recommendation Service
+- Chapter 8: Ad Click Prediction
+- Chapter 9: Similar Listings on Vacation Rental
+- Chapter 10: Personalized News Feed
+- Chapter 11: People You May Know
+
 
 -----------------------------------------------
 # 2 Frame as ML
@@ -53,11 +54,6 @@ Chapter 11: People You May Know
               NudityClassHead-->SharedLayers;
               HateClassHead-->SharedLayers;
          ```
-
-
-
-
-
 		- Regression
 		- Note: Most examples in book are supervised classification
 	- Unsupervised
@@ -361,8 +357,7 @@ $$= {\operatorname{argmax}} \sum_{i} \log p(x_i|\theta) )$$
             - If every day, there is a 35% sunshine of rain and 1% of rain , what is the entropy for 3 days? (how many bits of information)?
               $$Entropy = 3 (-0.35\log(0.35) - 0.01\log(0.01))$$
               $$Entropy = 2.33 bits$$
-    - Cross Entropy: takes into account actual vs predicted probability$$H(P,Q) = -\sum_{c=1}P(x) \log Q(x)$$
-      - 
+    - Cross Entropy: takes into account actual vs predicted probability $$H(P,Q) = -\sum_{c=1}P(x) \log Q(x)$$ 
     - KL Divergence (aka relative entropy)
       $$KLDivergence = Entropy - CrossEntropy$$
 

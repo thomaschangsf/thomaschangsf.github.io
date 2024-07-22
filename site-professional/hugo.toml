@@ -90,12 +90,63 @@ section = ["html"]
 taxonomy = ["html"]
 term = ["html"]
 
+
+
 [params.paige]
 #file_edit_url = "https://github.com/willfaught/paige/edit/master/exampleSite/content/%s"
 #file_history_url = "https://github.com/willfaught/paige/commits/master/exampleSite/content/%s"
 #site_title = "The Man"
 #site_description = "Thomas Chang"
 math = true # Enable math typesetting
+
+
+[params.paige.list_page]
+disable_authors = false
+disable_collections = false
+disable_date = false
+disable_description = false
+disable_keywords = false
+disable_pages = false
+disable_reading_time = true
+disable_sections = false
+disable_series = false
+disable_summary = false
+disable_title = false
+
+[params.paige.page]
+disable_alert = false
+disable_authors = false
+disable_date = false
+disable_description = false
+disable_edit = false
+disable_history = false
+disable_keywords = false
+disable_next = false
+disable_prev = false
+disable_reading_time = true
+disable_series = false
+disable_title = false
+disable_toc = true
+
+[params.paige.site]
+disable_breadcrumbs = true
+disable_copyright = false
+disable_credit = true
+disable_description = false
+disable_license = false
+disable_menu = true
+disable_title = false
+
+# menus
+[paige]
+disabled = true
+divider_above = false
+divider_below = false
+header_above = ""
+header_below = ""
+
+[paige.search]
+disable = false # Exclude the page from search
 
 
 [[params.paige.feed.atom.authors]]
