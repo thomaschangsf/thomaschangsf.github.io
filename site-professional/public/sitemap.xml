@@ -42,29 +42,9 @@
   </url><url>
     <loc>http://localhost:1313/books/</loc>
   </url><url>
-    <loc>http://localhost:1313/books/machine-learning/data-science-from-scratch/</loc>
-  </url><url>
-    <loc>http://localhost:1313/books/machine-learning/essential-math-for-data-science/</loc>
-  </url><url>
-    <loc>http://localhost:1313/books/machine-learning/hands-on-large-language-model/</loc>
-  </url><url>
-    <loc>http://localhost:1313/books/machine-learning/machine-learning-system-design-interview/</loc>
-  </url><url>
-    <loc>http://localhost:1313/books/software-profession/software-engineering-at-google/</loc>
-  </url><url>
-    <loc>http://localhost:1313/books/software-profession/staff-engineers-path/</loc>
-  </url><url>
     <loc>http://localhost:1313/books/software-system/getting-started-with-bazel/</loc>
   </url><url>
     <loc>http://localhost:1313/books/software-system/grpc-up-and-running/</loc>
-  </url><url>
-    <loc>http://localhost:1313/books/software-system/kubernetes-up-and-running/</loc>
-  </url><url>
-    <loc>http://localhost:1313/books/software-system/learning-algorithms/</loc>
-  </url><url>
-    <loc>http://localhost:1313/books/software-system/learning-go/</loc>
-  </url><url>
-    <loc>http://localhost:1313/books/software-system/scaling-ml-spark/</loc>
   </url><url>
     <loc>http://localhost:1313/resume/</loc>
   </url><url>
@@ -92,23 +72,37 @@
   </url><url>
     <loc>http://localhost:1313/tags/css/</loc>
   </url><url>
+    <loc>http://localhost:1313/books/machine-learning/data-science-from-scratch/</loc>
+  </url><url>
     <loc>http://localhost:1313/tags/emoji/</loc>
   </url><url>
     <loc>http://localhost:1313/content/emoji-support/</loc>
+  </url><url>
+    <loc>http://localhost:1313/books/machine-learning/essential-math-for-data-science/</loc>
+  </url><url>
+    <loc>http://localhost:1313/books/machine-learning/hands-on-large-language-model/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/html/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/katex/</loc>
   </url><url>
+    <loc>http://localhost:1313/books/software-system/kubernetes-up-and-running/</loc>
+  </url><url>
     <loc>http://localhost:1313/categories/layouts/</loc>
   </url><url>
     <loc>http://localhost:1313/layouts/</loc>
+  </url><url>
+    <loc>http://localhost:1313/books/software-system/learning-algorithms/</loc>
+  </url><url>
+    <loc>http://localhost:1313/books/software-system/learning-go/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/link/</loc>
   </url><url>
     <loc>http://localhost:1313/content/link/</loc>
   </url><url>
     <loc>http://localhost:1313/books/machine-learning/</loc>
+  </url><url>
+    <loc>http://localhost:1313/books/machine-learning/machine-learning-system-design-interview/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/markdown/</loc>
   </url><url>
@@ -118,8 +112,6 @@
   </url><url>
     <loc>http://localhost:1313/content/math-typesetting/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/ml/</loc>
-  </url><url>
     <loc>http://localhost:1313/content/placeholder-text/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/privacy/</loc>
@@ -127,6 +119,8 @@
     <loc>http://localhost:1313/categories/professional/</loc>
   </url><url>
     <loc>http://localhost:1313/content/rich-content/</loc>
+  </url><url>
+    <loc>http://localhost:1313/books/software-system/scaling-ml-spark/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/search/</loc>
   </url><url>
@@ -136,11 +130,15 @@
   </url><url>
     <loc>http://localhost:1313/tags/shortcodes/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/software/</loc>
+    <loc>http://localhost:1313/books/software-profession/software-engineering-at-google/</loc>
+  </url><url>
+    <loc>http://localhost:1313/books/software-profession/software-mistakes-and-tradeoffs/</loc>
   </url><url>
     <loc>http://localhost:1313/books/software-profession/</loc>
   </url><url>
     <loc>http://localhost:1313/books/software-system/</loc>
+  </url><url>
+    <loc>http://localhost:1313/books/software-profession/staff-engineers-path/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/text/</loc>
   </url><url>
