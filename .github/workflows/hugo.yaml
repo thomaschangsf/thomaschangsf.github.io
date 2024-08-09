@@ -56,7 +56,12 @@ jobs:
           HUGO_ENVIRONMENT: production
           TZ: America/Los_Angeles
         run: |
-          pushd site-professional && hugo server -D --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+          hugo \
+          -s site-professional \
+          -d site-professional/public \
+          --gc \
+          --minify \
+          --baseURL "${{ steps.pages.outputs.base_url }}/"
         working-directory: ./  # Ensure this is set correctly to root if necessary
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
