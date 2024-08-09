@@ -46,6 +46,8 @@
   </url><url>
     <loc>http://localhost:1313/books/software-system/grpc-up-and-running/</loc>
   </url><url>
+    <loc>http://localhost:1313/github/</loc>
+  </url><url>
     <loc>http://localhost:1313/resume/</loc>
   </url><url>
     <loc>http://localhost:1313/content/alert/</loc>

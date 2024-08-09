@@ -31,8 +31,8 @@ display: block;
 Machine learning professional who delivers end-to-end solutions, from data collection, data preparation, training, and deployments in the Search, NLP, and Generative AI domains. Lifetime learner who enjoys working collaboratively within and across teams.
 
 ## TECHNICAL SKILLS
-- **ML Framework**: PyTorch, SparkML, Scikit
-- **Service Framework**: Flask, FastAPI, Play
+- **ML Domains**: NLP,Search, Trust
+- **Cloud Native Micro Services**: Flask, FastAPI, Play
 - **DevOps**: Docker, Kubernetes, Helm, AWS, Google Cloud
 - **Language**: Python, Scala, GO
 
@@ -64,7 +64,7 @@ _Nov 2018 - May 2020_
 - Improved search ranking algorithm with user segmentation features, which includes hand-crafted features and embedding representations.
 - Designed and architected Spark Data Pipeline used for all search monetization data requirements. Pipeline was scaled to 40+ jobs, adopted by multiple projects, and contributed by data engineers, data scientists, and software engineers.
 
-### EBAY - Haito
+### EBAY - NPD
 **Member Of Technical Staff I/II (Search and Chatbots)**  
 _Jan 2016 - Nov 2018_
 

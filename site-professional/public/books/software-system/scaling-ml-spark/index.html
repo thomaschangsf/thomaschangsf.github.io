@@ -572,7 +572,7 @@ table {
                 
 
                 <li class="nav-item ">
-                    <a   class="  nav-link   text-decoration-underline "  href="/blogs/"    >Blogs</a>
+                    <a  aria-current="page"   class=" active  text-body-emphasis    nav-link   text-decoration-underline "  href="/books/"    >Books</a>
 
                     
                 </li>
@@ -584,7 +584,7 @@ table {
                 
 
                 <li class="nav-item ">
-                    <a  aria-current="page"   class=" active  text-body-emphasis    nav-link   text-decoration-underline "  href="/books/"    >Books</a>
+                    <a   class="  nav-link   text-decoration-underline "  href="/blogs/"    >Blogs</a>
 
                     
                 </li>
@@ -608,7 +608,7 @@ table {
                 
 
                 <li class="nav-item ">
-                    <a   class="  nav-link   text-decoration-underline "  href="/search/"    >Search</a>
+                    <a   class="  nav-link   text-decoration-underline "  href="/github/"    >Github</a>
 
                     
                 </li>
@@ -620,7 +620,7 @@ table {
                 
 
                 <li class="nav-item ">
-                    <a   class="  nav-link   text-decoration-underline "  href="/tags/"    >Tags</a>
+                    <a   class="  nav-link   text-decoration-underline "  href="/search/"    >Search</a>
 
                     
                 </li>
@@ -1170,7 +1170,7 @@ table {
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">	<span class="n">k</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&#34;Make&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">	
-</span></span><span class="line"><span class="cl">	<span class="kn">from</span> <span class="nn">pyspark.ml.clustering</span> <span class="kn">import</span> <span class="nn">GaussianMixture</span>
+</span></span><span class="line"><span class="cl">	<span class="kn">from</span> <span class="nn">pyspark.ml.clustering</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
 </span></span><span class="line"><span class="cl">	<span class="n">gm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>                       <span class="n">featuresCol</span><span class="o">=</span><span class="s2">&#34;selectedFeatures&#34;</span><span class="p">,</span> <span class="n">maxIter</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="n">model</span> <span class="o">=</span> <span class="n">gm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	

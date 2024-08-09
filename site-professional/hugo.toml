@@ -17,15 +17,15 @@ url = "/"
 weight = 10
 
 [[languages.en.menu.main]]
-identifier = "Blogs"
-name = "Blogs"
-url = "/blogs/"
-weight = 20
-
-[[languages.en.menu.main]]
 identifier = "books"
 name = "Books"
 url = "/books/"
+weight = 20
+
+[[languages.en.menu.main]]
+identifier = "Blogs"
+name = "Blogs"
+url = "/blogs/"
 weight = 30
 
 [[languages.en.menu.main]]
@@ -33,6 +33,12 @@ identifier = "Resume"
 name = "Resume"
 url = "/resume/"
 weight = 40
+
+[[languages.en.menu.main]]
+identifier = "Github"
+name = "Github"
+url = "/github/"
+weight = 50
 
 
 [[languages.en.menu.main]]
@@ -43,11 +49,11 @@ weight = 100
 
 
 
-[[languages.en.menu.main]]
-identifier = "tags"
-name = "Tags"
-url = "/tags/"
-weight = 105
+#[[languages.en.menu.main]]
+#identifier = "tags"
+#name = "Tags"
+#url = "/tags/"
+#weight = 105
 
 
 #[[languages.en.menu.main]]
