@@ -17,6 +17,7 @@ hide_page = true
 
 <p>{{% paige/image alt="Landscape1" breakpoints=true class="object-fit-cover rounded-4 shadow-lg" fetchpriority="high" height="20rem" loading="eager" process="webp" src="/images/algarve-beach.jpg" width="100%" %}}</p>
 
+
 <!--p>{{% paige/image alt="Landscape2" breakpoints=true class="object-fit-cover rounded-4 shadow-lg" fetchpriority="high" height="20rem" loading="eager" process="webp" src="/images/algarve-sunset.jpg" width="100%" %}}</p-->
 
 
