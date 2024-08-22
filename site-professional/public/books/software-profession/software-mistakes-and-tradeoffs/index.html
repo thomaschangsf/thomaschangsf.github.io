@@ -1,8 +1,1905 @@
-<!doctype html><html data-paige="Paige theme from https://github.com/willfaught/paige" lang=en><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=utf-8><meta content="Good software is all about making tradeoffs.  This book helps you make better choices and reviews common software mistakes. " name=description><meta content="#0d6efd" name=msapplication-TileColor><meta content="/browserconfig.xml" name=msapplication-config><meta content="https://github.com/willfaught/paige" name=theme><meta content="#0d6efd" name=theme-color><meta content="width=device-width,initial-scale=1" name=viewport><meta property="og:url" content="http://localhost:1313/books/software-profession/software-mistakes-and-tradeoffs/"><meta property="og:title" content="Software Mistakes and Tradeoffs"><meta property="og:description" content="Good software is all about making tradeoffs.  This book helps you make better choices and reviews common software mistakes. "><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="books"><meta name=twitter:card content="summary"><meta name=twitter:title content="Software Mistakes and Tradeoffs"><meta name=twitter:description content="Good software is all about making tradeoffs.  This book helps you make better choices and reviews common software mistakes. "><title>Software Mistakes and Tradeoffs · Software Profession · · Paige</title>
-<link href=/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=/favicon.ico rel="shortcut icon"><link href=/favicon.png rel=icon type=image/png><link href=/favicon.svg rel=icon type=image/svg+xml><link href=/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link color=#0d6efd href=/safari-pinned-tab.svg rel=mask-icon><link href=/site.webmanifest rel=manifest><link crossorigin=anonymous href=/css/paige/bootstrap/6186ad141d391e4c0c10d2e9cb4eaeaadf75e809-paige.min.5a695f13e40d00e33dc2ef3b080efa570bbcc6991647824214ff6d7f4b20527e.css integrity="sha256-WmlfE+QNAOM9wu87CA76Vwu8xpkWR4JCFP9tf0sgUn4=" referrerpolicy=no-referrer rel=stylesheet><link crossorigin=anonymous href=/css/paige/bootstrap-icons/bootstrap-icons.min.540116b7267d4b2410c74086ae6497566928c6d5715900be7ce7279ad45addcd.css integrity="sha256-VAEWtyZ9SyQQx0CGrmSXVmkoxtVxWQC+fOcnmtRa3c0=" referrerpolicy=no-referrer rel=stylesheet><link crossorigin=anonymous href=/css/paige/katex/katex.min.min.c12d9cca9aa0af743d947ef8c8f5fabaad13e5b4c9fed061fbdf7c9d3c387581.css integrity="sha256-wS2cypqgr3Q9lH74yPX6uq0T5bTJ/tBh+998nTw4dYE=" referrerpolicy=no-referrer rel=stylesheet><style>.paige-figure-numbered{counter-increment:paige-figure-numbered}.paige-figure-numbered>div>figure>figcaption::before{content:"Figure " counter(paige-figure-numbered)": "}.paige-figure-numbered>div>figure>figcaption:empty::before{content:"Figure " counter(paige-figure-numbered)}.paige-header-link{opacity:0;margin-left:.5rem;position:absolute;transition:color .15s ease-in-out,opacity .15s ease-in-out}.paige-header-link::after{content:"#"}.paige-quote .blockquote-footer{margin-top:0}.paige-quote blockquote{border-left:0;border-right:0;margin-bottom:0;padding:0}#paige-content>*{margin-bottom:1rem}blockquote{padding:.5rem 1rem;border-left:.25rem solid var(--bs-border-color);border-right:.25rem solid var(--bs-body-bg)}td,th{padding:.25rem}.highlight .chroma .hl,.highlight .chroma .lnt{display:flex}.paige-figure .paige-quote,.paige-figure .paige-video,.paige-figure .highlight pre.chroma,.paige-figure .highlight .chroma pre,.paige-figure .paige-quote blockquote,.paige-figure figure>div>:last-child,.paige-gallery .paige-figure,.paige-gallery .paige-image,blockquote>p:last-of-type{margin-bottom:0}.paige-figure,.paige-gallery,.paige-image,.paige-quote,.paige-video,table{margin-bottom:1rem}.paige-header-link:focus,.paige-header-link:hover,:hover>.paige-header-link,:target>.paige-header-link{opacity:1}@media(prefers-color-scheme:dark){.bg{color:#c9d1d9;background-color:var(--bs-body-bg)}.chroma{color:#c9d1d9;background-color:var(--bs-body-bg)}.chroma .x{}.chroma .err{color:#f85149}.chroma .cl{}.chroma .lnlinks{outline:none;text-decoration:none;color:inherit}.chroma .lntd{vertical-align:top;padding:0;margin:0;border:0}.chroma .lntable{border-spacing:0;padding:0;margin:0;border:0}.chroma .hl{background-color:#4f4f4d}.chroma .lnt{white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#64686c}.chroma .ln{white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#6e7681}.chroma .line{display:flex}.chroma .k{color:#ff7b72}.chroma .kc{color:#79c0ff}.chroma .kd{color:#ff7b72}.chroma .kn{color:#ff7b72}.chroma .kp{color:#79c0ff}.chroma .kr{color:#ff7b72}.chroma .kt{color:#ff7b72}.chroma .n{}.chroma .na{}.chroma .nb{}.chroma .bp{}.chroma .nc{color:#f0883e;font-weight:700}.chroma .no{color:#79c0ff;font-weight:700}.chroma .nd{color:#d2a8ff;font-weight:700}.chroma .ni{color:#ffa657}.chroma .ne{color:#f0883e;font-weight:700}.chroma .nf{color:#d2a8ff;font-weight:700}.chroma .fm{}.chroma .nl{color:#79c0ff;font-weight:700}.chroma .nn{color:#ff7b72}.chroma .nx{}.chroma .py{color:#79c0ff}.chroma .nt{color:#7ee787}.chroma .nv{color:#79c0ff}.chroma .vc{}.chroma .vg{}.chroma .vi{}.chroma .vm{}.chroma .l{color:#a5d6ff}.chroma .ld{color:#79c0ff}.chroma .s{color:#a5d6ff}.chroma .sa{color:#79c0ff}.chroma .sb{color:#a5d6ff}.chroma .sc{color:#a5d6ff}.chroma .dl{color:#79c0ff}.chroma .sd{color:#a5d6ff}.chroma .s2{color:#a5d6ff}.chroma .se{color:#79c0ff}.chroma .sh{color:#79c0ff}.chroma .si{color:#a5d6ff}.chroma .sx{color:#a5d6ff}.chroma .sr{color:#79c0ff}.chroma .s1{color:#a5d6ff}.chroma .ss{color:#a5d6ff}.chroma .m{color:#a5d6ff}.chroma .mb{color:#a5d6ff}.chroma .mf{color:#a5d6ff}.chroma .mh{color:#a5d6ff}.chroma .mi{color:#a5d6ff}.chroma .il{color:#a5d6ff}.chroma .mo{color:#a5d6ff}.chroma .o{color:#ff7b72;font-weight:700}.chroma .ow{color:#ff7b72;font-weight:700}.chroma .p{}.chroma .c{color:#8b949e;font-style:italic}.chroma .ch{color:#8b949e;font-style:italic}.chroma .cm{color:#8b949e;font-style:italic}.chroma .c1{color:#8b949e;font-style:italic}.chroma .cs{color:#8b949e;font-weight:700;font-style:italic}.chroma .cp{color:#8b949e;font-weight:700;font-style:italic}.chroma .cpf{color:#8b949e;font-weight:700;font-style:italic}.chroma .g{}.chroma .gd{color:#ffa198;background-color:#490202}.chroma .ge{font-style:italic}.chroma .gr{color:#ffa198}.chroma .gh{color:#79c0ff;font-weight:700}.chroma .gi{color:#56d364;background-color:#0f5323}.chroma .go{color:#8b949e}.chroma .gp{color:#8b949e}.chroma .gs{font-weight:700}.chroma .gu{color:#79c0ff}.chroma .gt{color:#ff7b72}.chroma .gl{text-decoration:underline}.chroma .w{color:#6e7681}}@media(prefers-color-scheme:light){.bg{background-color:#fff}.chroma{background-color:#fff}.chroma .x{}.chroma .err{color:#a61717;background-color:#e3d2d2}.chroma .cl{}.chroma .lnlinks{outline:none;text-decoration:none;color:inherit}.chroma .lntd{vertical-align:top;padding:0;margin:0;border:0}.chroma .lntable{border-spacing:0;padding:0;margin:0;border:0}.chroma .hl{background-color:#ffc}.chroma .lnt{white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f}.chroma .ln{white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f}.chroma .line{display:flex}.chroma .k{color:#000;font-weight:700}.chroma .kc{color:#000;font-weight:700}.chroma .kd{color:#000;font-weight:700}.chroma .kn{color:#000;font-weight:700}.chroma .kp{color:#000;font-weight:700}.chroma .kr{color:#000;font-weight:700}.chroma .kt{color:#458;font-weight:700}.chroma .n{}.chroma .na{color:teal}.chroma .nb{color:#0086b3}.chroma .bp{color:#999}.chroma .nc{color:#458;font-weight:700}.chroma .no{color:teal}.chroma .nd{color:#3c5d5d;font-weight:700}.chroma .ni{color:purple}.chroma .ne{color:#900;font-weight:700}.chroma .nf{color:#900;font-weight:700}.chroma .fm{}.chroma .nl{color:#900;font-weight:700}.chroma .nn{color:#555}.chroma .nx{}.chroma .py{}.chroma .nt{color:navy}.chroma .nv{color:teal}.chroma .vc{color:teal}.chroma .vg{color:teal}.chroma .vi{color:teal}.chroma .vm{}.chroma .l{}.chroma .ld{}.chroma .s{color:#d14}.chroma .sa{color:#d14}.chroma .sb{color:#d14}.chroma .sc{color:#d14}.chroma .dl{color:#d14}.chroma .sd{color:#d14}.chroma .s2{color:#d14}.chroma .se{color:#d14}.chroma .sh{color:#d14}.chroma .si{color:#d14}.chroma .sx{color:#d14}.chroma .sr{color:#009926}.chroma .s1{color:#d14}.chroma .ss{color:#990073}.chroma .m{color:#099}.chroma .mb{color:#099}.chroma .mf{color:#099}.chroma .mh{color:#099}.chroma .mi{color:#099}.chroma .il{color:#099}.chroma .mo{color:#099}.chroma .o{color:#000;font-weight:700}.chroma .ow{color:#000;font-weight:700}.chroma .p{}.chroma .c{color:#998;font-style:italic}.chroma .ch{color:#998;font-style:italic}.chroma .cm{color:#998;font-style:italic}.chroma .c1{color:#998;font-style:italic}.chroma .cs{color:#999;font-weight:700;font-style:italic}.chroma .cp{color:#999;font-weight:700;font-style:italic}.chroma .cpf{color:#999;font-weight:700;font-style:italic}.chroma .g{}.chroma .gd{color:#000;background-color:#fdd}.chroma .ge{color:#000;font-style:italic}.chroma .gr{color:#a00}.chroma .gh{color:#999}.chroma .gi{color:#000;background-color:#dfd}.chroma .go{color:#888}.chroma .gp{color:#555}.chroma .gs{font-weight:700}.chroma .gu{color:#aaa}.chroma .gt{color:#a00}.chroma .gl{text-decoration:underline}.chroma .w{color:#bbb}}@media(prefers-reduced-motion:reduce){.paige-header-link{transition:none}}</style></head><body class="d-flex flex-column"><div class="container flex-fill" id=paige-root><div class=row><div class=col><header class=my-3 id=paige-header><nav><ul class="align-items-center justify-content-center nav"><li class=nav-item><a class="nav-link text-decoration-underline" href=/>Home</a></li><li class=nav-item><a aria-current=page class="active text-body-emphasis nav-link text-decoration-underline" href=/books/>Books</a></li><li class=nav-item><a class="nav-link text-decoration-underline" href=/blogs/>Blogs</a></li><li class=nav-item><a class="nav-link text-decoration-underline" href=/resume/>Resume</a></li><li class=nav-item><a class="nav-link text-decoration-underline" href=/github/>Github</a></li><li class=nav-item><a class="nav-link text-decoration-underline" href=/search/>Search</a></li></ul></nav></header><main class=mt-3 id=paige-main><article class="paige-published paige-single" id=paige-article><div class="align-items-center d-flex flex-column mb-0"><div class=mw-100 id=paige-metadata><h1 class="fw-bold text-center" id=paige-title>Software Mistakes and Tradeoffs</h1><p class="lead text-center" id=paige-description>Good software is all about making tradeoffs. This book helps you make better choices and reviews common software mistakes.</p><div class=mb-3><p class="mb-0 text-center text-secondary" id=paige-reading-time>22 minutes</p></div></div><div class=mw-100 id=paige-toc><div class="border mb-3 pe-3 ps-3 pt-3 rounded"><nav id=TableOfContents><ol><li><ol><li><a href=#chapter-1-what-would-you-say-you-do-here>Chapter 1: What Would You Say You Do Here?</a></li><li><a href=#chapter-2-three-maps>Chapter 2: Three Maps</a></li><li><a href=#chapter-3-creating-the-big-picture>Chapter 3: Creating the Big Picture</a></li></ol></li></ol><ol><li><ol><li><a href=#chapter-4-finite-time>Chapter 4: Finite Time</a></li><li><a href=#chapter-5-leading-big-projects>Chapter 5: Leading Big Projects</a><ol><li><a href=#51-life-of-a-project>5.1 Life of a Project</a></li><li><a href=#52-at-the-start-of-a-project>5.2 At the Start of a Project</a></li><li><a href=#53-driving-the-project>5.3 Driving the Project</a></li></ol></li><li><a href=#chapter-6-why-have-we-stopped>Chapter 6: Why Have We Stopped</a></li></ol></li></ol><ol><li><ol><li><a href=#chapter-7-you-are-a-role-model>Chapter 7: You are a Role Model</a><ol><li><a href=#71-be-competent-technically>7.1 Be Competent (Technically)</a></li><li><a href=#72-be-responsible>7.2 Be Responsible</a></li><li><a href=#73-remember-the-goal>7.3 Remember the Goal</a></li><li><a href=#74-look-ahead>7.4 Look Ahead</a></li><li><a href=#75-recap>7.5 Recap</a></li></ol></li><li><a href=#chapter-8-good-influence-at-scale>Chapter 8: Good Influence At Scale</a><ol><li><a href=#81-good-influence>8.1 Good Influence</a></li><li><a href=#82-advice>8.2 Advice</a></li><li><a href=#83-teaching>8.3 Teaching</a></li><li><a href=#84-guardrails>8.4 Guardrails</a></li><li><a href=#85-opportunity>8.5 Opportunity</a></li><li><a href=#86-recap>8.6 Recap</a></li></ol></li></ol></li></ol></nav></div></div><div class=mw-100 id=paige-content><h1 id=i--the-big-picture>I. THE BIG PICTURE<a aria-label="Link to this section" class=paige-header-link href=#i--the-big-picture></a></h1><h3 id=chapter-1-what-would-you-say-you-do-here>Chapter 1: What Would You Say You Do Here?<a aria-label="Link to this section" class=paige-header-link href=#chapter-1-what-would-you-say-you-do-here></a></h3><ul><li>Staff : 1st line manager, Senior Staff : Senior Manager; Principle : Director</li><li>Do we even need a staff engineer position?<ul><li> a job title vests authority in people who might not automatically receive</li><li> saves them the time and energy they would otherwise have to spend proving themselves again and again</li></ul></li><li>Why do we staff need to see big picture?<ul><li>To find a ==global maximum==, which is the<ul><li>good for the org and not 1 team</li><li>over time</li></ul></li><li>Good decisions need <em>context</em>. Experienced engineers know that the answer to most technology choices is “it depends.” Knowing the pros and cons of a particular technology isn’t enough—you need to know the local details too. What are you trying to do? How much ==time, money, and patience== do you have? What’s your ==risk tolerance==? What does the business need?</li></ul></li><li>What&rsquo;s the staff engineer&rsquo;s role across projects?<ul><li>Use their experience to ==anticipate risks and ask hard questions==</li><li>When the project gets stuck, they have enough perspective to ==track down the causes and unblock==</li><li>Evengalize: telling the story of what’s happening and why, selling the vision to the rest of the company, and explaining what the work will make possible and how the new project affects everyone</li></ul></li><li>Why the staff engineer needs to be good at influencing<ul><li>Within engineer circle, Staff engineers are ==role models==. Managers may be responsible for setting culture on their teams, enforcing good behavior, and ensuring standards are met. But engineering norms are set by the behavior of the most respected engineers on the project.</li></ul></li><li>What is your Role?<ul><li>Staff can report to VP, Directors, Senior Manager, Manager</li><li>Which level one is on influences<ul><li>what problem you are asked of</li><li>what information you are privy to</li><li>how much time you may get from your manager</li></ul></li></ul></li><li>What is Your Scope<ul><li>Your reporting chain will likely affect your <em>scope</em>: the domain, team, or teams that you pay close attention to and have some responsibility for</li><li>Pros and Cons of scopes<ul><li>scope too narrow -> lack of impoact, overshadowing other engineers</li><li>scope too broad -> lack of impact, becoming a bottleneck, decision fatigue</li></ul></li></ul></li><li>What&rsquo;s Your Primary Focus?<ul><li>What&rsquo;s important? our work needs to be important” doesn’t mean you should only work on the fanciest, most glamorous technologies and VP-sponsored initiatives. The work that’s most important will often be the work that nobody else see<ul><li>Be wary of choosing a project that already has a lot of senior people on it</li></ul></li></ul></li></ul><h3 id=chapter-2-three-maps>Chapter 2: Three Maps<a aria-label="Link to this section" class=paige-header-link href=#chapter-2-three-maps></a></h3><ul><li><p>Map</p><ul><li>Where we came from</li><li>Where we started working together</li><li>Where are are</li><li>Where we&rsquo;re going</li></ul></li><li><p>Recap</p><ul><li>Practice the skills of intentionally looking for a bigger picture and seeing what’s happening.</li><li>Understand your work in context: know your customers, talk with peers outside your group, understand your success metrics, and be clear on what’s actually important.</li><li>Know how your organization works and how decisions get made within it.</li><li>Build or discover paths to allow information you need to come to you.</li><li>Be clear about what goals everyone is aiming for.</li><li>Think about your own work and what your journey is.</li></ul></li></ul><h3 id=chapter-3-creating-the-big-picture>Chapter 3: Creating the Big Picture<a aria-label="Link to this section" class=paige-header-link href=#chapter-3-creating-the-big-picture></a></h3><ul><li><p>This chapter addresses when the goal is not clear OR if plan is disputed?</p></li><li><p>A Common Reincarnation of the Same Problem</p><ul><li>All teams share the same platform (ie Salesforce Hyperforce)<ul><li>Con<ul><li>Hyperforce deployment can become a copy and paste exercise;</li><li>Code repo is a single source of error; so needs more verification/validationshuman approvals.</li><li>can suffer from generalization penalty,</li></ul></li></ul></li><li>Decentralized, every org use their own proprietary (ie Ebay core Search)<ul><li>cons:<ul><li>There can be a <a href=https://oreil.ly/KEPbi>“tragedy of the commons”</a>, where teams pursuing their own best action without coordinating with others leads to an outcome that is bad for everyone. ==There’s that local maximum again==.</li><li>Shared concerns can be neglected because no one group has the authority or an incentive to fix them alone.</li><li>Teams may be missing enough context to make the best decision. The people taking action might be different from the people experiencing the outcomes, or might be separated in time from them.</li></ul></li></ul></li></ul></li><li><p>Technical vision vs Strategy</p><ul><li>Technical vision describes the future one strives once the objectives have been achieved and biggest problem solved<ul><li>Examples of better future states:<ul><li>better state for your architecture, code, processes, technology, and teams</li></ul></li><li>With so many staff and architecits, it is crucial to write down and be detailed about</li></ul></li><li>Strategy is plan of action. It is the method and metrics in V2MOM.<ul><li>Strategies needs to be realistic and acknowledge the constraints of your situation.</li><li>Aspects of a strategy (from <em>Good Strategy/Bad Strategy</em>, Rumelt)<ul><li>the diagnosis<ul><li>“What’s going on here?” The diagnosis of your situation needs to be simpler than the messy reality, perhaps by finding patterns in the noise or using metaphors or mental models to make the problem easy to understand. You’re trying to distill the situation you’re in down to its most essential characteristics so that it’s possible to really comprehend it. This is <em>difficult</em>.</li></ul></li><li>guiding policy / design philosopy<ul><li>The guiding policy is your approach to bypassing the obstacles described in the diagnosis. It should give you a clear direction and make the decisions that follow easier. Rumelt says it should be short and clear, “a signpost, marking the direction forward.”</li></ul></li><li>coherent actions you are going to take</li></ul></li></ul></li></ul></li><li><p>Prep work</p><ul><li>Embrace the boring/existing ideas<ul><li><code>I kind of think writing about engineering strategy is hard because good strategy is pretty boring, and it’s kind of boring to write about. Also I think when people hear “strategy” they think “innovation.” If you write something interesting, it’s probably wrong. This seems directionally correct, certainly most strategy is synthesis and that point isn’t often made!</code></li></ul></li><li>Join an Expedition in Progress</li><li>Get a Sponsor<ul><li> Maximize your chances by bringing the potential sponsor something they want'</li><li>Find out what’s blocking their goals, and see if the problem you’re trying to solve lines up with those. The sponsor will also have some “objectives that are always true”: if you can make their teams more productive or (genuinely) happier</li></ul></li><li>Choose Your Core Group<ul><li>Keep each accountable</li><li>Working in a group also lets you pool your contacts, social capital, and credibility, so you can reach a broader swathe of the organization</li><li>Who do you need on your side? Who’s going to be opposed? If there are dissenters who will hate any decision made without them, you have two options: make very sure that you have enough support to counter their naysaying, or bring them along from the start.</li><li>Be clear from the start about whether you consider yourself the lead and ultimate decider of this project or more of a <a href=https://oreil.ly/BKNe3>first among equals</a> If you’re later going to want to use tiebreaker powers or pull rank, highlight your role as lead from the start, perhaps by adding a “roles” section to whatever kickoff documentation you’re creating. But whether you’re the lead or not, let your group have ideas, drive the project forward, and talk about it without redirecting all questions to you</li></ul></li><li>Choose Your Secondary Group<ul><li>As for your broader group of allies, keep them engaged: interview them and use the information they give you. Send them updates on how the document is going. Invite them to comment on early drafts. Your path will be much easier if you have a group of influential people who support what you’re doing, and the knowledge they bring from across the organization will yield better results, too</li></ul></li><li>Make sure it&rsquo;s achievable</li></ul></li><li><p>Writing Cycle</p><pre tabindex=0><code class=language-mermaid data-lang=mermaid>   graph TD;
+
+
+<!doctype html>
+
+
+
+
+
+
+<html  data-paige="Paige theme from https://github.com/willfaught/paige"   lang="en" >
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+<head>
+    
+
+    
+
+<meta charset="utf-8">
+
+
+
+
+    <meta content="Good software is all about making tradeoffs.  This book helps you make better choices and reviews common software mistakes. " name="description">
+
+
+
+
+<meta content="#0d6efd" name="msapplication-TileColor">
+
+
+    <meta content="/browserconfig.xml" name="msapplication-config">
+
+
+<meta content="https://github.com/willfaught/paige" name="theme">
+<meta content="#0d6efd" name="theme-color">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+
+<meta property="og:url" content="https://example.com/books/software-profession/software-mistakes-and-tradeoffs/">
+  <meta property="og:title" content="Software Mistakes and Tradeoffs">
+  <meta property="og:description" content="Good software is all about making tradeoffs.  This book helps you make better choices and reviews common software mistakes. ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="books">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Software Mistakes and Tradeoffs">
+  <meta name="twitter:description" content="Good software is all about making tradeoffs.  This book helps you make better choices and reviews common software mistakes. ">
+
+
+
+    
+        <title>Software Mistakes and Tradeoffs · Software Profession ·  · Paige</title>
+    
+
+    
+
+
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+
+
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+
+
+    <link href="/favicon.png" rel="icon" type="image/png">
+
+
+
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml">
+
+
+
+    <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+
+
+
+    <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+
+
+
+    <link color="#0d6efd" href="/safari-pinned-tab.svg" rel="mask-icon">
+
+
+
+    <link href="/site.webmanifest" rel="manifest">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+        
+        
+        
+    
+
+    
+        
+    
+
+    
+    
+    
+
+
+<link  crossorigin="anonymous"  href="/css/paige/bootstrap/6186ad141d391e4c0c10d2e9cb4eaeaadf75e809-paige.min.1c5bb4860fb7f3809f4195b145668aade87f2e92cf701992599678b1d166f0f0.css"  integrity="sha256-HFu0hg&#43;384CfQZWxRWaKreh/LpLPcBmSWZZ4sdFm8PA="   referrerpolicy="no-referrer"  rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+    
+    
+
+
+<link  crossorigin="anonymous"  href="/css/paige/bootstrap-icons/bootstrap-icons.min.540116b7267d4b2410c74086ae6497566928c6d5715900be7ce7279ad45addcd.css"  integrity="sha256-VAEWtyZ9SyQQx0CGrmSXVmkoxtVxWQC&#43;fOcnmtRa3c0="   referrerpolicy="no-referrer"  rel="stylesheet">
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+    
+    
+
+
+<link  crossorigin="anonymous"  href="/css/paige/katex/katex.min.min.c12d9cca9aa0af743d947ef8c8f5fabaad13e5b4c9fed061fbdf7c9d3c387581.css"  integrity="sha256-wS2cypqgr3Q9lH74yPX6uq0T5bTJ/tBh&#43;998nTw4dYE="   referrerpolicy="no-referrer"  rel="stylesheet">
+
+
+
+
+
+    
+
+<style>
+
+
+.paige-figure-numbered {
+    counter-increment: paige-figure-numbered;
+}
+
+.paige-figure-numbered > div > figure > figcaption::before {
+    content: "Figure " counter(paige-figure-numbered) ": ";
+}
+
+.paige-figure-numbered > div > figure > figcaption:empty::before {
+    content: "Figure " counter(paige-figure-numbered);
+}
+
+.paige-header-link {
+    opacity: 0;
+    margin-left: 0.5rem;
+    position: absolute;
+    transition: color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.paige-header-link::after {
+    content: "#";
+}
+
+.paige-quote .blockquote-footer {
+    margin-top: 0;
+}
+
+.paige-quote blockquote {
+    border-left: 0;
+    border-right: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+#paige-content > * {
+    margin-bottom: 1rem;
+}
+
+blockquote {
+    padding: 0.5rem 1rem;
+    border-left: 0.25rem solid var(--bs-border-color);
+    border-right: 0.25rem solid var(--bs-body-bg);
+}
+
+td, th {
+    padding: 0.25rem;
+}
+
+.highlight .chroma .hl,
+.highlight .chroma .lnt {
+    display: flex;
+}
+
+.paige-figure .paige-quote,
+.paige-figure .paige-video,
+.paige-figure .highlight pre.chroma,
+.paige-figure .highlight .chroma pre,
+.paige-figure .paige-quote blockquote,
+.paige-figure figure > div > :last-child,
+.paige-gallery .paige-figure,
+.paige-gallery .paige-image,
+blockquote > p:last-of-type {
+    margin-bottom: 0;
+}
+
+.paige-figure,
+.paige-gallery,
+.paige-image,
+.paige-quote,
+.paige-video,
+table {
+    margin-bottom: 1rem;
+}
+
+.paige-header-link:focus,
+.paige-header-link:hover,
+:hover > .paige-header-link,
+:target > .paige-header-link {
+    opacity: 1;
+}
+
+
+
+
+    @media (prefers-color-scheme: dark) {
+        /* Background */ .bg { color: #c9d1d9; background-color: var(--bs-body-bg); }
+/* PreWrapper */ .chroma { color: #c9d1d9; background-color: var(--bs-body-bg); }
+/* Other */ .chroma .x {  }
+/* Error */ .chroma .err { color: #f85149 }
+/* CodeLine */ .chroma .cl {  }
+/* LineLink */ .chroma .lnlinks { outline: none; text-decoration: none; color: inherit }
+/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+/* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+/* LineHighlight */ .chroma .hl { background-color: #4f4f4d }
+/* LineNumbersTable */ .chroma .lnt { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #64686c }
+/* LineNumbers */ .chroma .ln { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #6e7681 }
+/* Line */ .chroma .line { display: flex; }
+/* Keyword */ .chroma .k { color: #ff7b72 }
+/* KeywordConstant */ .chroma .kc { color: #79c0ff }
+/* KeywordDeclaration */ .chroma .kd { color: #ff7b72 }
+/* KeywordNamespace */ .chroma .kn { color: #ff7b72 }
+/* KeywordPseudo */ .chroma .kp { color: #79c0ff }
+/* KeywordReserved */ .chroma .kr { color: #ff7b72 }
+/* KeywordType */ .chroma .kt { color: #ff7b72 }
+/* Name */ .chroma .n {  }
+/* NameAttribute */ .chroma .na {  }
+/* NameBuiltin */ .chroma .nb {  }
+/* NameBuiltinPseudo */ .chroma .bp {  }
+/* NameClass */ .chroma .nc { color: #f0883e; font-weight: bold }
+/* NameConstant */ .chroma .no { color: #79c0ff; font-weight: bold }
+/* NameDecorator */ .chroma .nd { color: #d2a8ff; font-weight: bold }
+/* NameEntity */ .chroma .ni { color: #ffa657 }
+/* NameException */ .chroma .ne { color: #f0883e; font-weight: bold }
+/* NameFunction */ .chroma .nf { color: #d2a8ff; font-weight: bold }
+/* NameFunctionMagic */ .chroma .fm {  }
+/* NameLabel */ .chroma .nl { color: #79c0ff; font-weight: bold }
+/* NameNamespace */ .chroma .nn { color: #ff7b72 }
+/* NameOther */ .chroma .nx {  }
+/* NameProperty */ .chroma .py { color: #79c0ff }
+/* NameTag */ .chroma .nt { color: #7ee787 }
+/* NameVariable */ .chroma .nv { color: #79c0ff }
+/* NameVariableClass */ .chroma .vc {  }
+/* NameVariableGlobal */ .chroma .vg {  }
+/* NameVariableInstance */ .chroma .vi {  }
+/* NameVariableMagic */ .chroma .vm {  }
+/* Literal */ .chroma .l { color: #a5d6ff }
+/* LiteralDate */ .chroma .ld { color: #79c0ff }
+/* LiteralString */ .chroma .s { color: #a5d6ff }
+/* LiteralStringAffix */ .chroma .sa { color: #79c0ff }
+/* LiteralStringBacktick */ .chroma .sb { color: #a5d6ff }
+/* LiteralStringChar */ .chroma .sc { color: #a5d6ff }
+/* LiteralStringDelimiter */ .chroma .dl { color: #79c0ff }
+/* LiteralStringDoc */ .chroma .sd { color: #a5d6ff }
+/* LiteralStringDouble */ .chroma .s2 { color: #a5d6ff }
+/* LiteralStringEscape */ .chroma .se { color: #79c0ff }
+/* LiteralStringHeredoc */ .chroma .sh { color: #79c0ff }
+/* LiteralStringInterpol */ .chroma .si { color: #a5d6ff }
+/* LiteralStringOther */ .chroma .sx { color: #a5d6ff }
+/* LiteralStringRegex */ .chroma .sr { color: #79c0ff }
+/* LiteralStringSingle */ .chroma .s1 { color: #a5d6ff }
+/* LiteralStringSymbol */ .chroma .ss { color: #a5d6ff }
+/* LiteralNumber */ .chroma .m { color: #a5d6ff }
+/* LiteralNumberBin */ .chroma .mb { color: #a5d6ff }
+/* LiteralNumberFloat */ .chroma .mf { color: #a5d6ff }
+/* LiteralNumberHex */ .chroma .mh { color: #a5d6ff }
+/* LiteralNumberInteger */ .chroma .mi { color: #a5d6ff }
+/* LiteralNumberIntegerLong */ .chroma .il { color: #a5d6ff }
+/* LiteralNumberOct */ .chroma .mo { color: #a5d6ff }
+/* Operator */ .chroma .o { color: #ff7b72; font-weight: bold }
+/* OperatorWord */ .chroma .ow { color: #ff7b72; font-weight: bold }
+/* Punctuation */ .chroma .p {  }
+/* Comment */ .chroma .c { color: #8b949e; font-style: italic }
+/* CommentHashbang */ .chroma .ch { color: #8b949e; font-style: italic }
+/* CommentMultiline */ .chroma .cm { color: #8b949e; font-style: italic }
+/* CommentSingle */ .chroma .c1 { color: #8b949e; font-style: italic }
+/* CommentSpecial */ .chroma .cs { color: #8b949e; font-weight: bold; font-style: italic }
+/* CommentPreproc */ .chroma .cp { color: #8b949e; font-weight: bold; font-style: italic }
+/* CommentPreprocFile */ .chroma .cpf { color: #8b949e; font-weight: bold; font-style: italic }
+/* Generic */ .chroma .g {  }
+/* GenericDeleted */ .chroma .gd { color: #ffa198; background-color: #490202 }
+/* GenericEmph */ .chroma .ge { font-style: italic }
+/* GenericError */ .chroma .gr { color: #ffa198 }
+/* GenericHeading */ .chroma .gh { color: #79c0ff; font-weight: bold }
+/* GenericInserted */ .chroma .gi { color: #56d364; background-color: #0f5323 }
+/* GenericOutput */ .chroma .go { color: #8b949e }
+/* GenericPrompt */ .chroma .gp { color: #8b949e }
+/* GenericStrong */ .chroma .gs { font-weight: bold }
+/* GenericSubheading */ .chroma .gu { color: #79c0ff }
+/* GenericTraceback */ .chroma .gt { color: #ff7b72 }
+/* GenericUnderline */ .chroma .gl { text-decoration: underline }
+/* TextWhitespace */ .chroma .w { color: #6e7681 }
+
+    }
+
+    @media (prefers-color-scheme: light) {
+        /* Background */ .bg { background-color: #ffffff; }
+/* PreWrapper */ .chroma { background-color: #ffffff; }
+/* Other */ .chroma .x {  }
+/* Error */ .chroma .err { color: #a61717; background-color: #e3d2d2 }
+/* CodeLine */ .chroma .cl {  }
+/* LineLink */ .chroma .lnlinks { outline: none; text-decoration: none; color: inherit }
+/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+/* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+/* LineHighlight */ .chroma .hl { background-color: #ffffcc }
+/* LineNumbersTable */ .chroma .lnt { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* LineNumbers */ .chroma .ln { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* Line */ .chroma .line { display: flex; }
+/* Keyword */ .chroma .k { color: #000000; font-weight: bold }
+/* KeywordConstant */ .chroma .kc { color: #000000; font-weight: bold }
+/* KeywordDeclaration */ .chroma .kd { color: #000000; font-weight: bold }
+/* KeywordNamespace */ .chroma .kn { color: #000000; font-weight: bold }
+/* KeywordPseudo */ .chroma .kp { color: #000000; font-weight: bold }
+/* KeywordReserved */ .chroma .kr { color: #000000; font-weight: bold }
+/* KeywordType */ .chroma .kt { color: #445588; font-weight: bold }
+/* Name */ .chroma .n {  }
+/* NameAttribute */ .chroma .na { color: #008080 }
+/* NameBuiltin */ .chroma .nb { color: #0086b3 }
+/* NameBuiltinPseudo */ .chroma .bp { color: #999999 }
+/* NameClass */ .chroma .nc { color: #445588; font-weight: bold }
+/* NameConstant */ .chroma .no { color: #008080 }
+/* NameDecorator */ .chroma .nd { color: #3c5d5d; font-weight: bold }
+/* NameEntity */ .chroma .ni { color: #800080 }
+/* NameException */ .chroma .ne { color: #990000; font-weight: bold }
+/* NameFunction */ .chroma .nf { color: #990000; font-weight: bold }
+/* NameFunctionMagic */ .chroma .fm {  }
+/* NameLabel */ .chroma .nl { color: #990000; font-weight: bold }
+/* NameNamespace */ .chroma .nn { color: #555555 }
+/* NameOther */ .chroma .nx {  }
+/* NameProperty */ .chroma .py {  }
+/* NameTag */ .chroma .nt { color: #000080 }
+/* NameVariable */ .chroma .nv { color: #008080 }
+/* NameVariableClass */ .chroma .vc { color: #008080 }
+/* NameVariableGlobal */ .chroma .vg { color: #008080 }
+/* NameVariableInstance */ .chroma .vi { color: #008080 }
+/* NameVariableMagic */ .chroma .vm {  }
+/* Literal */ .chroma .l {  }
+/* LiteralDate */ .chroma .ld {  }
+/* LiteralString */ .chroma .s { color: #dd1144 }
+/* LiteralStringAffix */ .chroma .sa { color: #dd1144 }
+/* LiteralStringBacktick */ .chroma .sb { color: #dd1144 }
+/* LiteralStringChar */ .chroma .sc { color: #dd1144 }
+/* LiteralStringDelimiter */ .chroma .dl { color: #dd1144 }
+/* LiteralStringDoc */ .chroma .sd { color: #dd1144 }
+/* LiteralStringDouble */ .chroma .s2 { color: #dd1144 }
+/* LiteralStringEscape */ .chroma .se { color: #dd1144 }
+/* LiteralStringHeredoc */ .chroma .sh { color: #dd1144 }
+/* LiteralStringInterpol */ .chroma .si { color: #dd1144 }
+/* LiteralStringOther */ .chroma .sx { color: #dd1144 }
+/* LiteralStringRegex */ .chroma .sr { color: #009926 }
+/* LiteralStringSingle */ .chroma .s1 { color: #dd1144 }
+/* LiteralStringSymbol */ .chroma .ss { color: #990073 }
+/* LiteralNumber */ .chroma .m { color: #009999 }
+/* LiteralNumberBin */ .chroma .mb { color: #009999 }
+/* LiteralNumberFloat */ .chroma .mf { color: #009999 }
+/* LiteralNumberHex */ .chroma .mh { color: #009999 }
+/* LiteralNumberInteger */ .chroma .mi { color: #009999 }
+/* LiteralNumberIntegerLong */ .chroma .il { color: #009999 }
+/* LiteralNumberOct */ .chroma .mo { color: #009999 }
+/* Operator */ .chroma .o { color: #000000; font-weight: bold }
+/* OperatorWord */ .chroma .ow { color: #000000; font-weight: bold }
+/* Punctuation */ .chroma .p {  }
+/* Comment */ .chroma .c { color: #999988; font-style: italic }
+/* CommentHashbang */ .chroma .ch { color: #999988; font-style: italic }
+/* CommentMultiline */ .chroma .cm { color: #999988; font-style: italic }
+/* CommentSingle */ .chroma .c1 { color: #999988; font-style: italic }
+/* CommentSpecial */ .chroma .cs { color: #999999; font-weight: bold; font-style: italic }
+/* CommentPreproc */ .chroma .cp { color: #999999; font-weight: bold; font-style: italic }
+/* CommentPreprocFile */ .chroma .cpf { color: #999999; font-weight: bold; font-style: italic }
+/* Generic */ .chroma .g {  }
+/* GenericDeleted */ .chroma .gd { color: #000000; background-color: #ffdddd }
+/* GenericEmph */ .chroma .ge { color: #000000; font-style: italic }
+/* GenericError */ .chroma .gr { color: #aa0000 }
+/* GenericHeading */ .chroma .gh { color: #999999 }
+/* GenericInserted */ .chroma .gi { color: #000000; background-color: #ddffdd }
+/* GenericOutput */ .chroma .go { color: #888888 }
+/* GenericPrompt */ .chroma .gp { color: #555555 }
+/* GenericStrong */ .chroma .gs { font-weight: bold }
+/* GenericSubheading */ .chroma .gu { color: #aaaaaa }
+/* GenericTraceback */ .chroma .gt { color: #aa0000 }
+/* GenericUnderline */ .chroma .gl { text-decoration: underline }
+/* TextWhitespace */ .chroma .w { color: #bbbbbb }
+
+    }
+
+
+@media (prefers-reduced-motion: reduce) {
+    .paige-header-link {
+        transition: none;
+    }
+}
+
+
+
+
+</style>
+
+
+    
+</head>
+
+    <body class="d-flex flex-column">
+
+        
+
+        <div class="container flex-fill" id="paige-root">
+            <div class="row">
+                <div class="col">
+                    
+                    
+
+
+    <header class="my-3" id="paige-header">
+        
+
+        
+
+
+
+
+        
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+
+    <nav>
+        <ul class="align-items-center justify-content-center nav ">
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/"    >Home</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a  aria-current="page"   class=" active  text-body-emphasis    nav-link   text-decoration-underline "  href="/books/"    >Books</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/blogs/"    >Blogs</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/resume/"    >Resume</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/github/"    >Github</a>
+
+                    
+                </li>
+            
+                
+                
+                
+                
+                
+
+                <li class="nav-item ">
+                    <a   class="  nav-link   text-decoration-underline "  href="/search/"    >Search</a>
+
+                    
+                </li>
+            
+        </ul>
+    </nav>
+
+
+        
+
+        
+    </header>
+
+
+
+                    <main class="mt-3" id="paige-main">
+                        
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+        
+    
+
+
+
+
+<article  class="paige-published paige-single"  id="paige-article">
+    <div class="align-items-center d-flex flex-column mb-0">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="mw-100" id="paige-metadata">
+    
+        <h1 class="fw-bold text-center" id="paige-title">Software Mistakes and Tradeoffs</h1>
+    
+
+    
+        <p class="lead text-center" id="paige-description">Good software is all about making tradeoffs.  This book helps you make better choices and reviews common software mistakes.</p>
+    
+
+    
+        <div class="mb-3">
+            
+
+            
+
+            
+
+            
+
+            
+                <p class="mb-0 text-center text-secondary" id="paige-reading-time">22 minutes</p>
+            
+        </div>
+    
+</div>
+
+        
+
+
+
+        
+
+
+    <div class="mw-100" id="paige-toc">
+        <div class="border mb-3 pe-3 ps-3 pt-3 rounded">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#chapter-1-what-would-you-say-you-do-here">Chapter 1: What Would You Say You Do Here?</a></li>
+        <li><a href="#chapter-2-three-maps">Chapter 2: Three Maps</a></li>
+        <li><a href="#chapter-3-creating-the-big-picture">Chapter 3: Creating the Big Picture</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#chapter-4-finite-time">Chapter 4: Finite Time</a></li>
+        <li><a href="#chapter-5-leading-big-projects">Chapter 5: Leading Big Projects</a>
+          <ol>
+            <li><a href="#51-life-of-a-project">5.1 Life of a Project</a></li>
+            <li><a href="#52-at-the-start-of-a-project">5.2 At the Start of a Project</a></li>
+            <li><a href="#53-driving-the-project">5.3 Driving the Project</a></li>
+          </ol>
+        </li>
+        <li><a href="#chapter-6-why-have-we-stopped">Chapter 6: Why Have We Stopped</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#chapter-7-you-are-a-role-model">Chapter 7: You are a Role Model</a>
+          <ol>
+            <li><a href="#71-be-competent-technically">7.1 Be Competent (Technically)</a></li>
+            <li><a href="#72-be-responsible">7.2 Be Responsible</a></li>
+            <li><a href="#73-remember-the-goal">7.3 Remember the Goal</a></li>
+            <li><a href="#74-look-ahead">7.4 Look Ahead</a></li>
+            <li><a href="#75-recap">7.5 Recap</a></li>
+          </ol>
+        </li>
+        <li><a href="#chapter-8-good-influence-at-scale">Chapter 8: Good Influence At Scale</a>
+          <ol>
+            <li><a href="#81-good-influence">8.1 Good Influence</a></li>
+            <li><a href="#82-advice">8.2 Advice</a></li>
+            <li><a href="#83-teaching">8.3 Teaching</a></li>
+            <li><a href="#84-guardrails">8.4 Guardrails</a></li>
+            <li><a href="#85-opportunity">8.5 Opportunity</a></li>
+            <li><a href="#86-recap">8.6 Recap</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </div>
+
+
+        
+
+
+
+
+    <div class="mw-100" id="paige-content"><h1 id="i--the-big-picture">I.  THE BIG PICTURE<a aria-label="Link to this section" class="paige-header-link" href="#i--the-big-picture"></a></h1>
+<h3 id="chapter-1-what-would-you-say-you-do-here">Chapter 1: What Would You Say You Do Here?<a aria-label="Link to this section" class="paige-header-link" href="#chapter-1-what-would-you-say-you-do-here"></a></h3>
+<ul>
+<li>Staff : 1st line manager, Senior Staff : Senior Manager; Principle : Director</li>
+<li>Do we even need a staff engineer position?
+<ul>
+<li> a job title vests authority in people who might not automatically receive</li>
+<li> saves them the time and energy they would otherwise have to spend proving themselves again and again</li>
+</ul>
+</li>
+<li>Why do we staff need to see big picture?
+<ul>
+<li>To find a ==global maximum==, which is the
+<ul>
+<li>good for the org and not 1 team</li>
+<li>over time</li>
+</ul>
+</li>
+<li>Good decisions need <em>context</em>. Experienced engineers know that the answer to most technology choices is “it depends.” Knowing the pros and cons of a particular technology isn’t enough—you need to know the local details too. What are you trying to do? How much ==time, money, and patience== do you have? What’s your ==risk tolerance==? What does the business need?</li>
+</ul>
+</li>
+<li>What&rsquo;s the staff engineer&rsquo;s role across projects?
+<ul>
+<li>Use their experience to ==anticipate risks and ask hard questions==</li>
+<li>When the project gets stuck, they have enough perspective to ==track down the causes and unblock==</li>
+<li>Evengalize: telling the story of what’s happening and why, selling the vision to the rest of the company, and explaining what the work will make possible and how the new project affects everyone</li>
+</ul>
+</li>
+<li>Why the staff engineer needs to be good at influencing
+<ul>
+<li>Within engineer circle, Staff engineers are ==role models==. Managers may be responsible for setting culture on their teams, enforcing good behavior, and ensuring standards are met. But engineering norms are set by the behavior of the most respected engineers on the project.</li>
+</ul>
+</li>
+<li>What is your Role?
+<ul>
+<li>Staff can report to VP, Directors, Senior Manager, Manager</li>
+<li>Which level one is on influences
+<ul>
+<li>what problem you are asked of</li>
+<li>what information you are privy to</li>
+<li>how much time you may get from your manager</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>What is Your Scope
+<ul>
+<li>Your reporting chain will likely affect your <em>scope</em>: the domain, team, or teams that you pay close attention to and have some responsibility for</li>
+<li>Pros and Cons of scopes
+<ul>
+<li>scope too narrow -&gt; lack of impoact, overshadowing other engineers</li>
+<li>scope too broad -&gt; lack of impact, becoming a bottleneck, decision fatigue</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>What&rsquo;s Your Primary Focus?
+<ul>
+<li>What&rsquo;s important? our work needs to be important” doesn’t mean you should only work on the fanciest, most glamorous technologies and VP-sponsored initiatives. The work that’s most important will often be the work that nobody else see
+<ul>
+<li>Be wary of choosing a project that already has a lot of senior people on it</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="chapter-2-three-maps">Chapter 2: Three Maps<a aria-label="Link to this section" class="paige-header-link" href="#chapter-2-three-maps"></a></h3>
+<ul>
+<li>
+<p>Map</p>
+<ul>
+<li>Where we came from</li>
+<li>Where we started working together</li>
+<li>Where are are</li>
+<li>Where we&rsquo;re going</li>
+</ul>
+</li>
+<li>
+<p>Recap</p>
+<ul>
+<li>Practice the skills of intentionally looking for a bigger picture and seeing what’s happening.</li>
+<li>Understand your work in context: know your customers, talk with peers outside your group, understand your success metrics, and be clear on what’s actually important.</li>
+<li>Know how your organization works and how decisions get made within it.</li>
+<li>Build or discover paths to allow information you need to come to you.</li>
+<li>Be clear about what goals everyone is aiming for.</li>
+<li>Think about your own work and what your journey is.</li>
+</ul>
+</li>
+</ul>
+<h3 id="chapter-3-creating-the-big-picture">Chapter 3: Creating the Big Picture<a aria-label="Link to this section" class="paige-header-link" href="#chapter-3-creating-the-big-picture"></a></h3>
+<ul>
+<li>
+<p>This chapter addresses when the goal is not clear OR if plan is disputed?</p>
+</li>
+<li>
+<p>A Common Reincarnation of the Same Problem</p>
+<ul>
+<li>All teams share the same platform (ie Salesforce Hyperforce)
+<ul>
+<li>Con
+<ul>
+<li>Hyperforce deployment can become a copy and paste exercise;</li>
+<li>Code repo is a single source of error; so needs more verification/validationshuman approvals.</li>
+<li>can suffer from generalization penalty,</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Decentralized, every org use their own proprietary (ie Ebay core Search)
+<ul>
+<li>cons:
+<ul>
+<li>There can be a <a href="https://oreil.ly/KEPbi">“tragedy of the commons”</a>, where teams pursuing their own best action without coordinating with others leads to an outcome that is bad for everyone. ==There’s that local maximum again==.</li>
+<li>Shared concerns can be neglected because no one group has the authority or an incentive to fix them alone.</li>
+<li>Teams may be missing enough context to make the best decision. The people taking action might be different from the people experiencing the outcomes, or might be separated in time from them.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Technical vision vs Strategy</p>
+<ul>
+<li>Technical vision describes the future one strives once the objectives have been achieved and biggest problem solved
+<ul>
+<li>Examples of better future states:
+<ul>
+<li>better state for your architecture, code, processes, technology, and teams</li>
+</ul>
+</li>
+<li>With so many staff and architecits, it is crucial to write down and be detailed about</li>
+</ul>
+</li>
+<li>Strategy is plan of action. It is the method and metrics in V2MOM.
+<ul>
+<li>Strategies needs to be realistic and acknowledge the constraints of your situation.</li>
+<li>Aspects of a strategy (from <em>Good Strategy/Bad Strategy</em>, Rumelt)
+<ul>
+<li>the diagnosis
+<ul>
+<li>“What’s going on here?” The diagnosis of your situation needs to be simpler than the messy reality, perhaps by finding patterns in the noise or using metaphors or mental models to make the problem easy to understand. You’re trying to distill the situation you’re in down to its most essential characteristics so that it’s possible to really comprehend it. This is <em>difficult</em>.</li>
+</ul>
+</li>
+<li>guiding policy / design philosopy
+<ul>
+<li>The guiding policy is your approach to bypassing the obstacles described in the diagnosis. It should give you a clear direction and make the decisions that follow easier. Rumelt says it should be short and clear, “a signpost, marking the direction forward.”</li>
+</ul>
+</li>
+<li>coherent actions you are going to take</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Prep work</p>
+<ul>
+<li>Embrace the boring/existing ideas
+<ul>
+<li><code>I kind of think writing about engineering strategy is hard because good strategy is pretty boring, and it’s kind of boring to write about. Also I think when people hear “strategy” they think “innovation.” If you write something interesting, it’s probably wrong. This seems directionally correct, certainly most strategy is synthesis and that point isn’t often made! </code></li>
+</ul>
+</li>
+<li>Join an Expedition in Progress</li>
+<li>Get a Sponsor
+<ul>
+<li> Maximize your chances by bringing the potential sponsor something they want'</li>
+<li>Find out what’s blocking their goals, and see if the problem you’re trying to solve lines up with those. The sponsor will also have some “objectives that are always true”: if you can make their teams more productive or (genuinely) happier</li>
+</ul>
+</li>
+<li>Choose Your Core Group
+<ul>
+<li>Keep each accountable</li>
+<li>Working in a group also lets you pool your contacts, social capital, and credibility, so you can reach a broader swathe of the organization</li>
+<li>Who do you need on your side? Who’s going to be opposed? If there are dissenters who will hate any decision made without them, you have two options: make very sure that you have enough support to counter their naysaying, or bring them along from the start.</li>
+<li>Be clear from the start about whether you consider yourself the lead and ultimate decider of this project or more of a <a href="https://oreil.ly/BKNe3">first among equals</a> If you’re later going to want to use tiebreaker powers or pull rank, highlight your role as lead from the start, perhaps by adding a “roles” section to whatever kickoff documentation you’re creating. But whether you’re the lead or not, let your group have ideas, drive the project forward, and talk about it without redirecting all questions to you</li>
+</ul>
+</li>
+<li>Choose Your Secondary Group
+<ul>
+<li>As for your broader group of allies, keep them engaged: interview them and use the information they give you. Send them updates on how the document is going. Invite them to comment on early drafts. Your path will be much easier if you have a group of influential people who support what you’re doing, and the knowledge they bring from across the organization will yield better results, too</li>
+</ul>
+</li>
+<li>Make sure it&rsquo;s achievable</li>
+</ul>
+</li>
+<li>
+<p>Writing Cycle</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">   graph TD;
        1_Initial_Ideas --&gt; 2_Write;
        4_Think_Process_Synthesize_Decide --&gt; 2_Write;
        2_Write --&gt; 3_TalkToPeople_Interview_Align;
        2_Write --&gt; 5_Share_Broadly;
        3_TalkToPeople_Interview_Align --&gt; 4_Think_Process_Synthesize_Decide;
-</code></pre><ul><li>Initial Ideas<ul><li>What documents already exist?</li><li>What needs to change? What&rsquo;s difficult now? Knowing what your company does and where the team should invest.</li><li>What&rsquo;s Important?</li><li>What will Future You wish Present You had done?</li></ul></li><li>Writing</li><li>Interviews<ul><li>Early questions:<ul><li>We’re creating a plan for X. What’s important to include?</li><li>What’s it like working with…?”</li><li>If you could wave a magic wand, what would be different about…?</li></ul></li></ul></li><li>Arriving to Decisions<ul><li>Tradeoffs<ul><li>decisions are hard because no matter what you choose, there will be disadvantages. Priorities help decide which disadvantage you&rsquo;re willing to accept, and vice versa.<ul><li>use even or statement</li><li>We will optmize X even over Y</li></ul></li></ul></li><li>Building Consensus<ul><li>==determining== consensus and ==coming to== consensus are different things than ==having== consensus <a href=https://datatracker.ietf.org/doc/html/rfc7282#page-4>IETF</a> The key is to separate those choices that are simply unappealing from those that are truly problematic</li><li>Application: Rather than asking, “Is everyone OK with choice A?” ask, “Can anyone not live with choice A?”</li><li>Sometimes it is more important moving forward than one person&rsquo;s arguent carrying the day.</li></ul></li><li>Getting and Staying Aligned<ul><li>Understand who your final audience is? local team;, product maanger</li><li>Keep sponser up to date and what you&rsquo;re planning and how it&rsquo;s going<ul><li>Take the time to get your thoughts together so that you can bring them a summary of how you’re approaching various problems and what your options ar</li></ul></li><li>Be aspirational but not impossible</li><li><a href=https://en.wikipedia.org/wiki/Nemawashi>Nemawashi</a> : means sharing information and layting the foudnations so that by the time a decision is made, there&rsquo;s already a consensus of opinion.</li><li>Alignment goes both directions</li></ul></li><li>Make sure the story is comprehensible, relatable, and comfortable.</li></ul></li></ul></li></ul><h1 id=ii-execution>II. EXECUTION<a aria-label="Link to this section" class=paige-header-link href=#ii-execution></a></h1><h3 id=chapter-4-finite-time>Chapter 4: Finite Time<a aria-label="Link to this section" class=paige-header-link href=#chapter-4-finite-time></a></h3><ul><li>You can&rsquo;t do it all. As a senior person, you can see a host of problems: architectures that won’t scale, processes that waste everyone’s time, missed opportunities</li><li>If you commit to something, what are you implicitly saying no to?</li><li>Your 5 resources<ul><li>Energy</li><li>Credibility<ul><li>You can build credibility by solving hard problems, being visibly competent, and consistently showing good technical judgment.</li><li>One cause of loss of credibility is absolutism. Ex: always advocating one technology in all situations.</li><li> If you’re polite (even to annoying people), communicate clearly, and stay calm in stressful situations, other people will trust you to be the adult in the room.</li><li>At staff+ levels, you’re often trying to find a balance between seeing the big picture and accepting pragmatic local solutions.</li></ul></li><li>Quality of Life<ul><li>money can improve your quality of life by giving you control and acheive other priorities.</li></ul></li><li>Skills<ul><li>Our industry moves fast. Any technical skill set slowly becomes less relevant and eventually gets out of date.</li><li>Three ways to improve skills<ol><li>Structured: class, buy a book, hack on a project<ol><li>con: eats into your free time</li></ol></li><li>Working with someone who is really skilled</li><li>(most common) Learn by doing;<ol><li>ie on a project, sprint tickets</li></ol></li></ol></li></ul></li><li>Social Capital<ul><li>Vs Credibility<ul><li>While <em>credibility</em> is whether others think you’re capable of doing whatever you’re trying to do, <em>social capital</em> reflects whether they want to help you do it</li></ul></li><li>Social capital is a mix of trust, friendship, and that feeling of owing someone a favor, or of believing they’ll remember that they owe you one.</li><li>Some ways to build capital<ul><li>spend time with people, have good conversations, help them out, support each other</li><li>Completing projects;<ul><li><code>"nothing breeds succeeds likes success"</code></li></ul></li></ul></li></ul></li></ul></li><li>==When you take on a project, you need to be aware of how the project add/subtract to the 5 resources: (skills, quality of life, social capitol, credibility, energy)==.</li><li>If you’re leading the project, you’ll be filling in the gap. (Remember Ebay)</li><li>By the time you reach the staff+ level, you will be largely (but probably not entirely) responsible for choosing your own work. How do you choose? Look at the 5 resources. Examples and nuances are in book<ul><li>Is this fight worth wit</li><li>Sponsorhip; goes both ways as a sponsor and and sponsered: you need to deliver to get more of it.</li></ul></li><li>Recap<ul><li>By the time you reach the staff+ level, you will be largely (but probably not entirely) responsible for choosing your own work. This includes deciding on the extent and duration of your involvement with any given project. You can’t do everything, so you’ll need to choose your battles.</li><li>You are responsible for choosing work that aligns with your life and career needs as well as advancing your company’s goals.</li><li>You are responsible for managing your energy.</li><li>Some projects will make you happier than others, or improve your quality of life more.</li><li>Your social capital and peer credibility are “bank accounts” that you can pay into and spend from. You can lend credibility and social capital to other people, but be conscious of whom you’re lending to.</li><li>Skills come from taking on projects and from deliberately learning. Make sure you’re building the skills you want to have.</li><li>Free up your resources by giving other people opportunities to grow, including starting projects and handing them off.</li><li>Focus means sometimes saying no. Learn how.</li></ul></li></ul><h3 id=chapter-5-leading-big-projects>Chapter 5: Leading Big Projects<a aria-label="Link to this section" class=paige-header-link href=#chapter-5-leading-big-projects></a></h3><h4 id=51-life-of-a-project>5.1 Life of a Project<a aria-label="Link to this section" class=paige-header-link href=#51-life-of-a-project></a></h4><h4 id=52-at-the-start-of-a-project>5.2 At the Start of a Project<a aria-label="Link to this section" class=paige-header-link href=#52-at-the-start-of-a-project></a></h4><ul><li><p>Building Context</p><ul><li>Goals: why is this the one that is happening and not others<ul><li>Customer needs:</li><li>Success metrics: describe sucess is measured?</li><li>Constraints: deadlines, resources, other responsibilities, other team&rsquo;s dependencies</li><li>Risks: Try to predict some of the risks<ul><li>What could happen that could prevent you from reaching your goals on deadline?</li><li>Are there unknowns, dependencies, key people who will doom the project if they quit? You can mitigate risk by being clear about your areas of uncertainty.</li><li>What don’t you know, and what approaches can you take that will make those less ambiguous?</li><li>Is this the sort of thing you can prototype? Has someone done this kind of project before</li></ul></li><li>History:<ul><li>where did the idea come from?</li><li>Have we tried it before?</li><li>If I am new to existing project, respect what came before<ul><li>findout what system you&rsquo;ve can use</li><li>understand people&rsquo;s feelings and expectations, and learn from their experiences</li></ul></li></ul></li></ul></li></ul></li><li><p>Project Structure</p><ul><li><p>Defining Roles on your Team Via Responsibility Assignment Matrix (RACI)</p><ul><li>Responsible: The person actually doing the work.</li><li>Accountable: The person ultimately delivering the work and responsible for signing off that it’s done. There’s supposed to be only one accountable person per task, and it will often be the same person as whoever is “Responsible.”</li><li>Consulted: People who are asked for their opinion.</li><li>Informed: People who will be kept up to date on progress.</li></ul></li><li><p>Recruiting people/leads</p><ul><li>When you’re responsible for a really big project, you’re kind of building an organization and you’re steering an organization. It’s important to get the needs of the organization right. I spent a lot of time trying to make sure that I had the best leads in all the different domains that were involved in that one specific project. And, when you’re looking for leads, you’re looking for people that ==don’t just have good technical judgment==, but also ==have the attitudes: they are optimistic, good at conflict resolution, good at communication==</li></ul></li><li><p>Estimating Time</p><ul><li>Pragmatic Programmer:<ul><li>We find that often the only way to determine the timetable for a project is by gaining experience on that same project</li></ul></li><li>Take into consideration the team you depend on; how is their plate? their history?</li></ul></li><li><p>Logistics of Team</p><ul><li>When, where, and how you&rsquo;ll meet</li><li>Channels of informal communication</li><li>How you share status</li><li>Where the documentation home will be</li><li>What is the development practice like?</li></ul></li></ul></li></ul><h4 id=53-driving-the-project>5.3 Driving the Project<a aria-label="Link to this section" class=paige-header-link href=#53-driving-the-project></a></h4><ul><li><p>Exploring</p><ul><li>When project just start off,  you won’t have enough information about it on day one to make granular decisions (ie use technologyX to build featureY)</li><li>What are some important aspects of the project?<ul><li>Bigger projects with multiple teams, where each team may have a different mental model. Get to the point where you can ==concisely== explain what different teams in the project want in a way that they’ll agree is accurate.</li><li>Alighning and framing takes time and effort. talk to users and stakeholders. listen to what they say and how they say it.</li><li>==Develop a crisp definition of what you&rsquo;re doing.==<ul><li>Understanding the problem well helps you frame it for other people</li></ul></li></ul></li><li>What possible approaches can you take?<ul><li>Be open to existing solutions, even if less convenient or interesting</li></ul></li></ul></li><li><p>Clarifying</p><ul><li>As lead, it is your responsibility to create a mental model to what you are doing<ul><li>How can you hook this project into their current knowledge</li></ul></li><li>Mental models:<ul><li>Connecting an abstract idea back to something I understand well removes some of the cognitive cost of retaining and describing the idea</li><li>Describe interfaces without the messy details</li><li>Give people a head start by providing a convenient, memorable name for the concept, using an analogy, or connecting it back to something they already understand</li></ul></li><li>Naming<ul><li>Two people can use the same words and mean quite different things</li></ul></li><li>Picutre and graphs<ul><li>reduce complexity with pictures</li></ul></li></ul></li><li><p>Designing</p><ul><li>Design doc s the most efficient way to make sure everyone is aligned.<ul><li>ven if you’re not hearing objections when you talk about them, your colleagues may not have internalized the plan and their implicit agreement may not mean anything</li></ul></li><li>Be precise<ul><li>It is better to be wrong than be vague</li><li>Tips:<ol><li>Use active voice; Be clear ==who/what== is doing the action<ol><li>before: the jason payload will be unpacked</li><li>better: the parse component will upack the JSON payload</li></ol></li><li>Use a few extra words or even repeat yourself if it means avoiding ambiguity<ol><li>Ex: add a word after ambiguous words like this or that<ol><li>To solve this ==shortage==, we should order more.</li></ol></li></ol></li></ol></li><li>Writing References<ul><li>[[Tool - Technical Writing]]</li></ul></li></ul></li><li>Security/Privacy/Compliance<ul><li>What data are being exposed?</li></ul></li><li>Common Design Pitalls<ul><li>Building from scratch. Most problems are not brand new; learn from other people and consider reuse existing problems</li><li>Lack of understanding can make a hard task appear trivial</li><li>Building for the present without consideration for the future</li><li>Building for the distant distant future</li><li>Ignoring the difficult part</li><li>Being non-realistic of the workload</li><li>Adopting an approach/system that is not really designed for it.</li><li>Create something that is hard to maintain and understand (ie mc-kernel)</li><li>bikeshedding; spening the most resource on the most trivial, easiest reversible decisions.</li></ul></li></ul></li><li><p>Coding (as a staff engineer)</p><ul><li>Staff engineer sets the example<ul><li>Meet or exceed the testing standards</li><li>Add useful comments and documentation</li></ul></li><li>Should you code?<ul><li>if it excites you and you are not the bottleneck</li><li>as a cartographer; to gain deeper knowledge and develop better road maps and action items.</li><li>To develop a pattern, so other people can implement</li><li>Be careful not to take the most important and biggest work; you could be dragged into other issues and you want to give people room to grow</li></ul></li></ul></li><li><p>Communicating</p><ul><li>Communicating well is key for delivering a project in time. If the teams aren’t talking to each other, you won’t make progress. And if you’re not talking to people outside the project, your stakeholders won’t know how it’s going</li><li>Talking to each other (especially for remote)<ul><li>Talking to each other builds familarity, which helps people safer to ask clarifying questions.</li><li>To help people talk<ul><li>friendly slack channels</li><li>demo</li><li>social events</li></ul></li></ul></li><li>Sharing status to stakeholders, sponsers, and customers<ul><li>Explain status in terms of impact</li><li>On information the audience actually want to know</li></ul></li></ul></li><li><p>Navigating (when something goes wrong)</p><ul><li>Tech leads are responsible for rerouting, escalating to someone who can help, or, if you really have to, breaking the news to your stakeholders that the goal is now unreachable</li><li>The bigger the change, the more likely it is that you’ll need to go back to the start of this chapter, deal with the overwhelm all over again, build context, and treat the project like it’s restarting.<ul><li>Don’t create panic or let rumors start. Instead, give people facts and be clear about what you want them to do with the information.</li></ul></li><li></li></ul></li></ul><h3 id=chapter-6-why-have-we-stopped>Chapter 6: Why Have We Stopped<a aria-label="Link to this section" class=paige-header-link href=#chapter-6-why-have-we-stopped></a></h3><ul><li>Recap<ul><li>As the project lead, you are responsible for understanding why your project has stopped and getting it started again.</li><li>As a leader in your organization, you can help restart other people’s projects too.</li><li>You can unblock projects by<ul><li>explaining what needs to happen</li><li>reducing what other people need to do</li><li>clarifying the organizational support, escalating</li><li>making alternative plans.</li></ul></li><li>You can bring clarity to a project that’s adrift by defining your destination, agreeing on roles, and asking for help when you need it.</li><li>Don’t declare victory unless the project is truly complete. Code completeness is just one milestone.</li><li>Whether you’re ready or not, sometimes it’s time for the project to end. Celebrate, retrospect, and clean up.</li></ul></li></ul><h1 id=iii-leveling-up>III. LEVELING UP<a aria-label="Link to this section" class=paige-header-link href=#iii-leveling-up></a></h1><ul><li>I believe title refers to leveling the team up<ul><li>Note: to level up team, you also need to level yourself up because the staff engineer sets the standard</li></ul></li></ul><h3 id=chapter-7-you-are-a-role-model>Chapter 7: You are a Role Model<a aria-label="Link to this section" class=paige-header-link href=#chapter-7-you-are-a-role-model></a></h3><h4 id=71-be-competent-technically>7.1 Be Competent (Technically)<a aria-label="Link to this section" class=paige-header-link href=#71-be-competent-technically></a></h4><ul><li><p>Know Things</p><ul><li>Your big-picture thinking, project execution, credibility, and influence are underpinned by knowledge and experience</li><li>Build Experience<ul><li>Technical skill comes from study and practice</li><li>Experience comes through time, exposure (projects), and study<ul><li>Be aware of too early of promotion to staff, as it may rob you of hands on building experience</li></ul></li><li>Being competent and knowledgeable doesn’t mean you have to know the most about every topic. Can you learn the technology, domain etc..</li></ul></li><li>Build domain knowledge<ul><li>Leverage your experience/technical foundation to come up to speed in the domain</li><li>Learn the technology in whatever way is most effective for you.</li><li>Get a sense of the appropriate trade-offs; the resource constraints; the common arguments, biases, and in-jokes.</li><li>Know which technologies are on the market and how they might be used. Read the core literature.</li><li>Know who the “famous people” in the domain are and what they advocate for. Twitter is good for this</li></ul></li><li>Stay up to date<ul><li>It’s embarrassing for everyone when a technical leader insists on a “best practice” that has been debunked for a decade or a technology that everyone else has moved on from</li><li>Even if you aren’t deep in the code any more, your spidey-sense should stay sharp for “code smells” or problems waiting to happen</li><li>be wary of drifting so far from the technology that you’re only learning how <em>your company</em> operates</li></ul></li></ul></li><li><p>Be Self Aware</p><ul><li>Admit what you know:<ul><li>be ==confident== and ==honest== with yourself with what you know and what you don&rsquo;t</li></ul></li><li>Admit what you don&rsquo;t know<ul><li>be ok with asking, explain it like I&rsquo;m 5 year old</li></ul></li><li>Understand your own context<ul><li>You have a perspective, that your context is not the universal context, and that your opinions and knowledge are specific to <em>you</em>.</li></ul></li></ul></li><li><p>Have High Standards</p><ul><li>Your standard will serve as a model for how other people work</li><li>Seek out constructive criticism<ul><li>ask for code reviews, design review, and peer evaluation</li></ul></li><li>Own your mistake<ul><li>If you react well and fix the problem you caused, you could even end up with <em>more</em> esteem from your colleague</li></ul></li><li>Be reilable<ul><li>Finish what you start</li></ul></li></ul></li></ul><h4 id=72-be-responsible>7.2 Be Responsible<a aria-label="Link to this section" class=paige-header-link href=#72-be-responsible></a></h4><ul><li><p>Take Ownership</p><ul><li>Senior people own the whole problem, not just the parts that go as planned. You’re not running someone else’s project for them: it’s <em>yours</em> and you don’t passively let it sink or swim</li><li>Avoid &ldquo;Cover Your Ass&rdquo;<ul><li>Mature engineers stand up and accept the responsibility given to them. If they find they don’t have the requisite authority to be held accountable for their work, they seek out ways to rectify that. An example of CYAE is “It’s not my fault. They broke it, they used it wrong. I built it to spec, I can’t be held responsible for their mistakes or improper specification.”</li></ul></li><li>Use you own judgement; don&rsquo;t need to constantly ask for permission</li><li>Ask obvious questions; as senior, you can ask questions that are so obvious, no one else is willing to ask</li><li>Do the glue work; tasks that are needed to make team successful<ul><li>a lot of the work that’s not anybody’s job but that furthers your goals. Redirect your junior colleagues toward tasks that will develop their careers instead.</li></ul></li></ul></li><li><p>Take Charge</p><ul><li>When you se a gap, step in to fill the gap</li><li>Step up in an emergency</li><li>Drive meetings<ul><li>with a clear agenda</li></ul></li><li>When something disrespectful or offensive in a public channel, one should speak up</li></ul></li><li><p>Create Calm</p><ul><li>defuse, don&rsquo;t amplify<ul><li>when you&rsquo;re dealing with a big problem, try to make it smaller</li><li>be cautious where/how you share your anxieties/frustration.<ul><li>acknowledge there are problems</li><li>be clear about the intention of the sharing<ul><li>want someone to take action</li><li>bounce ideas</li><li>sharing context</li></ul></li></ul></li></ul></li><li>Be consistent and predictable<ul><li>since it&rsquo;s hard to be consistent when stresed, make sure to take time off, get enough rest.</li></ul></li></ul></li></ul><h4 id=73-remember-the-goal>7.3 Remember the Goal<a aria-label="Link to this section" class=paige-header-link href=#73-remember-the-goal></a></h4><ul><li>There&rsquo;s the Business<ul><li>adapt to the situation<ul><li>phases: grow, acquisition, new markets</li></ul></li><li>has a budget</li><li>so spend mindfully</li></ul></li></ul><ul><li><p>There&rsquo;s the User</p><ul><li>Know who uses your software and how they use it.</li><li>Make sure the feature you are creating is actually needed</li></ul></li><li><p>There&rsquo;s the Team</p><ul><li>You are working as a team; don&rsquo;t be single point of failure</li><li>be aware of the capability of your team</li></ul></li></ul><h4 id=74-look-ahead>7.4 Look Ahead<a aria-label="Link to this section" class=paige-header-link href=#74-look-ahead></a></h4><ul><li><p>Anticipate what the Future You wish Present You had done</p><ul><li>Be clear what the your broad direction is, even if you don&rsquo;t know the details</li><li>Take time to optimize your workflow<ul><li>codebase<ul><li>style guide</li></ul></li><li>documentation</li></ul></li><li>Keep your tools sharp<ul><li>make your environment better measured by velocity and reliability</li></ul></li><li>Create institutional memory</li></ul></li><li><p>Expect Failure</p><ul><li>Plan in advance for major incidents by adding some conventions around how you work together during an emergency: introduce the incident command system I mentioned earlier, for example, and practice the response before you need it</li></ul></li><li><p>Optimize for Maintenance, Not Creation</p><ul><li>Make it understandable<ol><li>classes and hands on experiences</li><li>make it as easy as possible for people to understand the system when they need to<ol><li>documentation(s)<ol><li>short intro</li><li>a big deep one</li></ol></li></ol></li></ol></li><li>Make system observable<ol><li>easy to inspect, analyze, and debug</li></ol></li><li>Make system simple<ul><li>Good programmers write code that humans can understand.”<a href=https://learning.oreilly.com/library/view/the-staff-engineers/9781098118723/ch07.html#ch01fn98>12</a> Senior engineers sometimes think they can demonstrate their prowess with the flashiest, most complicated solutions.</li><li>Make things simple by spending more time on it; working solution is just the first iteration</li></ul></li></ul></li></ul><h4 id=75-recap>7.5 Recap<a aria-label="Link to this section" class=paige-header-link href=#75-recap></a></h4><ul><li>Your words and actions carry more weight now. Be deliberate.</li><li>Invest the time to build knowledge and expertise. Competence comes from experience.</li><li>Be self-aware about what you know and what you don’t.</li><li>Strive to be consistent, reliable, and trustworthy.</li><li>Get comfortable taking charge when nobody else is, including during a crisis or an ambiguous project.</li><li>When someone needs to say something, say something.</li><li>Create calm. Make problems smaller, not bigger.</li><li>Be aware of your business, budgets, user needs, and the capabilities of your</li></ul><h3 id=chapter-8-good-influence-at-scale>Chapter 8: Good Influence At Scale<a aria-label="Link to this section" class=paige-header-link href=#chapter-8-good-influence-at-scale></a></h3><h4 id=81-good-influence>8.1 Good Influence<a aria-label="Link to this section" class=paige-header-link href=#81-good-influence></a></h4><h4 id=82-advice>8.2 Advice<a aria-label="Link to this section" class=paige-header-link href=#82-advice></a></h4><h4 id=83-teaching>8.3 Teaching<a aria-label="Link to this section" class=paige-header-link href=#83-teaching></a></h4><h4 id=84-guardrails>8.4 Guardrails<a aria-label="Link to this section" class=paige-header-link href=#84-guardrails></a></h4><h4 id=85-opportunity>8.5 Opportunity<a aria-label="Link to this section" class=paige-header-link href=#85-opportunity></a></h4><h4 id=86-recap>8.6 Recap<a aria-label="Link to this section" class=paige-header-link href=#86-recap></a></h4><ul><li><p>You can help your colleagues by providing advice, teaching, guardrails, or opportunities. Understand what’s most helpful for the specific situation.</p></li><li><p>Think about whether you want to help one-on-one, level up your team, or influence further.</p></li><li><p>Offer your experience and advice, but make sure it’s welcome. Writing and public speaking can send your message further.</p></li><li><p>Teach through pairing, shadowing, review, and coaching. Teaching classes or writing codelabs can scale your teaching time.</p></li><li><p>Guardrails can let people work autonomously. Offer review, or be a project guardrail for your colleagues. Codify guardrails using processes, automation, and culture change.</p></li><li><p>Opportunities can be much more valuable than advice. Think about who you’re sponsoring and delegating to. Share the spotlight in your team.</p></li><li><p>Plan to give away your job.</p></li></ul></div></div></article></main><footer class=mb-3 id=paige-footer><div class=mb-3 id=paige-prev-next><p class="mb-0 text-center text-secondary" id=paige-next><a class=link-secondary href=http://localhost:1313/books/software-profession/staff-engineers-path/>Staff Engineer's Path</a> &#8250;</p><p class="mb-0 text-center text-secondary" id=paige-prev>&#8249; <a class=link-secondary href=http://localhost:1313/books/software-profession/software-engineering-at-google/>Software Engineer At Google</a></p></div></footer></div></div></div><script crossorigin=anonymous defer integrity="sha256-gfPiYYSP+RNtNeRBt45mJombFJmNf0V0Ipu785Obi0M=" referrerpolicy=no-referrer src=/js/paige/bootstrap/bootstrap.bundle.min.81f3e261848ff9136d35e441b78e6626899b14998d7f4574229bbbf3939b8b43.js></script><script crossorigin=anonymous defer integrity="sha256-kqnbKZyzZFmn0J2JtRxwdeNh0b3FknYDyAd+mGKI73c=" referrerpolicy=no-referrer src=/js/paige/katex/katex.min.min.92a9db299cb36459a7d09d89b51c7075e361d1bdc5927603c8077e986288ef77.js></script><script crossorigin=anonymous defer integrity="sha256-pQMCGuz+5jpyog4zEVyH/xvxJRsPM9M7d7t6+TiyEA8=" onload=renderMathInElement(document.body) referrerpolicy=no-referrer src=/js/paige/katex/auto-render.min.min.a503021aecfee63a72a20e33115c87ff1bf1251b0f33d33b77bb7af938b2100f.js></script><noscript>JavaScript is required</noscript></body></html>
+</code></pre><ul>
+<li>Initial Ideas
+<ul>
+<li>What documents already exist?</li>
+<li>What needs to change?  What&rsquo;s difficult now?  Knowing what your company does and where the team should invest.</li>
+<li>What&rsquo;s Important?</li>
+<li>What will Future You wish Present You had done?</li>
+</ul>
+</li>
+<li>Writing</li>
+<li>Interviews
+<ul>
+<li>Early questions:
+<ul>
+<li>We’re creating a plan for X. What’s important to include?</li>
+<li>What’s it like working with…?”</li>
+<li>If you could wave a magic wand, what would be different about…?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Arriving to Decisions
+<ul>
+<li>Tradeoffs
+<ul>
+<li>decisions are hard because no matter what you choose, there will be disadvantages.   Priorities help decide which disadvantage you&rsquo;re willing to accept, and vice versa.
+<ul>
+<li>use even or statement</li>
+<li>We will optmize X even over Y</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Building Consensus
+<ul>
+<li>==determining==  consensus and ==coming to== consensus are different things than   ==having== consensus <a href="https://datatracker.ietf.org/doc/html/rfc7282#page-4">IETF</a>  The key is to separate those  choices that are simply unappealing from those that are truly  problematic</li>
+<li>Application: Rather than asking, “Is everyone OK with choice A?” ask, “Can anyone not live with choice A?”</li>
+<li>Sometimes it is more important moving forward than one person&rsquo;s arguent carrying the day.</li>
+</ul>
+</li>
+<li>Getting and Staying Aligned
+<ul>
+<li>Understand who your final audience is?  local team;, product maanger</li>
+<li>Keep sponser up to date and what you&rsquo;re planning and how it&rsquo;s going
+<ul>
+<li>Take the time to get your thoughts together so that you can bring them a summary of how you’re approaching various problems and what your options ar</li>
+</ul>
+</li>
+<li>Be aspirational but not impossible</li>
+<li><a href="https://en.wikipedia.org/wiki/Nemawashi">Nemawashi</a> : means sharing information and layting the foudnations so that by the time a decision is made, there&rsquo;s already a consensus of opinion.</li>
+<li>Alignment goes both directions</li>
+</ul>
+</li>
+<li>Make sure the story is comprehensible, relatable, and comfortable.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="ii-execution">II. EXECUTION<a aria-label="Link to this section" class="paige-header-link" href="#ii-execution"></a></h1>
+<h3 id="chapter-4-finite-time">Chapter 4: Finite Time<a aria-label="Link to this section" class="paige-header-link" href="#chapter-4-finite-time"></a></h3>
+<ul>
+<li>You can&rsquo;t do it all. As a senior person, you can see a host of problems: architectures that won’t scale, processes that waste everyone’s time, missed opportunities</li>
+<li>If you commit to something, what are you implicitly saying no to?</li>
+<li>Your 5 resources
+<ul>
+<li>Energy</li>
+<li>Credibility
+<ul>
+<li>You can build credibility by solving hard problems, being visibly competent, and consistently showing good technical judgment.</li>
+<li>One cause of loss of credibility is absolutism. Ex: always advocating one technology in all situations.</li>
+<li> If you’re polite (even to annoying people), communicate clearly, and stay calm in stressful situations, other people will trust you to be the adult in the room.</li>
+<li>At staff+ levels, you’re often trying to find a balance between seeing the big picture and accepting pragmatic local solutions.</li>
+</ul>
+</li>
+<li>Quality of Life
+<ul>
+<li>money can improve your quality of life by giving you control and acheive other priorities.</li>
+</ul>
+</li>
+<li>Skills
+<ul>
+<li>Our industry moves fast. Any technical skill set slowly becomes less relevant and eventually gets out of date.</li>
+<li>Three ways to improve skills
+<ol>
+<li>Structured: class, buy a book, hack on a project
+<ol>
+<li>con: eats into your free time</li>
+</ol>
+</li>
+<li>Working with someone who is really skilled</li>
+<li>(most common)  Learn by doing;
+<ol>
+<li>ie on a project, sprint tickets</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Social Capital
+<ul>
+<li>Vs Credibility
+<ul>
+<li>While <em>credibility</em> is whether others think you’re capable of doing whatever you’re trying to do, <em>social capital</em> reflects whether they want to help you do it</li>
+</ul>
+</li>
+<li>Social capital is a mix of trust, friendship, and that feeling of owing someone a favor, or of believing they’ll remember that they owe you one.</li>
+<li>Some ways to build capital
+<ul>
+<li>spend time with people, have good conversations, help them out, support each other</li>
+<li>Completing projects;
+<ul>
+<li><code>&quot;nothing breeds succeeds likes success&quot;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>==When you take on a project, you need to be aware of how the project add/subtract to the 5 resources: (skills, quality of life, social capitol, credibility, energy)==.</li>
+<li>If you’re leading the project, you’ll be filling in the gap.  (Remember Ebay)</li>
+<li>By the time you reach the staff+ level, you will be largely (but probably not entirely) responsible for choosing your own work. How do you choose?  Look at the 5 resources. Examples and nuances are in book
+<ul>
+<li>Is this fight worth wit</li>
+<li>Sponsorhip; goes both ways as a sponsor and and sponsered: you need to deliver to get more of it.</li>
+</ul>
+</li>
+<li>Recap
+<ul>
+<li>By the time you reach the staff+ level, you will be largely (but probably not entirely) responsible for choosing your own work. This includes deciding on the extent and duration of your involvement with any given project. You can’t do everything, so you’ll need to choose your battles.</li>
+<li>You are responsible for choosing work that aligns with your life and career needs as well as advancing your company’s goals.</li>
+<li>You are responsible for managing your energy.</li>
+<li>Some projects will make you happier than others, or improve your quality of life more.</li>
+<li>Your social capital and peer credibility are “bank accounts” that you can pay into and spend from. You can lend credibility and social capital to other people, but be conscious of whom you’re lending to.</li>
+<li>Skills come from taking on projects and from deliberately learning. Make sure you’re building the skills you want to have.</li>
+<li>Free up your resources by giving other people opportunities to grow, including starting projects and handing them off.</li>
+<li>Focus means sometimes saying no. Learn how.</li>
+</ul>
+</li>
+</ul>
+<h3 id="chapter-5-leading-big-projects">Chapter 5: Leading Big Projects<a aria-label="Link to this section" class="paige-header-link" href="#chapter-5-leading-big-projects"></a></h3>
+<h4 id="51-life-of-a-project">5.1 Life of a Project<a aria-label="Link to this section" class="paige-header-link" href="#51-life-of-a-project"></a></h4>
+<h4 id="52-at-the-start-of-a-project">5.2 At the Start of a Project<a aria-label="Link to this section" class="paige-header-link" href="#52-at-the-start-of-a-project"></a></h4>
+<ul>
+<li>
+<p>Building Context</p>
+<ul>
+<li>Goals: why is this the one that is happening and not others
+<ul>
+<li>Customer needs:</li>
+<li>Success metrics: describe sucess is measured?</li>
+<li>Constraints:  deadlines, resources, other responsibilities, other team&rsquo;s dependencies</li>
+<li>Risks: Try to predict some of the risks
+<ul>
+<li>What could happen that could prevent you from reaching your goals on deadline?</li>
+<li>Are there unknowns, dependencies, key people who will doom the project if they quit? You can mitigate risk by being clear about your areas of uncertainty.</li>
+<li>What don’t you know, and what approaches can you take that will make those less ambiguous?</li>
+<li>Is this the sort of thing you can prototype? Has someone done this kind of project before</li>
+</ul>
+</li>
+<li>History:
+<ul>
+<li>where did the idea come from?</li>
+<li>Have we tried it before?</li>
+<li>If I am new to existing project, respect what came before
+<ul>
+<li>findout what system you&rsquo;ve can use</li>
+<li>understand people&rsquo;s feelings and expectations, and learn from their experiences</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Project Structure</p>
+<ul>
+<li>
+<p>Defining Roles on your Team Via Responsibility Assignment Matrix (RACI)</p>
+<ul>
+<li>Responsible: The person actually doing the work.</li>
+<li>Accountable: The person ultimately delivering the work and responsible for signing off that it’s done. There’s supposed to be only one accountable person per task, and it will often be the same person as whoever is “Responsible.”</li>
+<li>Consulted: People who are asked for their opinion.</li>
+<li>Informed: People who will be kept up to date on progress.</li>
+</ul>
+</li>
+<li>
+<p>Recruiting people/leads</p>
+<ul>
+<li>When you’re responsible for a really big project, you’re kind of building an organization and you’re steering an organization. It’s important to get the needs of the organization right. I spent a lot of time trying to make sure that I had the best leads in all the different domains that were involved in that one specific project. And, when you’re looking for leads, you’re looking for people that ==don’t just have good technical judgment==, but also ==have the attitudes: they are optimistic, good at conflict resolution, good at communication==</li>
+</ul>
+</li>
+<li>
+<p>Estimating Time</p>
+<ul>
+<li>Pragmatic Programmer:
+<ul>
+<li>We find that often the only way to determine the timetable for a project is by gaining experience on that same project</li>
+</ul>
+</li>
+<li>Take into consideration the team you depend on; how is their plate?  their history?</li>
+</ul>
+</li>
+<li>
+<p>Logistics of Team</p>
+<ul>
+<li>When, where, and how you&rsquo;ll meet</li>
+<li>Channels of informal communication</li>
+<li>How you share status</li>
+<li>Where the documentation home will be</li>
+<li>What is the development practice like?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="53-driving-the-project">5.3 Driving the Project<a aria-label="Link to this section" class="paige-header-link" href="#53-driving-the-project"></a></h4>
+<ul>
+<li>
+<p>Exploring</p>
+<ul>
+<li>When project just start off,  you won’t have enough information about it on day one to make  granular decisions (ie use technologyX to build featureY)</li>
+<li>What are some important aspects of the project?
+<ul>
+<li>Bigger projects with multiple teams, where each team may have a different mental model.  Get to the point where you can ==concisely== explain what different teams in the project want in a way that they’ll agree is accurate.</li>
+<li>Alighning and framing takes time and effort.  talk to users and stakeholders. listen to what they say and how they say it.</li>
+<li>==Develop a crisp definition of what you&rsquo;re doing.==
+<ul>
+<li>Understanding the problem well helps you frame it for other people</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>What possible approaches can you take?
+<ul>
+<li>Be open to existing solutions, even if less convenient or interesting</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Clarifying</p>
+<ul>
+<li>As lead, it is your responsibility to create a mental model to what you are doing
+<ul>
+<li>How can you hook this project into their current knowledge</li>
+</ul>
+</li>
+<li>Mental models:
+<ul>
+<li>Connecting an abstract idea back to something I understand well removes some of the cognitive cost of retaining and describing the idea</li>
+<li>Describe interfaces without the messy details</li>
+<li>Give people a head start by providing a convenient, memorable name for the concept, using an analogy, or connecting it back to something they already understand</li>
+</ul>
+</li>
+<li>Naming
+<ul>
+<li>Two people can use the same words and mean quite different things</li>
+</ul>
+</li>
+<li>Picutre and graphs
+<ul>
+<li>reduce complexity with pictures</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Designing</p>
+<ul>
+<li>Design doc s the most efficient way to make sure everyone is aligned.
+<ul>
+<li>ven if you’re not hearing objections when you talk about them, your colleagues may not have internalized the plan and their implicit agreement may not mean anything</li>
+</ul>
+</li>
+<li>Be precise
+<ul>
+<li>It is better to be wrong than be vague</li>
+<li>Tips:
+<ol>
+<li>Use active voice; Be clear ==who/what== is doing the action
+<ol>
+<li>before: the jason payload will be unpacked</li>
+<li>better: the parse component will upack the JSON payload</li>
+</ol>
+</li>
+<li>Use a few extra words or even repeat yourself if it means avoiding ambiguity
+<ol>
+<li>Ex: add a word after ambiguous words like this or that
+<ol>
+<li>To solve this ==shortage==, we should order more.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Writing References
+<ul>
+<li>[[Tool - Technical Writing]]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Security/Privacy/Compliance
+<ul>
+<li>What data are being exposed?</li>
+</ul>
+</li>
+<li>Common Design Pitalls
+<ul>
+<li>Building from scratch. Most problems are not brand new; learn from other people and consider reuse existing problems</li>
+<li>Lack of understanding can make a hard task appear trivial</li>
+<li>Building for the present without consideration for the future</li>
+<li>Building for the distant distant future</li>
+<li>Ignoring the difficult part</li>
+<li>Being non-realistic of the workload</li>
+<li>Adopting an approach/system that is not really designed for it.</li>
+<li>Create something that is hard to maintain and understand (ie mc-kernel)</li>
+<li>bikeshedding; spening the most resource on the most trivial, easiest reversible decisions.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Coding (as a staff engineer)</p>
+<ul>
+<li>Staff engineer sets the example
+<ul>
+<li>Meet or exceed the testing standards</li>
+<li>Add useful comments and documentation</li>
+</ul>
+</li>
+<li>Should you code?
+<ul>
+<li>if it excites you and you are not the bottleneck</li>
+<li>as a cartographer; to gain deeper knowledge and develop better road maps and action items.</li>
+<li>To develop a pattern, so other people can implement</li>
+<li>Be careful not to take the most important and biggest work; you could be dragged into other issues and you want to give people room to grow</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Communicating</p>
+<ul>
+<li>Communicating well is key for delivering a project in time. If the teams aren’t talking to each other, you won’t make progress. And if you’re not talking to people outside the project, your stakeholders won’t know how it’s going</li>
+<li>Talking to each other (especially for remote)
+<ul>
+<li>Talking to each other builds familarity, which helps people safer to ask clarifying questions.</li>
+<li>To help people talk
+<ul>
+<li>friendly slack channels</li>
+<li>demo</li>
+<li>social events</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Sharing status to stakeholders, sponsers, and customers
+<ul>
+<li>Explain status in terms of impact</li>
+<li>On information the audience actually want to know</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Navigating (when something goes wrong)</p>
+<ul>
+<li>Tech leads are responsible for rerouting, escalating to someone who can help, or, if you really have to, breaking the news to your stakeholders that the goal is now unreachable</li>
+<li>The bigger the change, the more likely it is that you’ll need to go back to the start of this chapter, deal with the overwhelm all over again, build context, and treat the project like it’s restarting.
+<ul>
+<li>Don’t create panic or let rumors start. Instead, give people facts and be clear about what you want them to do with the information.</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="chapter-6-why-have-we-stopped">Chapter 6: Why Have We Stopped<a aria-label="Link to this section" class="paige-header-link" href="#chapter-6-why-have-we-stopped"></a></h3>
+<ul>
+<li>Recap
+<ul>
+<li>As the project lead, you are responsible for understanding why your project has stopped and getting it started again.</li>
+<li>As a leader in your organization, you can help restart other people’s projects too.</li>
+<li>You can unblock projects by
+<ul>
+<li>explaining what needs to happen</li>
+<li>reducing what other people need to do</li>
+<li>clarifying the organizational support, escalating</li>
+<li>making alternative plans.</li>
+</ul>
+</li>
+<li>You can bring clarity to a project that’s adrift by defining your destination, agreeing on roles, and asking for help when you need it.</li>
+<li>Don’t declare victory unless the project is truly complete. Code completeness is just one milestone.</li>
+<li>Whether you’re ready or not, sometimes it’s time for the project to end. Celebrate, retrospect, and clean up.</li>
+</ul>
+</li>
+</ul>
+<h1 id="iii-leveling-up">III. LEVELING UP<a aria-label="Link to this section" class="paige-header-link" href="#iii-leveling-up"></a></h1>
+<ul>
+<li>I believe title refers to leveling the team up
+<ul>
+<li>Note: to level up team, you also need to level yourself up because the staff engineer sets the standard</li>
+</ul>
+</li>
+</ul>
+<h3 id="chapter-7-you-are-a-role-model">Chapter 7: You are a Role Model<a aria-label="Link to this section" class="paige-header-link" href="#chapter-7-you-are-a-role-model"></a></h3>
+<h4 id="71-be-competent-technically">7.1 Be Competent (Technically)<a aria-label="Link to this section" class="paige-header-link" href="#71-be-competent-technically"></a></h4>
+<ul>
+<li>
+<p>Know Things</p>
+<ul>
+<li>Your big-picture thinking, project execution, credibility, and influence are underpinned by knowledge and experience</li>
+<li>Build Experience
+<ul>
+<li>Technical skill comes from study and practice</li>
+<li>Experience comes through time, exposure (projects), and study
+<ul>
+<li>Be aware of too early of promotion to staff, as it may rob you of hands on building experience</li>
+</ul>
+</li>
+<li>Being competent and knowledgeable doesn’t mean you have to know the most about every topic.  Can you learn the technology, domain etc..</li>
+</ul>
+</li>
+<li>Build domain knowledge
+<ul>
+<li>Leverage your experience/technical foundation to come up to speed in the domain</li>
+<li>Learn the technology in whatever way is most effective for you.</li>
+<li>Get a sense of the appropriate trade-offs; the resource constraints; the common arguments, biases, and in-jokes.</li>
+<li>Know which technologies are on the market and how they might be used. Read the core literature.</li>
+<li>Know who the “famous people” in the domain are and what they advocate for. Twitter is good for this</li>
+</ul>
+</li>
+<li>Stay up to date
+<ul>
+<li>It’s embarrassing for everyone when a technical leader insists on a “best practice” that has been debunked for a decade or a technology that everyone else has moved on from</li>
+<li>Even if you aren’t deep in the code any more, your spidey-sense should stay sharp for “code smells” or problems waiting to happen</li>
+<li>be wary of drifting so far from the technology that you’re only learning how <em>your company</em> operates</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Be Self Aware</p>
+<ul>
+<li>Admit what you know:
+<ul>
+<li>be ==confident== and ==honest== with yourself with what you know and what you don&rsquo;t</li>
+</ul>
+</li>
+<li>Admit what you don&rsquo;t know
+<ul>
+<li>be ok with asking, explain it like I&rsquo;m 5 year old</li>
+</ul>
+</li>
+<li>Understand your own context
+<ul>
+<li>You have a perspective, that your context is not the universal context, and that your opinions and knowledge are specific to <em>you</em>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Have High Standards</p>
+<ul>
+<li>Your standard will serve as a model for how other people work</li>
+<li>Seek out constructive criticism
+<ul>
+<li>ask for code reviews, design review, and peer evaluation</li>
+</ul>
+</li>
+<li>Own your mistake
+<ul>
+<li>If you react well and fix the problem you caused, you could even end up with <em>more</em> esteem from your colleague</li>
+</ul>
+</li>
+<li>Be reilable
+<ul>
+<li>Finish what you start</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="72-be-responsible">7.2 Be Responsible<a aria-label="Link to this section" class="paige-header-link" href="#72-be-responsible"></a></h4>
+<ul>
+<li>
+<p>Take Ownership</p>
+<ul>
+<li>Senior people own the whole problem, not just the parts that go as planned. You’re not running someone else’s project for them: it’s <em>yours</em> and you don’t passively let it sink or swim</li>
+<li>Avoid &ldquo;Cover Your Ass&rdquo;
+<ul>
+<li>Mature engineers stand up and accept the responsibility given to them. If they find they don’t have the requisite authority to be held accountable for their work, they seek out ways to rectify that. An example of CYAE is “It’s not my fault. They broke it, they used it wrong. I built it to spec, I can’t be held responsible for their mistakes or improper specification.”</li>
+</ul>
+</li>
+<li>Use you own judgement; don&rsquo;t need to constantly ask for permission</li>
+<li>Ask obvious questions; as senior, you can ask questions that are so obvious, no one else is willing to ask</li>
+<li>Do the glue work; tasks that are needed to make team successful
+<ul>
+<li>a lot of the work that’s not anybody’s job but that furthers your goals. Redirect your junior colleagues toward tasks that will develop their careers instead.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Take Charge</p>
+<ul>
+<li>When you se a gap, step in to fill the gap</li>
+<li>Step up in an emergency</li>
+<li>Drive meetings
+<ul>
+<li>with a clear agenda</li>
+</ul>
+</li>
+<li>When something disrespectful or offensive in a public channel, one should speak up</li>
+</ul>
+</li>
+<li>
+<p>Create Calm</p>
+<ul>
+<li>defuse, don&rsquo;t amplify
+<ul>
+<li>when you&rsquo;re dealing with a big problem, try to make it smaller</li>
+<li>be cautious where/how you share your anxieties/frustration.
+<ul>
+<li>acknowledge there are problems</li>
+<li>be clear about the intention of the sharing
+<ul>
+<li>want someone to take action</li>
+<li>bounce ideas</li>
+<li>sharing context</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Be consistent and predictable
+<ul>
+<li>since it&rsquo;s hard to be consistent when stresed, make sure to take time off, get enough rest.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="73-remember-the-goal">7.3 Remember the Goal<a aria-label="Link to this section" class="paige-header-link" href="#73-remember-the-goal"></a></h4>
+<ul>
+<li>There&rsquo;s the Business
+<ul>
+<li>adapt to the situation
+<ul>
+<li>phases: grow, acquisition, new markets</li>
+</ul>
+</li>
+<li>has a budget</li>
+<li>so spend mindfully</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>There&rsquo;s the User</p>
+<ul>
+<li>Know who uses your software and how they use it.</li>
+<li>Make sure the feature you are creating is actually needed</li>
+</ul>
+</li>
+<li>
+<p>There&rsquo;s the Team</p>
+<ul>
+<li>You are working as a team; don&rsquo;t be single point of failure</li>
+<li>be aware of the capability of your team</li>
+</ul>
+</li>
+</ul>
+<h4 id="74-look-ahead">7.4 Look Ahead<a aria-label="Link to this section" class="paige-header-link" href="#74-look-ahead"></a></h4>
+<ul>
+<li>
+<p>Anticipate what the Future You wish Present You had done</p>
+<ul>
+<li>Be clear what the your broad direction is, even if you don&rsquo;t know the details</li>
+<li>Take time to optimize your workflow
+<ul>
+<li>codebase
+<ul>
+<li>style guide</li>
+</ul>
+</li>
+<li>documentation</li>
+</ul>
+</li>
+<li>Keep your tools sharp
+<ul>
+<li>make your environment better measured by velocity and reliability</li>
+</ul>
+</li>
+<li>Create institutional memory</li>
+</ul>
+</li>
+<li>
+<p>Expect Failure</p>
+<ul>
+<li>Plan in advance for major incidents by adding some conventions around how you work together during an emergency: introduce the incident command system I mentioned earlier, for example, and practice the response before you need it</li>
+</ul>
+</li>
+<li>
+<p>Optimize for Maintenance, Not Creation</p>
+<ul>
+<li>Make it understandable
+<ol>
+<li>classes and hands on experiences</li>
+<li>make it as easy as possible for people to understand the system when they need to
+<ol>
+<li>documentation(s)
+<ol>
+<li>short intro</li>
+<li>a big deep one</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Make system observable
+<ol>
+<li>easy to inspect, analyze, and debug</li>
+</ol>
+</li>
+<li>Make system simple
+<ul>
+<li>Good programmers write code that humans can understand.”<a href="https://learning.oreilly.com/library/view/the-staff-engineers/9781098118723/ch07.html#ch01fn98">12</a> Senior engineers sometimes think they can demonstrate their prowess with the flashiest, most complicated solutions.</li>
+<li>Make things simple by spending more time on it; working solution is just the first iteration</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="75-recap">7.5 Recap<a aria-label="Link to this section" class="paige-header-link" href="#75-recap"></a></h4>
+<ul>
+<li>Your words and actions carry more weight now. Be deliberate.</li>
+<li>Invest the time to build knowledge and expertise. Competence comes from experience.</li>
+<li>Be self-aware about what you know and what you don’t.</li>
+<li>Strive to be consistent, reliable, and trustworthy.</li>
+<li>Get comfortable taking charge when nobody else is, including during a crisis or an ambiguous project.</li>
+<li>When someone needs to say something, say something.</li>
+<li>Create calm. Make problems smaller, not bigger.</li>
+<li>Be aware of your business, budgets, user needs, and the capabilities of your</li>
+</ul>
+<h3 id="chapter-8-good-influence-at-scale">Chapter 8: Good Influence At Scale<a aria-label="Link to this section" class="paige-header-link" href="#chapter-8-good-influence-at-scale"></a></h3>
+<h4 id="81-good-influence">8.1 Good Influence<a aria-label="Link to this section" class="paige-header-link" href="#81-good-influence"></a></h4>
+<h4 id="82-advice">8.2 Advice<a aria-label="Link to this section" class="paige-header-link" href="#82-advice"></a></h4>
+<h4 id="83-teaching">8.3 Teaching<a aria-label="Link to this section" class="paige-header-link" href="#83-teaching"></a></h4>
+<h4 id="84-guardrails">8.4 Guardrails<a aria-label="Link to this section" class="paige-header-link" href="#84-guardrails"></a></h4>
+<h4 id="85-opportunity">8.5 Opportunity<a aria-label="Link to this section" class="paige-header-link" href="#85-opportunity"></a></h4>
+<h4 id="86-recap">8.6 Recap<a aria-label="Link to this section" class="paige-header-link" href="#86-recap"></a></h4>
+<ul>
+<li>
+<p>You can help your colleagues by providing advice, teaching, guardrails, or opportunities. Understand what’s most helpful for the specific situation.</p>
+</li>
+<li>
+<p>Think about whether you want to help one-on-one, level up your team, or influence further.</p>
+</li>
+<li>
+<p>Offer your experience and advice, but make sure it’s welcome. Writing and public speaking can send your message further.</p>
+</li>
+<li>
+<p>Teach through pairing, shadowing, review, and coaching. Teaching classes or writing codelabs can scale your teaching time.</p>
+</li>
+<li>
+<p>Guardrails can let people work autonomously. Offer review, or be a project guardrail for your colleagues. Codify guardrails using processes, automation, and culture change.</p>
+</li>
+<li>
+<p>Opportunities can be much more valuable than advice. Think about who you’re sponsoring and delegating to. Share the spotlight in your team.</p>
+</li>
+<li>
+<p>Plan to give away your job.</p>
+</li>
+</ul>
+</div>
+
+
+    </div>
+</article>
+
+
+
+
+    
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+                        
+                    </main>
+
+                    
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+<footer class="mb-3" id="paige-footer">
+    
+
+    
+        <div class="mb-3" id="paige-prev-next">
+            
+                <p class="mb-0 text-center text-secondary" id="paige-next">
+                    <a class="link-secondary" href="https://example.com/books/software-profession/staff-engineers-path/">Staff Engineer&#39;s Path</a> &rsaquo;
+                </p>
+            
+
+            
+                <p class="mb-0 text-center text-secondary" id="paige-prev">
+                    &lsaquo; <a class="link-secondary" href="https://example.com/books/software-profession/software-engineering-at-google/">Software Engineer At Google</a>
+                </p>
+            
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+</footer>
+
+                </div>
+            </div>
+        </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+<script  crossorigin="anonymous"   defer  integrity="sha256-gfPiYYSP&#43;RNtNeRBt45mJombFJmNf0V0Ipu785Obi0M="   referrerpolicy="no-referrer"  src="/js/paige/bootstrap/bootstrap.bundle.min.81f3e261848ff9136d35e441b78e6626899b14998d7f4574229bbbf3939b8b43.js" ></script>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+<script  crossorigin="anonymous"   defer  integrity="sha256-kqnbKZyzZFmn0J2JtRxwdeNh0b3FknYDyAd&#43;mGKI73c="   referrerpolicy="no-referrer"  src="/js/paige/katex/katex.min.min.92a9db299cb36459a7d09d89b51c7075e361d1bdc5927603c8077e986288ef77.js" ></script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+<script  crossorigin="anonymous"   defer  integrity="sha256-pQMCGuz&#43;5jpyog4zEVyH/xvxJRsPM9M7d7t6&#43;TiyEA8="  onload="renderMathInElement(document.body);"   referrerpolicy="no-referrer"  src="/js/paige/katex/auto-render.min.min.a503021aecfee63a72a20e33115c87ff1bf1251b0f33d33b77bb7af938b2100f.js" ></script>
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+<noscript>JavaScript is required</noscript>
+
+
+        
+    </body>
+</html>
