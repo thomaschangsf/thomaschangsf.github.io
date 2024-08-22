@@ -56,9 +56,9 @@ jobs:
           HUGO_ENVIRONMENT: production
           TZ: America/Los_Angeles
         run: |
-          hugo \
+          hugo server \
           -s site-professional \
-          -d site-professional/public \
+          -d public \
           --gc \
           --minify \
           --baseURL "${{ steps.pages.outputs.base_url }}/"
