@@ -39,12 +39,14 @@ hide_page = true
     <div class="justify-content-left row">
       <p class="col col-auto col-lg-7 px-0">
         <section>
-            <h3>Welcome!</h3>
+            <h3>Welcome to my personal website!</h3>
             <p class="lead text-left">
-                I'm Tom Chang, an experienced machine learning engineer dedicated to creating innovative solutions that seamlessly connect data and decision-making. With a strong foundation in machine learning, artificial intelligence, and data science, I am committed to advancing the possibilities of technology. Throughout my career, I have refined my skills in various facets of machine learning, from developing predictive models to implementing deep learning algorithms. My professional journey has led me through diverse industries such as finance, healthcare, and technology, where I've embraced unique challenges and contributed to pioneering projects.
+            I'm an experienced machine learning engineer with a track record of delivering end-to-end solutions in the Search, NLP, and Trust domains. My expertise spans both traditional and deep learning models, cloud-native applications, and the deployment of scalable solutions on AWS and Google Cloud. I have a strong foundation in building and maintaining both exploratory and production-level data pipelines.
             </p>
             <p class="lead text-left">
-                On this platform, I share my thoughts on the latest trends and advancements in machine learning and AI. From exploring new algorithms to discussing ethical considerations in AI development, I aim to contribute to the ongoing conversation in this rapidly evolving field.
+            I excel at translating ambiguous and complex problems into manageable machine learning components, and I pride myself on clear communication, especially when working with teams and non-technical stakeholders.            </p>
+            <p class="lead text-left">
+            I am passionate about continuous learning through sharing, and I regularly share insights from the books I’ve recently read. You can also check out my GitHub account, where I explore new projects and tools.
             </p>
         </section>
     </div>
