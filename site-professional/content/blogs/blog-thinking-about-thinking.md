@@ -22,7 +22,8 @@ With comprehension, we start to understand information, going beyond facts to gr
 
 True understanding, to me, means being able to break down complex ideas into simpler components that anyone, especially non-ML practitioners, can grasp. When tackling complex problems, it’s essential to comprehend the big picture while also identifying the key concerns to optimize given the constraints.
 
-### Level 3: Application
+### Level 3: Applicatchang
+
 Application involves using what we know to solve problems. In machine learning, this ranges from solving basic coding problems to tackling complex projects. Applying knowledge might mean implementing a linear regression model, experimenting with different data-cleaning techniques, or practicing coding challenges that require a mix of data structures and algorithms. Each problem we tackle builds a bridge between our theoretical knowledge and real-world skills.  
 
 Simple applications tend to require one ML concept or domain.  Solving complex ML problems often, in my experience, requires one to draw on multiple ML domains: data, cloud native applications, modeling, infrastructure, and user understanding. An example of this is the LLM. LLM combines several key ML technologies: transformer architecture for natural language abilities, reinforcement learning for alignment, supervised/unsupervised learning for instruction tuning, and large scale distributed training and inferencing optimizations.  
