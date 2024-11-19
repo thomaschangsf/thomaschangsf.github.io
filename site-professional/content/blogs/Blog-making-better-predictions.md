@@ -2,6 +2,7 @@
 title = "Making Better Prediction"
 description = "Some Thoughts on How to Make Better Predictions"
 +++
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
 
 # Background
 Humans, much like machine learning models, are constantly making predictions. These range from simpler guesses about the weather to complex decisions, like managing financial investments by weighing risks and rewards. Improving our ability to predict can improve the quality of our life. This blog explores how we can enhance our predictions by applying machine learning practices to both our internal mindsets and external situations.
@@ -20,7 +21,26 @@ In contrast, a gradient-boosted tree model operates more like the "hedgehog" per
 
 
 ## Track Your Predictions
-To improve prediction accuracy, it’s important to keep track of your forecasts. Make specific predictions, including measurable details like dates, so you can assess their accuracy over time. Quantifying predictions can involve metrics like the Brier Score, which measures how well-calibrated your predictions are. For example, if you state something with 80% confidence, check whether it turns out to be true 80% of the time. Beware of relying only on averages, as they can sometimes mask important details in your predictions.
+Tracking our predictions is essential to improving our prediction. Furthemore, these predictions should be specific, and include measurable details like dates. Quantifying predictions can involve metrics like the Brier Score, which calculates the mean squared difference between the predicted probabilities and the actual outcomes. The multi-class variant of the Brier score is:
+\[
+\text{Brier Score} = \frac{1}{N} \sum_{i=1}^{N} \sum_{k=1}^{K} (f_{i,k} - o_{i,k})^2
+\]
+where:
+   1. **\( N \):**
+    - The total number of samples or predictions.
+
+   2. **\( K \):**
+       - The total number of classes.
+
+   3. **\( f_{i,k} \):**
+       - The predicted probability for class \( k \) of the \( i \)-th sample.
+
+   4. **\( o_{i,k} \):**
+       - The actual observed outcome for class \( k \) of the \( i \)-th sample, where:
+           - \( o_{i,k} = 1 \) for the correct class.
+           - \( o_{i,k} = 0 \) for all other classes.
+
+For example, if you state something with 80% confidence, check whether it turns out to be true 80% of the time. One should be aware of relying only on averages because averages can mask important details in your predictions.
 
 Closing the model performance gap in the real world with the offline training environment is crucial for any ML project. The model performs well in the offline training environment, achieving high accuracy and low error rates on the training dataset. However, when deployed in the real world, the model’s performance may drop significantly. Two example in the ecommerce field is the seasonality or user preference changes effect. Potential mitigations includes real time feature offline online integrations, more regular model training/deployment, bootstrap sampling strategies etc..    
 
@@ -45,15 +65,16 @@ Effective leadership often seems at odds with good forecasting. Leaders are expe
 Good forecasters see situations as complex and uncertain, often thinking in terms of probabilities. This awareness can make decisions harder, as they consider many factors that might affect outcomes. They approach decisions with humility and a broad perspective, sometimes called 'dragonfly eyes,' seeing from multiple angles. However, this can also lead to over-analysis or relying too much on group decisions
 
 ### Balancing Humility and Confidence
-The key to harmonizing leadership and forecasting skills lies in knowing when to be confident and when to be humble. Intellectual humility is important in fields like machine learning, where complexity and the number of variables involved require a growth mindset. Adopting a forecaster's perspective means being open to continuous learning and staying adaptable.
+One way to balance leadership and forecasting is to be aware when to be confident and when to be humble. Intellectual humility is important in fields like machine learning, where complexity and the number of variables involved require a growth mindset. Adopting a forecaster's perspective means being open to continuous learning and staying adaptable.
 
-At the same time, it’s important to have confidence. Confidence, in my opinion, should be grounded through preparation and past succeses. For instance, Steph Curry has often credited his confidence to his consistent work ethic and preparation. He believes that confidence comes from the hours he puts into practicing his skills and refining his game. Curry has spoken about his commitment to perfecting his shooting and maintaining a disciplined training routine, which he says gives him a sense of assurance on the court. TThis type of confidence gives me the foundation to compete with anyone. If I don’t succeed, I can learn from the experience.
+At the same time, it is important to be confident. Confidence, in my opinion, should be grounded through preparation and past successes. Steph Curry has often credited his confidence to his consistent work ethic and preparation. He believes that confidence comes from the hours he puts into practicing his skills and refining his game. Curry has spoken about his commitment to perfecting his shooting and maintaining a disciplined training routine, which he says gives him a sense of assurance on the court. This type of confidence gives one the foundation to compete with anyone. And if I don’t succeed, I can learn from the experience.
 
 
 ### Leading a Team with Auftragstaktik
-I have observed throughout my careers how a company delegate the decision-making process to have a strong correlation to their ability to execute.  These companies tend to follow a variant of the military inspired Auftragstaktik approach
+I have observed throughout my careers how a company delegate the decision-making process to have a strong correlation to their ability to execute.  These companies tend to follow a variant of the military inspired Auftragstaktik philosophy.
 
-In this approach, the high-level strategy and goals are set by leaders at the top. Leaders at this level outline the direction, discuss options, and set the standard. Execution decisions, however, are delegated to those closer to the action. This approach relies on the assumption that team members on the ground have relevant information and critical thinking skills, allowing for faster and more effective responses. The effectiveness of this method, however, depends on the talent, motivation, etc.. of the team members.  I think this is one reason why some companies relies on processes to mitigate the talent gap. 
+In this approach, the high-level strategy and goals are set by leaders at the top. Leaders at this level outline the direction, discuss options, and set the standard. Execution decisions, however, are delegated to those closer to the action. This approach requires the team members on the ground have relevant information and critical thinking skills, allowing for faster and more effective responses.  A well run agile team exhibits and enables some of these characteristics. In contrast, a waterfall process heavy team disguised as an agile is an anti-thesis of this philosophy. 
+I do not necessarily believe every team should or is able to be run this manner. The correct choice depends on various factors, such as team culture, talent distribution, and company priorities.
 
 Leadership at both the strategy and execution levels involves two main phases. In the strategy phase, leaders focus on forecasting, weighing possibilities and outcomes to set a strong foundation. The execution phase, in contrast, is simpler but demands determination and relentless action. Once a strategy is in place, team members execute it thoroughly until they achieve data or specific milestones. At this point, it’s essential to review progress, analyze data, and apply different levels of thinking to assess the situation.
 
