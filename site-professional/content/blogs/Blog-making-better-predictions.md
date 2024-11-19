@@ -2,7 +2,6 @@
 title = "Making Better Prediction"
 description = "Some Thoughts on How to Make Better Predictions"
 +++
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
 
 # Background
 Humans, much like machine learning models, are constantly making predictions. These range from simpler guesses about the weather to complex decisions, like managing financial investments by weighing risks and rewards. Improving our ability to predict can improve the quality of our life. This blog explores how we can enhance our predictions by applying machine learning practices to both our internal mindsets and external situations.
@@ -22,9 +21,7 @@ In contrast, a gradient-boosted tree model operates more like the "hedgehog" per
 
 ## Track Your Predictions
 Tracking our predictions is essential to improving our prediction. Furthemore, these predictions should be specific, and include measurable details like dates. Quantifying predictions can involve metrics like the Brier Score, which calculates the mean squared difference between the predicted probabilities and the actual outcomes. The multi-class variant of the Brier score is:
-\[
-\text{Brier Score} = \frac{1}{N} \sum_{i=1}^{N} \sum_{k=1}^{K} (f_{i,k} - o_{i,k})^2
-\]
+$$ Brier Score = \frac{1}{N} \sum_{i=1}^{N} \sum_{k=1}^{K} (f_{i,k} - o_{i,k})^2 $$
 where:
    1. **\( N \):**
     - The total number of samples or predictions.
