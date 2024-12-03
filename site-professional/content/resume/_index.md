@@ -31,18 +31,19 @@ display: block;
 Machine learning professional who delivers end-to-end solutions, from data collection, data preparation, training, and deployments in the Search, NLP, and Generative AI domains. Lifetime learner who enjoys working collaboratively within and across teams.
 
 ## TECHNICAL SKILLS
-- **ML Domains**: NLP,Search, Trust
+- **ML Domains**: Enterprise, Trust, NLP, Search
 - **Cloud Native Micro Services**: Flask, FastAPI, Play
 - **DevOps**: Docker, Kubernetes, Helm, AWS, Google Cloud
 - **Language**: Python, Scala, GO
 
 ## PROFESSIONAL EXPERIENCE
+### Salesforce - AI Platform Trust 
+- Contributed to the Trust Layer on Salesforce AI platforms of Salesforce CoPilot. Trust Layer ensures LLM compliance with Salesforce AI ethics standards. Implemented trust vector detection, including PII identification, prompt defense, and toxicity analysis. Evaluated both internal and external LLMs and models against diverse trust metrics.
+- Evangelize Offline Model Analysis in Production (OMAP) for LLM evaluations with real production data, which enables data scientists and safety professionals to investigate, understand, and improve AI agents. Framework provides seamless migration to scalable pipelines which drives dashboards and alerts. 
 
 ### Salesforce - Marketing Cloud Einstein
 **Lead Machine Learning Engineer**  
-_Feb 2022 - Current_
-
-- Contributed to the Trust Layer on Salesforce AI platforms of Salesforce CoPilot. Trust Layer ensures LLM compliance with Salesforce AI ethics standards. Implemented trust vector detection, including PII identification, prompt defense, and toxicity analysis. Evaluated both internal and external LLMs and models against diverse trust metrics.
+_Feb 2022 - Dec 2023_
 - Led the development of retrieval augmentation for Salesforce Flow GPT, which enables the automatic generation of marketing workflows and code. Enhanced prompt grounding by improving semantic relevance between prompts and meta objects. Managed the project from proof of concept to general availability. Collaborated with research, platform, and product teams to define the architecture and integrate the implementation.
 - Responsible for python model service to marketing cloud which powers next generation ML powered use cases such as subject line generation and model bot. Improved and guided python best practices.
 
