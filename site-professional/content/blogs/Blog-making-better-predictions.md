@@ -20,7 +20,7 @@ In contrast, a gradient-boosted tree model operates more like the "hedgehog" per
 
 
 ## Track Your Predictions
-Tracking our predictions is essential to improving our prediction. Furthemore, these predictions should be specific, and include measurable details like dates. Quantifying predictions can involve metrics like the Brier Score, which calculates the mean squared difference between the predicted probabilities and the actual outcomes. The multi-class variant of the Brier score is:
+Tracking our predictions is essential to improving our prediction. Furthermore, these predictions should be specific, and include measurable details like dates. Quantifying predictions can involve metrics like the Brier Score, which calculates the mean squared difference between the predicted probabilities and the actual outcomes. The multi-class variant of the Brier score is:
 $$ Brier Score = \frac{1}{N} \sum_{i=1}^{N} \sum_{k=1}^{K} (f_{i,k} - o_{i,k})^2 $$
 where:
    1. **\( N \):**

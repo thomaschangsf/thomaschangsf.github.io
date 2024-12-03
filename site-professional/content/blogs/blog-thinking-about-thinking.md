@@ -22,7 +22,7 @@ With comprehension, we start to understand information, going beyond facts to gr
 
 True understanding, to me, means being able to break down complex ideas into simpler components that anyone, especially non-ML practitioners, can grasp. When tackling complex problems, it’s essential to comprehend the big picture while also identifying the key concerns to optimize given the constraints.
 
-### Level 3: Applicatchang
+### Level 3: Application
 
 Application involves using what we know to solve problems. In machine learning, this ranges from solving basic coding problems to tackling complex projects. Applying knowledge might mean implementing a linear regression model, experimenting with different data-cleaning techniques, or practicing coding challenges that require a mix of data structures and algorithms. Each problem we tackle builds a bridge between our theoretical knowledge and real-world skills.  
 
