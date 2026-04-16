@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="container content-page">
+  <header class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+  </header>
+  <ul class="list-grid">
+    {{ range .Pages }}
+    <li class="list-item">
+      <a href="{{ .Permalink }}" class="list-link">
+        <h2 class="list-item-title">{{ .Title }}</h2>
+        {{ if .Description }}
+          <p class="list-item-summary">{{ .Description }}</p>
+        {{ else if .Params.description }}
+          <p class="list-item-summary">{{ .Params.description }}</p>
+        {{ end }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

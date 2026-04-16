@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+<title>Essential Math For Data Science | Thomas Chang | Staff ML Engineer</title>
+<meta name="description" content="A solid mathematics grasp helps one appreciate the beauty of ML." />
+<meta name="author" content="" />
+<link rel="canonical" href="http://localhost:1313/books/machine-learning/essential-math-for-data-science/" />
+
+
+<meta property="og:title" content="Essential Math For Data Science | Thomas Chang | Staff ML Engineer" />
+<meta property="og:description" content="A solid mathematics grasp helps one appreciate the beauty of ML." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/books/machine-learning/essential-math-for-data-science/" />
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="" rel="stylesheet" />
+
+
+<link rel="stylesheet" href="../../../css/shared.css" />
+<link rel="stylesheet" href="../../../css/persona.css" />
+
+
+<link rel="icon" type="image/svg+xml" href="../../../favicon.svg" />
+
+</head>
+<body class="persona-">
+  <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <div></div> 
+
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <ul class="nav-menu" id="nav-menu" role="list">
+      
+      <li class="nav-item">
+        <a href="../../../" class="nav-link">
+          Home
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="../../../blogs/" class="nav-link">
+          Blogs
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="../../../books/" class="nav-link">
+          Books
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="https://github.com/thomaschangsf" class="nav-link">
+          GitHub
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="../../../resume/" class="nav-link">
+          Resume
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main id="main-content">
+    
+<article class="container content-page">
+  <header class="page-header">
+    <h1 class="page-title">Essential Math For Data Science</h1>
+    
+  </header>
+  <div class="page-body">
+    <h1 id="1-basic-math-and-calculus-review">1 Basic Math And Calculus Review</h1>
+<h3 id="exponential">Exponential</h3>
+<h3 id="logarithms">Logarithms</h3>
+<p>$$
+log_2 8 = x</p>
+<p>$$</p>
+<ul>
+<li>
+<p>base = 2</p>
+</li>
+<li>
+<p>x = 3</p>
+<pre><code>- Benefits
+    - Logorithms simplifies operations, which helps computation training
+  	  - Multiplication: log(a x b) = log(a) + log(b)
+  	  - Division: log(a/b) = log(a) - log(b)
+  	  - Expoentiation log(a ^ n) = n * log(a)
+  	  - Inverse: log(x^-1) == log(1/x) = -log(x)
+    - Log is also good for feature engineering, transforming heavy tail distribution to a gaussian distribution, which is ideal for linear regression models
+
+- Code
+</code></pre>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>		<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> log
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 2 raised to what power gives me 8?</span>
+</span></span><span style="display:flex;"><span>		x <span style="color:#f92672">=</span> log(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># x = 3.0</span>
+</span></span></code></pre></div><h3 id="eulers-number-e-and-natural-logarithm">Euler&rsquo;s Number $e$ and Natural Logarithm</h3>
+<ul>
+<li>
+<p>$e$ = 2.71828 = euler number;</p>
+<ul>
+<li>e is a constant like $\pi$
+<ul>
+<li>$e=(1 + 1/n)^n$
+<ul>
+<li>as n &ndash;&gt; $\infty$, e approaches 2.71828</li>
+</ul>
+</li>
+<li>Application
+<ul>
+<li>To describe normal distribtuion</li>
+<li>model logistic regression</li>
+<li>Given equation to calculate compound interest, we can simplify it by using $e$
+$$A = P *(1 + r/n)^{nt} $$
+$$A=P * e^{rt}$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Natural logarithm</p>
+<ul>
+<li>when use use e as the ==base== of our logarithm; $e$ is the default base for logarithm
+$$log_e(10) = ln(10)$$</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>		<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> log, e
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># e raised to what power gives 10?</span>
+</span></span><span style="display:flex;"><span>		x <span style="color:#f92672">=</span> log(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>		x_detailed <span style="color:#f92672">=</span> log(<span style="color:#ae81ff">10</span>, e)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#x = 2.3025</span>
+</span></span></code></pre></div><h3 id="limit">Limit</h3>
+<ul>
+<li>Limit express a value $\infty$ that is forever being approached, but never reached
+$$lim_{x \to \infty}1/x = 0$$</li>
+</ul>
+<h3 id="derivatives">Derivatives</h3>
+<ul>
+<li>A derivative tells the slope of a function, and it is useful to measure the rate of change at any point in a function.
+$$ f(x) = x ^2 $$
+$$ \frac{\partial }{\partial x}f(x) = \frac{\partial}{\partial x}x^2 = 2x $$</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">derivative_x</span>(f, x, step_size):
+</span></span><span style="display:flex;"><span>	    m <span style="color:#f92672">=</span> (f(x <span style="color:#f92672">+</span> step_size) <span style="color:#f92672">-</span> f(x)) <span style="color:#f92672">/</span> ((x <span style="color:#f92672">+</span> step_size) <span style="color:#f92672">-</span> x)
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">return</span> m
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_function</span>(x):
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">return</span> x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	derivative_x(my_function, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">.00001</span>) <span style="color:#75715e">#4.0000100</span>
+</span></span></code></pre></div><ul>
+<li>partial derivatives
+<ul>
+<li>Partial derivative enables use to find a slope with respect to multiple variables in several directions
+<ul>
+<li>Suppose u depends on 3 variables x, y, z.  To find the slope of u,
+$$\frac{\partial u}{\partial t}
+= h^2 \left( \frac{\partial^2 u}{\partial x^2}</li>
+</ul>
+<ul>
+<li>\frac{\partial^2 u}{\partial y^2}</li>
+<li>\frac{\partial^2 u}{\partial z^2} \right)$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="chain-rule">Chain Rule</h3>
+<ul>
+<li>
+<p>Suppose we have 2 equations that are related like so
+$$ y = x^2 + 1$$
+$$z = y^3 - 2$$
+-To find $\frac{\partial}{\partial y}z$
+$$ \frac{\partial z}{\partial x} = \frac{\partial z} {\partial y} \frac{\partial y}{\partial x} $$</p>
+</li>
+<li>
+<p>Why do we care?</p>
+<ul>
+<li>In neural network layers, chain rule enables se to &ldquo;untangle&rdquo; the derivative from each layer</li>
+</ul>
+</li>
+</ul>
+<h3 id="integrals">Integrals</h3>
+<ul>
+<li>integrations find the area under a curve</li>
+</ul>
+<h1 id="2-probability">2 Probability</h1>
+<h3 id="21-understanding-probability">2.1 Understanding Probability</h3>
+<ul>
+<li>Statistics vs Probability
+<ul>
+<li>Statistics is the application of  probability to data
+<ul>
+<li>Ex: data distribtuion will impact what probability tool/approach we take</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="22-probability-math">2.2 Probability Math</h3>
+<ul>
+<li>
+<p>Joint probability</p>
+<ul>
+<li>what is the probability event_A ==and== event_B happen ==together== ?</li>
+<li>P(A and B) = P(A) x P(B)</li>
+</ul>
+</li>
+<li>
+<p>Union probability</p>
+<ul>
+<li>what is the probability event_A ==or== event_B happen?</li>
+<li>P(A or B) = P(A) + P(B)</li>
+</ul>
+</li>
+<li>
+<p>Conditional Probability and Baye&rsquo;s Theorem</p>
+<ul>
+<li>P (A | B) = P(B | A) * P(A)/ P(B)</li>
+<li>Bayes theorem  can be used to chain several conditional probabilities together to keep updating our beliefs based on new information</li>
+<li>Ex:
+<ul>
+<li>Given P(Cofee| Cancer) = 0.85, what is P(cancer | coffee?)</li>
+<li>P(cancer|coffee) = P(coffee | cancer)* P(coffee) / P(cancer)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	p_coffee_drinker <span style="color:#f92672">=</span> <span style="color:#ae81ff">.65</span>
+</span></span><span style="display:flex;"><span>	p_cancer <span style="color:#f92672">=</span> <span style="color:#ae81ff">.005</span>
+</span></span><span style="display:flex;"><span>	p_coffee_drinker_given_cancer <span style="color:#f92672">=</span> <span style="color:#ae81ff">.85</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	p_cancer_given_coffee_drinker <span style="color:#f92672">=</span> p_coffee_drinker_given_cancer <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>	    p_cancer <span style="color:#f92672">/</span> p_coffee_drinker
+</span></span></code></pre></div><ul>
+<li>Joint and Union Conditional Probability
+<ul>
+<li>P(A and B) = P(A) x P(A|B)</li>
+<li>P(A or B) = P(A) + P(B) - P(A|B) * P(B)</li>
+</ul>
+</li>
+</ul>
+<h3 id="23-binomial-probability-distribution">2.3 Binomial Probability Distribution</h3>
+<ul>
+<li>Binomial distribution measures how likely ==k== successes can happen out of ==n== trials given we expect a ==p== probability</li>
+<li>Graph:
+<ul>
+<li>x-axis = num successes = k</li>
+<li>y-axis = expected p probabilty</li>
+</ul>
+</li>
+<li>Example
+<ul>
+<li>We run 10 tests, which either pass or fail (ie binomial) and has a success rate of 90%.  What is the probabibility of having 8 successes?
+<ul>
+<li>n=10; p=0.9; k=8</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> binom
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	n <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>	p <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>	    probability <span style="color:#f92672">=</span> binom<span style="color:#f92672">.</span>pmf(k, n, p)
+</span></span><span style="display:flex;"><span>	    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(k, probability))
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># OUTPUT:	</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 0 - 9.99999999999996e-11</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 1 - 8.999999999999996e-09</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 2 - 3.644999999999996e-07</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 3 - 8.748000000000003e-06</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 4 - 0.0001377809999999999</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 5 - 0.0014880347999999988</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 6 - 0.011160260999999996</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 7 - 0.05739562800000001</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 8 - 0.19371024449999993</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 9 - 0.38742048900000037</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 10 - 0.34867844010000004</span>
+</span></span></code></pre></div><h3 id="24-beta-probability-distribution">2.4 Beta Probability Distribution</h3>
+<ul>
+<li>Theta distribtion allows us to calculate the probability of a probability (yikes!)
+<ul>
+<li>In previous example, what is the probability that p=90%?  Beta distribution can help anser that question.</li>
+</ul>
+</li>
+<li>Like all probability distribution, the area under the curve adds up to 1.</li>
+<li>graph
+<ul>
+<li>Given 8 successes and 2 failures
+<ul>
+<li>x-axis = p</li>
+<li>y-axis = likelihood of p</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-descriptive-and-inferential-statistics">3 Descriptive and Inferential Statistics</h1>
+<h3 id="31-what-is-data">3.1 What is Data</h3>
+<ul>
+<li>==Data does not capture context or explanations==
+<ul>
+<li>data provides clues, and not truths</li>
+<li>data may lead us to truth or mislead into erronous conclusions
+<ul>
+<li>==I need to be curious how the data was created, who create it, and what the data is not capturing==
+<ul>
+<li>only 13% of ML projects succeeds</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="32-descriptive-vs-inferential-statistics">3.2 Descriptive vs Inferential Statistics</h3>
+<ul>
+<li>Descriptive statistics summarizes the data
+<ul>
+<li>Ex: median, mean, , variance, standard deviation</li>
+</ul>
+</li>
+<li>Inferential statistics attemps to uncover attributes of the ==larger== population based on ==a few samples==.
+<ul>
+<li>Ex: p-values, confidence interval, central limit theorem</li>
+</ul>
+</li>
+</ul>
+<h3 id="33-populations-samples-and-bias">3.3 Populations, Samples, and Bias</h3>
+<ul>
+<li>A population is a particular group of interest we want to study</li>
+<li>A sample is a subset of the population that is ideally random and unbiased</li>
+<li>biases
+<ul>
+<li>different types
+<ul>
+<li>confirmation bias: capturing data that supports your belief</li>
+<li>survival bias: caputre only the living subjects</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="34-descriptive-statistics">3.4 Descriptive Statistics</h3>
+<ul>
+<li>
+<p>mean vs weighted mean</p>
+<ul>
+<li>mean
+<ul>
+<li>
+<p>over sample n:  $$\overline{x}=\sum_{i=0}^{n}\frac{x_i}{n}$$</p>
+</li>
+<li>
+<p>over entire population N:
+$$\mu=\sum_{i=0}^{N}\frac{x_i}{N}$$
+$$\mu = \frac{x_1 + x_2 + .. + x_N}{N} $$</p>
+</li>
+<li>
+<p>weighted mean
+$$ weightedmean =\frac{x_1<em>w_1 + x_2</em>w_2 + .. + x_n*w_n}{w_1 + w_2 + .. + w_n} 		$$</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Variance  vs standard deviation</p>
+<ul>
+<li>variance : $$\sigma^2=\frac{\sum_{i=0}^{N}(x_i - \mu)^2}{N}$$</li>
+<li>standard deviation = $$s^2=\frac{\sum_{i=0}^{n}(x_i - \overline{x})^2}{n-1} $$</li>
+</ul>
+</li>
+<li>
+<p>Normal distribution</p>
+<ul>
+<li>Why normal distribution is useful
+<ul>
+<li>It’s symmetrical; both sides are identically mirrored at the mean, which is the center.</li>
+<li>Most mass is at the center around the mean.</li>
+<li>It has a spread (being narrow or wide) that is specified by standard deviation.</li>
+<li>The “tails” are the least likely outcomes and approach zero infinitely but never touch zero</li>
+<li>It resembles a lot of phenomena in nature and daily life, and ==even generalizes nonnormal problems because of the central limit theorem==, which we will talk about shortly.</li>
+</ul>
+</li>
+<li>Probabibilty Density Function (PDF) vs Cumulative Density Function (CDF)
+<ul>
+<li>PDF for normal distribution $$f(x)=\frac{1}{\sigma}<em>(2</em>\pi)^{0.5}<em>e^{-\frac{1}{2}</em>(\frac{x-\mu^2}{\sigma})} $$</li>
+<li>PDF returns ==liklihood== and NOT probabibility
+<ul>
+<li>Probability is the area under the PDF</li>
+<li>CDF is the area of the PDF as the x axis value increases; so CDF can be used to return the probability for x &lt; some value.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>		<span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> norm
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		mean <span style="color:#f92672">=</span> <span style="color:#ae81ff">64.43</span> <span style="color:#75715e"># mean weight of golden retreivers</span>
+</span></span><span style="display:flex;"><span>		std_dev <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.99</span>
+</span></span><span style="display:flex;"><span>		x <span style="color:#f92672">=</span> norm<span style="color:#f92672">.</span>cdf(<span style="color:#ae81ff">64.43</span>, mean, std_dev)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		print(x) <span style="color:#75715e"># prints 0.5; means 50% of the area, ie </span>
+</span></span></code></pre></div><pre><code>		- Inverse CDF (ppf)
+			- There will be situations where we need to look up an area on the CDF and then return the corresponding x-value. This is a backward usage of the CDF
+				- CDF: x-axis --&gt; area/probability
+				- Inverse CDF: area/probabibility --&gt; x-axis
+				- We use the ppf
+				- Example:
+					- I want to find the weight that 95% of golden retrievers fall under
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>				<span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> norm
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>				x <span style="color:#f92672">=</span> norm<span style="color:#f92672">.</span>ppf(<span style="color:#ae81ff">.95</span>, loc<span style="color:#f92672">=</span><span style="color:#ae81ff">64.43</span>, scale<span style="color:#f92672">=</span><span style="color:#ae81ff">2.99</span>)
+</span></span><span style="display:flex;"><span>				print(x) <span style="color:#75715e"># 69.3481123445849 lb</span>
+</span></span></code></pre></div><pre><code>	- z score
+		- use to rescale the normal distribution so the mean is 0 and the standard devation is 1. This makes it easy to compare the spread of one normal distribution to another normal distribution, even if they have different means and variances.
+</code></pre>
+<h3 id="35-inferential-statistics">3.5 Inferential Statistics</h3>
+<ul>
+<li>
+<p>Central Limit Theorem</p>
+<ul>
+<li>As the population N size increases, even if that population does not follow a normal distribution, the normal distribution still makes an appearance. WOW.</li>
+</ul>
+</li>
+<li>
+<p>Confidence Interval</p>
+<ul>
+<li>A confidence interval is a range calculation showing how confidently we believe a sample mean (or other parameter) falls in a range for the population mean.
+<ul>
+<li>Example:
+<code>Based on a sample of 31 golden retrievers with a sample mean of 64.408 and a sample standard deviation of 2.05, I am 95% confident that the population mean lies between 63.686 and 65.1296 </code></li>
+</ul>
+</li>
+<li>IMOW:
+<ul>
+<li>you find the x value which encomposes 95% of the PDF area</li>
+</ul>
+</li>
+<li>Code
+<ol>
+<li>First find the critical z value $z_c$ which captures 95% of the PDF curve area</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>			<span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> norm
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">critical_z_value</span>(p):
+</span></span><span style="display:flex;"><span>			    norm_dist <span style="color:#f92672">=</span> norm(loc<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>, scale<span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>)
+</span></span><span style="display:flex;"><span>			    left_tail_area <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> p) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.0</span>
+</span></span><span style="display:flex;"><span>			    upper_area <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> ((<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> p) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.0</span>)
+</span></span><span style="display:flex;"><span>			    <span style="color:#66d9ef">return</span> norm_dist<span style="color:#f92672">.</span>ppf(left_tail_area), norm_dist<span style="color:#f92672">.</span>ppf(upper_area)
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			print(critical_z_value(p<span style="color:#f92672">=</span><span style="color:#ae81ff">.95</span>))
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e"># (-1.959963984540054, 1.959963984540054)</span>
+</span></span></code></pre></div><pre><code>	     2. Use Central limit theorem to proce margein of error, which is the range around the sample mean that contains the population mean at that level of confidence. 
+</code></pre>
+<p>$$ E = \frac{+}{-} z_c * \frac{s}{n^{0.5}} $$</p>
+<p>$$ 95% confdence = \mu \frac{+}{} E $$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>			<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">confidence_interval</span>(p, sample_mean, sample_std, n):
+</span></span><span style="display:flex;"><span>			    <span style="color:#75715e"># Sample size must be greater than 30</span>
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			    lower, upper <span style="color:#f92672">=</span> critical_z_value(p)
+</span></span><span style="display:flex;"><span>			    lower_ci <span style="color:#f92672">=</span> lower <span style="color:#f92672">*</span> (sample_std <span style="color:#f92672">/</span> sqrt(n))
+</span></span><span style="display:flex;"><span>			    upper_ci <span style="color:#f92672">=</span> upper <span style="color:#f92672">*</span> (sample_std <span style="color:#f92672">/</span> sqrt(n))
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			    <span style="color:#66d9ef">return</span> sample_mean <span style="color:#f92672">+</span> lower_ci, sample_mean <span style="color:#f92672">+</span> upper_ci
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			print(confidence_interval(p<span style="color:#f92672">=</span><span style="color:#ae81ff">.95</span>, sample_mean<span style="color:#f92672">=</span><span style="color:#ae81ff">64.408</span>, sample_std<span style="color:#f92672">=</span><span style="color:#ae81ff">2.05</span>, n<span style="color:#f92672">=</span><span style="color:#ae81ff">31</span>))
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e"># (63.68635915701992, 65.12964084298008)</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>Understanding P Values</p>
+<ul>
+<li>p value is the probability of something occurring by chance rather than because of a hypothesized explanation</li>
+<li>In the context of an experiment,
+<ul>
+<li>Given
+<ul>
+<li>our control variable, ie new model</li>
+<li>the result of something happening, ie increase in click rate</li>
+</ul>
+</li>
+<li>A p value is low, ie &lt; 5%,
+<ul>
+<li>means we ==discard== the $H_0$ null hypothesis
+<ul>
+<li>$H_0$ null hypotheseis states our variable has no impact; the result is random choice</li>
+</ul>
+</li>
+<li>means we accept the $H_1$ alternative hypothesis, which states the control variable is the reason behind the result.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Hypothesis Testing</p>
+<ul>
+<li>Example: does our pill (the variable) reduce the lenght of a fever?
+<ul>
+<li>Data
+<ul>
+<li>fever recovery is gaussian
+<ul>
+<li>mean = 18 days</li>
+<li>std = 1.5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Experiment:
+<ul>
+<li>we give drug to 40 people and it took 16 days to recover. Did drug have impact?</li>
+</ul>
+</li>
+<li>One tail test
+<ul>
+<li>to be statistically significant, p &lt; 0.05.  What is x, the number of day?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>				<span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> norm
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e"># Cold has 18 day mean recovery, 1.5 std dev</span>
+</span></span><span style="display:flex;"><span>				mean <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>
+</span></span><span style="display:flex;"><span>				std_dev <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.5</span>
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e"># What x-value has 5% of area behind it?</span>
+</span></span><span style="display:flex;"><span>				x <span style="color:#f92672">=</span> norm<span style="color:#f92672">.</span>ppf(<span style="color:#ae81ff">.05</span>, mean, std_dev)
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>				print(x) <span style="color:#75715e"># 15.53271955957279</span>
+</span></span></code></pre></div><pre><code>					- Ans= 15.5, which is less than our experiment mean recovery of 16 days, which means our pill is not statistically significant
+</code></pre>
+<h3 id="36-t-distribution-dealing-with-small-samples">3.6 T-Distribution: Dealing with Small Samples</h3>
+<h3 id="37-big-data-considerations-and-the-texas-sharpshooter-fallacy">3.7 Big Data Considerations and the Texas Sharpshooter Fallacy</h3>
+<h1 id="4-linear-algebra">4 Linear Algebra</h1>
+<h3 id="41-what-is-a-vector">4.1 What is a Vector?</h3>
+<ul>
+<li>A vector is an arrow in space with a specific direction and length, often representing a piece of data</li>
+<li>Applications of vectors
+<ul>
+<li>Solvers like the one in Excel or Python PuLP use linear programming, which uses vectors to ==maximize a solution== while meeting those constraints</li>
+<li>Computer graphics <a href="https://docs.manim.community/en/stable/examples.html">manim library</a></li>
+</ul>
+</li>
+<li>Representation
+<ul>
+<li>v = [x, y, z]
+<ul>
+<li>implicit to the origin</li>
+</ul>
+</li>
+<li>code</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>		<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>		v_nump <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		v_python_list <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>]
+</span></span></code></pre></div><ul>
+<li>Adding vectors
+<ul>
+<li>IMOW: the origin of the second vector is the end of the 1st vector</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   <span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> array
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   v <span style="color:#f92672">=</span> array([<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>   w <span style="color:#f92672">=</span> array([<span style="color:#ae81ff">2</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e"># sum the vectors</span>
+</span></span><span style="display:flex;"><span>   v_plus_w <span style="color:#f92672">=</span> v <span style="color:#f92672">+</span> w
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e"># display summed vector</span>
+</span></span><span style="display:flex;"><span>   print(v_plus_w) <span style="color:#75715e"># [5, 1]</span>
+</span></span></code></pre></div></li>
+</ul>
+<pre tabindex="0"><code>
+
+
+- Scaling vectors
+	- IMOW: scales the vector lengh 
+
+
+
+- Span and Linear Dependence
+	- ==Two vectors in opposite directions (ie one of their cordinate has opposite signs) can be used to create an inifinite spans through multiplication and adding==
+	- Terminologies
+		- span : the whole spae of possible vectors
+		- linear indepdenent: two vectors in different directions (ie one of their coordinate has opposite sign)
+		- linear depedent: two vectors in the same direction (or plane for multi-dim vector) 
+	- So what?
+		- Linear ==independent== vectors can create an infinite span
+		- When solving system of equations, linear independent vectors gives us more &#34;flexibility&#34;, which is important to solve the system of equations.
+			- Conversely, linear dependent vectors are 
+		- Later on, we will learn determinant, which is a tool to check for linear dependence 
+
+### 4.2 Linear Transformations
+- Basis Vectors $\hat{i}$ and $\hat{j}$
+	- properties
+		- lenght of 1
+		- perpendicular to earch other
+	- We can use $\hat{i}$ and $\hat{j}$  to create any vector we want by scaling and adding them.
+	- Ex
+``` python
+		     i j
+	basis = [1 0]
+			[0 1]
+</code></pre><h3 id="43-matrix-vector-multiplication">4.3 Matrix Vector Multiplication</h3>
+<pre><code>- This transformation of a vector by applying basis vectors is known as _matrix vector multiplication_
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>			    i j
+</span></span><span style="display:flex;"><span>		[x<span style="color:#e6db74">&#39;] = [a b] [x]</span>
+</span></span><span style="display:flex;"><span>		[y<span style="color:#e6db74">&#39;] = [c d] [y]</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		[x<span style="color:#e6db74">&#39;] = [ax + by]</span>
+</span></span><span style="display:flex;"><span>		[y<span style="color:#e6db74">&#39;] = [cx + dy]</span>
+</span></span><span style="display:flex;"><span>		 
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> array
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Declare i-hat and j-hat</span>
+</span></span><span style="display:flex;"><span>		i_hat <span style="color:#f92672">=</span> array([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>		j_hat <span style="color:#f92672">=</span> array([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># compose basis matrix using i-hat and j-hat</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># also need to transpose rows into columns</span>
+</span></span><span style="display:flex;"><span>		basis <span style="color:#f92672">=</span> array([i_hat, j_hat])<span style="color:#f92672">.</span>transpose()
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># declare vector v</span>
+</span></span><span style="display:flex;"><span>		v <span style="color:#f92672">=</span> array([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># create new vector</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># by transforming v with dot product</span>
+</span></span><span style="display:flex;"><span>		new_v <span style="color:#f92672">=</span> basis<span style="color:#f92672">.</span>dot(v)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		print(new_v) <span style="color:#75715e"># [2, 3]</span>
+</span></span></code></pre></div><h3 id="44-determinants">4.4 Determinants</h3>
+<ul>
+<li>During linar transformation, we can increase,decrease,rotate the original spacea area by X times.  The X times is the ==determinant==</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#f92672">from</span> numpy.linalg <span style="color:#f92672">import</span> det
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> array
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	i_hat <span style="color:#f92672">=</span> array([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>	j_hat <span style="color:#f92672">=</span> array([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	basis <span style="color:#f92672">=</span> array([i_hat, j_hat])<span style="color:#f92672">.</span>transpose()
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	determinant <span style="color:#f92672">=</span> det(basis)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	print(determinant) <span style="color:#75715e"># prints 6.0; we increase area by 6.  Other transformations can rotate</span>
+</span></span></code></pre></div><h3 id="45-special-type-of-matrices">4.5 Special Type of Matrices</h3>
+<ul>
+<li>Square matrix:
+<ul>
+<li>numRows = numCols</li>
+<li>application: eigendecomposition</li>
+</ul>
+</li>
+<li>Identity matrix
+<ul>
+<li>diagonal are 1&rsquo;s; everything else is 0</li>
+<li>application:
+<ul>
+<li>when you have an identity matrix, you essentially have undone a transformation and found your starting basis vectors  $\hat{i}$ and $\hat{j}$. This will play a big role in solving systems of equations in the next section.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Inverse matrix
+<ul>
+<li>application: inverse matrix undoes the transformation of another matrix</li>
+<li>$A^{-1}$ x $A^{1}$ = identity matrix</li>
+</ul>
+</li>
+<li>Diagonal matrix
+<ul>
+<li>only diagonal has non-zero values</li>
+<li>application: represents a simple scalar along the vector space</li>
+</ul>
+</li>
+<li>Triangular matrix
+<ul>
+<li>only diagonal and the upper right diagonal have non-zero values</li>
+<li>application: easier to solve in system of equations; good for decomposition tasks like <a href="https://en.wikipedia.org/wiki/LU_decomposition">Lower Upper decompositison</a></li>
+</ul>
+</li>
+<li>Sparse matrix
+<ul>
+<li>matrix is mostly 0s</li>
+<li>There is no interesting transformation, but this represents an opportunity to optimize the memory via more efficient representation.</li>
+</ul>
+</li>
+</ul>
+<h3 id="46-system-of-equations-and-inverse-matrices">4.6 System of Equations and Inverse Matrices</h3>
+<ul>
+<li>
+<h2 id="linear-algebra-is-used-to-solve-a-system-equation-via-inverse-matrix">Linear algebra is used to solve a system equation via inverse matrix</h2>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	Given                                            
+</span></span><span style="display:flex;"><span>		<span style="color:#ae81ff">4</span>x <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>y <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>z <span style="color:#f92672">=</span> <span style="color:#ae81ff">44</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#ae81ff">5</span>x <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>y <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>z <span style="color:#f92672">=</span> <span style="color:#ae81ff">56</span> 
+</span></span><span style="display:flex;"><span>		<span style="color:#ae81ff">9</span>x <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>y <span style="color:#f92672">+</span> <span style="color:#ae81ff">6</span>z <span style="color:#f92672">=</span> <span style="color:#ae81ff">71</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	A <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>	    <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#ae81ff">9</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	B <span style="color:#f92672">=</span> <span style="color:#ae81ff">44</span>
+</span></span><span style="display:flex;"><span>	    <span style="color:#ae81ff">56</span>
+</span></span><span style="display:flex;"><span>	    <span style="color:#ae81ff">72</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	AX <span style="color:#f92672">=</span> B
+</span></span><span style="display:flex;"><span>	X <span style="color:#f92672">=</span> (A<span style="color:#f92672">^-</span><span style="color:#ae81ff">1</span>)(B) <span style="color:#75715e"># !!! WOW</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	A <span style="color:#f92672">=</span> Matrix([
+</span></span><span style="display:flex;"><span>	    [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>],
+</span></span><span style="display:flex;"><span>	    [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">7</span>],
+</span></span><span style="display:flex;"><span>	    [<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>	])
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> array
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> numpy.linalg <span style="color:#f92672">import</span> inv
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	A <span style="color:#f92672">=</span> array([
+</span></span><span style="display:flex;"><span>	    [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>],
+</span></span><span style="display:flex;"><span>	    [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">7</span>],
+</span></span><span style="display:flex;"><span>	    [<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>	])
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	B <span style="color:#f92672">=</span> array([
+</span></span><span style="display:flex;"><span>	    <span style="color:#ae81ff">44</span>,
+</span></span><span style="display:flex;"><span>	    <span style="color:#ae81ff">56</span>,
+</span></span><span style="display:flex;"><span>	    <span style="color:#ae81ff">72</span>
+</span></span><span style="display:flex;"><span>	])
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	X <span style="color:#f92672">=</span> inv(A)<span style="color:#f92672">.</span>dot(B)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	print(X) <span style="color:#75715e"># [ 2. 34. -8.]</span>
+</span></span></code></pre></div><h3 id="47-eigenvectors-and-eigenvalues">4.7 Eigenvectors and Eigenvalues</h3>
+<ul>
+<li>
+<p>Matrix decomposition is breaking up a matrix into its basic components, much like factoring numbers (e.g., 10 can be factored to 2 × 5).</p>
+<ul>
+<li>There are multiple matrix decomposition techniques
+<ul>
+<li>Linear regression: QR decomposition (Chap 5)</li>
+<li>eigendecomposition (ie used by PCA) (this chapter)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>In eigen decomposition, the original matrix A is decomposed to ==eigenvalue $\lambda$== and ==eigenvector== $\upsilon$
+$$A\upsilon =\lambda\upsilon$$</p>
+<ul>
+<li>Example:
+$$
+A = 1 2
+4 5
+$$</li>
+</ul>
+</li>
+</ul>
+<p>$$	
+\lambda = eigenvalue = [-0.464, 6.464]
+$$</p>
+<p>$$ \upsilon = eigenvector = [ [0.0806, 0.0343], [0.59, -0.939]] $$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>					<span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> array, diag
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">from</span> numpy.linalg <span style="color:#f92672">import</span> eig, inv
+</span></span><span style="display:flex;"><span>					
+</span></span><span style="display:flex;"><span>					A <span style="color:#f92672">=</span> array([
+</span></span><span style="display:flex;"><span>					    [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>],
+</span></span><span style="display:flex;"><span>					    [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>					])
+</span></span><span style="display:flex;"><span>					
+</span></span><span style="display:flex;"><span>					eigenvals, eigenvecs <span style="color:#f92672">=</span> eig(A)
+</span></span><span style="display:flex;"><span>					
+</span></span><span style="display:flex;"><span>					print(<span style="color:#e6db74">&#34;EIGENVALUES&#34;</span>)
+</span></span><span style="display:flex;"><span>					print(eigenvals)
+</span></span><span style="display:flex;"><span>					print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">EIGENVECTORS&#34;</span>)
+</span></span><span style="display:flex;"><span>					print(eigenvecs)
+</span></span><span style="display:flex;"><span>					
+</span></span><span style="display:flex;"><span>					<span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					EIGENVALUES
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					[-0.46410162  6.46410162]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					EIGENVECTORS
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					[[-0.80689822 -0.34372377]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					 [ 0.59069049 -0.9390708 ]]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					&#34;&#34;&#34;</span>
+</span></span></code></pre></div><h1 id="5-linear-regression">5 Linear Regression</h1>
+<h3 id="51-basic-linear-regression">5.1 Basic Linear Regression</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LinearRegression
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Import points</span>
+</span></span><span style="display:flex;"><span>	df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;https://bit.ly/3goOAnt&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Extract input variables (all rows, all columns but last column)</span>
+</span></span><span style="display:flex;"><span>	X <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, :<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Extract output column (all rows, last column)</span>
+</span></span><span style="display:flex;"><span>	Y <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Fit a line to the points</span>
+</span></span><span style="display:flex;"><span>	fit <span style="color:#f92672">=</span> LinearRegression()<span style="color:#f92672">.</span>fit(X, Y)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># m = 1.7867224, b = -16.51923513</span>
+</span></span><span style="display:flex;"><span>	m <span style="color:#f92672">=</span> fit<span style="color:#f92672">.</span>coef_<span style="color:#f92672">.</span>flatten()
+</span></span><span style="display:flex;"><span>	b <span style="color:#f92672">=</span> fit<span style="color:#f92672">.</span>intercept_<span style="color:#f92672">.</span>flatten()
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;m = </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(m))
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;b = </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(b))
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># show in chart</span>
+</span></span><span style="display:flex;"><span>	plt<span style="color:#f92672">.</span>plot(X, Y, <span style="color:#e6db74">&#39;o&#39;</span>) <span style="color:#75715e"># scatterplot</span>
+</span></span><span style="display:flex;"><span>	plt<span style="color:#f92672">.</span>plot(X, m<span style="color:#f92672">*</span>X<span style="color:#f92672">+</span>b) <span style="color:#75715e"># line</span>
+</span></span><span style="display:flex;"><span>	plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><h3 id="52-residuals-and-squared-errors">5.2 Residuals and Squared Errors</h3>
+<p>$$ residual_{squared} = (y_{predict} - y_{actual})^2$$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Import points</span>
+</span></span><span style="display:flex;"><span>	points <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;https://bit.ly/2KF29Bd&#34;</span>)<span style="color:#f92672">.</span>itertuples()
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Test with a given line</span>
+</span></span><span style="display:flex;"><span>	m <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.93939</span>
+</span></span><span style="display:flex;"><span>	b <span style="color:#f92672">=</span> <span style="color:#ae81ff">4.73333</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	sum_of_squares <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># calculate sum of squares</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> points:
+</span></span><span style="display:flex;"><span>	    y_actual <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>y
+</span></span><span style="display:flex;"><span>	    y_predict <span style="color:#f92672">=</span> m<span style="color:#f92672">*</span>p<span style="color:#f92672">.</span>x <span style="color:#f92672">+</span> b
+</span></span><span style="display:flex;"><span>	    residual_squared <span style="color:#f92672">=</span> (y_predict <span style="color:#f92672">-</span> y_actual)<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	    sum_of_squares <span style="color:#f92672">+=</span> residual_squared
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;sum of squares = </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(sum_of_squares))
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># sum of squares = 28.096969704500005</span>
+</span></span></code></pre></div><h3 id="53-finding-the-best-fit-line">5.3 Finding the Best Fit Line</h3>
+<h4 id="531-closed-form">5.3.1 closed form</h4>
+<ul>
+<li>not computationally efficient
+$$m = \frac{n\sum{xy} - \sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} $$</li>
+</ul>
+<p>$$b = \frac{\sum{y}}{n} - m\frac{\sum{x}}{n} $$</p>
+<h4 id="532-via-linear-algebra-inverse-matrix-technique">5.3.2 Via Linear Algebra (Inverse Matrix Technique)</h4>
+<ul>
+<li>Even though ML uses stochastic descent to solve the system of equations, it is instructional to see how linear algebra can be used to arrive at the close form solution</li>
+<li>more numerical stable
+<ul>
+<li>Numerical stability is how well an algorithm keeps errors minimized, rather than amplifying errors in approximations. Remember that computers work only to so many decimal places and have to approximate, so it becomes important our algorithms do not deteriorate with compounding errors in those approximations</li>
+</ul>
+</li>
+</ul>
+<p>$$b=(X^TX)^{-1} X^T y $$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>		<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">from</span> numpy.linalg <span style="color:#f92672">import</span> inv
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Import points</span>
+</span></span><span style="display:flex;"><span>		df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;https://bit.ly/3goOAnt&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Extract input variables (all rows, all columns but last column)</span>
+</span></span><span style="display:flex;"><span>		X <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, :<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>flatten()
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Add placeholder &#34;1&#34; column to generate intercept</span>
+</span></span><span style="display:flex;"><span>		X_1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack([X, np<span style="color:#f92672">.</span>ones(len(X))])<span style="color:#f92672">.</span>T
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Extract output column (all rows, last column)</span>
+</span></span><span style="display:flex;"><span>		Y <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Calculate coefficents for slope and intercept</span>
+</span></span><span style="display:flex;"><span>		b <span style="color:#f92672">=</span> inv(X_1<span style="color:#f92672">.</span>transpose() <span style="color:#f92672">@</span> X_1) <span style="color:#f92672">@</span> (X_1<span style="color:#f92672">.</span>transpose() <span style="color:#f92672">@</span> Y)
+</span></span><span style="display:flex;"><span>		print(b) <span style="color:#75715e"># [1.93939394, 4.73333333]</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Predict against the y-values</span>
+</span></span><span style="display:flex;"><span>		y_predict <span style="color:#f92672">=</span> X_1<span style="color:#f92672">.</span>dot(b)
+</span></span></code></pre></div><ul>
+<li>Enhance with QR Matrix Decomposition
+<ul>
+<li>As the matrix increase in dimension, we want to decompose our original matrix Z
+$$X = QR $$
+$$ b = R^{-1} Q^T y$$</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>		<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">from</span> numpy.linalg <span style="color:#f92672">import</span> qr, inv
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Import points</span>
+</span></span><span style="display:flex;"><span>		df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;https://bit.ly/3goOAnt&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Extract input variables (all rows, all columns but last column)</span>
+</span></span><span style="display:flex;"><span>		X <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, :<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>flatten()
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Add placeholder &#34;1&#34; column to generate intercept</span>
+</span></span><span style="display:flex;"><span>		X_1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack([X, np<span style="color:#f92672">.</span>ones(len(X))])<span style="color:#f92672">.</span>transpose()
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Extract output column (all rows, last column)</span>
+</span></span><span style="display:flex;"><span>		Y <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># calculate coefficents for slope and intercept</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># using QR decomposition</span>
+</span></span><span style="display:flex;"><span>		Q, R <span style="color:#f92672">=</span> qr(X_1)
+</span></span><span style="display:flex;"><span>		b <span style="color:#f92672">=</span> inv(R)<span style="color:#f92672">.</span>dot(Q<span style="color:#f92672">.</span>transpose())<span style="color:#f92672">.</span>dot(Y)
+</span></span></code></pre></div><h4 id="533-gradient-descent">5.3.3 Gradient Descent</h4>
+<ul>
+<li>
+<p>Gradient descent is an optimization technique that uses derivatives and iterations to minimize/maximize a set of parameters against an objective</p>
+<ul>
+<li>so what is the objective?
+<ul>
+<li>when f(x) is linear equation, it&rsquo;s the minimization of the sum of squares. ==This residual squared is the graph you are trying to minimize.==
+$$ residual_{squared} = (y_{predict} - y_{actual})^2$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Ex: Gradient descet to find min of a parabola</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (x <span style="color:#f92672">-</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">dx_f</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>(x <span style="color:#f92672">-</span> <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The learning rate</span>
+</span></span><span style="display:flex;"><span>L <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.001</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The number of iterations to perform gradient descent</span>
+</span></span><span style="display:flex;"><span>iterations <span style="color:#f92672">=</span> <span style="color:#ae81ff">100_000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e"># start at a random x</span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#f92672">-</span><span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(iterations):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># get slope</span>
+</span></span><span style="display:flex;"><span>    d_x <span style="color:#f92672">=</span> dx_f(x)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># update x by subtracting the (learning rate) * (slope)</span>
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">-=</span> L <span style="color:#f92672">*</span> d_x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(x, f(x)) <span style="color:#75715e"># prints 2.999999999999889 4.0</span>
+</span></span></code></pre></div></li>
+<li>
+<p>For linear equation, it&rsquo;s the minimization of the sum of squares</p>
+<ul>
+<li>Ex: Gradient desceint for linear regression</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Import points from CSV</span>
+</span></span><span style="display:flex;"><span>points <span style="color:#f92672">=</span> list(pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;https://bit.ly/2KF29Bd&#34;</span>)<span style="color:#f92672">.</span>itertuples())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Building the model</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The learning Rate</span>
+</span></span><span style="display:flex;"><span>L <span style="color:#f92672">=</span> <span style="color:#ae81ff">.001</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The number of iterations</span>
+</span></span><span style="display:flex;"><span>iterations <span style="color:#f92672">=</span> <span style="color:#ae81ff">100_000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n <span style="color:#f92672">=</span> float(len(points))  <span style="color:#75715e"># Number of elements in X</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Perform Gradient Descent</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(iterations):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># TWC: Find the derivatives of our sum of squares function with respect to _m_ and _b_</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># slope of squared residual with respect to m</span>
+</span></span><span style="display:flex;"><span>    D_m <span style="color:#f92672">=</span> sum(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> p<span style="color:#f92672">.</span>x <span style="color:#f92672">*</span> ((m <span style="color:#f92672">*</span> p<span style="color:#f92672">.</span>x <span style="color:#f92672">+</span> b) <span style="color:#f92672">-</span> p<span style="color:#f92672">.</span>y) <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> points)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># slope of squared residual with respect to b; </span>
+</span></span><span style="display:flex;"><span>    D_b <span style="color:#f92672">=</span> sum(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> ((m <span style="color:#f92672">*</span> p<span style="color:#f92672">.</span>x <span style="color:#f92672">+</span> b) <span style="color:#f92672">-</span> p<span style="color:#f92672">.</span>y) <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> points)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># update m and b</span>
+</span></span><span style="display:flex;"><span>    m <span style="color:#f92672">-=</span> L <span style="color:#f92672">*</span> D_m
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">-=</span> L <span style="color:#f92672">*</span> D_b
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;y = </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">x + </span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(m, b))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># y = 1.9393939393939548x + 4.733333333333227</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="54-overfitting-and-variance">5.4 Overfitting and Variance</h3>
+<ul>
+<li>The big-picture objective is not to minimize the sum of squares but to make accurate predictions on new data
+<ul>
+<li>If we fit a nonlinear curve to the data (overfitting), it will get 0 error, but probably will not generalize well to real data.</li>
+<li>Overfitted model are more sensitive to outliers, thereby increase variance in our prediction.</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h3 id="55-stochasitc-gradient-descent">5.5 Stochasitc Gradient Descent</h3>
+<h3 id="56-correlation-coefficient">5.6 Correlation Coefficient</h3>
+<h3 id="57-statistical-significance">5.7 Statistical Significance</h3>
+<h3 id="58-conefficient-of-determination">5.8 Conefficient of Determination</h3>
+<h3 id="59-standard-error-of-the-estimate">5.9 Standard Error of the Estimate</h3>
+<h3 id="510-prediction-intervals">5.10 Prediction Intervals</h3>
+<h3 id="511-traintest-splits">5.11 Train/Test Splits</h3>
+<h3 id="512-multiple-linear-regressions">5.12 Multiple Linear Regressions</h3>
+<h1 id="6-logistic-regression-and-classification">6 Logistic Regression and Classification</h1>
+<h3 id="61-understanding-logistic-regression">6.1 Understanding Logistic Regression</h3>
+<ul>
+<li>A regression that predicts the probability of an outcome given 1+ independent variable.</li>
+<li>Characteristics
+<ul>
+<li>label = binary, or categorical # (multi-class)</li>
+<li>features: $x_i \in X$</li>
+<li>output = ==probability== -&gt; can be converted into discrete value</li>
+<li>fairly resilient to outliers</li>
+</ul>
+</li>
+</ul>
+<h3 id="62-performing-logistic-regression">6.2 Performing Logistic Regression</h3>
+<ul>
+<li>
+<p>Logistic Function creates the sigmoid curve</p>
+<ul>
+<li>sigmoid curve transforms an input value x into an output range [0,1]</li>
+<li>$$p(\mathbf{x} = \langle x_{1}, x_{2}, \dots, x_{n}\rangle) = \frac{1}{1 + e^{-(\beta_0 + \beta_1x_1+..+\beta_nx_n)}}$$
+<ul>
+<li>$\beta_0 + \beta_1$ are learned parameters</li>
+<li>x is the input indpendent variable(s), feature(s)</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> math
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict_probability</span>(x, b0, b1):
+</span></span><span style="display:flex;"><span>	    p <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> math<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>(b0 <span style="color:#f92672">+</span> b1 <span style="color:#f92672">*</span> x)))
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">return</span> p
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="621-finding-the-coeffcients">6.2.1 Finding the Coeffcients</h3>
+<ul>
+<li>Previously, in linear regression, we used lease sqaures to find the linear equation.
+<ul>
+<li>We can either used
+<ul>
+<li>close form$$m = \frac{n\sum{xy} - \sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} $$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$b = \frac{\sum{y}}{n} - m\frac{\sum{x}}{n} $$</p>
+<pre><code>	- inverse matrix 
+</code></pre>
+<p>$$b=(X^TX)^{-1} X^T y$$</p>
+<pre><code>	- approximation: (gradient descent)
+</code></pre>
+<ul>
+<li>In logistic regression
+<ul>
+<li>we use <em>maximum likelihood estimation (MLE)</em>
+<ul>
+<li>maximizes the likelihood a given logistic curve would output the observed data (for binary, data label is 0,1)</li>
+<li>MLE(logistic regression) vs least squared (linear regression)</li>
+</ul>
+</li>
+<li>We use gradient descent (or a library) to solve (there&rsquo;s no closed form)
+<ul>
+<li>sklearn library</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>		<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LogisticRegression
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Load the data</span>
+</span></span><span style="display:flex;"><span>		df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;https://bit.ly/33ebs2R&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Extract input variables (all rows, all columns but last column)</span>
+</span></span><span style="display:flex;"><span>		X <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, :<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Extract output column (all rows, last column)</span>
+</span></span><span style="display:flex;"><span>		Y <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Perform logistic regression</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Turn off penalty</span>
+</span></span><span style="display:flex;"><span>		model <span style="color:#f92672">=</span> LogisticRegression(penalty<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;none&#39;</span>)
+</span></span><span style="display:flex;"><span>		model<span style="color:#f92672">.</span>fit(X, Y)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># print beta1</span>
+</span></span><span style="display:flex;"><span>		print(model<span style="color:#f92672">.</span>coef_<span style="color:#f92672">.</span>flatten()) <span style="color:#75715e"># 0.69267212</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># print beta0</span>
+</span></span><span style="display:flex;"><span>		print(model<span style="color:#f92672">.</span>intercept_<span style="color:#f92672">.</span>flatten()) <span style="color:#75715e"># -3.17576395</span>
+</span></span></code></pre></div><ul>
+<li>MLE (details)
+<ul>
+<li>
+<p>High level:</p>
+<ul>
+<li>claculate parameters that bring our logistic curve to data points as closely as possible (vs regression: as close to the residual loss squared)</li>
+<li>IMOW: calculate parameter to maximize the likihood probability to fit observed data to the sigmoid curve</li>
+</ul>
+</li>
+<li>
+<p>For binary
+$$JointLiklihood = \prod_{i=1}^{n=totalSamples}(\frac{1}{1 + e^{-(\beta_0 + \beta_1x_1+..+\beta_nx_n)}})^{y_i} (\frac{1}{1 + e^{-(\beta_0 + \beta_1x_1+..+\beta_nx_n)}})^{1-y_i}$$</p>
+<ul>
+<li>1st term applies when data label is 1</li>
+<li>2nd term appleis when data label is 0</li>
+</ul>
+</li>
+<li>
+<p>Mathematical optmization to prevent floating underflow: use log</p>
+<ul>
+<li>multiple saller number gets you smaller number; ME235!</li>
+<li>log transforms multiplication into addition
+$$JointLiklihood = \sum_{i=1}^{n=totalSamples}\log(\frac{1}{1 + e^{-(\beta_0 + \beta_1x_1+..+\beta_nx_n)}})^{y_i} (\frac{1}{1 + e^{-(\beta_0 + \beta_1x_1+..+\beta_nx_n)}})^{1-y_i})$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>code1: Joint liklihood definition</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	joint_likelihood <span style="color:#f92672">=</span> Sum(log((<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> exp(<span style="color:#f92672">-</span>(b <span style="color:#f92672">+</span> m <span style="color:#f92672">*</span> x(i)))))<span style="color:#f92672">**</span>y(i) <span style="color:#f92672">*</span> \
+</span></span><span style="display:flex;"><span>		(<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> exp(<span style="color:#f92672">-</span>(b <span style="color:#f92672">+</span> m <span style="color:#f92672">*</span> x(i))))))<span style="color:#f92672">**</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>y(i))), (i, <span style="color:#ae81ff">0</span>, n))
+</span></span></code></pre></div><ul>
+<li>code2: use gradient descent (simpy)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sympy <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>points <span style="color:#f92672">=</span> list(pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;https://tinyurl.com/y2cocoo7&#34;</span>)<span style="color:#f92672">.</span>itertuples())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>b1, b0, i, n <span style="color:#f92672">=</span> symbols(<span style="color:#e6db74">&#39;b1 b0 i n&#39;</span>)
+</span></span><span style="display:flex;"><span>x, y <span style="color:#f92672">=</span> symbols(<span style="color:#e6db74">&#39;x y&#39;</span>, cls<span style="color:#f92672">=</span>Function)
+</span></span><span style="display:flex;"><span>joint_likelihood <span style="color:#f92672">=</span> Sum(log((<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> exp(<span style="color:#f92672">-</span>(b0 <span style="color:#f92672">+</span> b1 <span style="color:#f92672">*</span> x(i))))) <span style="color:#f92672">**</span> y(i) \
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> exp(<span style="color:#f92672">-</span>(b0 <span style="color:#f92672">+</span> b1 <span style="color:#f92672">*</span> x(i)))))) <span style="color:#f92672">**</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> y(i))), (i, <span style="color:#ae81ff">0</span>, n))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Partial derivative for m, with points substituted</span>
+</span></span><span style="display:flex;"><span>d_b1 <span style="color:#f92672">=</span> diff(joint_likelihood, b1) \
+</span></span><span style="display:flex;"><span>		   <span style="color:#f92672">.</span>subs(n, len(points) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>doit() \
+</span></span><span style="display:flex;"><span>		   <span style="color:#f92672">.</span>replace(x, <span style="color:#66d9ef">lambda</span> i: points[i]<span style="color:#f92672">.</span>x) \
+</span></span><span style="display:flex;"><span>		   <span style="color:#f92672">.</span>replace(y, <span style="color:#66d9ef">lambda</span> i: points[i]<span style="color:#f92672">.</span>y)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Partial derivative for m, with points substituted</span>
+</span></span><span style="display:flex;"><span>d_b0 <span style="color:#f92672">=</span> diff(joint_likelihood, b0) \
+</span></span><span style="display:flex;"><span>		   <span style="color:#f92672">.</span>subs(n, len(points) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>doit() \
+</span></span><span style="display:flex;"><span>		   <span style="color:#f92672">.</span>replace(x, <span style="color:#66d9ef">lambda</span> i: points[i]<span style="color:#f92672">.</span>x) \
+</span></span><span style="display:flex;"><span>		   <span style="color:#f92672">.</span>replace(y, <span style="color:#66d9ef">lambda</span> i: points[i]<span style="color:#f92672">.</span>y)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># compile using lambdify for faster computation</span>
+</span></span><span style="display:flex;"><span>d_b1 <span style="color:#f92672">=</span> lambdify([b1, b0], d_b1)
+</span></span><span style="display:flex;"><span>d_b0 <span style="color:#f92672">=</span> lambdify([b1, b0], d_b0)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Perform Gradient Descent</span>
+</span></span><span style="display:flex;"><span>b1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>
+</span></span><span style="display:flex;"><span>b0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>
+</span></span><span style="display:flex;"><span>L <span style="color:#f92672">=</span> <span style="color:#ae81ff">.01</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10_000</span>):
+</span></span><span style="display:flex;"><span>    b1 <span style="color:#f92672">+=</span> d_b1(b1, b0) <span style="color:#f92672">*</span> L
+</span></span><span style="display:flex;"><span>    b0 <span style="color:#f92672">+=</span> d_b0(b1, b0) <span style="color:#f92672">*</span> L
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(b1, b0)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0.6926693075370812 -3.175751550409821</span>
+</span></span></code></pre></div><h3 id="63-multivariable-logistic-regression">6.3 Multivariable Logistic Regression</h3>
+<ul>
+<li>I frame the previous 6.2 section as logistic regression</li>
+<li>Example: Employment retention</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LogisticRegression
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>employee_data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;https://tinyurl.com/y6r7qjrp&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># grab independent variable columns</span>
+</span></span><span style="display:flex;"><span>inputs <span style="color:#f92672">=</span> employee_data<span style="color:#f92672">.</span>iloc[:, :<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># grab dependent &#34;did_quit&#34; variable column</span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">=</span> employee_data<span style="color:#f92672">.</span>iloc[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># build logistic regression</span>
+</span></span><span style="display:flex;"><span>fit <span style="color:#f92672">=</span> LogisticRegression(penalty<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;none&#39;</span>)<span style="color:#f92672">.</span>fit(inputs, output)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print coefficients:</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;COEFFICIENTS: </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(fit<span style="color:#f92672">.</span>coef_<span style="color:#f92672">.</span>flatten()))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;INTERCEPT: </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(fit<span style="color:#f92672">.</span>intercept_<span style="color:#f92672">.</span>flatten()))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Interact and test with new employee data</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict_employee_will_stay</span>(sex, age, promotions, years_employed):
+</span></span><span style="display:flex;"><span>    prediction <span style="color:#f92672">=</span> fit<span style="color:#f92672">.</span>predict([[sex, age, promotions, years_employed]])
+</span></span><span style="display:flex;"><span>    probabilities <span style="color:#f92672">=</span> fit<span style="color:#f92672">.</span>predict_proba([[sex, age, promotions, years_employed]])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> prediction <span style="color:#f92672">==</span> [[<span style="color:#ae81ff">1</span>]]:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;WILL LEAVE: </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(probabilities)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;WILL STAY: </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(probabilities)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Test a prediction</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    n <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;Predict employee will stay or leave </span><span style="color:#e6db74">{sex}</span><span style="color:#e6db74">,</span>
+</span></span><span style="display:flex;"><span>        {age},{promotions},{years employed}: <span style="color:#e6db74">&#34;)</span>
+</span></span><span style="display:flex;"><span>    (sex, age, promotions, years_employed) <span style="color:#f92672">=</span> n<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(predict_employee_will_stay(int(sex), int(age), int(promotions),
+</span></span><span style="display:flex;"><span>          int(years_employed)))
+</span></span></code></pre></div><h3 id="64-understanding-the-log-odds">6.4 Understanding the Log-Odds</h3>
+<ul>
+<li>
+<p>Log odds used by the logit function</p>
+</li>
+<li>
+<p>Since 1900s, mathematicians wants transform a linear function (==1 neural network layer==), and scale the output to the range of [0,1], corresponding to a probability</p>
+<ul>
+<li>$$JointLiklihood = \sum_{i=1}^{n=totalSamples}\log(\frac{1}{1 + e^{-(\beta_0 + \beta_1x_1+..+\beta_nx_n)}})^{y_i} (\frac{1}{1 + e^{-(\beta_0 + \beta_1x_1+..+\beta_nx_n)}})^{1-y_i})$$
+<ul>
+<li>linear function: $\beta_0 + \beta_1x_1+..+\beta_nx_n$</li>
+<li>==log odds== = $e^{linear function} = e^{\beta_0 + \beta_1x_1+..+\beta_nx_n}$
+<ul>
+<li>logit function uses log odds; they are not the same</li>
+<li>if we take the log of both side, $$log(\frac{p}{1-p}) = \beta_0 + \beta_1x_1+..+\beta_nx_n$$![[book-math-linear-to-log.png]]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>how to convert probability to odd?</p>
+<ul>
+<li>logit function gives us probability p</li>
+<li>$$odd = \frac{p}{1-p}$$</li>
+<li>So in the employment retention example above,
+<ul>
+<li>if timeOfEmployment=6
+<ul>
+<li>then logit function returns  p = 72.7%</li>
+</ul>
+</li>
+<li>then $odd = \frac{0.727}{1-0.727}$ = 2.665
+<ul>
+<li>2.66 times more likely to leave</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>More example: see diagram above</li>
+</ul>
+</li>
+</ul>
+<h3 id="65-r-squared">6.5 R-Squared</h3>
+<p>-$R^2$  indicates how well a given independent variable explains a dependent variable</p>
+<p>$$R^2 = \frac{logLiklihood - logLiklihoodFit}{logLiklihood}$$
+$$ logLiklihoodFit = \sum_{i=0}^n log(f(x_i)) \times y_i+log(1-f(x_i)) \times (1-y_i) $$
+$$logLiklihood = \frac{\sum y_i}{n}\times y_i + (1-\frac{\sum y_i}{n})\times (1-y_i) $$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> log, exp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>patient_data <span style="color:#f92672">=</span> list(pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;https://bit.ly/33ebs2R&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>) \
+</span></span><span style="display:flex;"><span>                                <span style="color:#f92672">.</span>itertuples())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Declare fitted logistic regression</span>
+</span></span><span style="display:flex;"><span>b0 <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">3.17576395</span>
+</span></span><span style="display:flex;"><span>b1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.69267212</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">logistic_function</span>(x):
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> exp(<span style="color:#f92672">-</span>(b0 <span style="color:#f92672">+</span> b1 <span style="color:#f92672">*</span> x)))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> p
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># calculate the log likelihood of the fit</span>
+</span></span><span style="display:flex;"><span>log_likelihood_fit <span style="color:#f92672">=</span> sum(log(logistic_function(p<span style="color:#f92672">.</span>x)) <span style="color:#f92672">*</span> p<span style="color:#f92672">.</span>y <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                         log(<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> logistic_function(p<span style="color:#f92672">.</span>x)) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> p<span style="color:#f92672">.</span>y)
+</span></span><span style="display:flex;"><span>                         <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> patient_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># calculate the log likelihood without fit</span>
+</span></span><span style="display:flex;"><span>likelihood <span style="color:#f92672">=</span> sum(p<span style="color:#f92672">.</span>y <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> patient_data) <span style="color:#f92672">/</span> len(patient_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>log_likelihood <span style="color:#f92672">=</span> sum(log(likelihood) <span style="color:#f92672">*</span> p<span style="color:#f92672">.</span>y <span style="color:#f92672">+</span> log(<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> likelihood) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> p<span style="color:#f92672">.</span>y) \
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> patient_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># calculate R-Square</span>
+</span></span><span style="display:flex;"><span>r2 <span style="color:#f92672">=</span> (log_likelihood <span style="color:#f92672">-</span> log_likelihood_fit) <span style="color:#f92672">/</span> log_likelihood
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(r2)  <span style="color:#75715e"># 0.306456105756576</span>
+</span></span></code></pre></div><h3 id="66-p-values">6.6 P-Values</h3>
+<ul>
+<li>
+<p>We need to investigate how likely we would have seen this data by chance rather than because of an actual relationship. This means we need a p-value.</p>
+</li>
+<li>
+<p>Chi  Squared  distribution $\chi^2$</p>
+<ul>
+<li>Degree of freedom = DOF = (# of parameters in our logistic regression - 1)</li>
+<li>$\chi^2$ distribution with DOF = 1
+<ul>
+<li>sum each value in a normal distribution and saured
+$$ pValue = \chi^2(2(logLiklihoodFit) - logLiklihood)$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> log, exp
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> chi2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>patient_data <span style="color:#f92672">=</span> list(pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;https://bit.ly/33ebs2R&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>)<span style="color:#f92672">.</span>itertuples())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Declare fitted logistic regression</span>
+</span></span><span style="display:flex;"><span>b0 <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">3.17576395</span>
+</span></span><span style="display:flex;"><span>b1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.69267212</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">logistic_function</span>(x):
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> exp(<span style="color:#f92672">-</span>(b0 <span style="color:#f92672">+</span> b1 <span style="color:#f92672">*</span> x)))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> p
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># calculate the log likelihood of the fit</span>
+</span></span><span style="display:flex;"><span>log_likelihood_fit <span style="color:#f92672">=</span> sum(log(logistic_function(p<span style="color:#f92672">.</span>x)) <span style="color:#f92672">*</span> p<span style="color:#f92672">.</span>y <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                         log(<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> logistic_function(p<span style="color:#f92672">.</span>x)) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> p<span style="color:#f92672">.</span>y)
+</span></span><span style="display:flex;"><span>                         <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> patient_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># calculate the log likelihood without fit</span>
+</span></span><span style="display:flex;"><span>likelihood <span style="color:#f92672">=</span> sum(p<span style="color:#f92672">.</span>y <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> patient_data) <span style="color:#f92672">/</span> len(patient_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>log_likelihood <span style="color:#f92672">=</span> sum(log(likelihood) <span style="color:#f92672">*</span> p<span style="color:#f92672">.</span>y <span style="color:#f92672">+</span> log(<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> likelihood) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> p<span style="color:#f92672">.</span>y) \
+</span></span><span style="display:flex;"><span>                     <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> patient_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># calculate p-value</span>
+</span></span><span style="display:flex;"><span>chi2_input <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (log_likelihood_fit <span style="color:#f92672">-</span> log_likelihood)
+</span></span><span style="display:flex;"><span>p_value <span style="color:#f92672">=</span> chi2<span style="color:#f92672">.</span>pdf(chi2_input, <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># 1 degree of freedom (n - 1)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(p_value)  <span style="color:#75715e"># 0.0016604875618753787</span>
+</span></span></code></pre></div><h3 id="67-traintest-splits">6.7 Train/Test Splits</h3>
+<ul>
+<li>Use k-fold validation to reuse all the data for training and test</li>
+<li>Ex: 3fold cross validation</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LogisticRegression
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> KFold, cross_val_score
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Load the data</span>
+</span></span><span style="display:flex;"><span>	df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;https://tinyurl.com/y6r7qjrp&#34;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	X <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, :<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	Y <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># &#34;random_state&#34; is the random seed, which we fix to 7</span>
+</span></span><span style="display:flex;"><span>	kfold <span style="color:#f92672">=</span> KFold(n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">7</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>	model <span style="color:#f92672">=</span> LogisticRegression(penalty<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;none&#39;</span>)
+</span></span><span style="display:flex;"><span>	results <span style="color:#f92672">=</span> cross_val_score(model, X, Y, cv<span style="color:#f92672">=</span>kfold)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;Accuracy Mean: </span><span style="color:#e6db74">%.3f</span><span style="color:#e6db74"> (stdev=</span><span style="color:#e6db74">%.3f</span><span style="color:#e6db74">)&#34;</span> <span style="color:#f92672">%</span> (results<span style="color:#f92672">.</span>mean(), results<span style="color:#f92672">.</span>std()))
+</span></span></code></pre></div><h3 id="68-confusion-matrices">6.8 Confusion Matrices</h3>
+<pre><code>					Actual:1       Actual:0
+</code></pre>
+<p>Predict: 1              TP                        FN                  Sensitivity</p>
+<p>Predict: 0              FP                        TN                  Specificity</p>
+<pre><code>                     Precision                    Accuracy     
+</code></pre>
+<p>$$Precision=\frac{TP}{TP+FP}$$
+$$Sensitivty=\frac{TP}{TP+FN}$$
+$$Specificity=\frac{TN}{TN+FP}$$
+$$Accuracy=\frac{TP+TN}{TP+TN+FP+FN}$$</p>
+<p>$$F1Score=\frac{2\times Precision\times Recall}{Precision+ Recall}$$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LogisticRegression
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> confusion_matrix
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> train_test_split
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Load the data</span>
+</span></span><span style="display:flex;"><span>	df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;https://bit.ly/3cManTi&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Extract input variables (all rows, all columns but last column)</span>
+</span></span><span style="display:flex;"><span>	X <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, :<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Extract output column (all rows, last column)\</span>
+</span></span><span style="display:flex;"><span>	Y <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	model <span style="color:#f92672">=</span> LogisticRegression(solver<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;liblinear&#39;</span>)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	X_train, X_test, Y_train, Y_test <span style="color:#f92672">=</span> train_test_split(X, Y, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">.33</span>,
+</span></span><span style="display:flex;"><span>	    random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>	model<span style="color:#f92672">.</span>fit(X_train, Y_train)
+</span></span><span style="display:flex;"><span>	prediction <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(X_test)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	The confusion matrix evaluates accuracy within each category.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	[[truepositives falsenegatives]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	 [falsepositives truenegatives]]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	The diagonal represents correct predictions,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	so we want those to be higher
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>	matrix <span style="color:#f92672">=</span> confusion_matrix(y_true<span style="color:#f92672">=</span>Y_test, y_pred<span style="color:#f92672">=</span>prediction)
+</span></span><span style="display:flex;"><span>	print(matrix)
+</span></span></code></pre></div><h3 id="69-bayes-theorem-and-classification">6.9 Bayes Theorem and Classification</h3>
+<ul>
+<li>One can use Bayes’ Theorem to bring in outside information to further validate findings on a confusion matrix</li>
+</ul>
+<h3 id="610-receiver-operator-characteristicsarea-under-curve">6.10 Receiver Operator Characteristics/Area Under Curve</h3>
+<ul>
+<li>graph used tune the probability threshold to balance for the TPR vs FPR
+<ul>
+<li>y-axis = TPR = Sensitivity</li>
+<li>x-axis = FPR = (1- Specificty)</li>
+</ul>
+</li>
+<li>AUC is used to choose which model has better performance (tree vs linear regression)</li>
+<li>Code</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	results <span style="color:#f92672">=</span> cross_val_score(model, X, Y, cv<span style="color:#f92672">=</span>kfold, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;roc_auc&#39;</span>)
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;AUC: </span><span style="color:#e6db74">%.3f</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">%.3f</span><span style="color:#e6db74">)&#34;</span> <span style="color:#f92672">%</span> (results<span style="color:#f92672">.</span>mean(), results<span style="color:#f92672">.</span>std()))
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># AUC: 0.791 (0.051)</span>
+</span></span></code></pre></div><h3 id="611-class-imbalance">6.11 Class Imbalance</h3>
+<ul>
+<li>Class imbalance is still an open problem with no great solution</li>
+<li>Possibilities
+<ul>
+<li>collect more data</li>
+<li>try different models</li>
+<li>confusion matrix and AUC to track</li>
+<li>generate synthetic samples of minority data (SMOTE algoritm)</li>
+<li>duplication minority samples</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   	X, Y <span style="color:#f92672">=</span> <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>  	X_train, X_test, Y_train, Y_test <span style="color:#f92672">=</span>  \
+</span></span><span style="display:flex;"><span>  		train_test_split(X, Y, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">.33</span>, stratify<span style="color:#f92672">=</span>Y)
+</span></span></code></pre></div></li>
+</ul>
+<h1 id="7-neural-network">7 Neural Network</h1>
+<ul>
+<li>A neural network is a multilayered ==regression== containing layers of weights, biases, and nonlinear functions that reside between input variables and output variables</li>
+<li>Each node resembles a linear function before being passed to a nonlinear function (called an activation function)</li>
+</ul>
+<h3 id="71-when-to-use-neural-network-and-deep-learning">7.1 When To Use Neural Network and Deep Learning</h3>
+<ul>
+<li>Neural network and DL can be used for classification or regression</li>
+<li>Linear regression, logistic regression, and GBM trees do well on structured data
+<ul>
+<li>structure data can be represented as a table</li>
+</ul>
+</li>
+<li>Use NN for unstructure data:
+<ul>
+<li>text: predict the next token</li>
+<li>images: classify a text</li>
+</ul>
+</li>
+</ul>
+<h3 id="72-simple-neural-network">7.2 Simple Neural Network</h3>
+<ul>
+<li>node: a linear equation consiting of $$ X_1W_1 + X_2W_2+B_1 $$
+<ul>
+<li>where W are the weights, which are the arrows/path to the node</li>
+<li>X is the input from the previous layer</li>
+</ul>
+</li>
+<li>1 layer = N nodes</li>
+<li>M layers</li>
+<li>So far, it looks similar to linear regression</li>
+</ul>
+<h4 id="721-activation-function">7.2.1 Activation Function</h4>
+<ul>
+<li>An activation function is a nonlinear function that transforms or compresses the weighted and summed values in a node, helping the neural network separate the data effectively so it can be classified.</li>
+<li>Types of Activation function
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Name</th>
+          <th style="text-align: center">Typical Layer</th>
+          <th style="text-align: right">Description</th>
+          <th style="text-align: right">Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Logistic</td>
+          <td style="text-align: center">Output</td>
+          <td style="text-align: right">S-shaped sigmoid curve</td>
+          <td style="text-align: right">output in [0,1]; used in binary classifcation</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Softmax</td>
+          <td style="text-align: center">Output</td>
+          <td style="text-align: right">Ensures all outputs nodes sumes to 1</td>
+          <td style="text-align: right">Useful for multiple classifcations and scale outputs add to 1.0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Tangent Hyperbolic</td>
+          <td style="text-align: center">Output</td>
+          <td style="text-align: right">tanh, S-shaped sigmoid curve between -1 and 1</td>
+          <td style="text-align: right">Assists in “centering” data by bringing mean close to 0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Relu</td>
+          <td style="text-align: center">Hidden</td>
+          <td style="text-align: right">Turns negative values to 0</td>
+          <td style="text-align: right">Popular activation faster than sigmoid and tanh, mitigates vanishing gradient problems and computationally cheap</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Leaky Relu</td>
+          <td style="text-align: center">Hidden</td>
+          <td style="text-align: right">Multiples neg values by 0.01</td>
+          <td style="text-align: right">Controversial variant of ReLU that marginalizes rather than eliminates negative values</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+</ul>
+<h4 id="722-forward-propagation">7.2.2 Forward Propagation</h4>
+<ul>
+<li>Mental model with L layers
+<ul>
+<li>input X &ndash;&gt; Hidden: $Relu( W @ X + B)<em>{layer-1}$ &ndash;&gt; output: $logistic(W@X + B)</em>{layer_L}$</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> train_test_split
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	all_data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;https://tinyurl.com/y2qmhfsr&#34;</span>)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Extract the input columns, scale down by 255</span>
+</span></span><span style="display:flex;"><span>	all_inputs <span style="color:#f92672">=</span> (all_data<span style="color:#f92672">.</span>iloc[:, <span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">3</span>]<span style="color:#f92672">.</span>values <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0</span>)
+</span></span><span style="display:flex;"><span>	all_outputs <span style="color:#f92672">=</span> all_data<span style="color:#f92672">.</span>iloc[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Split train and test data sets</span>
+</span></span><span style="display:flex;"><span>	X_train, X_test, Y_train, Y_test <span style="color:#f92672">=</span> train_test_split(all_inputs, all_outputs,
+</span></span><span style="display:flex;"><span>	    test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>	n <span style="color:#f92672">=</span> X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>] <span style="color:#75715e"># number of training records</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Build neural network with weights and biases</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># with random initialization</span>
+</span></span><span style="display:flex;"><span>	w_hidden <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>	w_output <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	b_hidden <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>	b_output <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Activation functions</span>
+</span></span><span style="display:flex;"><span>	relu <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: np<span style="color:#f92672">.</span>maximum(x, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>	logistic <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>x))
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Runs inputs through the neural network to get predicted outputs</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward_prop</span>(X):
+</span></span><span style="display:flex;"><span>	    Z1 <span style="color:#f92672">=</span> w_hidden <span style="color:#f92672">@</span> X <span style="color:#f92672">+</span> b_hidden
+</span></span><span style="display:flex;"><span>	    A1 <span style="color:#f92672">=</span> relu(Z1)
+</span></span><span style="display:flex;"><span>	    Z2 <span style="color:#f92672">=</span> w_output <span style="color:#f92672">@</span> A1 <span style="color:#f92672">+</span> b_output
+</span></span><span style="display:flex;"><span>	    A2 <span style="color:#f92672">=</span> logistic(Z2)
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">return</span> Z1, A1, Z2, A2
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Calculate accuracy</span>
+</span></span><span style="display:flex;"><span>	test_predictions <span style="color:#f92672">=</span> forward_prop(X_test<span style="color:#f92672">.</span>transpose())[<span style="color:#ae81ff">3</span>] <span style="color:#75715e"># grab only output layer, A2</span>
+</span></span><span style="display:flex;"><span>	test_comparisons <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>equal((test_predictions <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">.5</span>)<span style="color:#f92672">.</span>flatten()<span style="color:#f92672">.</span>astype(int), Y_test)
+</span></span><span style="display:flex;"><span>	accuracy <span style="color:#f92672">=</span> sum(test_comparisons<span style="color:#f92672">.</span>astype(int) <span style="color:#f92672">/</span> X_test<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;ACCURACY: &#34;</span>, accuracy)
+</span></span></code></pre></div><h3 id="73-backpropagation">7.3 Backpropagation</h3>
+<h4 id="731-calculate-the-weight-and-bias-derivatives">7.3.1 Calculate the Weight and Bias Derivatives</h4>
+<ul>
+<li>For each layer, we do a partial derivative of the cost function
+<ul>
+<li>$C=(A_{layer_i-1}^2-Y_{layer_i-1})$
+<ul>
+<li>C is the cost function</li>
+<li>$A_{layer-1}$ is the output of layer i-1
+<ul>
+<li>= ReLU($Z_{layer-1} = (W @ X + B)_{layer-2}$)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="732-stochastic-gradient-descent">7.3.2 Stochastic Gradient Descent</h4>
+<p>Raw</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> train_test_split
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>all_data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;https://tinyurl.com/y2qmhfsr&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Learning rate controls how slowly we approach a solution</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make it too small, it will take too long to run.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make it too big, it will likely overshoot and miss the solution.</span>
+</span></span><span style="display:flex;"><span>L <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.05</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Extract the input columns, scale down by 255</span>
+</span></span><span style="display:flex;"><span>all_inputs <span style="color:#f92672">=</span> (all_data<span style="color:#f92672">.</span>iloc[:, <span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">3</span>]<span style="color:#f92672">.</span>values <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0</span>)
+</span></span><span style="display:flex;"><span>all_outputs <span style="color:#f92672">=</span> all_data<span style="color:#f92672">.</span>iloc[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Split train and test data sets</span>
+</span></span><span style="display:flex;"><span>X_train, X_test, Y_train, Y_test <span style="color:#f92672">=</span> train_test_split(all_inputs, all_outputs,
+</span></span><span style="display:flex;"><span>    test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>n <span style="color:#f92672">=</span> X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build neural network with weights and biases</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># with random initialization</span>
+</span></span><span style="display:flex;"><span>w_hidden <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>w_output <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>b_hidden <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>b_output <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Activation functions</span>
+</span></span><span style="display:flex;"><span>relu <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: np<span style="color:#f92672">.</span>maximum(x, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>logistic <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>x))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Runs inputs through the neural network to get predicted outputs</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward_prop</span>(X):
+</span></span><span style="display:flex;"><span>    Z1 <span style="color:#f92672">=</span> w_hidden <span style="color:#f92672">@</span> X <span style="color:#f92672">+</span> b_hidden
+</span></span><span style="display:flex;"><span>    A1 <span style="color:#f92672">=</span> relu(Z1)
+</span></span><span style="display:flex;"><span>    Z2 <span style="color:#f92672">=</span> w_output <span style="color:#f92672">@</span> A1 <span style="color:#f92672">+</span> b_output
+</span></span><span style="display:flex;"><span>    A2 <span style="color:#f92672">=</span> logistic(Z2)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Z1, A1, Z2, A2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Derivatives of Activation functions</span>
+</span></span><span style="display:flex;"><span>d_relu <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>d_logistic <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>x) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>x)) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># returns slopes for weights and biases</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># using chain rule</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backward_prop</span>(Z1, A1, Z2, A2, X, Y):
+</span></span><span style="display:flex;"><span>    dC_dA2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> A2 <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Y
+</span></span><span style="display:flex;"><span>    dA2_dZ2 <span style="color:#f92672">=</span> d_logistic(Z2)
+</span></span><span style="display:flex;"><span>    dZ2_dA1 <span style="color:#f92672">=</span> w_output
+</span></span><span style="display:flex;"><span>    dZ2_dW2 <span style="color:#f92672">=</span> A1
+</span></span><span style="display:flex;"><span>    dZ2_dB2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    dA1_dZ1 <span style="color:#f92672">=</span> d_relu(Z1)
+</span></span><span style="display:flex;"><span>    dZ1_dW1 <span style="color:#f92672">=</span> X
+</span></span><span style="display:flex;"><span>    dZ1_dB1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dC_dW2 <span style="color:#f92672">=</span> dC_dA2 <span style="color:#f92672">@</span> dA2_dZ2 <span style="color:#f92672">@</span> dZ2_dW2<span style="color:#f92672">.</span>T
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dC_dB2 <span style="color:#f92672">=</span> dC_dA2 <span style="color:#f92672">@</span> dA2_dZ2 <span style="color:#f92672">*</span> dZ2_dB2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dC_dA1 <span style="color:#f92672">=</span> dC_dA2 <span style="color:#f92672">@</span> dA2_dZ2 <span style="color:#f92672">@</span> dZ2_dA1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dC_dW1 <span style="color:#f92672">=</span> dC_dA1 <span style="color:#f92672">@</span> dA1_dZ1 <span style="color:#f92672">@</span> dZ1_dW1<span style="color:#f92672">.</span>T
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dC_dB1 <span style="color:#f92672">=</span> dC_dA1 <span style="color:#f92672">@</span> dA1_dZ1 <span style="color:#f92672">*</span> dZ1_dB1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> dC_dW1, dC_dB1, dC_dW2, dC_dB2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Execute gradient descent</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100_000</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># randomly select one of the training data</span>
+</span></span><span style="display:flex;"><span>    idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>choice(n, <span style="color:#ae81ff">1</span>, replace<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    X_sample <span style="color:#f92672">=</span> X_train[idx]<span style="color:#f92672">.</span>transpose()
+</span></span><span style="display:flex;"><span>    Y_sample <span style="color:#f92672">=</span> Y_train[idx]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># run randomly selected training data through neural network</span>
+</span></span><span style="display:flex;"><span>    Z1, A1, Z2, A2 <span style="color:#f92672">=</span> forward_prop(X_sample)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># distribute error through backpropagation</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># and return slopes for weights and biases</span>
+</span></span><span style="display:flex;"><span>    dW1, dB1, dW2, dB2 <span style="color:#f92672">=</span> backward_prop(Z1, A1, Z2, A2, X_sample, Y_sample)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># update weights and biases</span>
+</span></span><span style="display:flex;"><span>    w_hidden <span style="color:#f92672">-=</span> L <span style="color:#f92672">*</span> dW1
+</span></span><span style="display:flex;"><span>    b_hidden <span style="color:#f92672">-=</span> L <span style="color:#f92672">*</span> dB1
+</span></span><span style="display:flex;"><span>    w_output <span style="color:#f92672">-=</span> L <span style="color:#f92672">*</span> dW2
+</span></span><span style="display:flex;"><span>    b_output <span style="color:#f92672">-=</span> L <span style="color:#f92672">*</span> dB2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate accuracy</span>
+</span></span><span style="display:flex;"><span>test_predictions <span style="color:#f92672">=</span> forward_prop(X_test<span style="color:#f92672">.</span>transpose())[<span style="color:#ae81ff">3</span>]  <span style="color:#75715e"># grab only A2</span>
+</span></span><span style="display:flex;"><span>test_comparisons <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>equal((test_predictions <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">.5</span>)<span style="color:#f92672">.</span>flatten()<span style="color:#f92672">.</span>astype(int), Y_test)
+</span></span><span style="display:flex;"><span>accuracy <span style="color:#f92672">=</span> sum(test_comparisons<span style="color:#f92672">.</span>astype(int) <span style="color:#f92672">/</span> X_test<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;ACCURACY: &#34;</span>, accuracy)
+</span></span></code></pre></div><ul>
+<li>Using scikit</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># load data</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> train_test_split
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.neural_network <span style="color:#f92672">import</span> MLPClassifier
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;https://bit.ly/3GsNzGt&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Extract input variables (all rows, all columns but last column)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Note we should do some linear scaling here</span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> (df<span style="color:#f92672">.</span>values[:, :<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Extract output column (all rows, last column)</span>
+</span></span><span style="display:flex;"><span>Y <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>values[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Separate training and testing data</span>
+</span></span><span style="display:flex;"><span>X_train, X_test, Y_train, Y_test <span style="color:#f92672">=</span> train_test_split(X, Y, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>nn <span style="color:#f92672">=</span> MLPClassifier(solver<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sgd&#39;</span>,
+</span></span><span style="display:flex;"><span>                   hidden_layer_sizes<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, ),
+</span></span><span style="display:flex;"><span>                   activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>,
+</span></span><span style="display:flex;"><span>                   max_iter<span style="color:#f92672">=</span><span style="color:#ae81ff">100_000</span>,
+</span></span><span style="display:flex;"><span>                   learning_rate_init<span style="color:#f92672">=</span><span style="color:#ae81ff">.05</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>nn<span style="color:#f92672">.</span>fit(X_train, Y_train)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print weights and biases</span>
+</span></span><span style="display:flex;"><span>print(nn<span style="color:#f92672">.</span>coefs_ )
+</span></span><span style="display:flex;"><span>print(nn<span style="color:#f92672">.</span>intercepts_)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Training set score: </span><span style="color:#e6db74">%f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> nn<span style="color:#f92672">.</span>score(X_train, Y_train))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Test set score: </span><span style="color:#e6db74">%f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> nn<span style="color:#f92672">.</span>score(X_test, Y_test))
+</span></span></code></pre></div><h3 id="74-limitation-of-neural-networks-and-deep-learning">7.4 Limitation of Neural Networks and Deep Learning</h3>
+<ul>
+<li>NN can overfit
+<ul>
+<li>layers, nodes, and activation functions makes it flexible fitting to data in a nonlinear manner</li>
+</ul>
+</li>
+</ul>
+<h3 id="75-conclusion">7.5 Conclusion</h3>
+<h1 id="8-career-advice-and-path-forward">8 Career Advice and Path Forward</h1>
+<ul>
+<li>data science is software engineering with proficiency in statistics, machine learning, and optimization</li>
+</ul>
+
+  </div>
+</article>
+
+  </main>
+  <footer class="footer" role="contentinfo">
+  <div class="container footer-inner">
+    <p class="footer-copy">
+      &copy; 2026 .
+      Built with <a href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a>.
+    </p>
+    </p>
+  </div>
+</footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

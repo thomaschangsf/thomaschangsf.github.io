@@ -1,0 +1,121 @@
+baseURL       = "https://peter.chang.me"
+languageCode  = "en-us"
+title         = "Peter Chang | Bio Scientist"
+theme         = "shared"
+themesDir     = "../../themes"
+
+[params]
+  personaKey  = "peter"
+  author      = "Peter Chang"
+  description = "Research Scientist at Johnson & Johnson, working at the intersection of computational biology, drug discovery, and translational science."
+  initials    = "PC"
+  fontUrl     = "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
+
+  [[params.navLinks]]
+    name = "About"
+    url  = "/#about"
+  [[params.navLinks]]
+    name = "Research"
+    url  = "/#highlights"
+  [[params.navLinks]]
+    name = "Publications"
+    url  = "/publications/"
+  [[params.navLinks]]
+    name = "Contact"
+    url  = "/#contact"
+
+  [params.hero]
+    eyebrow    = "Research Scientist · Johnson & Johnson"
+    name       = "Peter Chang"
+    title      = "Computational Biologist & Research Scientist"
+    tagline    = "Accelerating drug discovery through computational biology, single-cell genomics, and translational science at J&J."
+    badgeIcon  = "🧬"
+    badgeLabel = "J&J\nResearch"
+    [[params.hero.cta]]
+      label = "View Research"
+      url   = "/#highlights"
+      class = "btn-primary"
+    [[params.hero.cta]]
+      label = "Publications"
+      url   = "/publications/"
+      class = "btn-outline"
+
+  [params.about]
+    heading = "Bridging biology and computation."
+    paragraphs = [
+      "I'm a Research Scientist at Johnson & Johnson where I apply computational approaches to accelerate drug discovery and development. My work sits at the intersection of genomics, machine learning, and translational biology.",
+      "Before J&J, I completed my PhD in Computational Biology, focusing on single-cell multi-omics and gene regulatory networks. I'm passionate about turning large biological datasets into mechanistic insights that drive therapeutic hypotheses."
+    ]
+    [[params.about.stats]]
+      value = "6+"
+      label = "Years Research"
+    [[params.about.stats]]
+      value = "12"
+      label = "Publications"
+    [[params.about.stats]]
+      value = "PhD"
+      label = "Comp. Biology"
+    [[params.about.stats]]
+      value = "J&J"
+      label = "Current Role"
+
+  [params.highlights]
+    tag     = "Research"
+    heading = "Areas of focus."
+    [[params.highlights.items]]
+      icon  = "🔬"
+      title = "Single-Cell Genomics"
+      desc  = "Multi-omic profiling of disease-relevant cell types using scRNA-seq, ATAC-seq, and spatial transcriptomics to map disease mechanisms."
+      tags  = ["scRNA-seq", "Seurat", "scanpy", "10X Genomics"]
+    [[params.highlights.items]]
+      icon  = "💊"
+      title = "Drug Discovery"
+      desc  = "Target identification and validation pipelines integrating GWAS, perturbational genomics, and protein structure prediction."
+      tags  = ["AlphaFold", "CRISPR", "GWAS", "PK/PD"]
+    [[params.highlights.items]]
+      icon  = "🧠"
+      title = "ML for Biology"
+      desc  = "Deep learning models for gene expression prediction, variant effect scoring, and representation learning on biological sequences."
+      tags  = ["PyTorch", "Enformer", "scGPT", "ESM2"]
+    [[params.highlights.items]]
+      icon  = "🌐"
+      title = "Gene Regulatory Networks"
+      desc  = "Inferring and interpreting transcription factor networks and enhancer-gene connections across cell states and disease contexts."
+      tags  = ["GRN", "SCENIC+", "Cicero", "BigWig"]
+    [[params.highlights.items]]
+      icon  = "🧪"
+      title = "Translational Science"
+      desc  = "Bridging preclinical findings to clinical insights — biomarker discovery, patient stratification, and companion diagnostics."
+      tags  = ["Biomarkers", "IHC", "NGS", "Proteomics"]
+    [[params.highlights.items]]
+      icon  = "📊"
+      title = "Bioinformatics Pipelines"
+      desc  = "Building reproducible, high-throughput genomics pipelines on cloud HPC infrastructure for large cohort analyses."
+      tags  = ["Nextflow", "Snakemake", "AWS", "WDL"]
+
+  [params.contact]
+    heading = "Collaborate."
+    subtext = "Interested in computational biology collaborations, speaking engagements, or translational science opportunities."
+    [[params.contact.links]]
+      icon     = "✉️"
+      label    = "peter@example.com"
+      url      = "mailto:peter@example.com"
+      footer   = false
+    [[params.contact.links]]
+      icon     = "💼"
+      label    = "LinkedIn"
+      url      = "https://linkedin.com/in/peterchang"
+      external = true
+      footer   = true
+    [[params.contact.links]]
+      icon     = "📄"
+      label    = "Google Scholar"
+      url      = "https://scholar.google.com"
+      external = true
+      footer   = true
+    [[params.contact.links]]
+      icon     = "🐙"
+      label    = "GitHub"
+      url      = "https://github.com/peterchang"
+      external = true
+      footer   = true

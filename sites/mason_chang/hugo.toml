@@ -1,0 +1,118 @@
+baseURL       = "https://masonchang.me/"
+languageCode  = "en-us"
+title         = "Mason Chang"
+theme         = "shared"
+themesDir     = "../../themes"
+
+[params]
+  personaKey  = "mason"
+  author      = "Mason Chang"
+  description = "High school student, aspiring engineer, passionate about robotics, coding, and making things that matter."
+  initials    = "MC"
+  fontUrl     = "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+
+  [[params.navLinks]]
+    name = "About"
+    url  = "/#about"
+  [[params.navLinks]]
+    name = "Projects"
+    url  = "/#highlights"
+  [[params.navLinks]]
+    name = "Contact"
+    url  = "/#contact"
+
+  [params.hero]
+    eyebrow    = "High School Student · Class of 2026"
+    name       = "Mason Chang"
+    title      = "Builder. Tinkerer. Future Engineer."
+    tagline    = "I build robots, write code, and try to figure out how everything works. Currently obsessed with embedded systems and machine learning."
+    badgeIcon  = "🤖"
+    badgeLabel = "Student\nBuilder"
+    [[params.hero.cta]]
+      label = "My Projects"
+      url   = "/#highlights"
+      class = "btn-primary"
+    [[params.hero.cta]]
+      label = "Say Hi"
+      url   = "/#contact"
+      class = "btn-outline"
+
+  [params.about]
+    heading = "I build things to learn."
+    paragraphs = [
+      "Hi! I'm Mason, a junior in high school who spends most of my free time building robots, tinkering with electronics, and writing software. I got into engineering when I joined my school's FIRST Robotics team in 9th grade and haven't looked back since.",
+      "I'm fascinated by how software and hardware come together — whether that's a robotic arm I built from scratch, a web app, or a machine learning project for the science fair. I'm applying to engineering programs in 2026 and hoping to study CS or ECE."
+    ]
+    [[params.about.stats]]
+      value = "4.3"
+      label = "GPA (W)"
+    [[params.about.stats]]
+      value = "1540"
+      label = "SAT Score"
+    [[params.about.stats]]
+      value = "3"
+      label = "FIRST Seasons"
+    [[params.about.stats]]
+      value = "8+"
+      label = "Projects Built"
+
+  [params.highlights]
+    tag     = "Projects"
+    heading = "Things I've built."
+    [[params.highlights.items]]
+      icon  = "🤖"
+      title = "FIRST Robotics — Mechanical Lead"
+      desc  = "3-year member and current mechanical lead for Team 4201. Designed the intake and climber subsystems for our most recent competition robot."
+      tags  = ["CAD", "Machining", "Java", "FRC"]
+    [[params.highlights.items]]
+      icon  = "🦾"
+      title = "6-DOF Robotic Arm"
+      desc  = "Built a 3D-printed 6-axis robotic arm controlled via inverse kinematics and a Python GUI. Presented at regional Maker Faire."
+      tags  = ["Python", "Arduino", "3D Print", "IK"]
+    [[params.highlights.items]]
+      icon  = "🧠"
+      title = "ML Science Fair Project"
+      desc  = "Trained a CNN to classify plant diseases from leaf images. Achieved 91% accuracy and won 2nd place at the county science fair."
+      tags  = ["TensorFlow", "Python", "CNN", "OpenCV"]
+    [[params.highlights.items]]
+      icon  = "🌐"
+      title = "School Club Website"
+      desc  = "Designed and built the website for our Robotics club. 200+ monthly visitors. Built with React and deployed on Vercel."
+      tags  = ["React", "CSS", "Vercel", "Figma"]
+    [[params.highlights.items]]
+      icon  = "🎮"
+      title = "Game Jam Projects"
+      desc  = "Participated in 3 game jams (Ludum Dare, Global Game Jam). Built small 2D games in Unity — great for learning fast iteration."
+      tags  = ["Unity", "C#", "Game Design", "Pixel Art"]
+    [[params.highlights.items]]
+      icon  = "📡"
+      title = "Ham Radio Operator"
+      desc  = "Licensed Technician-class amateur radio operator (KD9XYZ). Built a Yagi antenna and regularly talk to stations across the country."
+      tags  = ["Ham Radio", "RF", "Electronics", "Antenna"]
+
+  [params.contact]
+    heading = "Let's connect!"
+    subtext = "Always happy to talk robotics, engineering, or answer questions from other students figuring things out."
+    [[params.contact.links]]
+      icon     = "✉️"
+      label    = "mason@example.com"
+      url      = "mailto:mason@example.com"
+      footer   = false
+    [[params.contact.links]]
+      icon     = "🐙"
+      label    = "GitHub"
+      url      = "https://github.com/masonchang"
+      external = true
+      footer   = true
+    [[params.contact.links]]
+      icon     = "🐦"
+      label    = "Twitter / X"
+      url      = "https://x.com/masonchang"
+      external = true
+      footer   = true
+    [[params.contact.links]]
+      icon     = "💼"
+      label    = "LinkedIn"
+      url      = "https://linkedin.com/in/masonchang"
+      external = true
+      footer   = true

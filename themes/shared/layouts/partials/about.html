@@ -1,0 +1,13 @@
+<section class="about section" id="about" aria-label="About">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">About</span>
+      <h2 class="section-title">{{ .Site.Params.about.heading }}</h2>
+    </div>
+    <div class="about-body-centered">
+      <div class="about-text-centered">
+        {{ .Site.Params.about.content | markdownify }}
+      </div>
+    </div>
+  </div>
+</section>

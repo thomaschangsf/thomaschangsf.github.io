@@ -1,0 +1,115 @@
+baseURL       = "https://carysechang.com/"
+languageCode  = "en-us"
+title         = "Caryse Chang"
+theme         = "shared"
+themesDir     = "../../themes"
+
+[params]
+  personaKey  = "caryse"
+  author      = "Caryse Chang"
+  description = "Undergraduate pre-medical student passionate about medicine, patient advocacy, and biomedical research."
+  initials    = "CC"
+  fontUrl     = "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
+
+  [[params.navLinks]]
+    name = "About"
+    url  = "/#about"
+  [[params.navLinks]]
+    name = "Activities"
+    url  = "/#highlights"
+  [[params.navLinks]]
+    name = "Research"
+    url  = "/research/"
+  [[params.navLinks]]
+    name = "Contact"
+    url  = "/#contact"
+
+  [params.hero]
+    eyebrow    = "Pre-Medical Student · Class of 2027"
+    name       = "Caryse Chang"
+    title      = "Aspiring Physician & Researcher"
+    tagline    = "Undergraduate pre-med student driven by curiosity, compassion, and the belief that medicine is both a science and a human art."
+    badgeIcon  = "🩺"
+    badgeLabel = "Pre-Med\nResearcher"
+    [[params.hero.cta]]
+      label = "My Journey"
+      url   = "/#about"
+      class = "btn-primary"
+    [[params.hero.cta]]
+      label = "Get In Touch"
+      url   = "/#contact"
+      class = "btn-outline"
+
+  [params.about]
+    heading = "Medicine as a calling."
+    paragraphs = [
+      "I'm a junior pre-medical student with a deep passion for patient care, health equity, and translational medicine. I came to medicine through volunteering at community health clinics and witnessing first-hand how access to care transforms lives.",
+      "Outside the classroom, I conduct research in a immunology lab studying T-cell exhaustion in chronic disease. I'm also the co-founder of our campus Free Clinic and a certified EMT. I'm applying to medical school with the goal of practicing internal medicine in underserved communities."
+    ]
+    [[params.about.stats]]
+      value = "3.95"
+      label = "Science GPA"
+    [[params.about.stats]]
+      value = "520"
+      label = "MCAT Score"
+    [[params.about.stats]]
+      value = "400+"
+      label = "Clinical Hours"
+    [[params.about.stats]]
+      value = "2"
+      label = "Publications"
+
+  [params.highlights]
+    tag     = "Experience"
+    heading = "Experiences that shaped me."
+    [[params.highlights.items]]
+      icon  = "🔬"
+      title = "Immunology Research"
+      desc  = "Investigating mechanisms of T-cell exhaustion in chronic viral infection. Presented at two regional undergraduate research conferences."
+      tags  = ["Flow Cytometry", "Western Blot", "ELISA", "R"]
+    [[params.highlights.items]]
+      icon  = "🏥"
+      title = "Free Clinic Co-Founder"
+      desc  = "Co-founded a student-run free clinic serving 200+ uninsured patients per year. Coordinate volunteer recruitment and clinical operations."
+      tags  = ["Leadership", "Community Health", "EMT"]
+    [[params.highlights.items]]
+      icon  = "🚑"
+      title = "EMT — Emergency Volunteer"
+      desc  = "Certified EMT-Basic with 18 months on campus EMS. Responded to 300+ calls and served as a crew chief for weekend shifts."
+      tags  = ["EMT-B", "ACLS", "Trauma"]
+    [[params.highlights.items]]
+      icon  = "🤝"
+      title = "Patient Advocacy"
+      desc  = "Hospital volunteer and patient navigator helping Spanish-speaking patients understand their care plans and navigate insurance coverage."
+      tags  = ["Bilingual", "Health Equity", "Navigation"]
+    [[params.highlights.items]]
+      icon  = "📚"
+      title = "Academic Coursework"
+      desc  = "Biochemistry, Molecular Biology, Organic Chemistry, Neuroscience, and Medical Genetics — all with A or A+ grades."
+      tags  = ["Biochem", "Orgo", "Neuro", "Genetics"]
+    [[params.highlights.items]]
+      icon  = "🎻"
+      title = "Music & Arts"
+      desc  = "Violin player in the university chamber orchestra. Believer in the arts as essential to empathy and connection in medicine."
+      tags  = ["Violin", "Orchestra", "Arts in Medicine"]
+
+  [params.contact]
+    heading = "Let's connect."
+    subtext = "Interested in connecting with fellow pre-meds, physicians, or anyone passionate about medicine and health equity."
+    [[params.contact.links]]
+      icon     = "✉️"
+      label    = "caryse@example.com"
+      url      = "mailto:caryse@example.com"
+      footer   = false
+    [[params.contact.links]]
+      icon     = "💼"
+      label    = "LinkedIn"
+      url      = "https://linkedin.com/in/carysechang"
+      external = true
+      footer   = true
+    [[params.contact.links]]
+      icon     = "🐦"
+      label    = "Twitter / X"
+      url      = "https://x.com/carysechang"
+      external = true
+      footer   = true

@@ -1,0 +1,63 @@
+/* ============================================
+   CARYSE CHANG — Pre-Med Persona
+   Warm light mode · rose / medical blue
+   ============================================ */
+:root {
+  --color-bg:          #fff8f8;
+  --color-bg-alt:      #fdf2f4;
+  --color-surface:     #ffffff;
+  --color-surface-2:   #fce7ec;
+  --color-border:      rgba(190, 24, 93, 0.1);
+  --color-text:        #1a0a10;
+  --color-text-muted:  #6b2d42;
+  --color-accent:      #e11d6a;
+  --color-accent-2:    #3b82f6;
+  --color-accent-glow: rgba(225, 29, 106, 0.2);
+  --color-cta-text:    #ffffff;
+
+  --font-body:         'Inter', system-ui, sans-serif;
+  --font-display:      'Outfit', system-ui, sans-serif;
+}
+
+.nav.scrolled {
+  background: rgba(255, 248, 248, 0.9);
+  border-color: rgba(190, 24, 93, 0.1);
+}
+
+.hero-name {
+  background: linear-gradient(135deg, #1a0a10 0%, var(--color-accent) 55%, var(--color-accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-orb-1 { opacity: 0.14; }
+.hero-orb-2 { opacity: 0.1; }
+.hero-orb-3 { opacity: 0.07; }
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(225, 29, 106, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+}
+
+.highlight-card {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.highlight-card:hover {
+  box-shadow: 0 8px 32px rgba(225, 29, 106, 0.12);
+}
+
+.stat-card { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+
+.btn-outline {
+  border-color: rgba(190, 24, 93, 0.2);
+  color: var(--color-text);
+}
+.btn-outline:hover {
+  border-color: var(--color-accent);
+  background: rgba(225, 29, 106, 0.06);
+  color: var(--color-accent);
+}
+
+.footer { border-color: rgba(190, 24, 93, 0.1); }

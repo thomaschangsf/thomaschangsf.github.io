@@ -1,0 +1,89 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Thomas Chang | Staff ML Engineer"
+theme = "shared"
+themesDir = "../../themes"
+canonifyURLs = false
+relativeURLs = true
+
+[params]
+    name = "Thomas Chang"
+    description = "Staff Machine Learning Engineer specializing in Search, NLP, and Trust."
+    email = "thomas.w.chang@gmail.com"
+    github = "thomaschangsf"
+    linkedin = "thomaschangsf" # Assuming standard naming
+    
+    [params.hero]
+        title = "Thomas Chang"
+        subtitle = "Staff Machine Learning Engineer"
+        tagline = "Translating complex problems into scalable ML solutions."
+        cta_text = "View My Work"
+        cta_link = "#highlights"
+        secondary_cta_text = "Read Blog"
+        secondary_cta_link = "/blogs"
+
+    [params.about]
+        title = "About Me"
+        heading = "My Journey"
+        content = """
+        Welcome to my personal website! I'm an experienced machine learning engineer with a track record of delivering end-to-end solutions in the Search, NLP, and Trust domains. 
+        My expertise spans both traditional and deep learning models, cloud-native applications, and the deployment of scalable solutions on AWS and Google Cloud. 
+        I have a strong foundation in building and maintaining both exploratory and production-level data pipelines.
+
+        I excel at translating ambiguous and complex problems into manageable machine learning components, and I pride myself on clear communication, especially when working with teams and non-technical stakeholders.
+
+        I am passionate about continuous learning through sharing, and I regularly share insights from the books I’ve recently read. You can also check out my GitHub account, where I explore new projects and tools.
+        """
+        image_url = "/images/algarve-beach.jpg"
+
+    [[params.highlights.items]]
+        title = "Search & NLP"
+        description = "Experience with Search relevance, ranking, and NLP core technology at eBay and Salesforce."
+        icon = "search"
+    
+    [[params.highlights.items]]
+        title = "Generative AI & Trust"
+        description = "Lead ML Engineer for the Salesforce AI Platform Trust Layer, focusing on safety and Large Language Models."
+        icon = "shield"
+
+    [[params.highlights.items]]
+        title = "Scalable Infrastructure"
+        description = "Expertise in Docker, Kubernetes, Helm, and cloud-native deployments on AWS and GCP."
+        icon = "cloud"
+
+    [[params.highlights.items]]
+        title = "Languages"
+        description = "Proficient in Python, Scala, and Go for high-performance ML services."
+        icon = "code"
+
+[menu]
+    [[menu.main]]
+        identifier = "home"
+        name = "Home"
+        url = "/"
+        weight = 10
+    [[menu.main]]
+        identifier = "blogs"
+        name = "Blogs"
+        url = "/blogs/"
+        weight = 20
+    [[menu.main]]
+        identifier = "books"
+        name = "Books"
+        url = "/books/"
+        weight = 30
+    [[menu.main]]
+        identifier = "github"
+        name = "GitHub"
+        url = "https://github.com/thomaschangsf"
+        weight = 40
+    [[menu.main]]
+        identifier = "resume"
+        name = "Resume"
+        url = "/resume/"
+        weight = 50
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

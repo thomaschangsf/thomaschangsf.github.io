@@ -1,0 +1,19 @@
+<section class="hero" id="home" aria-label="Hero">
+  <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-image-wrapper">
+      <img src="{{ .Site.Params.about.image_url }}" alt="{{ .Site.Params.name }}" class="hero-img-wide-centered">
+    </div>
+
+    <div class="hero-text">
+      <p class="hero-subtitle">
+        {{ .Site.Params.hero.tagline }}
+      </p>
+      
+      <div class="hero-description">
+        {{ .Site.Params.about.content | markdownify }}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<section class="highlights section" id="highlights" aria-label="Highlights">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{{ .Site.Params.highlights.tag }}</span>
+      <h2 class="section-title">{{ .Site.Params.highlights.heading }}</h2>
+    </div>
+    <div class="highlights-grid">
+      {{ range .Site.Params.highlights.items }}
+      <div class="highlight-card">
+        <div class="highlight-icon" aria-hidden="true">{{ .icon }}</div>
+        <h3 class="highlight-title">{{ .title }}</h3>
+        <p class="highlight-desc">{{ .description }}</p>
+        {{ with .tags }}
+        <div class="highlight-tags">
+          {{ range . }}
+          <span class="tag">{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
