@@ -361,17 +361,25 @@ section { padding-block: var(--space-xl); }
   color: var(--color-text-muted);
 }
 .page-body p {
-  margin-bottom: 2rem; /* Added extra space between paragraphs */
+  margin-bottom: 2rem;
+}
+/* Fix: Don't add huge gaps to paragraphs inside list items */
+.page-body li p {
+  margin-bottom: 0.5rem;
+}
+.page-body ul, .page-body ol {
+  margin-bottom: 2rem;
+}
+.page-body li {
+  margin-bottom: 0.5rem;
 }
 .page-body h2 { color: #fff; margin-block: 2.5rem 1rem; }
 
 /* ---------- Footer ---------- */
 .footer {
-  padding-block: 4rem;
+  padding-block: 2rem;
   border-top: 1px solid var(--color-border);
   text-align: center;
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
