@@ -1,26 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Blog Posts on Thomas Chang | Staff ML Engineer</title>
-    <link>http://localhost:1313/blogs/</link>
-    <description>Recent content in Blog Posts on Thomas Chang | Staff ML Engineer</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 20 Jun 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blogs/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Thinking About Thinking</title>
-      <link>http://localhost:1313/blogs/thinking-about-thinking/</link>
-      <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/thinking-about-thinking/</guid>
-      <description>&lt;p&gt;ML knowledge and capabilities have grown exponentially with unprecedented rate of increase in model abilities, research output, compute resources, and real-world applications. ML related research papers have increased at an annual rate of 35% since 2012. Model parameters, as a first order estimate for model complexities and capabilities, has grown roughly 10 times every 1-2 years. Models like GPT-4 and Claude has achieved near human scores on challenging tasks, such as standardized exams and domain specific benchmarks like GLUE (General Language Understanding Evaluation) and MMLU (Massive Multitask Language Understanding).&#xA;The rate of growth will likely continue to grow as the data model application flywheel is further optimized and companies continue to invest tremendous resources in AI initiatives.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Making Better Predictions</title>
-      <link>http://localhost:1313/blogs/making-better-predictions/</link>
-      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/making-better-predictions/</guid>
-      <description>&lt;p&gt;Humans, much like machine learning models, are constantly making predictions. These range from simpler guesses about the weather to complex decisions, like managing financial investments by weighing risks and rewards. Improving our ability to predict can improve the quality of our life. This blog explores how we can enhance our predictions by applying machine learning practices to both our internal mindsets and external situations.&lt;/p&gt;&#xA;&lt;p&gt;Our approach to making predictions can vary depending on the nature of the problem. Sometimes, adopting a &amp;ldquo;hedgehog&amp;rdquo; perspective—focusing on one strong, confident idea—works well. This approach keeps things simple and straightforward, which can be effective in contexts like social media, where clarity and confidence are valued.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog Posts on Thomas Chang | Staff ML Engineer</title><link>https://thomaschangsf.github.io/blogs/</link><description>Recent content in Blog Posts on Thomas Chang | Staff ML Engineer</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 20 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaschangsf.github.io/blogs/index.xml" rel="self" type="application/rss+xml"/><item><title>Thinking About Thinking</title><link>https://thomaschangsf.github.io/blogs/thinking-about-thinking/</link><pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/blogs/thinking-about-thinking/</guid><description>&lt;p&gt;ML knowledge and capabilities have grown exponentially with unprecedented rate of increase in model abilities, research output, compute resources, and real-world applications. ML related research papers have increased at an annual rate of 35% since 2012. Model parameters, as a first order estimate for model complexities and capabilities, has grown roughly 10 times every 1-2 years. Models like GPT-4 and Claude has achieved near human scores on challenging tasks, such as standardized exams and domain specific benchmarks like GLUE (General Language Understanding Evaluation) and MMLU (Massive Multitask Language Understanding).
+The rate of growth will likely continue to grow as the data model application flywheel is further optimized and companies continue to invest tremendous resources in AI initiatives.&lt;/p&gt;</description></item><item><title>Making Better Predictions</title><link>https://thomaschangsf.github.io/blogs/making-better-predictions/</link><pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/blogs/making-better-predictions/</guid><description>&lt;p&gt;Humans, much like machine learning models, are constantly making predictions. These range from simpler guesses about the weather to complex decisions, like managing financial investments by weighing risks and rewards. Improving our ability to predict can improve the quality of our life. This blog explores how we can enhance our predictions by applying machine learning practices to both our internal mindsets and external situations.&lt;/p&gt;
+&lt;p&gt;Our approach to making predictions can vary depending on the nature of the problem. Sometimes, adopting a &amp;ldquo;hedgehog&amp;rdquo; perspective—focusing on one strong, confident idea—works well. This approach keeps things simple and straightforward, which can be effective in contexts like social media, where clarity and confidence are valued.&lt;/p&gt;</description></item></channel></rss>

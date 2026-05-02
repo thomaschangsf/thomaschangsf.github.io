@@ -1,131 +1,642 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Thomas Chang on Thomas Chang | Staff ML Engineer</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content in Thomas Chang on Thomas Chang | Staff ML Engineer</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 20 Jun 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Thinking About Thinking</title>
-      <link>http://localhost:1313/blogs/thinking-about-thinking/</link>
-      <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/thinking-about-thinking/</guid>
-      <description>&lt;p&gt;ML knowledge and capabilities have grown exponentially with unprecedented rate of increase in model abilities, research output, compute resources, and real-world applications. ML related research papers have increased at an annual rate of 35% since 2012. Model parameters, as a first order estimate for model complexities and capabilities, has grown roughly 10 times every 1-2 years. Models like GPT-4 and Claude has achieved near human scores on challenging tasks, such as standardized exams and domain specific benchmarks like GLUE (General Language Understanding Evaluation) and MMLU (Massive Multitask Language Understanding).&#xA;The rate of growth will likely continue to grow as the data model application flywheel is further optimized and companies continue to invest tremendous resources in AI initiatives.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Making Better Predictions</title>
-      <link>http://localhost:1313/blogs/making-better-predictions/</link>
-      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/making-better-predictions/</guid>
-      <description>&lt;p&gt;Humans, much like machine learning models, are constantly making predictions. These range from simpler guesses about the weather to complex decisions, like managing financial investments by weighing risks and rewards. Improving our ability to predict can improve the quality of our life. This blog explores how we can enhance our predictions by applying machine learning practices to both our internal mindsets and external situations.&lt;/p&gt;&#xA;&lt;p&gt;Our approach to making predictions can vary depending on the nature of the problem. Sometimes, adopting a &amp;ldquo;hedgehog&amp;rdquo; perspective—focusing on one strong, confident idea—works well. This approach keeps things simple and straightforward, which can be effective in contexts like social media, where clarity and confidence are valued.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>DataScience From Scratch</title>
-      <link>http://localhost:1313/books/machine-learning/data-science-from-scratch/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/machine-learning/data-science-from-scratch/</guid>
-      <description>&lt;h1 id=&#34;1-introduction&#34;&gt;1 Introduction&lt;/h1&gt;&#xA;&lt;h1 id=&#34;2-crash-course-in-python&#34;&gt;2 Crash Course In Python&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;Tuples&lt;/em&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;List&amp;rsquo;s immutable cousin&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;my_list &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;my_tuple &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;other_tuple &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;my_list[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;# my_list is now [1, 3]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    my_tuple[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;TypeError&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cannot modify a tuple&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;convenient way to return multiple values and multiple assignment&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;sum_and_product&lt;/span&gt;(x, y):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (x &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; y), (x &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; y)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sum_and_product(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)   &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;x, y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;     &lt;span style=&#34;color:#75715e&#34;&gt;# now x is 1, y is 2&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;x, y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; y, x     &lt;span style=&#34;color:#75715e&#34;&gt;# Pythonic way to swap variables; now x is 2, y is 1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Dict&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Essential Math For Data Science</title>
-      <link>http://localhost:1313/books/machine-learning/essential-math-for-data-science/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/machine-learning/essential-math-for-data-science/</guid>
-      <description>&lt;h1 id=&#34;1-basic-math-and-calculus-review&#34;&gt;1 Basic Math And Calculus Review&lt;/h1&gt;&#xA;&lt;h3 id=&#34;exponential&#34;&gt;Exponential&lt;/h3&gt;&#xA;&lt;h3 id=&#34;logarithms&#34;&gt;Logarithms&lt;/h3&gt;&#xA;&lt;p&gt;$$&#xA;log_2 8 = x&lt;/p&gt;&#xA;&lt;p&gt;$$&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;base = 2&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;x = 3&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;- Benefits&#xA;    - Logorithms simplifies operations, which helps computation training&#xA;  &#x9;  - Multiplication: log(a x b) = log(a) + log(b)&#xA;  &#x9;  - Division: log(a/b) = log(a) - log(b)&#xA;  &#x9;  - Expoentiation log(a ^ n) = n * log(a)&#xA;  &#x9;  - Inverse: log(x^-1) == log(1/x) = -log(x)&#xA;    - Log is also good for feature engineering, transforming heavy tail distribution to a gaussian distribution, which is ideal for linear regression models&#xA;&#xA;- Code&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&#x9;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; math &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; log&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&#x9;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&#x9;&lt;span style=&#34;color:#75715e&#34;&gt;# 2 raised to what power gives me 8?&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&#x9;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; log(&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&#x9;&lt;span style=&#34;color:#75715e&#34;&gt;# x = 3.0&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;eulers-number-e-and-natural-logarithm&#34;&gt;Euler&amp;rsquo;s Number $e$ and Natural Logarithm&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;$e$ = 2.71828 = euler number;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Getting Started with Bazel</title>
-      <link>http://localhost:1313/books/software-system/getting-started-with-bazel/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/software-system/getting-started-with-bazel/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>GitHub</title>
-      <link>http://localhost:1313/github/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/github/</guid>
-      <description>&lt;script&gt;window.location.href = &#39;https://github.com/thomaschangsf&#39;;&lt;/script&gt;&#xA;&lt;meta http-equiv=&#34;refresh&#34; content=&#34;0; url=https://github.com/thomaschangsf&#34;&gt;&#xA;&lt;p&gt;Redirecting to &lt;a href=&#34;https://github.com/thomaschangsf&#34;&gt;GitHub&lt;/a&gt;...&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>gRPC: Up and Running</title>
-      <link>http://localhost:1313/books/software-system/grpc-up-and-running/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/software-system/grpc-up-and-running/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hands On Large Language Model</title>
-      <link>http://localhost:1313/books/machine-learning/hands-on-large-language-model/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/machine-learning/hands-on-large-language-model/</guid>
-      <description>&lt;h1 id=&#34;part-1-understanding-language-models&#34;&gt;Part 1: Understanding Language Models&lt;/h1&gt;&#xA;&lt;h2 id=&#34;chapter-1-an-introduction-to-llm&#34;&gt;Chapter 1: An Introduction To LLM&lt;/h2&gt;&#xA;&lt;h2 id=&#34;chapter-2-tokens-and-embeddings&#34;&gt;Chapter 2: Tokens And Embeddings&lt;/h2&gt;&#xA;&lt;h2 id=&#34;chapter-3-looking-inside-llm&#34;&gt;Chapter 3: Looking Inside LLM&lt;/h2&gt;&#xA;&lt;h3 id=&#34;31-overview-of-transformer-models&#34;&gt;3.1 Overview of Transformer Models&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;&#xA;flowchart TD&#xA;    Z[Sentence]--&amp;gt;A(Tokenizers)&#xA;    A --&amp;gt;|tokens_i|B(Embedding_i)&#xA;    B --&amp;gt; C(Stack of Transformer Blocks)&#xA;    C--&amp;gt;|Output Vector_i|D[LM Head]&#xA;    classDef default fill:#CCE6FF,stroke:#84BCF5,textColor:#1C2B33,fontFamily:trebuchet ms;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;311-inputs-and-outputs-of-a-trained-transformer-llm&#34;&gt;3.1.1 Inputs and Outputs of a Trained Transformer LLM&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Input: prompt + previous_generation&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Output: most probable token&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Code:&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; torch&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; transformers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; AutoModelForCausalLM, AutoTokenizer, pipeline&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Load model and tokenizer&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tokenizer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; AutoTokenizer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;from_pretrained(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;microsoft/Phi-3-mini-4k-instruct&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; AutoModelForCausalLM&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;from_pretrained(&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;microsoft/Phi-3-mini-4k-instruct&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    device_map&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cuda&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    torch_dtype&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;auto&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    trust_remote_code&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Create a pipeline&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;generator &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pipeline(&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text-generation&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    model&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;model,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    tokenizer&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tokenizer,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    return_full_text&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    max_new_tokens&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    do_sample&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;prompt &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Write an email apologizing to Sarah for the tragic gardening mishap. Explain how it happened.&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; generator(prompt)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;312-components-of-forward-pass&#34;&gt;3.1.2 Components of Forward Pass&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;This refers to what happens between input_prompt and output_token&#xA;&lt;ul&gt;&#xA;&lt;li&gt;input_prompt &amp;ndash;&amp;gt; Transformer LLM (Forward Pass) &amp;ndash;&amp;gt; output_token&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Components&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Tokenizer&#xA;&lt;ol&gt;&#xA;&lt;li&gt;token &amp;ndash;&amp;gt; token_id &amp;ndash;&amp;gt; token embeddings&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Stack of Transformer Blocks&#xA;&lt;ol&gt;&#xA;&lt;li&gt;block 1&lt;/li&gt;&#xA;&lt;li&gt;block n&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;LM Head&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Can be: a simple NN layer, sequence classification heads, token classification heads&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Understanding a model output&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Phi3ForCausalLM(&#xA;  (model): Phi3Model(&#xA;    (embed_tokens): Embedding(32064, 3072, padding_idx=32000)&#xA;    (embed_dropout): Dropout(p=0.0, inplace=False)&#xA;    (layers): ModuleList(&#xA;      (0-31): 32 x Phi3DecoderLayer(&#xA;        (self_attn): Phi3Attention(&#xA;          (o_proj): Linear(in_features=3072, out_features=3072, bias=False)&#xA;          (qkv_proj): Linear(in_features=3072, out_features=9216, bias=False)&#xA;          (rotary_emb): Phi3RotaryEmbedding()&#xA;        )&#xA;        (mlp): Phi3MLP(&#xA;          (gate_up_proj): Linear(in_features=3072, out_features=16384, bias=False)&#xA;          (down_proj): Linear(in_features=8192, out_features=3072, bias=False)&#xA;          (activation_fn): SiLU()&#xA;        )&#xA;        (input_layernorm): Phi3RMSNorm()&#xA;        (resid_attn_dropout): Dropout(p=0.0, inplace=False)&#xA;        (resid_mlp_dropout): Dropout(p=0.0, inplace=False)&#xA;        (post_attention_layernorm): Phi3RMSNorm()&#xA;      )&#xA;    )&#xA;    (norm): Phi3RMSNorm()&#xA;  )&#xA;  (lm_head): Linear(in_features=3072, out_features=32064, bias=False)&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;lm_head output is&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1 row, with 6 tokens, each token being 32064 bits long&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;This shows us the various nested layers of the model. The majority of the model is labeled model, followed by lm_head.&lt;/li&gt;&#xA;&lt;li&gt;Inside the Phi3Model model, we see the embeddings matrix embed_tokens and its dimensions. It has 32,064 tokens each with a vector size of 3,072.&lt;/li&gt;&#xA;&lt;li&gt;Skipping the dropout layer for now, we can see the next major component is the stack of Transformer decoder layers. It contains 32 blocks of type Phi3DecoderLayer.&lt;/li&gt;&#xA;&lt;li&gt;Each of these Transformer blocks includes an attention layer and a feedforward neural network (also known as an mlp or multilevel perceptron). We’ll cover these in more detail later in the chapter.&lt;/li&gt;&#xA;&lt;li&gt;Finally, we see the lm_head taking a vector of size 3,072 and outputting a vector equivalent to the number of tokens the model knows. That output is the probability score for each token that helps us select the output token.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;313-choosing-a-single-token-from-the-probability-distribution-samplingdecoding&#34;&gt;3.1.3 Choosing a Single Token From the Probability Distribution (Sampling/Decoding)&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Code&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;prompt &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;The capital of France is&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Tokenize the input prompt&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;input_ids &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tokenizer(prompt, return_tensors&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;pt&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;input_ids&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Tokenize the input prompt&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;input_ids &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; input_ids&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;to(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cuda&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Get the output of the model before the lm_head&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;model_output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;model(input_ids)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Get the output of the lm_head&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lm_head_output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;lm_head(model_output[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# lm_head_output is of the shape [1, 6, 32064] (from model output before). We can access the token probability scores for the last generated token using lm_head_output[0,-1], which uses the index 0 across the batch dimension; the index –1 gets us the last token in the sequence. This is now a list of probability scores for all 32,064 tokens. We can get the top scoring token ID, and then decode it to arrive at the text of the generated output token:&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;token_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lm_head_output[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tokenizer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;decode(token_id)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# PARIS&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;314-parallel-token-processing-and-context-size&#34;&gt;3.1.4 Parallel Token Processing and Context Size&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;LLM is highly parallelized&#xA;&lt;ul&gt;&#xA;&lt;li&gt;each token_i in the context window (ie 4k tokens) is a parallel stream to the tokenizer &amp;ndash;&amp;gt; transformer block &amp;ndash;&amp;gt; LLM head &amp;ndash;&amp;gt; output_i_vector!!!&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;For text generation, only the ==last output vector== (ie most current token) is used to generate the probability of next token&lt;/li&gt;&#xA;&lt;li&gt;Example&#xA;&lt;ul&gt;&#xA;&lt;li&gt;If you’re following along with the code examples, recall that the output of lm_head was of the shape [1, 6, 32064]. That was because the input to it was of the shape [1, 6, 3072], which is a batch of one input string, containing six tokens, each of them represented by a vector of size 3,072 corresponding to the output vectors after the stack of Transformer blocks.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;model_output[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#torch.Size([1, 6, 3072])&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lm_head_output&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;torch&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Size([&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;32064&lt;/span&gt;])&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;315-speeding-up-generation-by-caching-keys-and-values&#34;&gt;3.1.5 Speeding Up Generation By Caching Keys and values&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Remember, we use only the last output vector to generate the next token&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Kubernetes Up and Running</title>
-      <link>http://localhost:1313/books/software-system/kubernetes-up-and-running/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/software-system/kubernetes-up-and-running/</guid>
-      <description>&lt;h1 id=&#34;1-introduction&#34;&gt;1 Introduction&lt;/h1&gt;&#xA;&lt;h1 id=&#34;2-creating-and-running-applications&#34;&gt;2 Creating and Running Applications&lt;/h1&gt;&#xA;&lt;h3 id=&#34;container-images&#34;&gt;Container Images&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A container image is a binary package that encapsulates all of the files necessary to run a program inside of an OS container.&lt;/li&gt;&#xA;&lt;li&gt;Most popular format is docker&lt;/li&gt;&#xA;&lt;li&gt;Container images are constructed with a series of filesystem layers, where each layer inherits and modifies the layers that came before it&lt;/li&gt;&#xA;&lt;li&gt;2 categories of images&#xA;&lt;ul&gt;&#xA;&lt;li&gt;system: mimics virtual machine and runs full boot process.  Seen as poor practice.&lt;/li&gt;&#xA;&lt;li&gt;application: runs a single program&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;building-application-images-with-docker&#34;&gt;Building Application Images With Docker&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Dockerfile&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-Dockerfile&#34; data-lang=&#34;Dockerfile&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Start from a Node.js 16 (LTS) image &lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;node:16&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Specify the directory inside the image in which all commands will run &lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;WORKDIR&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;/usr/src/app&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Copy package files and install dependencies &lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;COPY&lt;/span&gt; package*.json ./&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; npm install&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; npm install express&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Copy all of the app files into the image &lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;COPY&lt;/span&gt; . .&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# The default command to run when starting the container &lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CMD&lt;/span&gt; [ &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;npm&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;start&amp;#34;&lt;/span&gt; ]&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;Commands&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker build -t simple-node .&#xA;docker run --rm -p 3000:3000 simple-node**&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Building image efficiently:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Learning Algorithms</title>
-      <link>http://localhost:1313/books/software-system/learning-algorithms/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/software-system/learning-algorithms/</guid>
-      <description>&lt;h1 id=&#34;1-problem-solving&#34;&gt;1 Problem Solving&lt;/h1&gt;&#xA;&lt;h2 id=&#34;11-what-is-an-algorithm&#34;&gt;1.1 What Is An Algorithm&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The study of algorithms is concerned with both&#xA;&lt;ul&gt;&#xA;&lt;li&gt;correctness (will this algorithm work for all input?)&lt;/li&gt;&#xA;&lt;li&gt;performance (is this the most efficient way to solve this problem?)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Key Questions&#xA;&lt;ul&gt;&#xA;&lt;li&gt;What are the factors impacting an algorithm&amp;rsquo;s performance?&lt;/li&gt;&#xA;&lt;li&gt;How to Analyze algorithm performance independent of the implmentation?&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Terminologies&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;problem instance&lt;/em&gt; = 1 input + 1 run of the algorithm&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;12-finding-the-largest-value-in-a-list&#34;&gt;1.2 Finding The Largest Value In a List&lt;/h2&gt;&#xA;&lt;h2 id=&#34;13-counting-key-operations&#34;&gt;1.3 Counting Key Operations&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;How do you define the key operation?&lt;/li&gt;&#xA;&lt;li&gt;We use the key operation to compare 2 algorithms&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ex:&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;alternate&lt;/span&gt;(A):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; A:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    v_is_largest &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;        &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; A:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; x: &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;lt;-- KEY OPERATION !!&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        v_is_largest &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;   &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; v_is_largest:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; v&#x9;               &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;       &#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;14-models-can-predict-algorithm-performance&#34;&gt;1.4 Models Can Predict Algorithm Performance&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;To quantify algo performance, find the ==inputs== that generates the&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Learning Go</title>
-      <link>http://localhost:1313/books/software-system/learning-go/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/software-system/learning-go/</guid>
-      <description>&lt;h1 id=&#34;1-setup&#34;&gt;1 Setup&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-terminal&#34; data-lang=&#34;terminal&#34;&gt;# environment; defined in .bash_aliases.sh&#xA;export GOPATH=$HOME/go&#xA;export PATH=$PATH:$GOPATH/bin&#xA;&#xA;# code location&#xA;cd /Users/chang/Documents/dev/git/gratia/01_languages/goLang/book_learning_go&#xA;cd ch1&#xA;go run hello.go&#xA;&#xA;go build -o hello_world hello.go&#xA;&#xA;# install 3rd party tool to do a load test&#xA;go install github.com/rakyll/hey@latest&#xA;hey https://www.golang.org&#xA;&#xA;# install 3rd party too to format imports&#xA;go install golang.org/x/tools/cmd/goimports@latest&#xA;&#xA;# detect shadow variables&#xA;go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;go run&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;use when you want to run as a script&lt;/li&gt;&#xA;&lt;li&gt;compiles and put binary in a temporary directory&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;go build -o [BINARY_NAME] hello.go&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Machine Learning Interview</title>
-      <link>http://localhost:1313/books/machine-learning/machine-learning-system-design-interview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/machine-learning/machine-learning-system-design-interview/</guid>
-      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;1-clarify-requirement&#34;&gt;1 Clarify Requirement&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Chapter 2: Visual Search system&lt;/li&gt;&#xA;&lt;li&gt;Chapter 3: Google Street View Blurring system&lt;/li&gt;&#xA;&lt;li&gt;Chapter 4: Youtube Video Search&lt;/li&gt;&#xA;&lt;li&gt;Chapter 5: Harmful Content Detection&lt;/li&gt;&#xA;&lt;li&gt;Chapter 6: Video Recommendation Service&lt;/li&gt;&#xA;&lt;li&gt;Chapter 7: Event Recommendation Service&lt;/li&gt;&#xA;&lt;li&gt;Chapter 8: Ad Click Prediction&lt;/li&gt;&#xA;&lt;li&gt;Chapter 9: Similar Listings on Vacation Rental&lt;/li&gt;&#xA;&lt;li&gt;Chapter 10: Personalized News Feed&lt;/li&gt;&#xA;&lt;li&gt;Chapter 11: People You May Know&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;2-frame-as-ml&#34;&gt;2 Frame as ML&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;defining-the-ml-objective&#34;&gt;Defining the ML Objective&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Maximize # user clicks&lt;/li&gt;&#xA;&lt;li&gt;Maximize # completed videos&lt;/li&gt;&#xA;&lt;li&gt;Maximize watch time&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;specify-input-and-output&#34;&gt;Specify Input and Output&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Late vs Early Fusion (Ch5)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;ml-category&#34;&gt;ML Category&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;High Level&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Supervised&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Classification&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Resume</title>
-      <link>http://localhost:1313/resume/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/resume/</guid>
-      <description>&lt;div class=&#34;resume-container&#34;&gt;&#xA;    &lt;div style=&#34;display: flex; justify-content: center; align-items: center; min-height: 800px; width: 100%; background: #f8f9fa; border-radius: 12px; overflow: hidden; border: 1px solid #eee;&#34;&gt;&#xA;        &lt;iframe src=&#34;./files/resume.pdf&#34; width=&#34;100%&#34; height=&#34;800px&#34; style=&#34;border:none;&#34;&gt;&lt;/iframe&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div style=&#34;margin-top: 2rem; text-align: center;&#34;&gt;&#xA;        &lt;a href=&#34;./files/resume.pdf&#34; class=&#34;btn btn-primary&#34; download&gt;Download PDF Resume&lt;/a&gt;&#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Scaling ML Spark</title>
-      <link>http://localhost:1313/books/software-system/scaling-ml-spark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/software-system/scaling-ml-spark/</guid>
-      <description>&lt;h1 id=&#34;1-distributed-ml-terms-and-concepts&#34;&gt;1 Distributed ML Terms and Concepts&lt;/h1&gt;&#xA;&lt;h1 id=&#34;2-intro-to-spark-and-pyspark&#34;&gt;2 Intro to Spark and PySpark&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Driver Program&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The driver program (aka Spark driver) is a dedicated process that runs on the driver machine. It is responsible for executing and holding the SparkSession, which encapsulates the SparkContext—this is considered the application’s entry point, or the “real program.” The SparkContext contains all the basic functions, context delivered at start time, and information about the cluster. The driver also holds the DAG scheduler, task scheduler, block manager, and everything that is needed to turn the code into jobs that the worker and executors can execute on the cluster. The driver program works in synergy with the cluster manager to find the existing machines and allocated resources.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Executor:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Is a process&lt;/li&gt;&#xA;&lt;li&gt;Has T tasks&#xA;&lt;ul&gt;&#xA;&lt;li&gt;tasks is smallest unit of work&lt;/li&gt;&#xA;&lt;li&gt;task in the same executor share the same cache, memory, and global parameters&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Worker Node&#xA;&lt;ul&gt;&#xA;&lt;li&gt;VM&lt;/li&gt;&#xA;&lt;li&gt;multiple executor on a worker node&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Cluster manager&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Assign executors to worker nodes, assign resources and communicate information about resource availability to driver program&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;executing-pyspark-code&#34;&gt;Executing PySpark Code&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Pyspark -&amp;gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;process: python - InterProcess communication (IPC) - process: scala/JVM&lt;/li&gt;&#xA;&lt;li&gt;JVM spark query optimization, computation, distribution of tasks to clusters&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Py4J&#xA;&lt;ul&gt;&#xA;&lt;li&gt;pyspark driver - pickled item (serialization) - py4j context - Spark driver GVM&lt;/li&gt;&#xA;&lt;li&gt; &lt;a href=&#34;https://www.py4j.org/&#34;&gt;Py4J&lt;/a&gt; is a library written in Python and Java that enables Python programs running in a Python interpreter to dynamically access Java objects and collections in a JVM via standard Python methods&lt;/li&gt;&#xA;&lt;li&gt;==PySpark is often less efficient in terms of running time than traditional Scala/Java code==&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;apache-spark-basics&#34;&gt;Apache Spark Basics&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Architectures&lt;/li&gt;&#xA;&lt;li&gt;DataFrame vs Datasets&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Datasets enforces type safety; there is no way to mistaken a col type of string as int&lt;/li&gt;&#xA;&lt;li&gt;BUT dataset is slower.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;3-mlflow&#34;&gt;3 MLFlow&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;MLOps: manage the machine learning experiment lifecycle&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Software Engineer At Google</title>
-      <link>http://localhost:1313/books/software-profession/software-engineering-at-google/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/software-profession/software-engineering-at-google/</guid>
-      <description>&lt;h2 id=&#34;1-what-is-software-engineering&#34;&gt;1 What is Software Engineering&lt;/h2&gt;&#xA;&lt;h3 id=&#34;11-time-and-change&#34;&gt;1.1 Time and Change&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Software engineering is programming integrated over time.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;new features requests, depedency changes, people changes&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Engineers need to be more concerned with the passage of time and the eventual need for change&lt;/li&gt;&#xA;&lt;li&gt;Hyrum&amp;rsquo;s Law&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#x9;With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;12-scale-and-efficiency&#34;&gt;1.2 Scale and Efficiency&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;we need to be more concerned about scale and efficiency, both for the software we produce as well as for the organization that is producing it&lt;/li&gt;&#xA;&lt;li&gt;Everything your organization relies upon to produce and maintain code should be scalable in terms of overall cost and resource consumption&#xA;&lt;ul&gt;&#xA;&lt;li&gt;scalable in terms of human effort&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Policies that do not scale well&#xA;&lt;ul&gt;&#xA;&lt;li&gt;development branches that requires merge to the main branch&#xA;&lt;ul&gt;&#xA;&lt;li&gt;but what&amp;rsquo;s the solution?&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Policies that scale well&#xA;&lt;ul&gt;&#xA;&lt;li&gt;==knowledge sharing== We’ve found that expertise and shared communication forums offer great value as an organization scales.&lt;/li&gt;&#xA;&lt;li&gt;Beyonce rule: if you like it, you should put a CI test on it.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;13-tradeoffs-and-costs&#34;&gt;1.3 Tradeoffs and Costs&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;we are asked to make more ==complex decisions== with higher-stakes outcomes, often based on ==imprecise estimates== of ==time== and ==growth==.&lt;/li&gt;&#xA;&lt;li&gt;Different types of costs&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Financial costs (e.g., money)&lt;/li&gt;&#xA;&lt;li&gt;Resource costs (e.g., CPU time)&lt;/li&gt;&#xA;&lt;li&gt;Personnel costs (e.g., engineering effort)&lt;/li&gt;&#xA;&lt;li&gt;Transaction costs (e.g., what does it cost to take action?)&lt;/li&gt;&#xA;&lt;li&gt;Opportunity costs (e.g., what does it cost to not take action?)&lt;/li&gt;&#xA;&lt;li&gt;Societal costs (e.g., what impact will this choice have on society at large?)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Shift left:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;find errors earlier decreases the cost&#xA;&lt;ul&gt;&#xA;&lt;li&gt;concept - design - development - testing - commit - integration - production&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;2 common decision scenaiors&#xA;&lt;ol&gt;&#xA;&lt;li&gt;All of the quantities involved are measurable or can at least be estimated. This usually means that we’re evaluating trade-offs between CPU and network, or dollars and RAM, or considering whether to spend two weeks of engineer-time in order to save N CPUs across our datacenters.&lt;/li&gt;&#xA;&lt;li&gt;Some of the quantities are subtle, or we don’t know how to measure them. Sometimes this manifests as “We don’t know how much engineer-time this will take.” Sometimes it is even more nebulous: how do you measure the engineering cost of a poorly designed API? Or the societal impact of a product choice?&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;14-tldr&#34;&gt;1.4 TL;DR&lt;/h3&gt;&#xA;&lt;p&gt;“Software engineering” differs from “programming” in dimensionality: programming is about producing code. Software engineering extends that to include the maintenance of that code for its useful life span.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Software Mistakes and Tradeoffs</title>
-      <link>http://localhost:1313/books/software-profession/software-mistakes-and-tradeoffs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/software-profession/software-mistakes-and-tradeoffs/</guid>
-      <description>&lt;h1 id=&#34;i--the-big-picture&#34;&gt;I.  THE BIG PICTURE&lt;/h1&gt;&#xA;&lt;h3 id=&#34;chapter-1-what-would-you-say-you-do-here&#34;&gt;Chapter 1: What Would You Say You Do Here?&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Staff : 1st line manager, Senior Staff : Senior Manager; Principle : Director&lt;/li&gt;&#xA;&lt;li&gt;Do we even need a staff engineer position?&#xA;&lt;ul&gt;&#xA;&lt;li&gt; a job title vests authority in people who might not automatically receive&lt;/li&gt;&#xA;&lt;li&gt; saves them the time and energy they would otherwise have to spend proving themselves again and again&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Why do we staff need to see big picture?&#xA;&lt;ul&gt;&#xA;&lt;li&gt;To find a ==global maximum==, which is the&#xA;&lt;ul&gt;&#xA;&lt;li&gt;good for the org and not 1 team&lt;/li&gt;&#xA;&lt;li&gt;over time&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Good decisions need &lt;em&gt;context&lt;/em&gt;. Experienced engineers know that the answer to most technology choices is “it depends.” Knowing the pros and cons of a particular technology isn’t enough—you need to know the local details too. What are you trying to do? How much ==time, money, and patience== do you have? What’s your ==risk tolerance==? What does the business need?&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;What&amp;rsquo;s the staff engineer&amp;rsquo;s role across projects?&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Use their experience to ==anticipate risks and ask hard questions==&lt;/li&gt;&#xA;&lt;li&gt;When the project gets stuck, they have enough perspective to ==track down the causes and unblock==&lt;/li&gt;&#xA;&lt;li&gt;Evengalize: telling the story of what’s happening and why, selling the vision to the rest of the company, and explaining what the work will make possible and how the new project affects everyone&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Why the staff engineer needs to be good at influencing&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Within engineer circle, Staff engineers are ==role models==. Managers may be responsible for setting culture on their teams, enforcing good behavior, and ensuring standards are met. But engineering norms are set by the behavior of the most respected engineers on the project.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;What is your Role?&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Staff can report to VP, Directors, Senior Manager, Manager&lt;/li&gt;&#xA;&lt;li&gt;Which level one is on influences&#xA;&lt;ul&gt;&#xA;&lt;li&gt;what problem you are asked of&lt;/li&gt;&#xA;&lt;li&gt;what information you are privy to&lt;/li&gt;&#xA;&lt;li&gt;how much time you may get from your manager&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;What is Your Scope&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Your reporting chain will likely affect your &lt;em&gt;scope&lt;/em&gt;: the domain, team, or teams that you pay close attention to and have some responsibility for&lt;/li&gt;&#xA;&lt;li&gt;Pros and Cons of scopes&#xA;&lt;ul&gt;&#xA;&lt;li&gt;scope too narrow -&amp;gt; lack of impoact, overshadowing other engineers&lt;/li&gt;&#xA;&lt;li&gt;scope too broad -&amp;gt; lack of impact, becoming a bottleneck, decision fatigue&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;What&amp;rsquo;s Your Primary Focus?&#xA;&lt;ul&gt;&#xA;&lt;li&gt;What&amp;rsquo;s important? our work needs to be important” doesn’t mean you should only work on the fanciest, most glamorous technologies and VP-sponsored initiatives. The work that’s most important will often be the work that nobody else see&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Be wary of choosing a project that already has a lot of senior people on it&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;chapter-2-three-maps&#34;&gt;Chapter 2: Three Maps&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Map&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Staff Engineer&#39;s Path</title>
-      <link>http://localhost:1313/books/software-profession/staff-engineers-path/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/books/software-profession/staff-engineers-path/</guid>
-      <description>&lt;h1 id=&#34;i--the-big-picture&#34;&gt;I.  THE BIG PICTURE&lt;/h1&gt;&#xA;&lt;h3 id=&#34;chapter-1-what-would-you-say-you-do-here&#34;&gt;Chapter 1: What Would You Say You Do Here?&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Staff : 1st line manager, Senior Staff : Senior Manager; Principle : Director&lt;/li&gt;&#xA;&lt;li&gt;Do we even need a staff engineer position?&#xA;&lt;ul&gt;&#xA;&lt;li&gt; a job title vests authority in people who might not automatically receive&lt;/li&gt;&#xA;&lt;li&gt; saves them the time and energy they would otherwise have to spend proving themselves again and again&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Why do we staff need to see big picture?&#xA;&lt;ul&gt;&#xA;&lt;li&gt;To find a ==global maximum==, which is the&#xA;&lt;ul&gt;&#xA;&lt;li&gt;good for the org and not 1 team&lt;/li&gt;&#xA;&lt;li&gt;over time&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Good decisions need &lt;em&gt;context&lt;/em&gt;. Experienced engineers know that the answer to most technology choices is “it depends.” Knowing the pros and cons of a particular technology isn’t enough—you need to know the local details too. What are you trying to do? How much ==time, money, and patience== do you have? What’s your ==risk tolerance==? What does the business need?&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;What&amp;rsquo;s the staff engineer&amp;rsquo;s role across projects?&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Use their experience to ==anticipate risks and ask hard questions==&lt;/li&gt;&#xA;&lt;li&gt;When the project gets stuck, they have enough perspective to ==track down the causes and unblock==&lt;/li&gt;&#xA;&lt;li&gt;Evengalize: telling the story of what’s happening and why, selling the vision to the rest of the company, and explaining what the work will make possible and how the new project affects everyone&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Why the staff engineer needs to be good at influencing&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Within engineer circle, Staff engineers are ==role models==. Managers may be responsible for setting culture on their teams, enforcing good behavior, and ensuring standards are met. But engineering norms are set by the behavior of the most respected engineers on the project.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;What is your Role?&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Staff can report to VP, Directors, Senior Manager, Manager&lt;/li&gt;&#xA;&lt;li&gt;Which level one is on influences&#xA;&lt;ul&gt;&#xA;&lt;li&gt;what problem you are asked of&lt;/li&gt;&#xA;&lt;li&gt;what information you are privy to&lt;/li&gt;&#xA;&lt;li&gt;how much time you may get from your manager&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;What is Your Scope&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Your reporting chain will likely affect your &lt;em&gt;scope&lt;/em&gt;: the domain, team, or teams that you pay close attention to and have some responsibility for&lt;/li&gt;&#xA;&lt;li&gt;Pros and Cons of scopes&#xA;&lt;ul&gt;&#xA;&lt;li&gt;scope too narrow -&amp;gt; lack of impoact, overshadowing other engineers&lt;/li&gt;&#xA;&lt;li&gt;scope too broad -&amp;gt; lack of impact, becoming a bottleneck, decision fatigue&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;What&amp;rsquo;s Your Primary Focus?&#xA;&lt;ul&gt;&#xA;&lt;li&gt;What&amp;rsquo;s important? our work needs to be important” doesn’t mean you should only work on the fanciest, most glamorous technologies and VP-sponsored initiatives. The work that’s most important will often be the work that nobody else see&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Be wary of choosing a project that already has a lot of senior people on it&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;chapter-2-three-maps&#34;&gt;Chapter 2: Three Maps&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Map&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Thomas Chang on Thomas Chang | Staff ML Engineer</title><link>https://thomaschangsf.github.io/</link><description>Recent content in Thomas Chang on Thomas Chang | Staff ML Engineer</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 20 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaschangsf.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Thinking About Thinking</title><link>https://thomaschangsf.github.io/blogs/thinking-about-thinking/</link><pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/blogs/thinking-about-thinking/</guid><description>&lt;p&gt;ML knowledge and capabilities have grown exponentially with unprecedented rate of increase in model abilities, research output, compute resources, and real-world applications. ML related research papers have increased at an annual rate of 35% since 2012. Model parameters, as a first order estimate for model complexities and capabilities, has grown roughly 10 times every 1-2 years. Models like GPT-4 and Claude has achieved near human scores on challenging tasks, such as standardized exams and domain specific benchmarks like GLUE (General Language Understanding Evaluation) and MMLU (Massive Multitask Language Understanding).
+The rate of growth will likely continue to grow as the data model application flywheel is further optimized and companies continue to invest tremendous resources in AI initiatives.&lt;/p&gt;</description></item><item><title>Making Better Predictions</title><link>https://thomaschangsf.github.io/blogs/making-better-predictions/</link><pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/blogs/making-better-predictions/</guid><description>&lt;p&gt;Humans, much like machine learning models, are constantly making predictions. These range from simpler guesses about the weather to complex decisions, like managing financial investments by weighing risks and rewards. Improving our ability to predict can improve the quality of our life. This blog explores how we can enhance our predictions by applying machine learning practices to both our internal mindsets and external situations.&lt;/p&gt;
+&lt;p&gt;Our approach to making predictions can vary depending on the nature of the problem. Sometimes, adopting a &amp;ldquo;hedgehog&amp;rdquo; perspective—focusing on one strong, confident idea—works well. This approach keeps things simple and straightforward, which can be effective in contexts like social media, where clarity and confidence are valued.&lt;/p&gt;</description></item><item><title>DataScience From Scratch</title><link>https://thomaschangsf.github.io/books/machine-learning/data-science-from-scratch/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/machine-learning/data-science-from-scratch/</guid><description>&lt;h1 id="1-introduction"&gt;1 Introduction&lt;/h1&gt;
+&lt;h1 id="2-crash-course-in-python"&gt;2 Crash Course In Python&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;Tuples&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;List&amp;rsquo;s immutable cousin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;my_list &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;my_tuple &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;other_tuple &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;my_list[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt; &lt;span style="color:#75715e"&gt;# my_list is now [1, 3]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; my_tuple[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;except&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;TypeError&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;&amp;#34;cannot modify a tuple&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;convenient way to return multiple values and multiple assignment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sum_and_product&lt;/span&gt;(x, y):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; (x &lt;span style="color:#f92672"&gt;+&lt;/span&gt; y), (x &lt;span style="color:#f92672"&gt;*&lt;/span&gt; y)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; sum_and_product(&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;x, y &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#75715e"&gt;# now x is 1, y is 2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;x, y &lt;span style="color:#f92672"&gt;=&lt;/span&gt; y, x &lt;span style="color:#75715e"&gt;# Pythonic way to swap variables; now x is 2, y is 1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Dict&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Essential Math For Data Science</title><link>https://thomaschangsf.github.io/books/machine-learning/essential-math-for-data-science/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/machine-learning/essential-math-for-data-science/</guid><description>&lt;h1 id="1-basic-math-and-calculus-review"&gt;1 Basic Math And Calculus Review&lt;/h1&gt;
+&lt;h3 id="exponential"&gt;Exponential&lt;/h3&gt;
+&lt;h3 id="logarithms"&gt;Logarithms&lt;/h3&gt;
+&lt;p&gt;$$
+log_2 8 = x&lt;/p&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;base = 2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;x = 3&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Benefits
+ - Logorithms simplifies operations, which helps computation training
+ 	 - Multiplication: log(a x b) = log(a) + log(b)
+ 	 - Division: log(a/b) = log(a) - log(b)
+ 	 - Expoentiation log(a ^ n) = n * log(a)
+ 	 - Inverse: log(x^-1) == log(1/x) = -log(x)
+ - Log is also good for feature engineering, transforming heavy tail distribution to a gaussian distribution, which is ideal for linear regression models
+
+- Code
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#f92672"&gt;from&lt;/span&gt; math &lt;span style="color:#f92672"&gt;import&lt;/span&gt; log
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#75715e"&gt;# 2 raised to what power gives me 8?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		x &lt;span style="color:#f92672"&gt;=&lt;/span&gt; log(&lt;span style="color:#ae81ff"&gt;8&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#75715e"&gt;# x = 3.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="eulers-number-e-and-natural-logarithm"&gt;Euler&amp;rsquo;s Number $e$ and Natural Logarithm&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$e$ = 2.71828 = euler number;&lt;/p&gt;</description></item><item><title>Getting Started with Bazel</title><link>https://thomaschangsf.github.io/books/software-system/getting-started-with-bazel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/getting-started-with-bazel/</guid><description/></item><item><title>gRPC: Up and Running</title><link>https://thomaschangsf.github.io/books/software-system/grpc-up-and-running/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/grpc-up-and-running/</guid><description/></item><item><title>Hands On Large Language Model</title><link>https://thomaschangsf.github.io/books/machine-learning/hands-on-large-language-model/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/machine-learning/hands-on-large-language-model/</guid><description>&lt;h1 id="part-1-understanding-language-models"&gt;Part 1: Understanding Language Models&lt;/h1&gt;
+&lt;h2 id="chapter-1-an-introduction-to-llm"&gt;Chapter 1: An Introduction To LLM&lt;/h2&gt;
+&lt;h2 id="chapter-2-tokens-and-embeddings"&gt;Chapter 2: Tokens And Embeddings&lt;/h2&gt;
+&lt;h2 id="chapter-3-looking-inside-llm"&gt;Chapter 3: Looking Inside LLM&lt;/h2&gt;
+&lt;h3 id="31-overview-of-transformer-models"&gt;3.1 Overview of Transformer Models&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-mermaid" data-lang="mermaid"&gt;
+flowchart TD
+ Z[Sentence]--&amp;gt;A(Tokenizers)
+ A --&amp;gt;|tokens_i|B(Embedding_i)
+ B --&amp;gt; C(Stack of Transformer Blocks)
+ C--&amp;gt;|Output Vector_i|D[LM Head]
+ classDef default fill:#CCE6FF,stroke:#84BCF5,textColor:#1C2B33,fontFamily:trebuchet ms;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="311-inputs-and-outputs-of-a-trained-transformer-llm"&gt;3.1.1 Inputs and Outputs of a Trained Transformer LLM&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Input: prompt + previous_generation&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Output: most probable token&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Code:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; torch
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; transformers &lt;span style="color:#f92672"&gt;import&lt;/span&gt; AutoModelForCausalLM, AutoTokenizer, pipeline
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Load model and tokenizer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tokenizer &lt;span style="color:#f92672"&gt;=&lt;/span&gt; AutoTokenizer&lt;span style="color:#f92672"&gt;.&lt;/span&gt;from_pretrained(&lt;span style="color:#e6db74"&gt;&amp;#34;microsoft/Phi-3-mini-4k-instruct&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;model &lt;span style="color:#f92672"&gt;=&lt;/span&gt; AutoModelForCausalLM&lt;span style="color:#f92672"&gt;.&lt;/span&gt;from_pretrained(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;microsoft/Phi-3-mini-4k-instruct&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; device_map&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;cuda&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; torch_dtype&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;auto&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; trust_remote_code&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Create a pipeline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;generator &lt;span style="color:#f92672"&gt;=&lt;/span&gt; pipeline(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;text-generation&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; model&lt;span style="color:#f92672"&gt;=&lt;/span&gt;model,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tokenizer&lt;span style="color:#f92672"&gt;=&lt;/span&gt;tokenizer,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; return_full_text&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;False&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_new_tokens&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;50&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; do_sample&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;False&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;prompt &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Write an email apologizing to Sarah for the tragic gardening mishap. Explain how it happened.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;output &lt;span style="color:#f92672"&gt;=&lt;/span&gt; generator(prompt)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="312-components-of-forward-pass"&gt;3.1.2 Components of Forward Pass&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;This refers to what happens between input_prompt and output_token
+&lt;ul&gt;
+&lt;li&gt;input_prompt &amp;ndash;&amp;gt; Transformer LLM (Forward Pass) &amp;ndash;&amp;gt; output_token&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Components
+&lt;ol&gt;
+&lt;li&gt;Tokenizer
+&lt;ol&gt;
+&lt;li&gt;token &amp;ndash;&amp;gt; token_id &amp;ndash;&amp;gt; token embeddings&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Stack of Transformer Blocks
+&lt;ol&gt;
+&lt;li&gt;block 1&lt;/li&gt;
+&lt;li&gt;block n&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;LM Head
+&lt;ol&gt;
+&lt;li&gt;Can be: a simple NN layer, sequence classification heads, token classification heads&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Understanding a model output&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;Phi3ForCausalLM(
+ (model): Phi3Model(
+ (embed_tokens): Embedding(32064, 3072, padding_idx=32000)
+ (embed_dropout): Dropout(p=0.0, inplace=False)
+ (layers): ModuleList(
+ (0-31): 32 x Phi3DecoderLayer(
+ (self_attn): Phi3Attention(
+ (o_proj): Linear(in_features=3072, out_features=3072, bias=False)
+ (qkv_proj): Linear(in_features=3072, out_features=9216, bias=False)
+ (rotary_emb): Phi3RotaryEmbedding()
+ )
+ (mlp): Phi3MLP(
+ (gate_up_proj): Linear(in_features=3072, out_features=16384, bias=False)
+ (down_proj): Linear(in_features=8192, out_features=3072, bias=False)
+ (activation_fn): SiLU()
+ )
+ (input_layernorm): Phi3RMSNorm()
+ (resid_attn_dropout): Dropout(p=0.0, inplace=False)
+ (resid_mlp_dropout): Dropout(p=0.0, inplace=False)
+ (post_attention_layernorm): Phi3RMSNorm()
+ )
+ )
+ (norm): Phi3RMSNorm()
+ )
+ (lm_head): Linear(in_features=3072, out_features=32064, bias=False)
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;lm_head output is
+&lt;ul&gt;
+&lt;li&gt;1 row, with 6 tokens, each token being 32064 bits long&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;This shows us the various nested layers of the model. The majority of the model is labeled model, followed by lm_head.&lt;/li&gt;
+&lt;li&gt;Inside the Phi3Model model, we see the embeddings matrix embed_tokens and its dimensions. It has 32,064 tokens each with a vector size of 3,072.&lt;/li&gt;
+&lt;li&gt;Skipping the dropout layer for now, we can see the next major component is the stack of Transformer decoder layers. It contains 32 blocks of type Phi3DecoderLayer.&lt;/li&gt;
+&lt;li&gt;Each of these Transformer blocks includes an attention layer and a feedforward neural network (also known as an mlp or multilevel perceptron). We’ll cover these in more detail later in the chapter.&lt;/li&gt;
+&lt;li&gt;Finally, we see the lm_head taking a vector of size 3,072 and outputting a vector equivalent to the number of tokens the model knows. That output is the probability score for each token that helps us select the output token.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="313-choosing-a-single-token-from-the-probability-distribution-samplingdecoding"&gt;3.1.3 Choosing a Single Token From the Probability Distribution (Sampling/Decoding)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Code&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;prompt &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;The capital of France is&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Tokenize the input prompt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;input_ids &lt;span style="color:#f92672"&gt;=&lt;/span&gt; tokenizer(prompt, return_tensors&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;pt&amp;#34;&lt;/span&gt;)&lt;span style="color:#f92672"&gt;.&lt;/span&gt;input_ids
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Tokenize the input prompt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;input_ids &lt;span style="color:#f92672"&gt;=&lt;/span&gt; input_ids&lt;span style="color:#f92672"&gt;.&lt;/span&gt;to(&lt;span style="color:#e6db74"&gt;&amp;#34;cuda&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Get the output of the model before the lm_head&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;model_output &lt;span style="color:#f92672"&gt;=&lt;/span&gt; model&lt;span style="color:#f92672"&gt;.&lt;/span&gt;model(input_ids)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Get the output of the lm_head&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lm_head_output &lt;span style="color:#f92672"&gt;=&lt;/span&gt; model&lt;span style="color:#f92672"&gt;.&lt;/span&gt;lm_head(model_output[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lm_head_output is of the shape [1, 6, 32064] (from model output before). We can access the token probability scores for the last generated token using lm_head_output[0,-1], which uses the index 0 across the batch dimension; the index –1 gets us the last token in the sequence. This is now a list of probability scores for all 32,064 tokens. We can get the top scoring token ID, and then decode it to arrive at the text of the generated output token:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;token_id &lt;span style="color:#f92672"&gt;=&lt;/span&gt; lm_head_output[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;,&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;argmax(&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tokenizer&lt;span style="color:#f92672"&gt;.&lt;/span&gt;decode(token_id)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# PARIS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="314-parallel-token-processing-and-context-size"&gt;3.1.4 Parallel Token Processing and Context Size&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;LLM is highly parallelized
+&lt;ul&gt;
+&lt;li&gt;each token_i in the context window (ie 4k tokens) is a parallel stream to the tokenizer &amp;ndash;&amp;gt; transformer block &amp;ndash;&amp;gt; LLM head &amp;ndash;&amp;gt; output_i_vector!!!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;For text generation, only the ==last output vector== (ie most current token) is used to generate the probability of next token&lt;/li&gt;
+&lt;li&gt;Example
+&lt;ul&gt;
+&lt;li&gt;If you’re following along with the code examples, recall that the output of lm_head was of the shape [1, 6, 32064]. That was because the input to it was of the shape [1, 6, 3072], which is a batch of one input string, containing six tokens, each of them represented by a vector of size 3,072 corresponding to the output vectors after the stack of Transformer blocks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;model_output[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;shape
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#torch.Size([1, 6, 3072])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lm_head_output
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;torch&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Size([&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;6&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;32064&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="315-speeding-up-generation-by-caching-keys-and-values"&gt;3.1.5 Speeding Up Generation By Caching Keys and values&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Remember, we use only the last output vector to generate the next token&lt;/p&gt;</description></item><item><title>Kubernetes Up and Running</title><link>https://thomaschangsf.github.io/books/software-system/kubernetes-up-and-running/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/kubernetes-up-and-running/</guid><description>&lt;h1 id="1-introduction"&gt;1 Introduction&lt;/h1&gt;
+&lt;h1 id="2-creating-and-running-applications"&gt;2 Creating and Running Applications&lt;/h1&gt;
+&lt;h3 id="container-images"&gt;Container Images&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A container image is a binary package that encapsulates all of the files necessary to run a program inside of an OS container.&lt;/li&gt;
+&lt;li&gt;Most popular format is docker&lt;/li&gt;
+&lt;li&gt;Container images are constructed with a series of filesystem layers, where each layer inherits and modifies the layers that came before it&lt;/li&gt;
+&lt;li&gt;2 categories of images
+&lt;ul&gt;
+&lt;li&gt;system: mimics virtual machine and runs full boot process. Seen as poor practice.&lt;/li&gt;
+&lt;li&gt;application: runs a single program&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="building-application-images-with-docker"&gt;Building Application Images With Docker&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Dockerfile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-Dockerfile" data-lang="Dockerfile"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Start from a Node.js 16 (LTS) image &lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; &lt;span style="color:#e6db74"&gt;node:16&lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Specify the directory inside the image in which all commands will run &lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;WORKDIR&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/usr/src/app&lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Copy package files and install dependencies &lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;COPY&lt;/span&gt; package*.json ./&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;RUN&lt;/span&gt; npm install&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;RUN&lt;/span&gt; npm install express&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Copy all of the app files into the image &lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;COPY&lt;/span&gt; . .&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# The default command to run when starting the container &lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;CMD&lt;/span&gt; [ &lt;span style="color:#e6db74"&gt;&amp;#34;npm&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;start&amp;#34;&lt;/span&gt; ]&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Commands&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker build -t simple-node .
+docker run --rm -p 3000:3000 simple-node**
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Building image efficiently:&lt;/p&gt;</description></item><item><title>Learning Algorithms</title><link>https://thomaschangsf.github.io/books/software-system/learning-algorithms/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/learning-algorithms/</guid><description>&lt;h1 id="1-problem-solving"&gt;1 Problem Solving&lt;/h1&gt;
+&lt;h2 id="11-what-is-an-algorithm"&gt;1.1 What Is An Algorithm&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The study of algorithms is concerned with both
+&lt;ul&gt;
+&lt;li&gt;correctness (will this algorithm work for all input?)&lt;/li&gt;
+&lt;li&gt;performance (is this the most efficient way to solve this problem?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Key Questions
+&lt;ul&gt;
+&lt;li&gt;What are the factors impacting an algorithm&amp;rsquo;s performance?&lt;/li&gt;
+&lt;li&gt;How to Analyze algorithm performance independent of the implmentation?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Terminologies
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;problem instance&lt;/em&gt; = 1 input + 1 run of the algorithm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="12-finding-the-largest-value-in-a-list"&gt;1.2 Finding The Largest Value In a List&lt;/h2&gt;
+&lt;h2 id="13-counting-key-operations"&gt;1.3 Counting Key Operations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;How do you define the key operation?&lt;/li&gt;
+&lt;li&gt;We use the key operation to compare 2 algorithms
+&lt;ul&gt;
+&lt;li&gt;Ex:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;alternate&lt;/span&gt;(A):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; v &lt;span style="color:#f92672"&gt;in&lt;/span&gt; A:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; v_is_largest &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; x &lt;span style="color:#f92672"&gt;in&lt;/span&gt; A:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; v &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; x: &lt;span style="color:#75715e"&gt;# &amp;lt;-- KEY OPERATION !!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; v_is_largest &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;False&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;break&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; v_is_largest:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; v	 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="14-models-can-predict-algorithm-performance"&gt;1.4 Models Can Predict Algorithm Performance&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;To quantify algo performance, find the ==inputs== that generates the&lt;/p&gt;</description></item><item><title>Learning Go</title><link>https://thomaschangsf.github.io/books/software-system/learning-go/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/learning-go/</guid><description>&lt;h1 id="1-setup"&gt;1 Setup&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-terminal" data-lang="terminal"&gt;# environment; defined in .bash_aliases.sh
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# code location
+cd /Users/chang/Documents/dev/git/gratia/01_languages/goLang/book_learning_go
+cd ch1
+go run hello.go
+
+go build -o hello_world hello.go
+
+# install 3rd party tool to do a load test
+go install github.com/rakyll/hey@latest
+hey https://www.golang.org
+
+# install 3rd party too to format imports
+go install golang.org/x/tools/cmd/goimports@latest
+
+# detect shadow variables
+go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;go run&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;use when you want to run as a script&lt;/li&gt;
+&lt;li&gt;compiles and put binary in a temporary directory&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;go build -o [BINARY_NAME] hello.go&lt;/p&gt;</description></item><item><title>Machine Learning Interview</title><link>https://thomaschangsf.github.io/books/machine-learning/machine-learning-system-design-interview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/machine-learning/machine-learning-system-design-interview/</guid><description>&lt;hr&gt;
+&lt;h1 id="1-clarify-requirement"&gt;1 Clarify Requirement&lt;/h1&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Chapter 2: Visual Search system&lt;/li&gt;
+&lt;li&gt;Chapter 3: Google Street View Blurring system&lt;/li&gt;
+&lt;li&gt;Chapter 4: Youtube Video Search&lt;/li&gt;
+&lt;li&gt;Chapter 5: Harmful Content Detection&lt;/li&gt;
+&lt;li&gt;Chapter 6: Video Recommendation Service&lt;/li&gt;
+&lt;li&gt;Chapter 7: Event Recommendation Service&lt;/li&gt;
+&lt;li&gt;Chapter 8: Ad Click Prediction&lt;/li&gt;
+&lt;li&gt;Chapter 9: Similar Listings on Vacation Rental&lt;/li&gt;
+&lt;li&gt;Chapter 10: Personalized News Feed&lt;/li&gt;
+&lt;li&gt;Chapter 11: People You May Know&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id="2-frame-as-ml"&gt;2 Frame as ML&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h3 id="defining-the-ml-objective"&gt;Defining the ML Objective&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Maximize # user clicks&lt;/li&gt;
+&lt;li&gt;Maximize # completed videos&lt;/li&gt;
+&lt;li&gt;Maximize watch time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="specify-input-and-output"&gt;Specify Input and Output&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Late vs Early Fusion (Ch5)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="ml-category"&gt;ML Category&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;High Level
+&lt;ul&gt;
+&lt;li&gt;Supervised
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Classification&lt;/p&gt;</description></item><item><title>Resume</title><link>https://thomaschangsf.github.io/resume/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/resume/</guid><description>&lt;div class="resume-container"&gt;
+ &lt;div style="display: flex; justify-content: center; align-items: center; min-height: 800px; width: 100%; background: #f8f9fa; border-radius: 12px; overflow: hidden; border: 1px solid #eee;"&gt;
+ &lt;iframe src="./files/resume.pdf" width="100%" height="800px" style="border:none;"&gt;&lt;/iframe&gt;
+ &lt;/div&gt;
+ &lt;div style="margin-top: 2rem; text-align: center;"&gt;
+ &lt;a href="./files/resume.pdf" class="btn btn-primary" download&gt;Download PDF Resume&lt;/a&gt;
+ &lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Scaling ML Spark</title><link>https://thomaschangsf.github.io/books/software-system/scaling-ml-spark/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/scaling-ml-spark/</guid><description>&lt;h1 id="1-distributed-ml-terms-and-concepts"&gt;1 Distributed ML Terms and Concepts&lt;/h1&gt;
+&lt;h1 id="2-intro-to-spark-and-pyspark"&gt;2 Intro to Spark and PySpark&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Driver Program
+&lt;ul&gt;
+&lt;li&gt;The driver program (aka Spark driver) is a dedicated process that runs on the driver machine. It is responsible for executing and holding the SparkSession, which encapsulates the SparkContext—this is considered the application’s entry point, or the “real program.” The SparkContext contains all the basic functions, context delivered at start time, and information about the cluster. The driver also holds the DAG scheduler, task scheduler, block manager, and everything that is needed to turn the code into jobs that the worker and executors can execute on the cluster. The driver program works in synergy with the cluster manager to find the existing machines and allocated resources.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Executor:
+&lt;ul&gt;
+&lt;li&gt;Is a process&lt;/li&gt;
+&lt;li&gt;Has T tasks
+&lt;ul&gt;
+&lt;li&gt;tasks is smallest unit of work&lt;/li&gt;
+&lt;li&gt;task in the same executor share the same cache, memory, and global parameters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Worker Node
+&lt;ul&gt;
+&lt;li&gt;VM&lt;/li&gt;
+&lt;li&gt;multiple executor on a worker node&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Cluster manager
+&lt;ul&gt;
+&lt;li&gt;Assign executors to worker nodes, assign resources and communicate information about resource availability to driver program&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="executing-pyspark-code"&gt;Executing PySpark Code&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Pyspark -&amp;gt;
+&lt;ul&gt;
+&lt;li&gt;process: python - InterProcess communication (IPC) - process: scala/JVM&lt;/li&gt;
+&lt;li&gt;JVM spark query optimization, computation, distribution of tasks to clusters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Py4J
+&lt;ul&gt;
+&lt;li&gt;pyspark driver - pickled item (serialization) - py4j context - Spark driver GVM&lt;/li&gt;
+&lt;li&gt; &lt;a href="https://www.py4j.org/"&gt;Py4J&lt;/a&gt; is a library written in Python and Java that enables Python programs running in a Python interpreter to dynamically access Java objects and collections in a JVM via standard Python methods&lt;/li&gt;
+&lt;li&gt;==PySpark is often less efficient in terms of running time than traditional Scala/Java code==&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="apache-spark-basics"&gt;Apache Spark Basics&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Architectures&lt;/li&gt;
+&lt;li&gt;DataFrame vs Datasets
+&lt;ul&gt;
+&lt;li&gt;Datasets enforces type safety; there is no way to mistaken a col type of string as int&lt;/li&gt;
+&lt;li&gt;BUT dataset is slower.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="3-mlflow"&gt;3 MLFlow&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;MLOps: manage the machine learning experiment lifecycle&lt;/p&gt;</description></item><item><title>Software Engineer At Google</title><link>https://thomaschangsf.github.io/books/software-profession/software-engineering-at-google/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-profession/software-engineering-at-google/</guid><description>&lt;h2 id="1-what-is-software-engineering"&gt;1 What is Software Engineering&lt;/h2&gt;
+&lt;h3 id="11-time-and-change"&gt;1.1 Time and Change&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Software engineering is programming integrated over time.
+&lt;ul&gt;
+&lt;li&gt;new features requests, depedency changes, people changes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Engineers need to be more concerned with the passage of time and the eventual need for change&lt;/li&gt;
+&lt;li&gt;Hyrum&amp;rsquo;s Law&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;	With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="12-scale-and-efficiency"&gt;1.2 Scale and Efficiency&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;we need to be more concerned about scale and efficiency, both for the software we produce as well as for the organization that is producing it&lt;/li&gt;
+&lt;li&gt;Everything your organization relies upon to produce and maintain code should be scalable in terms of overall cost and resource consumption
+&lt;ul&gt;
+&lt;li&gt;scalable in terms of human effort&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Policies that do not scale well
+&lt;ul&gt;
+&lt;li&gt;development branches that requires merge to the main branch
+&lt;ul&gt;
+&lt;li&gt;but what&amp;rsquo;s the solution?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Policies that scale well
+&lt;ul&gt;
+&lt;li&gt;==knowledge sharing== We’ve found that expertise and shared communication forums offer great value as an organization scales.&lt;/li&gt;
+&lt;li&gt;Beyonce rule: if you like it, you should put a CI test on it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="13-tradeoffs-and-costs"&gt;1.3 Tradeoffs and Costs&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;we are asked to make more ==complex decisions== with higher-stakes outcomes, often based on ==imprecise estimates== of ==time== and ==growth==.&lt;/li&gt;
+&lt;li&gt;Different types of costs
+&lt;ul&gt;
+&lt;li&gt;Financial costs (e.g., money)&lt;/li&gt;
+&lt;li&gt;Resource costs (e.g., CPU time)&lt;/li&gt;
+&lt;li&gt;Personnel costs (e.g., engineering effort)&lt;/li&gt;
+&lt;li&gt;Transaction costs (e.g., what does it cost to take action?)&lt;/li&gt;
+&lt;li&gt;Opportunity costs (e.g., what does it cost to not take action?)&lt;/li&gt;
+&lt;li&gt;Societal costs (e.g., what impact will this choice have on society at large?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Shift left:
+&lt;ul&gt;
+&lt;li&gt;find errors earlier decreases the cost
+&lt;ul&gt;
+&lt;li&gt;concept - design - development - testing - commit - integration - production&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;2 common decision scenaiors
+&lt;ol&gt;
+&lt;li&gt;All of the quantities involved are measurable or can at least be estimated. This usually means that we’re evaluating trade-offs between CPU and network, or dollars and RAM, or considering whether to spend two weeks of engineer-time in order to save N CPUs across our datacenters.&lt;/li&gt;
+&lt;li&gt;Some of the quantities are subtle, or we don’t know how to measure them. Sometimes this manifests as “We don’t know how much engineer-time this will take.” Sometimes it is even more nebulous: how do you measure the engineering cost of a poorly designed API? Or the societal impact of a product choice?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="14-tldr"&gt;1.4 TL;DR&lt;/h3&gt;
+&lt;p&gt;“Software engineering” differs from “programming” in dimensionality: programming is about producing code. Software engineering extends that to include the maintenance of that code for its useful life span.&lt;/p&gt;</description></item><item><title>Software Mistakes and Tradeoffs</title><link>https://thomaschangsf.github.io/books/software-profession/software-mistakes-and-tradeoffs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-profession/software-mistakes-and-tradeoffs/</guid><description>&lt;h1 id="i--the-big-picture"&gt;I. THE BIG PICTURE&lt;/h1&gt;
+&lt;h3 id="chapter-1-what-would-you-say-you-do-here"&gt;Chapter 1: What Would You Say You Do Here?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Staff : 1st line manager, Senior Staff : Senior Manager; Principle : Director&lt;/li&gt;
+&lt;li&gt;Do we even need a staff engineer position?
+&lt;ul&gt;
+&lt;li&gt; a job title vests authority in people who might not automatically receive&lt;/li&gt;
+&lt;li&gt; saves them the time and energy they would otherwise have to spend proving themselves again and again&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Why do we staff need to see big picture?
+&lt;ul&gt;
+&lt;li&gt;To find a ==global maximum==, which is the
+&lt;ul&gt;
+&lt;li&gt;good for the org and not 1 team&lt;/li&gt;
+&lt;li&gt;over time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Good decisions need &lt;em&gt;context&lt;/em&gt;. Experienced engineers know that the answer to most technology choices is “it depends.” Knowing the pros and cons of a particular technology isn’t enough—you need to know the local details too. What are you trying to do? How much ==time, money, and patience== do you have? What’s your ==risk tolerance==? What does the business need?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;What&amp;rsquo;s the staff engineer&amp;rsquo;s role across projects?
+&lt;ul&gt;
+&lt;li&gt;Use their experience to ==anticipate risks and ask hard questions==&lt;/li&gt;
+&lt;li&gt;When the project gets stuck, they have enough perspective to ==track down the causes and unblock==&lt;/li&gt;
+&lt;li&gt;Evengalize: telling the story of what’s happening and why, selling the vision to the rest of the company, and explaining what the work will make possible and how the new project affects everyone&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Why the staff engineer needs to be good at influencing
+&lt;ul&gt;
+&lt;li&gt;Within engineer circle, Staff engineers are ==role models==. Managers may be responsible for setting culture on their teams, enforcing good behavior, and ensuring standards are met. But engineering norms are set by the behavior of the most respected engineers on the project.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;What is your Role?
+&lt;ul&gt;
+&lt;li&gt;Staff can report to VP, Directors, Senior Manager, Manager&lt;/li&gt;
+&lt;li&gt;Which level one is on influences
+&lt;ul&gt;
+&lt;li&gt;what problem you are asked of&lt;/li&gt;
+&lt;li&gt;what information you are privy to&lt;/li&gt;
+&lt;li&gt;how much time you may get from your manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;What is Your Scope
+&lt;ul&gt;
+&lt;li&gt;Your reporting chain will likely affect your &lt;em&gt;scope&lt;/em&gt;: the domain, team, or teams that you pay close attention to and have some responsibility for&lt;/li&gt;
+&lt;li&gt;Pros and Cons of scopes
+&lt;ul&gt;
+&lt;li&gt;scope too narrow -&amp;gt; lack of impoact, overshadowing other engineers&lt;/li&gt;
+&lt;li&gt;scope too broad -&amp;gt; lack of impact, becoming a bottleneck, decision fatigue&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;What&amp;rsquo;s Your Primary Focus?
+&lt;ul&gt;
+&lt;li&gt;What&amp;rsquo;s important? our work needs to be important” doesn’t mean you should only work on the fanciest, most glamorous technologies and VP-sponsored initiatives. The work that’s most important will often be the work that nobody else see
+&lt;ul&gt;
+&lt;li&gt;Be wary of choosing a project that already has a lot of senior people on it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="chapter-2-three-maps"&gt;Chapter 2: Three Maps&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Map&lt;/p&gt;</description></item><item><title>Staff Engineer's Path</title><link>https://thomaschangsf.github.io/books/software-profession/staff-engineers-path/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-profession/staff-engineers-path/</guid><description>&lt;h1 id="i--the-big-picture"&gt;I. THE BIG PICTURE&lt;/h1&gt;
+&lt;h3 id="chapter-1-what-would-you-say-you-do-here"&gt;Chapter 1: What Would You Say You Do Here?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Staff : 1st line manager, Senior Staff : Senior Manager; Principle : Director&lt;/li&gt;
+&lt;li&gt;Do we even need a staff engineer position?
+&lt;ul&gt;
+&lt;li&gt; a job title vests authority in people who might not automatically receive&lt;/li&gt;
+&lt;li&gt; saves them the time and energy they would otherwise have to spend proving themselves again and again&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Why do we staff need to see big picture?
+&lt;ul&gt;
+&lt;li&gt;To find a ==global maximum==, which is the
+&lt;ul&gt;
+&lt;li&gt;good for the org and not 1 team&lt;/li&gt;
+&lt;li&gt;over time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Good decisions need &lt;em&gt;context&lt;/em&gt;. Experienced engineers know that the answer to most technology choices is “it depends.” Knowing the pros and cons of a particular technology isn’t enough—you need to know the local details too. What are you trying to do? How much ==time, money, and patience== do you have? What’s your ==risk tolerance==? What does the business need?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;What&amp;rsquo;s the staff engineer&amp;rsquo;s role across projects?
+&lt;ul&gt;
+&lt;li&gt;Use their experience to ==anticipate risks and ask hard questions==&lt;/li&gt;
+&lt;li&gt;When the project gets stuck, they have enough perspective to ==track down the causes and unblock==&lt;/li&gt;
+&lt;li&gt;Evengalize: telling the story of what’s happening and why, selling the vision to the rest of the company, and explaining what the work will make possible and how the new project affects everyone&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Why the staff engineer needs to be good at influencing
+&lt;ul&gt;
+&lt;li&gt;Within engineer circle, Staff engineers are ==role models==. Managers may be responsible for setting culture on their teams, enforcing good behavior, and ensuring standards are met. But engineering norms are set by the behavior of the most respected engineers on the project.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;What is your Role?
+&lt;ul&gt;
+&lt;li&gt;Staff can report to VP, Directors, Senior Manager, Manager&lt;/li&gt;
+&lt;li&gt;Which level one is on influences
+&lt;ul&gt;
+&lt;li&gt;what problem you are asked of&lt;/li&gt;
+&lt;li&gt;what information you are privy to&lt;/li&gt;
+&lt;li&gt;how much time you may get from your manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;What is Your Scope
+&lt;ul&gt;
+&lt;li&gt;Your reporting chain will likely affect your &lt;em&gt;scope&lt;/em&gt;: the domain, team, or teams that you pay close attention to and have some responsibility for&lt;/li&gt;
+&lt;li&gt;Pros and Cons of scopes
+&lt;ul&gt;
+&lt;li&gt;scope too narrow -&amp;gt; lack of impoact, overshadowing other engineers&lt;/li&gt;
+&lt;li&gt;scope too broad -&amp;gt; lack of impact, becoming a bottleneck, decision fatigue&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;What&amp;rsquo;s Your Primary Focus?
+&lt;ul&gt;
+&lt;li&gt;What&amp;rsquo;s important? our work needs to be important” doesn’t mean you should only work on the fanciest, most glamorous technologies and VP-sponsored initiatives. The work that’s most important will often be the work that nobody else see
+&lt;ul&gt;
+&lt;li&gt;Be wary of choosing a project that already has a lot of senior people on it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="chapter-2-three-maps"&gt;Chapter 2: Three Maps&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Map&lt;/p&gt;</description></item></channel></rss>

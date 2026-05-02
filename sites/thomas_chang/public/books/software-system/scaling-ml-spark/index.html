@@ -1,883 +1,173 @@
-<!DOCTYPE html>
-<html lang="en-us">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-
-<title>Scaling ML Spark | Thomas Chang | Staff ML Engineer</title>
-<meta name="description" content="Refresher course on Spark" />
-<meta name="author" content="" />
-<link rel="canonical" href="http://localhost:1313/books/software-system/scaling-ml-spark/" />
-
-
-<meta property="og:title" content="Scaling ML Spark | Thomas Chang | Staff ML Engineer" />
-<meta property="og:description" content="Refresher course on Spark" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/books/software-system/scaling-ml-spark/" />
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="" rel="stylesheet" />
-
-
-<link rel="stylesheet" href="../../../css/shared.css" />
-<link rel="stylesheet" href="../../../css/persona.css" />
-
-
-<link rel="icon" type="image/svg+xml" href="../../../favicon.svg" />
-
-</head>
-<body class="persona-">
-  <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
-  <div class="nav-inner">
-    <div></div> 
-
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
-
-    <ul class="nav-menu" id="nav-menu" role="list">
-      
-      <li class="nav-item">
-        <a href="../../../" class="nav-link">
-          Home
-        </a>
-      </li>
-      
-      <li class="nav-item">
-        <a href="../../../blogs/" class="nav-link">
-          Blogs
-        </a>
-      </li>
-      
-      <li class="nav-item">
-        <a href="../../../books/" class="nav-link">
-          Books
-        </a>
-      </li>
-      
-      <li class="nav-item">
-        <a href="https://github.com/thomaschangsf" class="nav-link">
-          GitHub
-        </a>
-      </li>
-      
-      <li class="nav-item">
-        <a href="../../../resume/" class="nav-link">
-          Resume
-        </a>
-      </li>
-      
-    </ul>
-  </div>
-</nav>
-
-  <main id="main-content">
-    
-<article class="container content-page">
-  <header class="page-header">
-    <h1 class="page-title">Scaling ML Spark</h1>
-    
-  </header>
-  <div class="page-body">
-    <h1 id="1-distributed-ml-terms-and-concepts">1 Distributed ML Terms and Concepts</h1>
-<h1 id="2-intro-to-spark-and-pyspark">2 Intro to Spark and PySpark</h1>
-<ul>
-<li>Driver Program
-<ul>
-<li>The driver program (aka Spark driver) is a dedicated process that runs on the driver machine. It is responsible for executing and holding the SparkSession, which encapsulates the SparkContext—this is considered the application’s entry point, or the “real program.” The SparkContext contains all the basic functions, context delivered at start time, and information about the cluster. The driver also holds the DAG scheduler, task scheduler, block manager, and everything that is needed to turn the code into jobs that the worker and executors can execute on the cluster. The driver program works in synergy with the cluster manager to find the existing machines and allocated resources.</li>
-</ul>
-</li>
-<li>Executor:
-<ul>
-<li>Is a process</li>
-<li>Has T tasks
-<ul>
-<li>tasks is smallest unit of work</li>
-<li>task in the same executor share the same cache, memory, and global parameters</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Worker Node
-<ul>
-<li>VM</li>
-<li>multiple executor on a worker node</li>
-</ul>
-</li>
-<li>Cluster manager
-<ul>
-<li>Assign executors to worker nodes, assign resources and communicate information about resource availability to driver program</li>
-</ul>
-</li>
-</ul>
-<h3 id="executing-pyspark-code">Executing PySpark Code</h3>
-<ul>
-<li>Pyspark -&gt;
-<ul>
-<li>process: python - InterProcess communication (IPC) - process: scala/JVM</li>
-<li>JVM spark query optimization, computation, distribution of tasks to clusters</li>
-</ul>
-</li>
-<li>Py4J
-<ul>
-<li>pyspark driver - pickled item (serialization) - py4j context - Spark driver GVM</li>
-<li> <a href="https://www.py4j.org/">Py4J</a> is a library written in Python and Java that enables Python programs running in a Python interpreter to dynamically access Java objects and collections in a JVM via standard Python methods</li>
-<li>==PySpark is often less efficient in terms of running time than traditional Scala/Java code==</li>
-</ul>
-</li>
-</ul>
-<h3 id="apache-spark-basics">Apache Spark Basics</h3>
-<ul>
-<li>Architectures</li>
-<li>DataFrame vs Datasets
-<ul>
-<li>Datasets enforces type safety; there is no way to mistaken a col type of string as int</li>
-<li>BUT dataset is slower.</li>
-</ul>
-</li>
-</ul>
-<h1 id="3-mlflow">3 MLFlow</h1>
-<ul>
-<li>
-<p>MLOps: manage the machine learning experiment lifecycle</p>
-<ul>
-<li>term: experiments can be orgainzed as pipeline code or Ml modules in repos</li>
-<li>Phases
-<ul>
-<li>machine learning
-<ul>
-<li>training, tuning, finding optimal models</li>
-</ul>
-</li>
-<li>development
-<ul>
-<li>develop ==pipelines== and ==tools== to take ml model from dev/experiment to staging and production</li>
-</ul>
-</li>
-<li>operations
-<ul>
-<li>CI/CD, monitoring, managing, serving models at scale</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>Requirement for ML Lifecycle Management</p>
-<ul>
-<li>Reproducibility
-<ul>
-<li>Ability to run your algorithm repeatedly on different datasets and obtain the same (or similar) results. Analyzing, reporting, auditing, and interpreting data are all aspects of this process, meaning each step in the lifecycle needs to be tracked and saved</li>
-</ul>
-</li>
-<li>Code Version Control</li>
-<li>Data Version Control
-<ul>
-<li>Tools: DVC and lakeFS</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>ML Flow manages the entire ML lifeycle</p>
-<ul>
-<li>Component 1: Tracking Server
-<ul>
-<li>What does it track?
-<ul>
-<li>Model hyper-parameters</li>
-<li>metrics</li>
-<li>metadata</li>
-<li>artifacts</li>
-</ul>
-</li>
-<li>Runs: everytime you run an experiment, you can tack</li>
-<li><code>$ mlflow run example/conda-env/project -P alpha=0.5</code></li>
-</ul>
-</li>
-<li>Compoment 2:  Model Registry
-<ul>
-<li>Downstream automated job can query the model registry</li>
-<li>DS -&gt; model into staging</li>
-<li>ML Engineer -&gt; production and archived</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>Tbale schema</p>
-<ul>
-<li>Experiment -&gt; Run</li>
-<li>Run -&gt; Metrics, Params, and Tags</li>
-</ul>
-</li>
-</ul>
-<h1 id="4-data-ingestion-preprocessing-and-stats">4 Data Ingestion, PreProcessing, and Stats</h1>
-<h1 id="5-feature-engineering">5 Feature Engineering</h1>
-<h3 id="terminology">Terminology</h3>
-<ul>
-<li>Estimator : an algorithm that can fit on a Dataframe</li>
-</ul>
-<h3 id="common-scenarios-and-options">Common Scenarios and Options</h3>
-<p>Handle Missing Features</p>
-<ul>
-<li>Approaches
-<ul>
-<li>drop rows</li>
-<li>mean/median</li>
-<li>random sample</li>
-<li>arbitrary value</li>
-<li>missing value indicator</li>
-<li>multivariate imputation</li>
-</ul>
-</li>
-<li>Some algorithms are more sensitive to missing values, like SVM, PCA and nearest neighbor because each data point changes the outcome.</li>
-</ul>
-<p>Extract Feature From Text</p>
-<ul>
-<li>BOW</li>
-<li>TF-IDF</li>
-<li>n-gram</li>
-<li>word2vec</li>
-<li>Topic extraction</li>
-</ul>
-<p>Categorical Encoding</p>
-<ul>
-<li>StringToIndex</li>
-<li>1 hot encoding</li>
-<li>Count and frequency encoding</li>
-<li>Ordinal encoding</li>
-<li>Weight of eveidence</li>
-<li>Rare label encoding</li>
-<li>Feature hashing</li>
-</ul>
-<p>Feature Scaling</p>
-<ul>
-<li>Normalization</li>
-<li>MinMax scaling</li>
-<li>Mean scaling</li>
-<li>Max absolute scaling</li>
-<li>Unit norm scaling</li>
-</ul>
-<h1 id="6-training-models-with-spark-mllib">6 Training Models with Spark MLLib</h1>
-<ul>
-<li>Spark model can view its hypermeter documentation</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> pprint 
-</span></span><span style="display:flex;"><span>	pp <span style="color:#f92672">=</span> pprint<span style="color:#f92672">.</span>PrettyPrinter(indent<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
-</span></span><span style="display:flex;"><span>	params <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>explainParams() 
-</span></span><span style="display:flex;"><span>	pp<span style="color:#f92672">.</span>pprint(params)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;aggregationDepth: suggested depth for treeAggregate (&gt;= 2). (default: 2)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;featuresCol: features column name. (default: features, current: &#39;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;selectedFeatures)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;k: Number of independent Gaussians in the mixture model. Must be &gt; 1. &#39;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;(default: 2, current: 42)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#f92672">....</span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><h3 id="61-supervised-ml">6.1 Supervised ML</h3>
-<h4 id="611-classification">6.1.1 Classification</h4>
-<ul>
-<li>classification calculates the probability of a data point belong to a class(es) given the input features. Output is a probability that is mapped/thresholded to categorical.
-<ul>
-<li>Distinction
-<ul>
-<li>logistic regression outputs the probability of a discrete class (used in binary classfication). LR is classifcation</li>
-<li>regression algorithms predictions continuous values</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Types of classification
-<ul>
-<li>Binary
-<ul>
-<li>Each input is classified into one of two classes (yes or no, true or false, etc.).</li>
-</ul>
-</li>
-<li>Multiclass
-<ul>
-<li>Each input is classified into one of a set of more than two classes.</li>
-</ul>
-</li>
-<li>Multilabel
-<ul>
-<li>Each given input can have multiple labels in practice. For example, a sentence might have two sentiment classifications, such as happy and fulfilled. Spark does not support this out of the box; you will need to train each classifier separately and combine the outcomes.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Algorithms
-<ul>
-<li>Logistic Regression:
-<ul>
-<li>Binary and multiclass classifier. Can be trained on streaming data with the RDD-based API. Expects an indexed label and a vector of indexed features.</li>
-</ul>
-</li>
-<li>Decision Tree Classifier
-<ul>
-<li>Binary and multiclass decision tree classifier. Expects an indexed label and a vector of indexed features.</li>
-</ul>
-</li>
-<li>RandomForest Classifier
-<ul>
-<li>Binary and multiclass classifier. A random forest is a group or ensemble of individual decision trees, each trained on discrete values. Expects an indexed label and a vector of indexed features.</li>
-</ul>
-</li>
-<li>GBTClassifier
-<ul>
-<li>Binary gradient boosted trees classifier (supported in Spark v3.1.1 and later). Like the <code>RandomForestClassifier</code>, this is an ensemble of decision trees. However, its training process is different; as a result, ==it can be used for regression as well==. Expects an indexed label and a vector of indexed features.</li>
-</ul>
-</li>
-<li>MultiLayer Perception
-<ul>
-<li>Multiclass classifier based on a feed-forward artificial neural network. Expects layer sizes, a vector of indexed features, and indexed labels.</li>
-</ul>
-</li>
-<li>OneVsRest
-<ul>
-<li>Used to reduce multiclass classification to binary classification, using a one-versus-all strategy. Expects a binary classifier, a vector of indexed features, and indexed labels.</li>
-</ul>
-</li>
-<li>Naives Bayes
-<ul>
-<li>Multiclass classifier, considered efficient as it runs only one pass over the training data. Expects a Double for the weight of a data point (to correct for a skewed label distribution), indexed labels, and a vector of indexed features. Returns the probability for each label.</li>
-</ul>
-</li>
-<li>FMClassifier
-<ul>
-<li>Binary factorization machines classifier. Expects indexed labels and a vector of indexed features.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Sample code</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pyspark.ml.classification <span style="color:#f92672">import</span> LogisticRegression
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>happy_lr <span style="color:#f92672">=</span> LogisticRegression(maxIter<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, labelCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;happy_label&#34;</span>)
-</span></span><span style="display:flex;"><span>happy_lr_model <span style="color:#f92672">=</span> happy_lr<span style="color:#f92672">.</span>fit(train_df)
-</span></span></code></pre></div><ul>
-<li>How to deal with imbalanced data?
-<ul>
-<li>Effect: Bias will be toward teh class label with high number of observation bc it is statistically more dominant</li>
-<li>Sol 1:  downsize the majority and upsize the minority</li>
-<li>Sol 2: Algorms it GBTClassifier, GBTRegression, and RandomForestClassifier has a <a href="https://spark.apache.org/docs/3.1.1/api/python/reference/api/pyspark.ml.classification.RandomForestClassifier.html#pyspark.ml.classification.RandomForestClassifier.featureSubsetStrategy">featureSubsetStrategy</a>. In every tree node, the algorithm processes a random subset of features and uses the result to build the next node</li>
-</ul>
-</li>
-</ul>
-<h4 id="612-regression">6.1.2 Regression</h4>
-<ul>
-<li>Types of Regression
-<ul>
-<li>Simple:
-<ul>
-<li>There is only one independent and one dependent variable: one value for training and one to predict.</li>
-</ul>
-</li>
-<li>Multiple
-<ul>
-<li>Here we have one dependent variable to predict using multiple independent variables (features) for training and input.</li>
-</ul>
-</li>
-<li>Multivariate
-<ul>
-<li>Similar to multilabel classification, there are multiple variables to predict (labels) with multiple independent variables for training and input. Accordingly, the input and output are vectors of numeric values.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Algorithms [spark](<a href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.ml.html#regreschang">https://spark.apache.org/docs/latest/api/python/reference/pyspark.ml.html#regreschang</a></li>
-</ul>
-<h3 id="62-unsupervised">6.2 Unsupervised</h3>
-<h4 id="621-frequent-pattern-mining">6.2.1 Frequent Pattern Mining</h4>
-<ul>
-<li>A type of association learning
-<ul>
-<li>based on identifying rules to uncover relationships between variables in the data. Association rule mining algorithms typically first look for frequent items in the dataset, then for frequent pairs or itemsets (e.g., items that are often viewed or purchased together). The rules follow the basic structure of antecedent (if) and consequent (then).</li>
-</ul>
-</li>
-<li>Algorithms
-<ul>
-<li>FPGrowth</li>
-<li>PrefixSpan: (MCKernel!)</li>
-</ul>
-</li>
-</ul>
-<h4 id="622-clustering">6.2.2 Clustering</h4>
-<ul>
-<li>Common concepts
-<ul>
-<li>k = num clusters</li>
-<li>some algo has a weightCol in trainingData that represents the data point&rsquo;s importance relative to the cluster center</li>
-</ul>
-</li>
-<li>Algorithms
-<ul>
-<li>LDA
-<ul>
-<li>LDA (Latent Dirichlet Allocation) is a generic statistical algorithm used in evolutionary biology, biomedicine, and natural language processing. It expects a vector representing the counts of individual words in a document; since in our scenario we’re focusing on variables like fuel type, LDA does not match our data.</li>
-</ul>
-</li>
-<li>GauusianMixture
-<ul>
-<li>The GaussianMixture algorithm is often used to identify the presence of a group within a bigger group. In our context, it could be useful for identifying the subgroups of different classes inside each car manufacturer’s group, such as the compact car class in the Audi group and the Bentley group. However, Gaussian​Mixture is known to perform poorly on high-dimensional data, making it hard for the algorithm to converge to a satisfying conclusion. Data is said to be high-dimensional when the number of features/columns is close to or larger than the number of observations/rows. For example, if I have five columns and four rows, my data is considered high-dimensional. In the world of large datasets, this is less likely to be the case.</li>
-</ul>
-</li>
-<li>KMeans
-<ul>
-<li>KMeans is the most popular algorithm for clustering, due to its simplicity and efficiency. It takes a group of classes, creates random centers, and starts iterating over the data points and the centers, aiming to group similar data points together and find the optimal centers. The algorithm always converges, but the quality of the results depends on the number of clusters (k) and the number of iterations.</li>
-</ul>
-</li>
-<li>PowerIterationClustering
-<ul>
-<li><code>PowerIterationClustering</code> (PIC) implements the <a href="https://oreil.ly/-Gu9c">Lin and Cohen algorithm</a>. It’s a scalable and efficient option for clustering vertices of a graph given pairwise similarities as edge properties. Note that this algorithm cannot be used in Spark pipelines as it does not yet implement the <code>Estimator</code>/<code>Transformer</code> pattern (more on that in <a href="https://learning.oreilly.com/library/view/scaling-machine-learning/9781098106812/ch06.html#ml_pipelines">“Machine Learning Pipelines”</a>).</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Sample code (Gaussian mixture)</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	k <span style="color:#f92672">=</span> dataset<span style="color:#f92672">.</span>select(<span style="color:#e6db74">&#34;Make&#34;</span>)<span style="color:#f92672">.</span>distinct()<span style="color:#f92672">.</span>count()
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">from</span> pyspark.ml.clustering <span style="color:#f92672">import</span> GaussianMixture
-</span></span><span style="display:flex;"><span>	gm <span style="color:#f92672">=</span> GaussianMixture(k, tol<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>, seed<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>,                       featuresCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;selectedFeatures&#34;</span>, maxIter<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)
-</span></span><span style="display:flex;"><span>	model <span style="color:#f92672">=</span> gm<span style="color:#f92672">.</span>fit(dataset)
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	summary <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>summary 
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># summary contains the predicted cluster centers, the transformed predictions, the cluster size (i.e., the number of objects in each cluster), and dedicated parameters based on the specific algorithm</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	summary<span style="color:#f92672">.</span>clusterSizes
-</span></span><span style="display:flex;"><span>	summary<span style="color:#f92672">.</span>logLikelihood
-</span></span><span style="display:flex;"><span>	
-</span></span></code></pre></div><h3 id="63-evaluation">6.3 Evaluation</h3>
-<ul>
-<li>Spark has 6 different evaluators, each implementing the abstract class Evaulator</li>
-</ul>
-<h4 id="631-supervised">6.3.1 Supervised</h4>
-<ul>
-<li>
-<p>First calculates the confusion matrix</p>
-<pre><code>  Predicted
-</code></pre>
-<p>ACTUAL		 -  TP      FN</p>
-<ul>
-<li>FP     TN</li>
-</ul>
-</li>
-<li>
-<p>Types</p>
-<ul>
-<li>BinaryClassicationEvaluator</li>
-<li>MulticlassClassicationEvaluator</li>
-<li>MultilabelClassicationEvaluator</li>
-<li>RegressionEvaluator</li>
-<li>RankingEvaluator</li>
-</ul>
-</li>
-</ul>
-<h4 id="632-unsupervised">6.3.2 Unsupervised</h4>
-<ul>
-<li>
-<p>Computes the silhouette measure</p>
-<ul>
-<li>It expects two input columns, prediction and features, and an optional weight column. It computes the Silhouette measure, where you can choose between two distance measures: squaredEuclidean and cosine. ==Silhouette is a method to evaluate the consistency and validity of the clusters==; it does this by calculating the distance between each data point and the other data points in its cluster and comparing this to its distance from the points in other clusters.</li>
-</ul>
-</li>
-<li>
-<p>Code</p>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pyspark.ml.evaluation <span style="color:#f92672">import</span> ClusteringEvaluator
-</span></span><span style="display:flex;"><span>evaluator <span style="color:#f92672">=</span> ClusteringEvaluator(featuresCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;selectedFeatures&#39;</span>)
-</span></span><span style="display:flex;"><span>evaluator<span style="color:#f92672">.</span>setPredictionCol(<span style="color:#e6db74">&#34;prediction&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># compare kmeans vs gm</span>
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;kmeans: &#34;</span><span style="color:#f92672">+</span>str(evaluator<span style="color:#f92672">.</span>evaluate(kmeans_predictions)))
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;GM: &#34;</span><span style="color:#f92672">+</span> str(evaluator<span style="color:#f92672">.</span>evaluate(gm_predictions)))
-</span></span><span style="display:flex;"><span>	kmeans: <span style="color:#ae81ff">0.7264903574632652</span>
-</span></span><span style="display:flex;"><span>	GM: <span style="color:#f92672">-</span><span style="color:#ae81ff">0.1517797715036008</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>evaluator<span style="color:#f92672">.</span>isLargerBetter() <span style="color:#75715e"># true or false</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># sets the distance measurement</span>
-</span></span><span style="display:flex;"><span>evaluator<span style="color:#f92672">.</span>setDistanceMeasure(<span style="color:#e6db74">&#34;cosine&#34;</span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;kmeans: &#34;</span><span style="color:#f92672">+</span>str(evaluator<span style="color:#f92672">.</span>evaluate(kmeans_predictions)))
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;GM: &#34;</span><span style="color:#f92672">+</span> str(evaluator<span style="color:#f92672">.</span>evaluate(gm_predictions)))
-</span></span></code></pre></div><h3 id="64-hyperparameter-and-tuning-experiments">6.4 Hyperparameter and Tuning Experiments</h3>
-<h4 id="option-1-parameter-grid">Option 1: Parameter Grid</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build grid</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pyspark.ml.tuning <span style="color:#f92672">import</span> ParamGridBuilder
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>grid <span style="color:#f92672">=</span> ParamGridBuilder()
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">.</span>addGrid(kmeans<span style="color:#f92672">.</span>maxIter, [<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">50</span>,<span style="color:#ae81ff">100</span>]) 
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>addGrid(kmeans<span style="color:#f92672">.</span>distanceMeasure, [<span style="color:#e6db74">&#39;euclidean&#39;</span>,<span style="color:#e6db74">&#39;cosine&#39;</span>]) 
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>addGrid(evaluator<span style="color:#f92672">.</span>distanceMeasure, [<span style="color:#e6db74">&#39;euclidean&#39;</span>,<span style="color:#e6db74">&#39;cosine&#39;</span>])<span style="color:#f92672">.</span>build()    
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Split data into training and test</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pyspark.ml.tuning <span style="color:#f92672">import</span> TrainValidationSplit
-</span></span><span style="display:flex;"><span>tvs <span style="color:#f92672">=</span> TrainValidationSplit(estimator<span style="color:#f92672">=</span>kmeans, estimatorParamMaps<span style="color:#f92672">=</span>grid, 
-</span></span><span style="display:flex;"><span>                           evaluator<span style="color:#f92672">=</span>evaluator, collectSubModels<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, seed<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
-</span></span><span style="display:flex;"><span>tvs_model <span style="color:#f92672">=</span> tvs<span style="color:#f92672">.</span>fit(data)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># See results</span>
-</span></span><span style="display:flex;"><span>tvs_model<span style="color:#f92672">.</span>validationMetrics
-</span></span></code></pre></div><h4 id="option-2-cross-validation">Option 2: Cross Validation</h4>
-<ul>
-<li>Cross validation enables use to try different multiple combiation of data splits; BUT will be compute intensive</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pyspark.ml.tuning <span style="color:#f92672">import</span> CrossValidator
-</span></span><span style="display:flex;"><span>cv <span style="color:#f92672">=</span> CrossValidator(estimator<span style="color:#f92672">=</span>kmeans, estimatorParamMaps<span style="color:#f92672">=</span>grid, 
-</span></span><span style="display:flex;"><span>                    evaluator<span style="color:#f92672">=</span>evaluator, collectSubModels<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, 
-</span></span><span style="display:flex;"><span>                    parallelism<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, numFolds<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
-</span></span><span style="display:flex;"><span>cv_model <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>fit(data)
-</span></span></code></pre></div><h3 id="65-ml-pipellines">6.5 ML Pipellines</h3>
-<ul>
-<li>Spark Concepts
-<ul>
-<li>Transformers = A function that converts data in some wa</li>
-<li>Estimator = an algorithm</li>
-<li>Pipeline = sequence of transformer and estimator</li>
-</ul>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#f92672">from</span> pyspark.ml <span style="color:#f92672">import</span> Pipeline
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># transformer: hasher, selector</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># estimator: gm</span>
-</span></span><span style="display:flex;"><span>	pipeline <span style="color:#f92672">=</span> Pipeline(stages<span style="color:#f92672">=</span>[hasher, selector, gm])
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Fit the pipeline to training data</span>
-</span></span><span style="display:flex;"><span>	model <span style="color:#f92672">=</span> pipeline<span style="color:#f92672">.</span>fit(data)
-</span></span></code></pre></div><h1 id="7-bridging-spark-and-dl-frameworks">7 Bridging Spark and DL Frameworks</h1>
-<h3 id="2-cluster-approach">2 Cluster Approach</h3>
-<ul>
-<li>
-<p>Spark philosophy makes it ideal to data processing and feature engineering</p>
-<ul>
-<li>==<code>the size of the cluster changes the duration of the job, not its capacity to run an algorithm</code>==</li>
-<li>Spark’s limitations are mostly bound to its underlying premise that all algorithm implementations must be able to scale without limit, which requires the model to be able to perform its learning process at scale</li>
-</ul>
-</li>
-<li>
-<p>In a two cluster approach</p>
-<ul>
-<li>cluster 1: Spark cluster</li>
-<li>cluster 2: DL distributed cluaster</li>
-<li>(cluster1: Spark) &lt;&ndash; (S3, HDFS, GCP storage) &ndash;&gt; (cluster2: DL)</li>
-</ul>
-</li>
-<li>
-<p>Monoids</p>
-<ul>
-<li>A monoid is an algebraic structure that includes a set, an associative binary operation, and an identity element
-From a programming standpoint, monoids enable developers to break up a task into smaller subtasks almost arbitrarily,
-<ul>
-<li>So what? Break up enables us to decouple logic.  One use case is to delay the error handling to a common piece of code, Either error handling pattern</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="data-access-layer">Data Access Layer</h3>
-<ul>
-<li>
-<p>Why need Data Access Layer (DAL)</p>
-<ul>
-<li>If we use the best toool for each
-<ul>
-<li>Spark for data processing, feature engineering</li>
-<li>Torch &amp; Tensorflow for distributed training</li>
-</ul>
-</li>
-<li>we need to have a way to transfrom between the different data formats</li>
-</ul>
-</li>
-<li>
-<p>DAL feature requirements</p>
-<ul>
-<li>Distributed systems:
-<ul>
-<li>It should be able to leverage existing systems to enable scaling.</li>
-</ul>
-</li>
-<li>Rich software ecosystem:
-<ul>
-<li>This allows it to grow to encompass new machine learning frameworks and ensures that it will continue to be supported, bugs will be fixed, and new features will be developed.</li>
-</ul>
-</li>
-<li>Columnar file formats:
-<ul>
-<li>Columnar file formats store data by column, not by row, which allows greater efficiency when filtering on specific fields during the training and testing process.</li>
-</ul>
-</li>
-<li>Row filtering
-<ul>
-<li>Some machine learning algorithms require sampling specific rows, so we need a mechanism to filter on rows, not only on columns.</li>
-</ul>
-</li>
-<li>Data versioning
-<ul>
-<li>It should be possible to travel back in time, to support reproducibility of experiments.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>Author discusses open source Petastorm as DAL</p>
-</li>
-</ul>
-<h1 id="8-tensorflow-distributed-machine-learning">8 Tensorflow Distributed Machine Learning</h1>
-<ul>
-<li>This section relates to (distributed) training</li>
-</ul>
-<h1 id="9-pytorch-distributed-machine-learning">9 Pytorch Distributed Machine Learning</h1>
-<ul>
-<li>This section relates to (distributed) training</li>
-</ul>
-<h1 id="10-deployment-patterns">10 Deployment Patterns</h1>
-<h3 id="101-deployment-patterns">10.1 Deployment Patterns</h3>
-<h3 id="102-monitoring-ml-models-in-production">10.2 Monitoring ML Models In Production</h3>
-<ul>
-<li>Data Drift
-<ul>
-<li>Definition:
-<ul>
-<li>the data you’re feeding to the online algorithm has changed in some way relative to the training data</li>
-</ul>
-</li>
-<li>Can occur any time the data structure, semantics, or infrastructure change unexpectedly</li>
-<li>Modes
-<ul>
-<li>Instantaneous</li>
-<li>Gradual</li>
-<li>Periodic : Ebay&rsquo;s weekend traffic is different from weekdays</li>
-<li>Temporary Drift</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Model Drift, Concept Drift
-<ul>
-<li>Changes in real-world environments often result in model drift, which diminishes the predictive power of the model. Many things may cause this, ranging from changes in the digital environment (leading to changes in relationships between model variables) to changes in user demographics or behaviors.</li>
-<li>Detection of model drift is known to be a hard problem and often requires human interaction. It’s important to work with users, customers, product managers, and data analysts to better understand the changes that may affect the usefulness of the model</li>
-</ul>
-</li>
-<li>Distributional Domain Shift (the long tail)
-<ul>
-<li>Domain shift refers to a difference between the distribution in the training dataset and the data the model encounters when deployed</li>
-<li>Another way to look at it is to acknowledge that the sampling data may not represent all the parts of the distribution that we care about.</li>
-<li>A domain shift can happen because of bugs in the training data pipeline or bias in the sampling proces</li>
-<li>distribution of the training data does not accurately represent real-world data anymore</li>
-<li>==watch for differences between the training distribution and the production data distribution==</li>
-</ul>
-</li>
-<li>What Metrics To Monitor
-<ul>
-<li>Model Metrics
-<ul>
-<li>accuracy, robustness, performance</li>
-<li>May be hard to collect in proudction since we may not have all the required data
-<ul>
-<li>Ex: if supervised model, what is our label?</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Business Metrics
-<ul>
-<li>These show the impact of the machine learning system on the business. For example, for a recommendation system, we would monitor various metrics related to user churn and user engagement: how many people are using the system, how frequently, and for how long in each interaction. We can even split the user base into multiple user groups and run A/B testing of different models in production. Monitoring business metrics is often fairly straightforward, as many organizations already have a business intelligence (BI) or analytics team that measures them. However, there may be conflicting or hidden factors that affect these metrics, so it’s best to combine these with other measures</li>
-</ul>
-</li>
-<li>Model prediction vs actual behavior
-<ul>
-<li>These metrics show how well the model’s predictions correlate with actual user or system behavior. Measuring them typically requires some creativity and tailor-made solutions, as it involves capturing real behaviors rather than predicted ones. Often, we will want to create a separate data pipeline to capture and save actual behavior into a dataset</li>
-</ul>
-</li>
-<li>Hardware/networking metrics</li>
-</ul>
-</li>
-<li>How Do I Measure Changines Using My Monitoring System?
-<ul>
-<li>Goal: detect changes over time</li>
-<li>Define a reference to compare to
-<ul>
-<li>validation and training data</li>
-<li>production window over a period you believe to be healthy</li>
-</ul>
-</li>
-<li>Measure the reference over a time period</li>
-<li>Algorithms for measurement
-<ul>
-<li>Rule based distance metrics
-<ul>
-<li>These measure how far the data is from the reference, given a set of rules. They’re great for determining the quality of the data. We can compare minimum, maximum, and mean values and check that they are within the acceptable/allowable range. We can also check the number of data points to confirm data isn’t missing or being dropped (for example, due to bad preprocessing), check for the presence of null values, and monitor for data drift.</li>
-</ul>
-</li>
-<li>D1 distance
-<ul>
-<li>This is a classic distance metric that calculates the sum of the distances between the fixed data values. It’s easy to interpret and simplifies monitoring in general.</li>
-</ul>
-</li>
-<li>Kolmogorov-Smirnov statistic
-<ul>
-<li>This finds the distance between the empirical and cumulative distribution functions. It’s a commonly used metric that is relatively easy to interpret and plot on a chart.</li>
-</ul>
-</li>
-<li>Kullback-Leibler Divergence
-<ul>
-<li>This measures the difference between two probability distributions over the same variable x. It’s a statistical log-based equation that is sensitive to the tails of the distribution. It detects outliers but is a bit difficult to comprehend and interpret. This metric can be useful when you’re fully informed about how to use it, but it won’t provide much insight in most cases.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>What it look like in production
-<ul>
-<li>Data check
-<ul>
-<li>reference vs recent data &ndash;&gt; data eval &ndash;&gt; drift? &ndash;&gt; retrain</li>
-</ul>
-</li>
-<li>Model
-<ul>
-<li>prediction vs actual &ndash;&gt; model eval &ndash;&gt; drifit? &ndash;&gt; retrain</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="103-production-feedback-loop">10.3 Production Feedback Loop</h3>
-<ul>
-<li>A feedback loop is when the system saves the outputs of the model and the corresponding end user actions as observed data and uses this data to retrain and improve the model over time</li>
-<li><a href="https://arxiv.org/pdf/2104.00087.pdf">UBER Paper</a></li>
-</ul>
-<h3 id="104-deploying-with-mllib">10.4 Deploying with MLLib</h3>
-<ul>
-<li>Log MLLib models parameters</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">#</span> <span style="color:#a6e22e">Metadata</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;timestamp&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">System</span><span style="color:#f92672">.</span>currentTimeMillis<span style="color:#f92672">())</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;sparkVersion&#34;</span> <span style="color:#f92672">-&gt;</span> sc<span style="color:#f92672">.</span>version<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;uid&#34;</span> <span style="color:#f92672">-&gt;</span> uid<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;paramMap&#34;</span> <span style="color:#f92672">-&gt;</span> jsonParams<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;defaultParamMap&#34;</span> <span style="color:#f92672">-&gt;</span> jsonDefaultParams<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">#</span> <span style="color:#a6e22e">Model</span> params
-</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;numFeatures&#34;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;numClasses&#34;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;numTrees&#34;</span>
-</span></span></code></pre></div><h3 id="105-deploying-with-mlflow">10.5 Deploying with MLFlow</h3>
-<h4 id="1051-step1-wrap-model-and-meta-in-a-mlflow-wrapper">10.5.1 Step1: Wrap model and meta in a MLflow Wrapper</h4>
-<pre><code>- Code 1: python wrapper code needs to implement `mlflow.pyfunc.PyFuncModel`
-</code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyModelWrapper</span>():
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, model_path):
-</span></span><span style="display:flex;"><span>	    self<span style="color:#f92672">.</span>model_path <span style="color:#f92672">=</span> model_path
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_context</span>(self, context):
-</span></span><span style="display:flex;"><span>	    log(self<span style="color:#f92672">.</span>model_path)
-</span></span><span style="display:flex;"><span>	    self<span style="color:#f92672">.</span>model <span style="color:#f92672">=</span> mlflow<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>load_model(model_uri<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>model_path)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(self, context, model_input):
-</span></span><span style="display:flex;"><span>	    <span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
-</span></span><span style="display:flex;"><span>	    <span style="color:#f92672">import</span> json
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	    class_def <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>	        <span style="color:#ae81ff">0</span>: <span style="color:#e6db74">&#39;212.teapot&#39;</span>, 
-</span></span><span style="display:flex;"><span>	        <span style="color:#ae81ff">1</span>: <span style="color:#e6db74">&#39;234.tweezer&#39;</span>, 
-</span></span><span style="display:flex;"><span>	        <span style="color:#ae81ff">2</span>: <span style="color:#e6db74">&#39;196.spaghetti&#39;</span>, 
-</span></span><span style="display:flex;"><span>	        <span style="color:#ae81ff">3</span>: <span style="color:#e6db74">&#39;249.yo-yo&#39;</span>, 
-</span></span><span style="display:flex;"><span>	    }
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	    rtn_df <span style="color:#f92672">=</span> model_input<span style="color:#f92672">.</span>iloc[:,<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">1</span>]
-</span></span><span style="display:flex;"><span>	    rtn_df[<span style="color:#e6db74">&#39;prediction&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
-</span></span><span style="display:flex;"><span>	    rtn_df[<span style="color:#e6db74">&#39;probabilities&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">for</span> index, row <span style="color:#f92672">in</span> model_input<span style="color:#f92672">.</span>iterrows():
-</span></span><span style="display:flex;"><span>	        <span style="color:#75715e"># resize and reshape the image</span>
-</span></span><span style="display:flex;"><span>	        image <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>round(np<span style="color:#f92672">.</span>array(Image<span style="color:#f92672">.</span>open(row[<span style="color:#e6db74">&#39;origin&#39;</span>])<span style="color:#f92672">.</span>resize((<span style="color:#ae81ff">224</span>,<span style="color:#ae81ff">224</span>)),
-</span></span><span style="display:flex;"><span>	                                  dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>float32))
-</span></span><span style="display:flex;"><span>	        img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reshape(image, shape<span style="color:#f92672">=</span>[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">224</span>, <span style="color:#ae81ff">224</span>, <span style="color:#ae81ff">3</span>])
-</span></span><span style="display:flex;"><span>	      
-</span></span><span style="display:flex;"><span>	        <span style="color:#75715e"># predict</span>
-</span></span><span style="display:flex;"><span>	        class_probs <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>model<span style="color:#f92672">.</span>predict(img)
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	        <span style="color:#75715e"># take the class with the highest probability</span>
-</span></span><span style="display:flex;"><span>	        classes <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(class_probs, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>	        class_prob_dict <span style="color:#f92672">=</span> dict()
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	        <span style="color:#75715e"># calculate probability for each class option:</span>
-</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">for</span> key, val <span style="color:#f92672">in</span> class_def<span style="color:#f92672">.</span>items():
-</span></span><span style="display:flex;"><span>	            class_prob_dict[val] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>round(np<span style="color:#f92672">.</span>float(class_probs[<span style="color:#ae81ff">0</span>][int(key)]), 
-</span></span><span style="display:flex;"><span>	                                                     <span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>tolist()
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	        rtn_df<span style="color:#f92672">.</span>loc[index,<span style="color:#e6db74">&#39;prediction&#39;</span>] <span style="color:#f92672">=</span> classes[<span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span>	        rtn_df<span style="color:#f92672">.</span>loc[index,<span style="color:#e6db74">&#39;probabilities&#39;</span>] <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>dumps(class_prob_dict)
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">return</span> rtn_df[[<span style="color:#e6db74">&#39;prediction&#39;</span>, <span style="color:#e6db74">&#39;probabilities&#39;</span>]]<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>tolist()
+<!doctype html><html lang=en-us><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><title>Scaling ML Spark | Thomas Chang | Staff ML Engineer</title><meta name=description content="Refresher course on Spark"><meta name=author content><link rel=canonical href=https://thomaschangsf.github.io/books/software-system/scaling-ml-spark/><meta property="og:title" content="Scaling ML Spark | Thomas Chang | Staff ML Engineer"><meta property="og:description" content="Refresher course on Spark"><meta property="og:type" content="article"><meta property="og:url" content="https://thomaschangsf.github.io/books/software-system/scaling-ml-spark/"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href rel=stylesheet><link rel=stylesheet href=../../../css/shared.css><link rel=stylesheet href=../../../css/persona.css><link rel=icon type=image/svg+xml href=../../../favicon.svg></head><body class=persona-><nav class=nav id=navbar role=navigation aria-label="Main navigation"><div class=nav-inner><div></div><button class=nav-toggle id=nav-toggle aria-expanded=false aria-controls=nav-menu aria-label="Toggle menu">
+<span class=nav-toggle-bar></span>
+<span class=nav-toggle-bar></span>
+<span class=nav-toggle-bar></span></button><ul class=nav-menu id=nav-menu role=list><li class=nav-item><a href=../../../ class=nav-link>Home</a></li><li class=nav-item><a href=../../../blogs/ class=nav-link>Blogs</a></li><li class=nav-item><a href=../../../books/ class=nav-link>Books</a></li><li class=nav-item><a href=https://github.com/thomaschangsf class=nav-link>GitHub</a></li><li class=nav-item><a href=../../../resume/ class=nav-link>Resume</a></li></ul></div></nav><main id=main-content><article class="container content-page"><header class=page-header><h1 class=page-title>Scaling ML Spark</h1></header><div class=page-body><h1 id=1-distributed-ml-terms-and-concepts>1 Distributed ML Terms and Concepts</h1><h1 id=2-intro-to-spark-and-pyspark>2 Intro to Spark and PySpark</h1><ul><li>Driver Program<ul><li>The driver program (aka Spark driver) is a dedicated process that runs on the driver machine. It is responsible for executing and holding the SparkSession, which encapsulates the SparkContext—this is considered the application’s entry point, or the “real program.” The SparkContext contains all the basic functions, context delivered at start time, and information about the cluster. The driver also holds the DAG scheduler, task scheduler, block manager, and everything that is needed to turn the code into jobs that the worker and executors can execute on the cluster. The driver program works in synergy with the cluster manager to find the existing machines and allocated resources.</li></ul></li><li>Executor:<ul><li>Is a process</li><li>Has T tasks<ul><li>tasks is smallest unit of work</li><li>task in the same executor share the same cache, memory, and global parameters</li></ul></li></ul></li><li>Worker Node<ul><li>VM</li><li>multiple executor on a worker node</li></ul></li><li>Cluster manager<ul><li>Assign executors to worker nodes, assign resources and communicate information about resource availability to driver program</li></ul></li></ul><h3 id=executing-pyspark-code>Executing PySpark Code</h3><ul><li>Pyspark -><ul><li>process: python - InterProcess communication (IPC) - process: scala/JVM</li><li>JVM spark query optimization, computation, distribution of tasks to clusters</li></ul></li><li>Py4J<ul><li>pyspark driver - pickled item (serialization) - py4j context - Spark driver GVM</li><li> <a href=https://www.py4j.org/>Py4J</a> is a library written in Python and Java that enables Python programs running in a Python interpreter to dynamically access Java objects and collections in a JVM via standard Python methods</li><li>==PySpark is often less efficient in terms of running time than traditional Scala/Java code==</li></ul></li></ul><h3 id=apache-spark-basics>Apache Spark Basics</h3><ul><li>Architectures</li><li>DataFrame vs Datasets<ul><li>Datasets enforces type safety; there is no way to mistaken a col type of string as int</li><li>BUT dataset is slower.</li></ul></li></ul><h1 id=3-mlflow>3 MLFlow</h1><ul><li><p>MLOps: manage the machine learning experiment lifecycle</p><ul><li>term: experiments can be orgainzed as pipeline code or Ml modules in repos</li><li>Phases<ul><li>machine learning<ul><li>training, tuning, finding optimal models</li></ul></li><li>development<ul><li>develop ==pipelines== and ==tools== to take ml model from dev/experiment to staging and production</li></ul></li><li>operations<ul><li>CI/CD, monitoring, managing, serving models at scale</li></ul></li></ul></li></ul></li><li><p>Requirement for ML Lifecycle Management</p><ul><li>Reproducibility<ul><li>Ability to run your algorithm repeatedly on different datasets and obtain the same (or similar) results. Analyzing, reporting, auditing, and interpreting data are all aspects of this process, meaning each step in the lifecycle needs to be tracked and saved</li></ul></li><li>Code Version Control</li><li>Data Version Control<ul><li>Tools: DVC and lakeFS</li></ul></li></ul></li><li><p>ML Flow manages the entire ML lifeycle</p><ul><li>Component 1: Tracking Server<ul><li>What does it track?<ul><li>Model hyper-parameters</li><li>metrics</li><li>metadata</li><li>artifacts</li></ul></li><li>Runs: everytime you run an experiment, you can tack</li><li><code>$ mlflow run example/conda-env/project -P alpha=0.5</code></li></ul></li><li>Compoment 2: Model Registry<ul><li>Downstream automated job can query the model registry</li><li>DS -> model into staging</li><li>ML Engineer -> production and archived</li></ul></li></ul></li><li><p>Tbale schema</p><ul><li>Experiment -> Run</li><li>Run -> Metrics, Params, and Tags</li></ul></li></ul><h1 id=4-data-ingestion-preprocessing-and-stats>4 Data Ingestion, PreProcessing, and Stats</h1><h1 id=5-feature-engineering>5 Feature Engineering</h1><h3 id=terminology>Terminology</h3><ul><li>Estimator : an algorithm that can fit on a Dataframe</li></ul><h3 id=common-scenarios-and-options>Common Scenarios and Options</h3><p>Handle Missing Features</p><ul><li>Approaches<ul><li>drop rows</li><li>mean/median</li><li>random sample</li><li>arbitrary value</li><li>missing value indicator</li><li>multivariate imputation</li></ul></li><li>Some algorithms are more sensitive to missing values, like SVM, PCA and nearest neighbor because each data point changes the outcome.</li></ul><p>Extract Feature From Text</p><ul><li>BOW</li><li>TF-IDF</li><li>n-gram</li><li>word2vec</li><li>Topic extraction</li></ul><p>Categorical Encoding</p><ul><li>StringToIndex</li><li>1 hot encoding</li><li>Count and frequency encoding</li><li>Ordinal encoding</li><li>Weight of eveidence</li><li>Rare label encoding</li><li>Feature hashing</li></ul><p>Feature Scaling</p><ul><li>Normalization</li><li>MinMax scaling</li><li>Mean scaling</li><li>Max absolute scaling</li><li>Unit norm scaling</li></ul><h1 id=6-training-models-with-spark-mllib>6 Training Models with Spark MLLib</h1><ul><li>Spark model can view its hypermeter documentation</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>	<span style=color:#f92672>import</span> pprint 
+</span></span><span style=display:flex><span>	pp <span style=color:#f92672>=</span> pprint<span style=color:#f92672>.</span>PrettyPrinter(indent<span style=color:#f92672>=</span><span style=color:#ae81ff>4</span>)
+</span></span><span style=display:flex><span>	params <span style=color:#f92672>=</span> model<span style=color:#f92672>.</span>explainParams() 
+</span></span><span style=display:flex><span>	pp<span style=color:#f92672>.</span>pprint(params)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>(<span style=color:#e6db74>&#39;aggregationDepth: suggested depth for treeAggregate (&gt;= 2). (default: 2)</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>
+</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;featuresCol: features column name. (default: features, current: &#39;</span>
+</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;selectedFeatures)</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>
+</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;k: Number of independent Gaussians in the mixture model. Must be &gt; 1. &#39;</span>
+</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;(default: 2, current: 42)</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>....</span>
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><h3 id=61-supervised-ml>6.1 Supervised ML</h3><h4 id=611-classification>6.1.1 Classification</h4><ul><li>classification calculates the probability of a data point belong to a class(es) given the input features. Output is a probability that is mapped/thresholded to categorical.<ul><li>Distinction<ul><li>logistic regression outputs the probability of a discrete class (used in binary classfication). LR is classifcation</li><li>regression algorithms predictions continuous values</li></ul></li></ul></li><li>Types of classification<ul><li>Binary<ul><li>Each input is classified into one of two classes (yes or no, true or false, etc.).</li></ul></li><li>Multiclass<ul><li>Each input is classified into one of a set of more than two classes.</li></ul></li><li>Multilabel<ul><li>Each given input can have multiple labels in practice. For example, a sentence might have two sentiment classifications, such as happy and fulfilled. Spark does not support this out of the box; you will need to train each classifier separately and combine the outcomes.</li></ul></li></ul></li><li>Algorithms<ul><li>Logistic Regression:<ul><li>Binary and multiclass classifier. Can be trained on streaming data with the RDD-based API. Expects an indexed label and a vector of indexed features.</li></ul></li><li>Decision Tree Classifier<ul><li>Binary and multiclass decision tree classifier. Expects an indexed label and a vector of indexed features.</li></ul></li><li>RandomForest Classifier<ul><li>Binary and multiclass classifier. A random forest is a group or ensemble of individual decision trees, each trained on discrete values. Expects an indexed label and a vector of indexed features.</li></ul></li><li>GBTClassifier<ul><li>Binary gradient boosted trees classifier (supported in Spark v3.1.1 and later). Like the <code>RandomForestClassifier</code>, this is an ensemble of decision trees. However, its training process is different; as a result, ==it can be used for regression as well==. Expects an indexed label and a vector of indexed features.</li></ul></li><li>MultiLayer Perception<ul><li>Multiclass classifier based on a feed-forward artificial neural network. Expects layer sizes, a vector of indexed features, and indexed labels.</li></ul></li><li>OneVsRest<ul><li>Used to reduce multiclass classification to binary classification, using a one-versus-all strategy. Expects a binary classifier, a vector of indexed features, and indexed labels.</li></ul></li><li>Naives Bayes<ul><li>Multiclass classifier, considered efficient as it runs only one pass over the training data. Expects a Double for the weight of a data point (to correct for a skewed label distribution), indexed labels, and a vector of indexed features. Returns the probability for each label.</li></ul></li><li>FMClassifier<ul><li>Binary factorization machines classifier. Expects indexed labels and a vector of indexed features.</li></ul></li></ul></li><li>Sample code</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> pyspark.ml.classification <span style=color:#f92672>import</span> LogisticRegression
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>happy_lr <span style=color:#f92672>=</span> LogisticRegression(maxIter<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>, labelCol<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;happy_label&#34;</span>)
+</span></span><span style=display:flex><span>happy_lr_model <span style=color:#f92672>=</span> happy_lr<span style=color:#f92672>.</span>fit(train_df)
+</span></span></code></pre></div><ul><li>How to deal with imbalanced data?<ul><li>Effect: Bias will be toward teh class label with high number of observation bc it is statistically more dominant</li><li>Sol 1: downsize the majority and upsize the minority</li><li>Sol 2: Algorms it GBTClassifier, GBTRegression, and RandomForestClassifier has a <a href=https://spark.apache.org/docs/3.1.1/api/python/reference/api/pyspark.ml.classification.RandomForestClassifier.html#pyspark.ml.classification.RandomForestClassifier.featureSubsetStrategy>featureSubsetStrategy</a>. In every tree node, the algorithm processes a random subset of features and uses the result to build the next node</li></ul></li></ul><h4 id=612-regression>6.1.2 Regression</h4><ul><li>Types of Regression<ul><li>Simple:<ul><li>There is only one independent and one dependent variable: one value for training and one to predict.</li></ul></li><li>Multiple<ul><li>Here we have one dependent variable to predict using multiple independent variables (features) for training and input.</li></ul></li><li>Multivariate<ul><li>Similar to multilabel classification, there are multiple variables to predict (labels) with multiple independent variables for training and input. Accordingly, the input and output are vectors of numeric values.</li></ul></li></ul></li><li>Algorithms [spark](<a href=https://spark.apache.org/docs/latest/api/python/reference/pyspark.ml.html#regreschang>https://spark.apache.org/docs/latest/api/python/reference/pyspark.ml.html#regreschang</a></li></ul><h3 id=62-unsupervised>6.2 Unsupervised</h3><h4 id=621-frequent-pattern-mining>6.2.1 Frequent Pattern Mining</h4><ul><li>A type of association learning<ul><li>based on identifying rules to uncover relationships between variables in the data. Association rule mining algorithms typically first look for frequent items in the dataset, then for frequent pairs or itemsets (e.g., items that are often viewed or purchased together). The rules follow the basic structure of antecedent (if) and consequent (then).</li></ul></li><li>Algorithms<ul><li>FPGrowth</li><li>PrefixSpan: (MCKernel!)</li></ul></li></ul><h4 id=622-clustering>6.2.2 Clustering</h4><ul><li>Common concepts<ul><li>k = num clusters</li><li>some algo has a weightCol in trainingData that represents the data point&rsquo;s importance relative to the cluster center</li></ul></li><li>Algorithms<ul><li>LDA<ul><li>LDA (Latent Dirichlet Allocation) is a generic statistical algorithm used in evolutionary biology, biomedicine, and natural language processing. It expects a vector representing the counts of individual words in a document; since in our scenario we’re focusing on variables like fuel type, LDA does not match our data.</li></ul></li><li>GauusianMixture<ul><li>The GaussianMixture algorithm is often used to identify the presence of a group within a bigger group. In our context, it could be useful for identifying the subgroups of different classes inside each car manufacturer’s group, such as the compact car class in the Audi group and the Bentley group. However, Gaussian​Mixture is known to perform poorly on high-dimensional data, making it hard for the algorithm to converge to a satisfying conclusion. Data is said to be high-dimensional when the number of features/columns is close to or larger than the number of observations/rows. For example, if I have five columns and four rows, my data is considered high-dimensional. In the world of large datasets, this is less likely to be the case.</li></ul></li><li>KMeans<ul><li>KMeans is the most popular algorithm for clustering, due to its simplicity and efficiency. It takes a group of classes, creates random centers, and starts iterating over the data points and the centers, aiming to group similar data points together and find the optimal centers. The algorithm always converges, but the quality of the results depends on the number of clusters (k) and the number of iterations.</li></ul></li><li>PowerIterationClustering<ul><li><code>PowerIterationClustering</code> (PIC) implements the <a href=https://oreil.ly/-Gu9c>Lin and Cohen algorithm</a>. It’s a scalable and efficient option for clustering vertices of a graph given pairwise similarities as edge properties. Note that this algorithm cannot be used in Spark pipelines as it does not yet implement the <code>Estimator</code>/<code>Transformer</code> pattern (more on that in <a href=https://learning.oreilly.com/library/view/scaling-machine-learning/9781098106812/ch06.html#ml_pipelines>“Machine Learning Pipelines”</a>).</li></ul></li></ul></li><li>Sample code (Gaussian mixture)</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>	k <span style=color:#f92672>=</span> dataset<span style=color:#f92672>.</span>select(<span style=color:#e6db74>&#34;Make&#34;</span>)<span style=color:#f92672>.</span>distinct()<span style=color:#f92672>.</span>count()
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#f92672>from</span> pyspark.ml.clustering <span style=color:#f92672>import</span> GaussianMixture
+</span></span><span style=display:flex><span>	gm <span style=color:#f92672>=</span> GaussianMixture(k, tol<span style=color:#f92672>=</span><span style=color:#ae81ff>0.01</span>, seed<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>,                       featuresCol<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;selectedFeatures&#34;</span>, maxIter<span style=color:#f92672>=</span><span style=color:#ae81ff>100</span>)
+</span></span><span style=display:flex><span>	model <span style=color:#f92672>=</span> gm<span style=color:#f92672>.</span>fit(dataset)
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	summary <span style=color:#f92672>=</span> model<span style=color:#f92672>.</span>summary 
+</span></span><span style=display:flex><span>	<span style=color:#75715e># summary contains the predicted cluster centers, the transformed predictions, the cluster size (i.e., the number of objects in each cluster), and dedicated parameters based on the specific algorithm</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	summary<span style=color:#f92672>.</span>clusterSizes
+</span></span><span style=display:flex><span>	summary<span style=color:#f92672>.</span>logLikelihood
+</span></span><span style=display:flex><span>	
+</span></span></code></pre></div><h3 id=63-evaluation>6.3 Evaluation</h3><ul><li>Spark has 6 different evaluators, each implementing the abstract class Evaulator</li></ul><h4 id=631-supervised>6.3.1 Supervised</h4><ul><li><p>First calculates the confusion matrix</p><pre><code>  Predicted
+</code></pre><p>ACTUAL - TP FN</p><ul><li>FP TN</li></ul></li><li><p>Types</p><ul><li>BinaryClassicationEvaluator</li><li>MulticlassClassicationEvaluator</li><li>MultilabelClassicationEvaluator</li><li>RegressionEvaluator</li><li>RankingEvaluator</li></ul></li></ul><h4 id=632-unsupervised>6.3.2 Unsupervised</h4><ul><li><p>Computes the silhouette measure</p><ul><li>It expects two input columns, prediction and features, and an optional weight column. It computes the Silhouette measure, where you can choose between two distance measures: squaredEuclidean and cosine. ==Silhouette is a method to evaluate the consistency and validity of the clusters==; it does this by calculating the distance between each data point and the other data points in its cluster and comparing this to its distance from the points in other clusters.</li></ul></li><li><p>Code</p></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> pyspark.ml.evaluation <span style=color:#f92672>import</span> ClusteringEvaluator
+</span></span><span style=display:flex><span>evaluator <span style=color:#f92672>=</span> ClusteringEvaluator(featuresCol<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;selectedFeatures&#39;</span>)
+</span></span><span style=display:flex><span>evaluator<span style=color:#f92672>.</span>setPredictionCol(<span style=color:#e6db74>&#34;prediction&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># compare kmeans vs gm</span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;kmeans: &#34;</span><span style=color:#f92672>+</span>str(evaluator<span style=color:#f92672>.</span>evaluate(kmeans_predictions)))
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;GM: &#34;</span><span style=color:#f92672>+</span> str(evaluator<span style=color:#f92672>.</span>evaluate(gm_predictions)))
+</span></span><span style=display:flex><span>	kmeans: <span style=color:#ae81ff>0.7264903574632652</span>
+</span></span><span style=display:flex><span>	GM: <span style=color:#f92672>-</span><span style=color:#ae81ff>0.1517797715036008</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>evaluator<span style=color:#f92672>.</span>isLargerBetter() <span style=color:#75715e># true or false</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># sets the distance measurement</span>
+</span></span><span style=display:flex><span>evaluator<span style=color:#f92672>.</span>setDistanceMeasure(<span style=color:#e6db74>&#34;cosine&#34;</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;kmeans: &#34;</span><span style=color:#f92672>+</span>str(evaluator<span style=color:#f92672>.</span>evaluate(kmeans_predictions)))
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;GM: &#34;</span><span style=color:#f92672>+</span> str(evaluator<span style=color:#f92672>.</span>evaluate(gm_predictions)))
+</span></span></code></pre></div><h3 id=64-hyperparameter-and-tuning-experiments>6.4 Hyperparameter and Tuning Experiments</h3><h4 id=option-1-parameter-grid>Option 1: Parameter Grid</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Build grid</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pyspark.ml.tuning <span style=color:#f92672>import</span> ParamGridBuilder
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>grid <span style=color:#f92672>=</span> ParamGridBuilder()
+</span></span><span style=display:flex><span>		<span style=color:#f92672>.</span>addGrid(kmeans<span style=color:#f92672>.</span>maxIter, [<span style=color:#ae81ff>20</span>,<span style=color:#ae81ff>50</span>,<span style=color:#ae81ff>100</span>]) 
+</span></span><span style=display:flex><span>        <span style=color:#f92672>.</span>addGrid(kmeans<span style=color:#f92672>.</span>distanceMeasure, [<span style=color:#e6db74>&#39;euclidean&#39;</span>,<span style=color:#e6db74>&#39;cosine&#39;</span>]) 
+</span></span><span style=display:flex><span>        <span style=color:#f92672>.</span>addGrid(evaluator<span style=color:#f92672>.</span>distanceMeasure, [<span style=color:#e6db74>&#39;euclidean&#39;</span>,<span style=color:#e6db74>&#39;cosine&#39;</span>])<span style=color:#f92672>.</span>build()    
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Split data into training and test</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pyspark.ml.tuning <span style=color:#f92672>import</span> TrainValidationSplit
+</span></span><span style=display:flex><span>tvs <span style=color:#f92672>=</span> TrainValidationSplit(estimator<span style=color:#f92672>=</span>kmeans, estimatorParamMaps<span style=color:#f92672>=</span>grid, 
+</span></span><span style=display:flex><span>                           evaluator<span style=color:#f92672>=</span>evaluator, collectSubModels<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, seed<span style=color:#f92672>=</span><span style=color:#ae81ff>42</span>)
+</span></span><span style=display:flex><span>tvs_model <span style=color:#f92672>=</span> tvs<span style=color:#f92672>.</span>fit(data)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># See results</span>
+</span></span><span style=display:flex><span>tvs_model<span style=color:#f92672>.</span>validationMetrics
+</span></span></code></pre></div><h4 id=option-2-cross-validation>Option 2: Cross Validation</h4><ul><li>Cross validation enables use to try different multiple combiation of data splits; BUT will be compute intensive</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> pyspark.ml.tuning <span style=color:#f92672>import</span> CrossValidator
+</span></span><span style=display:flex><span>cv <span style=color:#f92672>=</span> CrossValidator(estimator<span style=color:#f92672>=</span>kmeans, estimatorParamMaps<span style=color:#f92672>=</span>grid, 
+</span></span><span style=display:flex><span>                    evaluator<span style=color:#f92672>=</span>evaluator, collectSubModels<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, 
+</span></span><span style=display:flex><span>                    parallelism<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>, numFolds<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span>)
+</span></span><span style=display:flex><span>cv_model <span style=color:#f92672>=</span> cv<span style=color:#f92672>.</span>fit(data)
+</span></span></code></pre></div><h3 id=65-ml-pipellines>6.5 ML Pipellines</h3><ul><li>Spark Concepts<ul><li>Transformers = A function that converts data in some wa</li><li>Estimator = an algorithm</li><li>Pipeline = sequence of transformer and estimator</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>	<span style=color:#f92672>from</span> pyspark.ml <span style=color:#f92672>import</span> Pipeline
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># transformer: hasher, selector</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># estimator: gm</span>
+</span></span><span style=display:flex><span>	pipeline <span style=color:#f92672>=</span> Pipeline(stages<span style=color:#f92672>=</span>[hasher, selector, gm])
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Fit the pipeline to training data</span>
+</span></span><span style=display:flex><span>	model <span style=color:#f92672>=</span> pipeline<span style=color:#f92672>.</span>fit(data)
+</span></span></code></pre></div><h1 id=7-bridging-spark-and-dl-frameworks>7 Bridging Spark and DL Frameworks</h1><h3 id=2-cluster-approach>2 Cluster Approach</h3><ul><li><p>Spark philosophy makes it ideal to data processing and feature engineering</p><ul><li>==<code>the size of the cluster changes the duration of the job, not its capacity to run an algorithm</code>==</li><li>Spark’s limitations are mostly bound to its underlying premise that all algorithm implementations must be able to scale without limit, which requires the model to be able to perform its learning process at scale</li></ul></li><li><p>In a two cluster approach</p><ul><li>cluster 1: Spark cluster</li><li>cluster 2: DL distributed cluaster</li><li>(cluster1: Spark) &lt;&ndash; (S3, HDFS, GCP storage) &ndash;> (cluster2: DL)</li></ul></li><li><p>Monoids</p><ul><li>A monoid is an algebraic structure that includes a set, an associative binary operation, and an identity element
+From a programming standpoint, monoids enable developers to break up a task into smaller subtasks almost arbitrarily,<ul><li>So what? Break up enables us to decouple logic. One use case is to delay the error handling to a common piece of code, Either error handling pattern</li></ul></li></ul></li></ul><h3 id=data-access-layer>Data Access Layer</h3><ul><li><p>Why need Data Access Layer (DAL)</p><ul><li>If we use the best toool for each<ul><li>Spark for data processing, feature engineering</li><li>Torch & Tensorflow for distributed training</li></ul></li><li>we need to have a way to transfrom between the different data formats</li></ul></li><li><p>DAL feature requirements</p><ul><li>Distributed systems:<ul><li>It should be able to leverage existing systems to enable scaling.</li></ul></li><li>Rich software ecosystem:<ul><li>This allows it to grow to encompass new machine learning frameworks and ensures that it will continue to be supported, bugs will be fixed, and new features will be developed.</li></ul></li><li>Columnar file formats:<ul><li>Columnar file formats store data by column, not by row, which allows greater efficiency when filtering on specific fields during the training and testing process.</li></ul></li><li>Row filtering<ul><li>Some machine learning algorithms require sampling specific rows, so we need a mechanism to filter on rows, not only on columns.</li></ul></li><li>Data versioning<ul><li>It should be possible to travel back in time, to support reproducibility of experiments.</li></ul></li></ul></li><li><p>Author discusses open source Petastorm as DAL</p></li></ul><h1 id=8-tensorflow-distributed-machine-learning>8 Tensorflow Distributed Machine Learning</h1><ul><li>This section relates to (distributed) training</li></ul><h1 id=9-pytorch-distributed-machine-learning>9 Pytorch Distributed Machine Learning</h1><ul><li>This section relates to (distributed) training</li></ul><h1 id=10-deployment-patterns>10 Deployment Patterns</h1><h3 id=101-deployment-patterns>10.1 Deployment Patterns</h3><h3 id=102-monitoring-ml-models-in-production>10.2 Monitoring ML Models In Production</h3><ul><li>Data Drift<ul><li>Definition:<ul><li>the data you’re feeding to the online algorithm has changed in some way relative to the training data</li></ul></li><li>Can occur any time the data structure, semantics, or infrastructure change unexpectedly</li><li>Modes<ul><li>Instantaneous</li><li>Gradual</li><li>Periodic : Ebay&rsquo;s weekend traffic is different from weekdays</li><li>Temporary Drift</li></ul></li></ul></li><li>Model Drift, Concept Drift<ul><li>Changes in real-world environments often result in model drift, which diminishes the predictive power of the model. Many things may cause this, ranging from changes in the digital environment (leading to changes in relationships between model variables) to changes in user demographics or behaviors.</li><li>Detection of model drift is known to be a hard problem and often requires human interaction. It’s important to work with users, customers, product managers, and data analysts to better understand the changes that may affect the usefulness of the model</li></ul></li><li>Distributional Domain Shift (the long tail)<ul><li>Domain shift refers to a difference between the distribution in the training dataset and the data the model encounters when deployed</li><li>Another way to look at it is to acknowledge that the sampling data may not represent all the parts of the distribution that we care about.</li><li>A domain shift can happen because of bugs in the training data pipeline or bias in the sampling proces</li><li>distribution of the training data does not accurately represent real-world data anymore</li><li>==watch for differences between the training distribution and the production data distribution==</li></ul></li><li>What Metrics To Monitor<ul><li>Model Metrics<ul><li>accuracy, robustness, performance</li><li>May be hard to collect in proudction since we may not have all the required data<ul><li>Ex: if supervised model, what is our label?</li></ul></li></ul></li><li>Business Metrics<ul><li>These show the impact of the machine learning system on the business. For example, for a recommendation system, we would monitor various metrics related to user churn and user engagement: how many people are using the system, how frequently, and for how long in each interaction. We can even split the user base into multiple user groups and run A/B testing of different models in production. Monitoring business metrics is often fairly straightforward, as many organizations already have a business intelligence (BI) or analytics team that measures them. However, there may be conflicting or hidden factors that affect these metrics, so it’s best to combine these with other measures</li></ul></li><li>Model prediction vs actual behavior<ul><li>These metrics show how well the model’s predictions correlate with actual user or system behavior. Measuring them typically requires some creativity and tailor-made solutions, as it involves capturing real behaviors rather than predicted ones. Often, we will want to create a separate data pipeline to capture and save actual behavior into a dataset</li></ul></li><li>Hardware/networking metrics</li></ul></li><li>How Do I Measure Changines Using My Monitoring System?<ul><li>Goal: detect changes over time</li><li>Define a reference to compare to<ul><li>validation and training data</li><li>production window over a period you believe to be healthy</li></ul></li><li>Measure the reference over a time period</li><li>Algorithms for measurement<ul><li>Rule based distance metrics<ul><li>These measure how far the data is from the reference, given a set of rules. They’re great for determining the quality of the data. We can compare minimum, maximum, and mean values and check that they are within the acceptable/allowable range. We can also check the number of data points to confirm data isn’t missing or being dropped (for example, due to bad preprocessing), check for the presence of null values, and monitor for data drift.</li></ul></li><li>D1 distance<ul><li>This is a classic distance metric that calculates the sum of the distances between the fixed data values. It’s easy to interpret and simplifies monitoring in general.</li></ul></li><li>Kolmogorov-Smirnov statistic<ul><li>This finds the distance between the empirical and cumulative distribution functions. It’s a commonly used metric that is relatively easy to interpret and plot on a chart.</li></ul></li><li>Kullback-Leibler Divergence<ul><li>This measures the difference between two probability distributions over the same variable x. It’s a statistical log-based equation that is sensitive to the tails of the distribution. It detects outliers but is a bit difficult to comprehend and interpret. This metric can be useful when you’re fully informed about how to use it, but it won’t provide much insight in most cases.</li></ul></li></ul></li></ul></li><li>What it look like in production<ul><li>Data check<ul><li>reference vs recent data &ndash;> data eval &ndash;> drift? &ndash;> retrain</li></ul></li><li>Model<ul><li>prediction vs actual &ndash;> model eval &ndash;> drifit? &ndash;> retrain</li></ul></li></ul></li></ul><h3 id=103-production-feedback-loop>10.3 Production Feedback Loop</h3><ul><li>A feedback loop is when the system saves the outputs of the model and the corresponding end user actions as observed data and uses this data to retrain and improve the model over time</li><li><a href=https://arxiv.org/pdf/2104.00087.pdf>UBER Paper</a></li></ul><h3 id=104-deploying-with-mllib>10.4 Deploying with MLLib</h3><ul><li>Log MLLib models parameters</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-scala data-lang=scala><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>#</span> <span style=color:#a6e22e>Metadata</span>
+</span></span><span style=display:flex><span>	<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;timestamp&#34;</span> <span style=color:#f92672>-&gt;</span> <span style=color:#a6e22e>System</span><span style=color:#f92672>.</span>currentTimeMillis<span style=color:#f92672>())</span>
+</span></span><span style=display:flex><span>	<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;sparkVersion&#34;</span> <span style=color:#f92672>-&gt;</span> sc<span style=color:#f92672>.</span>version<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>	<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;uid&#34;</span> <span style=color:#f92672>-&gt;</span> uid<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>	<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;paramMap&#34;</span> <span style=color:#f92672>-&gt;</span> jsonParams<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>	<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;defaultParamMap&#34;</span> <span style=color:#f92672>-&gt;</span> jsonDefaultParams<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>#</span> <span style=color:#a6e22e>Model</span> params
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;numFeatures&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;numClasses&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;numTrees&#34;</span>
+</span></span></code></pre></div><h3 id=105-deploying-with-mlflow>10.5 Deploying with MLFlow</h3><h4 id=1051-step1-wrap-model-and-meta-in-a-mlflow-wrapper>10.5.1 Step1: Wrap model and meta in a MLflow Wrapper</h4><pre><code>- Code 1: python wrapper code needs to implement `mlflow.pyfunc.PyFuncModel`
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MyModelWrapper</span>():
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, model_path):
+</span></span><span style=display:flex><span>	    self<span style=color:#f92672>.</span>model_path <span style=color:#f92672>=</span> model_path
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>load_context</span>(self, context):
+</span></span><span style=display:flex><span>	    log(self<span style=color:#f92672>.</span>model_path)
+</span></span><span style=display:flex><span>	    self<span style=color:#f92672>.</span>model <span style=color:#f92672>=</span> mlflow<span style=color:#f92672>.</span>keras<span style=color:#f92672>.</span>load_model(model_uri<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>model_path)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>predict</span>(self, context, model_input):
+</span></span><span style=display:flex><span>	    <span style=color:#f92672>import</span> tensorflow <span style=color:#66d9ef>as</span> tf
+</span></span><span style=display:flex><span>	    <span style=color:#f92672>import</span> json
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	    class_def <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>	        <span style=color:#ae81ff>0</span>: <span style=color:#e6db74>&#39;212.teapot&#39;</span>, 
+</span></span><span style=display:flex><span>	        <span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#39;234.tweezer&#39;</span>, 
+</span></span><span style=display:flex><span>	        <span style=color:#ae81ff>2</span>: <span style=color:#e6db74>&#39;196.spaghetti&#39;</span>, 
+</span></span><span style=display:flex><span>	        <span style=color:#ae81ff>3</span>: <span style=color:#e6db74>&#39;249.yo-yo&#39;</span>, 
+</span></span><span style=display:flex><span>	    }
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	    rtn_df <span style=color:#f92672>=</span> model_input<span style=color:#f92672>.</span>iloc[:,<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>	    rtn_df[<span style=color:#e6db74>&#39;prediction&#39;</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+</span></span><span style=display:flex><span>	    rtn_df[<span style=color:#e6db74>&#39;probabilities&#39;</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	    <span style=color:#66d9ef>for</span> index, row <span style=color:#f92672>in</span> model_input<span style=color:#f92672>.</span>iterrows():
+</span></span><span style=display:flex><span>	        <span style=color:#75715e># resize and reshape the image</span>
+</span></span><span style=display:flex><span>	        image <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>round(np<span style=color:#f92672>.</span>array(Image<span style=color:#f92672>.</span>open(row[<span style=color:#e6db74>&#39;origin&#39;</span>])<span style=color:#f92672>.</span>resize((<span style=color:#ae81ff>224</span>,<span style=color:#ae81ff>224</span>)),
+</span></span><span style=display:flex><span>	                                  dtype<span style=color:#f92672>=</span>np<span style=color:#f92672>.</span>float32))
+</span></span><span style=display:flex><span>	        img <span style=color:#f92672>=</span> tf<span style=color:#f92672>.</span>reshape(image, shape<span style=color:#f92672>=</span>[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>224</span>, <span style=color:#ae81ff>224</span>, <span style=color:#ae81ff>3</span>])
+</span></span><span style=display:flex><span>	      
+</span></span><span style=display:flex><span>	        <span style=color:#75715e># predict</span>
+</span></span><span style=display:flex><span>	        class_probs <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>model<span style=color:#f92672>.</span>predict(img)
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	        <span style=color:#75715e># take the class with the highest probability</span>
+</span></span><span style=display:flex><span>	        classes <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>argmax(class_probs, axis<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>	        class_prob_dict <span style=color:#f92672>=</span> dict()
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	        <span style=color:#75715e># calculate probability for each class option:</span>
+</span></span><span style=display:flex><span>	        <span style=color:#66d9ef>for</span> key, val <span style=color:#f92672>in</span> class_def<span style=color:#f92672>.</span>items():
+</span></span><span style=display:flex><span>	            class_prob_dict[val] <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>round(np<span style=color:#f92672>.</span>float(class_probs[<span style=color:#ae81ff>0</span>][int(key)]), 
+</span></span><span style=display:flex><span>	                                                     <span style=color:#ae81ff>3</span>)<span style=color:#f92672>.</span>tolist()
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	        rtn_df<span style=color:#f92672>.</span>loc[index,<span style=color:#e6db74>&#39;prediction&#39;</span>] <span style=color:#f92672>=</span> classes[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>	        rtn_df<span style=color:#f92672>.</span>loc[index,<span style=color:#e6db74>&#39;probabilities&#39;</span>] <span style=color:#f92672>=</span> json<span style=color:#f92672>.</span>dumps(class_prob_dict)
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	    <span style=color:#66d9ef>return</span> rtn_df[[<span style=color:#e6db74>&#39;prediction&#39;</span>, <span style=color:#e6db74>&#39;probabilities&#39;</span>]]<span style=color:#f92672>.</span>values<span style=color:#f92672>.</span>tolist()
 </span></span></code></pre></div><pre><code>- Code 2: to save model
-</code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	model_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;.../mlruns/</span><span style="color:#e6db74">{experiment_id}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{run_id}</span><span style="color:#e6db74">/artifacts/models&#34;</span>
-</span></span><span style="display:flex;"><span>	wrappedModel <span style="color:#f92672">=</span> {some_class}(model_path)
-</span></span><span style="display:flex;"><span>	mlflow<span style="color:#f92672">.</span>pyfunc<span style="color:#f92672">.</span>log_model(<span style="color:#e6db74">&#34;pyfunc_model_v2&#34;</span>, python_model<span style="color:#f92672">=</span>wrappedModel)
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Output</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">---</span> <span style="color:#ae81ff">58</span>dc6db17fb5471a9a46d87506da983f
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">-------</span> artifacts
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">------------</span> model
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">------------</span> MLmodel
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">-------------</span> conda<span style="color:#f92672">.</span>yaml
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">-------------</span> input_example<span style="color:#f92672">.</span>json
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">-------------</span> model<span style="color:#f92672">.</span>pkl
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">-------</span> meta<span style="color:#f92672">.</span>yaml
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">-------</span> metrics
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">------------</span> training_score
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">-------</span> params
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">------------</span> A
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">------------</span> <span style="color:#f92672">...</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">-------</span> tags
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">------------</span> mlflow<span style="color:#f92672">.</span>source<span style="color:#f92672">.</span>type
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">------------</span> mlflow<span style="color:#f92672">.</span>user
-</span></span></code></pre></div><h4 id="1052-option1-deploy-as-a-model-service">10.5.2 Option1: Deploy as a model service</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#75715e"># load model as a service</span>
-</span></span><span style="display:flex;"><span>	model_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;.../mlruns/</span><span style="color:#e6db74">{experiment_id}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{run_id}</span><span style="color:#e6db74">/artifacts/models&#34;</span>
-</span></span><span style="display:flex;"><span>	model <span style="color:#f92672">=</span> mlflow<span style="color:#f92672">.</span>pyfunc<span style="color:#f92672">.</span>load_model(model_path)
-</span></span><span style="display:flex;"><span>	model<span style="color:#f92672">.</span>predict(model_input)
-</span></span></code></pre></div><h4 id="1053-option2-dploy-as-spark-udf">10.5.3 Option2: Dploy as Spark UDF</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#75715e"># Load model as a Spark UDF</span>
-</span></span><span style="display:flex;"><span>	loaded_model <span style="color:#f92672">=</span> mlflow<span style="color:#f92672">.</span>pyfunc<span style="color:#f92672">.</span>spark_udf(spark, mlflow_model_path, 
-</span></span><span style="display:flex;"><span>	                                       result_type<span style="color:#f92672">=</span>ArrayType(StringType()))
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Predict on a Spark DataFrame</span>
-</span></span><span style="display:flex;"><span>	scored_df <span style="color:#f92672">=</span> (images_df
-</span></span><span style="display:flex;"><span>             <span style="color:#f92672">.</span>withColumn(<span style="color:#e6db74">&#39;origin&#39;</span>, col(<span style="color:#e6db74">&#34;content&#34;</span>))
-</span></span><span style="display:flex;"><span>             <span style="color:#f92672">.</span>withColumn(<span style="color:#e6db74">&#39;my_predictions&#39;</span>, loaded_model(struct(<span style="color:#e6db74">&#34;origin&#34;</span>)))
-</span></span><span style="display:flex;"><span>             <span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#34;origin&#34;</span>))
-</span></span></code></pre></div>
-  </div>
-</article>
-
-  </main>
-  <footer class="footer" role="contentinfo">
-  <div class="container footer-inner">
-    <p class="footer-copy">
-      &copy; 2026 .
-      Built with <a href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a>.
-    </p>
-    </p>
-  </div>
-</footer>
-
-  <script src="../../../js/main.js"></script>
-</body>
-</html>
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>	model_path <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;.../mlruns/</span><span style=color:#e6db74>{experiment_id}</span><span style=color:#e6db74>/</span><span style=color:#e6db74>{run_id}</span><span style=color:#e6db74>/artifacts/models&#34;</span>
+</span></span><span style=display:flex><span>	wrappedModel <span style=color:#f92672>=</span> {some_class}(model_path)
+</span></span><span style=display:flex><span>	mlflow<span style=color:#f92672>.</span>pyfunc<span style=color:#f92672>.</span>log_model(<span style=color:#e6db74>&#34;pyfunc_model_v2&#34;</span>, python_model<span style=color:#f92672>=</span>wrappedModel)
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Output</span>
+</span></span><span style=display:flex><span>		<span style=color:#f92672>---</span> <span style=color:#ae81ff>58</span>dc6db17fb5471a9a46d87506da983f
+</span></span><span style=display:flex><span>		<span style=color:#f92672>-------</span> artifacts
+</span></span><span style=display:flex><span>		<span style=color:#f92672>------------</span> model
+</span></span><span style=display:flex><span>		<span style=color:#f92672>------------</span> MLmodel
+</span></span><span style=display:flex><span>		<span style=color:#f92672>-------------</span> conda<span style=color:#f92672>.</span>yaml
+</span></span><span style=display:flex><span>		<span style=color:#f92672>-------------</span> input_example<span style=color:#f92672>.</span>json
+</span></span><span style=display:flex><span>		<span style=color:#f92672>-------------</span> model<span style=color:#f92672>.</span>pkl
+</span></span><span style=display:flex><span>		<span style=color:#f92672>-------</span> meta<span style=color:#f92672>.</span>yaml
+</span></span><span style=display:flex><span>		<span style=color:#f92672>-------</span> metrics
+</span></span><span style=display:flex><span>		<span style=color:#f92672>------------</span> training_score
+</span></span><span style=display:flex><span>		<span style=color:#f92672>-------</span> params
+</span></span><span style=display:flex><span>		<span style=color:#f92672>------------</span> A
+</span></span><span style=display:flex><span>		<span style=color:#f92672>------------</span> <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>		<span style=color:#f92672>-------</span> tags
+</span></span><span style=display:flex><span>		<span style=color:#f92672>------------</span> mlflow<span style=color:#f92672>.</span>source<span style=color:#f92672>.</span>type
+</span></span><span style=display:flex><span>		<span style=color:#f92672>------------</span> mlflow<span style=color:#f92672>.</span>user
+</span></span></code></pre></div><h4 id=1052-option1-deploy-as-a-model-service>10.5.2 Option1: Deploy as a model service</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>	<span style=color:#75715e># load model as a service</span>
+</span></span><span style=display:flex><span>	model_path <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;.../mlruns/</span><span style=color:#e6db74>{experiment_id}</span><span style=color:#e6db74>/</span><span style=color:#e6db74>{run_id}</span><span style=color:#e6db74>/artifacts/models&#34;</span>
+</span></span><span style=display:flex><span>	model <span style=color:#f92672>=</span> mlflow<span style=color:#f92672>.</span>pyfunc<span style=color:#f92672>.</span>load_model(model_path)
+</span></span><span style=display:flex><span>	model<span style=color:#f92672>.</span>predict(model_input)
+</span></span></code></pre></div><h4 id=1053-option2-dploy-as-spark-udf>10.5.3 Option2: Dploy as Spark UDF</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>	<span style=color:#75715e># Load model as a Spark UDF</span>
+</span></span><span style=display:flex><span>	loaded_model <span style=color:#f92672>=</span> mlflow<span style=color:#f92672>.</span>pyfunc<span style=color:#f92672>.</span>spark_udf(spark, mlflow_model_path, 
+</span></span><span style=display:flex><span>	                                       result_type<span style=color:#f92672>=</span>ArrayType(StringType()))
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Predict on a Spark DataFrame</span>
+</span></span><span style=display:flex><span>	scored_df <span style=color:#f92672>=</span> (images_df
+</span></span><span style=display:flex><span>             <span style=color:#f92672>.</span>withColumn(<span style=color:#e6db74>&#39;origin&#39;</span>, col(<span style=color:#e6db74>&#34;content&#34;</span>))
+</span></span><span style=display:flex><span>             <span style=color:#f92672>.</span>withColumn(<span style=color:#e6db74>&#39;my_predictions&#39;</span>, loaded_model(struct(<span style=color:#e6db74>&#34;origin&#34;</span>)))
+</span></span><span style=display:flex><span>             <span style=color:#f92672>.</span>drop(<span style=color:#e6db74>&#34;origin&#34;</span>))
+</span></span></code></pre></div></div></article></main><footer class=footer role=contentinfo><div class="container footer-inner"><p class=footer-copy>&copy; 2026 .
+Built with <a href=https://gohugo.io target=_blank rel="noopener noreferrer">Hugo</a>.</p></p></div></footer><script src=../../../js/main.js></script></body></html>
