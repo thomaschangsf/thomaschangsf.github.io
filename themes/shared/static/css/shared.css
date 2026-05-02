@@ -293,8 +293,8 @@ section { padding-block: var(--space-xl); }
   flex-direction: column;
   gap: var(--space-xl);
   margin-top: var(--space-xl);
-  align-items: center; /* Center items vertically */
-  text-align: center;  /* Center text within items */
+  align-items: flex-start; /* Changed from center to left */
+  text-align: left;        /* Changed from center to left */
 }
 .list-item {
   transition: transform var(--duration) var(--ease);
@@ -337,9 +337,13 @@ section { padding-block: var(--space-xl); }
 /* ---------- Content Pages ---------- */
 .content-page {
   padding-top: 160px;
-  width: min(760px, 100% - 4rem);
+  width: min(800px, 100% - 4rem);
   margin-inline: auto;
+  text-align: left; /* Changed from center to left for readability */
+}
+.page-header {
   text-align: center;
+  margin-bottom: 4rem;
 }
 .page-title {
   font-family: var(--font-display);
@@ -349,6 +353,7 @@ section { padding-block: var(--space-xl); }
   background: linear-gradient(to right, #fff, #888);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 .page-body {
   font-size: 1.1rem;
