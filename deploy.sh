@@ -2,34 +2,31 @@
 # =============================================================================
 # deploy.sh — Build and deploy Thomas Chang's site to GitHub Pages
 #
-# Usage:
-#   ./deploy.sh              # Deploy with a default commit message
-#   ./deploy.sh "My message" # Deploy with a custom commit message
+# DEFAULT BEHAVIOR (AUTOMATIC):
+#   Every time you push changes to the 'main' branch, a GitHub Action
+#   automatically builds and deploys the site to the 'gh-pages' branch.
 #
-# How it works:
-#   1. Builds the Hugo site into sites/thomas_chang/public/
-#   2. Copies the built files into a temporary worktree on the gh-pages branch
-#   3. Pushes gh-pages to GitHub, which GitHub Pages serves as the live site
+#   How to trigger automatic deploy:
+#     git add .
+#     git commit -m "Your changes"
+#     git push origin main
+#
+# MANUAL BACKUP (THIS SCRIPT):
+#   Use this script if you want to deploy manually without pushing to 'main'
+#   or to test the build process locally.
+#
+#   Usage:
+#     ./deploy.sh              # Deploy with a default commit message
+#     ./deploy.sh "My message" # Deploy with a custom commit message
 #
 # One-time setup required:
 #   In your GitHub repo → Settings → Pages → Source: set to "Deploy from branch"
 #   and choose the "gh-pages" branch and "/" (root) folder.
 #
 # Monitoring & Debugging:
-#   Live site:
-#     https://thomaschangsf.github.io/
-#
-#   GitHub Pages deployment status (shows if Pages is building/deployed/failed):
-#     https://github.com/thomaschangsf/thomaschangsf.github.io/deployments
-#
-#   GitHub Actions runs (if using Actions-based deployment):
-#     https://github.com/thomaschangsf/thomaschangsf.github.io/actions
-#
-#   gh-pages branch contents (what is actually being served):
-#     https://github.com/thomaschangsf/thomaschangsf.github.io/tree/gh-pages
-#
-#   Pages settings (source branch, custom domain, HTTPS):
-#     https://github.com/thomaschangsf/thomaschangsf.github.io/settings/pages
+#   Live site:         https://thomaschangsf.github.io/
+#   Action Status:     https://github.com/thomaschangsf/thomaschangsf.github.io/actions
+#   Deployment status: https://github.com/thomaschangsf/thomaschangsf.github.io/deployments
 # =============================================================================
 
 set -euo pipefail
@@ -43,7 +40,9 @@ BASE_URL="https://thomaschangsf.github.io/"
 COMMIT_MSG="${1:-"Deploy site: $(date '+%Y-%m-%d %H:%M:%S')"}"
 
 echo "========================================"
-echo "  Thomas Chang Site Deployer"
+echo "  Thomas Chang Site Deployer (Manual)"
+echo "  Note: Pushing to 'main' branch also"
+echo "  triggers an automatic deployment."
 echo "========================================"
 
 # ── 1. Build the site ─────────────────────────────────────────────────────────
