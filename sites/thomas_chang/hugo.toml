@@ -8,6 +8,7 @@ relativeURLs = true
 
 [params]
     name = "Thomas Chang"
+    last_updated = "2026-05-02"
     description = "Staff Machine Learning Engineer specializing in Search, NLP, and Trust."
     email = "thomas.w.chang@gmail.com"
     github = "thomaschangsf"
