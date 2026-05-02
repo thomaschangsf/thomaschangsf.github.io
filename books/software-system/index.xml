@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Software System on Thomas Chang | Staff ML Engineer</title><link>https://thomaschangsf.github.io/books/software-system/</link><description>Recent content in Software System on Thomas Chang | Staff ML Engineer</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://thomaschangsf.github.io/books/software-system/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started with Bazel</title><link>https://thomaschangsf.github.io/books/software-system/getting-started-with-bazel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/getting-started-with-bazel/</guid><description/></item><item><title>gRPC: Up and Running</title><link>https://thomaschangsf.github.io/books/software-system/grpc-up-and-running/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/grpc-up-and-running/</guid><description/></item><item><title>Kubernetes Up and Running</title><link>https://thomaschangsf.github.io/books/software-system/kubernetes-up-and-running/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/kubernetes-up-and-running/</guid><description>&lt;h1 id="1-introduction"&gt;1 Introduction&lt;/h1&gt;
+&lt;h1 id="2-creating-and-running-applications"&gt;2 Creating and Running Applications&lt;/h1&gt;
+&lt;h3 id="container-images"&gt;Container Images&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A container image is a binary package that encapsulates all of the files necessary to run a program inside of an OS container.&lt;/li&gt;
+&lt;li&gt;Most popular format is docker&lt;/li&gt;
+&lt;li&gt;Container images are constructed with a series of filesystem layers, where each layer inherits and modifies the layers that came before it&lt;/li&gt;
+&lt;li&gt;2 categories of images
+&lt;ul&gt;
+&lt;li&gt;system: mimics virtual machine and runs full boot process. Seen as poor practice.&lt;/li&gt;
+&lt;li&gt;application: runs a single program&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="building-application-images-with-docker"&gt;Building Application Images With Docker&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Dockerfile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-Dockerfile" data-lang="Dockerfile"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Start from a Node.js 16 (LTS) image &lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; &lt;span style="color:#e6db74"&gt;node:16&lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Specify the directory inside the image in which all commands will run &lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;WORKDIR&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/usr/src/app&lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Copy package files and install dependencies &lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;COPY&lt;/span&gt; package*.json ./&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;RUN&lt;/span&gt; npm install&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;RUN&lt;/span&gt; npm install express&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Copy all of the app files into the image &lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;COPY&lt;/span&gt; . .&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# The default command to run when starting the container &lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;CMD&lt;/span&gt; [ &lt;span style="color:#e6db74"&gt;&amp;#34;npm&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;start&amp;#34;&lt;/span&gt; ]&lt;span style="color:#960050;background-color:#1e0010"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Commands&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker build -t simple-node .
+docker run --rm -p 3000:3000 simple-node**
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Building image efficiently:&lt;/p&gt;</description></item><item><title>Learning Algorithms</title><link>https://thomaschangsf.github.io/books/software-system/learning-algorithms/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/learning-algorithms/</guid><description>&lt;h1 id="1-problem-solving"&gt;1 Problem Solving&lt;/h1&gt;
+&lt;h2 id="11-what-is-an-algorithm"&gt;1.1 What Is An Algorithm&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The study of algorithms is concerned with both
+&lt;ul&gt;
+&lt;li&gt;correctness (will this algorithm work for all input?)&lt;/li&gt;
+&lt;li&gt;performance (is this the most efficient way to solve this problem?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Key Questions
+&lt;ul&gt;
+&lt;li&gt;What are the factors impacting an algorithm&amp;rsquo;s performance?&lt;/li&gt;
+&lt;li&gt;How to Analyze algorithm performance independent of the implmentation?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Terminologies
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;problem instance&lt;/em&gt; = 1 input + 1 run of the algorithm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="12-finding-the-largest-value-in-a-list"&gt;1.2 Finding The Largest Value In a List&lt;/h2&gt;
+&lt;h2 id="13-counting-key-operations"&gt;1.3 Counting Key Operations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;How do you define the key operation?&lt;/li&gt;
+&lt;li&gt;We use the key operation to compare 2 algorithms
+&lt;ul&gt;
+&lt;li&gt;Ex:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;alternate&lt;/span&gt;(A):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; v &lt;span style="color:#f92672"&gt;in&lt;/span&gt; A:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; v_is_largest &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; x &lt;span style="color:#f92672"&gt;in&lt;/span&gt; A:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; v &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; x: &lt;span style="color:#75715e"&gt;# &amp;lt;-- KEY OPERATION !!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; v_is_largest &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;False&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;break&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; v_is_largest:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; v	 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="14-models-can-predict-algorithm-performance"&gt;1.4 Models Can Predict Algorithm Performance&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;To quantify algo performance, find the ==inputs== that generates the&lt;/p&gt;</description></item><item><title>Learning Go</title><link>https://thomaschangsf.github.io/books/software-system/learning-go/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/learning-go/</guid><description>&lt;h1 id="1-setup"&gt;1 Setup&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-terminal" data-lang="terminal"&gt;# environment; defined in .bash_aliases.sh
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# code location
+cd /Users/chang/Documents/dev/git/gratia/01_languages/goLang/book_learning_go
+cd ch1
+go run hello.go
+
+go build -o hello_world hello.go
+
+# install 3rd party tool to do a load test
+go install github.com/rakyll/hey@latest
+hey https://www.golang.org
+
+# install 3rd party too to format imports
+go install golang.org/x/tools/cmd/goimports@latest
+
+# detect shadow variables
+go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;go run&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;use when you want to run as a script&lt;/li&gt;
+&lt;li&gt;compiles and put binary in a temporary directory&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;go build -o [BINARY_NAME] hello.go&lt;/p&gt;</description></item><item><title>Scaling ML Spark</title><link>https://thomaschangsf.github.io/books/software-system/scaling-ml-spark/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/software-system/scaling-ml-spark/</guid><description>&lt;h1 id="1-distributed-ml-terms-and-concepts"&gt;1 Distributed ML Terms and Concepts&lt;/h1&gt;
+&lt;h1 id="2-intro-to-spark-and-pyspark"&gt;2 Intro to Spark and PySpark&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Driver Program
+&lt;ul&gt;
+&lt;li&gt;The driver program (aka Spark driver) is a dedicated process that runs on the driver machine. It is responsible for executing and holding the SparkSession, which encapsulates the SparkContext—this is considered the application’s entry point, or the “real program.” The SparkContext contains all the basic functions, context delivered at start time, and information about the cluster. The driver also holds the DAG scheduler, task scheduler, block manager, and everything that is needed to turn the code into jobs that the worker and executors can execute on the cluster. The driver program works in synergy with the cluster manager to find the existing machines and allocated resources.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Executor:
+&lt;ul&gt;
+&lt;li&gt;Is a process&lt;/li&gt;
+&lt;li&gt;Has T tasks
+&lt;ul&gt;
+&lt;li&gt;tasks is smallest unit of work&lt;/li&gt;
+&lt;li&gt;task in the same executor share the same cache, memory, and global parameters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Worker Node
+&lt;ul&gt;
+&lt;li&gt;VM&lt;/li&gt;
+&lt;li&gt;multiple executor on a worker node&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Cluster manager
+&lt;ul&gt;
+&lt;li&gt;Assign executors to worker nodes, assign resources and communicate information about resource availability to driver program&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="executing-pyspark-code"&gt;Executing PySpark Code&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Pyspark -&amp;gt;
+&lt;ul&gt;
+&lt;li&gt;process: python - InterProcess communication (IPC) - process: scala/JVM&lt;/li&gt;
+&lt;li&gt;JVM spark query optimization, computation, distribution of tasks to clusters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Py4J
+&lt;ul&gt;
+&lt;li&gt;pyspark driver - pickled item (serialization) - py4j context - Spark driver GVM&lt;/li&gt;
+&lt;li&gt; &lt;a href="https://www.py4j.org/"&gt;Py4J&lt;/a&gt; is a library written in Python and Java that enables Python programs running in a Python interpreter to dynamically access Java objects and collections in a JVM via standard Python methods&lt;/li&gt;
+&lt;li&gt;==PySpark is often less efficient in terms of running time than traditional Scala/Java code==&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="apache-spark-basics"&gt;Apache Spark Basics&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Architectures&lt;/li&gt;
+&lt;li&gt;DataFrame vs Datasets
+&lt;ul&gt;
+&lt;li&gt;Datasets enforces type safety; there is no way to mistaken a col type of string as int&lt;/li&gt;
+&lt;li&gt;BUT dataset is slower.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="3-mlflow"&gt;3 MLFlow&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;MLOps: manage the machine learning experiment lifecycle&lt;/p&gt;</description></item></channel></rss>

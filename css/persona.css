@@ -1,0 +1,35 @@
+/* ============================================
+   THOMAS CHANG — ML Engineer Persona
+   Dark mode · electric indigo / cyan
+   ============================================ */
+:root {
+  --color-bg:          #080b14;
+  --color-bg-alt:      #0d1120;
+  --color-surface:     #111827;
+  --color-surface-2:   #1a2235;
+  --color-border:      rgba(99, 179, 237, 0.1);
+  --color-text:        #e2e8f0;
+  --color-text-muted:  #718096;
+  --color-accent:      #6366f1;
+  --color-accent-2:    #38bdf8;
+  --color-accent-glow: rgba(99, 102, 241, 0.4);
+
+  --font-body:         'Inter', system-ui, sans-serif;
+  --font-display:      'Inter', system-ui, sans-serif;
+}
+
+/* Subtle code-grid feel */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Glowing accent border on cards */
+.highlight-card:hover {
+  box-shadow: 0 0 0 1px var(--color-accent), 0 20px 40px -10px var(--color-accent-glow);
+}
+
+/* Monospace flavor for tags */
+.tag { font-family: var(--font-mono); }

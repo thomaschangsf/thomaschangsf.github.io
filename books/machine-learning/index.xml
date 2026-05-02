@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Machine Learning on Thomas Chang | Staff ML Engineer</title><link>https://thomaschangsf.github.io/books/machine-learning/</link><description>Recent content in Machine Learning on Thomas Chang | Staff ML Engineer</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://thomaschangsf.github.io/books/machine-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>DataScience From Scratch</title><link>https://thomaschangsf.github.io/books/machine-learning/data-science-from-scratch/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/machine-learning/data-science-from-scratch/</guid><description>&lt;h1 id="1-introduction"&gt;1 Introduction&lt;/h1&gt;
+&lt;h1 id="2-crash-course-in-python"&gt;2 Crash Course In Python&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;Tuples&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;List&amp;rsquo;s immutable cousin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;my_list &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;my_tuple &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;other_tuple &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;my_list[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt; &lt;span style="color:#75715e"&gt;# my_list is now [1, 3]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; my_tuple[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;except&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;TypeError&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;&amp;#34;cannot modify a tuple&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;convenient way to return multiple values and multiple assignment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sum_and_product&lt;/span&gt;(x, y):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; (x &lt;span style="color:#f92672"&gt;+&lt;/span&gt; y), (x &lt;span style="color:#f92672"&gt;*&lt;/span&gt; y)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; sum_and_product(&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;x, y &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#75715e"&gt;# now x is 1, y is 2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;x, y &lt;span style="color:#f92672"&gt;=&lt;/span&gt; y, x &lt;span style="color:#75715e"&gt;# Pythonic way to swap variables; now x is 2, y is 1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Dict&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Essential Math For Data Science</title><link>https://thomaschangsf.github.io/books/machine-learning/essential-math-for-data-science/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/machine-learning/essential-math-for-data-science/</guid><description>&lt;h1 id="1-basic-math-and-calculus-review"&gt;1 Basic Math And Calculus Review&lt;/h1&gt;
+&lt;h3 id="exponential"&gt;Exponential&lt;/h3&gt;
+&lt;h3 id="logarithms"&gt;Logarithms&lt;/h3&gt;
+&lt;p&gt;$$
+log_2 8 = x&lt;/p&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;base = 2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;x = 3&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Benefits
+ - Logorithms simplifies operations, which helps computation training
+ 	 - Multiplication: log(a x b) = log(a) + log(b)
+ 	 - Division: log(a/b) = log(a) - log(b)
+ 	 - Expoentiation log(a ^ n) = n * log(a)
+ 	 - Inverse: log(x^-1) == log(1/x) = -log(x)
+ - Log is also good for feature engineering, transforming heavy tail distribution to a gaussian distribution, which is ideal for linear regression models
+
+- Code
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#f92672"&gt;from&lt;/span&gt; math &lt;span style="color:#f92672"&gt;import&lt;/span&gt; log
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#75715e"&gt;# 2 raised to what power gives me 8?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		x &lt;span style="color:#f92672"&gt;=&lt;/span&gt; log(&lt;span style="color:#ae81ff"&gt;8&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;		&lt;span style="color:#75715e"&gt;# x = 3.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="eulers-number-e-and-natural-logarithm"&gt;Euler&amp;rsquo;s Number $e$ and Natural Logarithm&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$e$ = 2.71828 = euler number;&lt;/p&gt;</description></item><item><title>Hands On Large Language Model</title><link>https://thomaschangsf.github.io/books/machine-learning/hands-on-large-language-model/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/machine-learning/hands-on-large-language-model/</guid><description>&lt;h1 id="part-1-understanding-language-models"&gt;Part 1: Understanding Language Models&lt;/h1&gt;
+&lt;h2 id="chapter-1-an-introduction-to-llm"&gt;Chapter 1: An Introduction To LLM&lt;/h2&gt;
+&lt;h2 id="chapter-2-tokens-and-embeddings"&gt;Chapter 2: Tokens And Embeddings&lt;/h2&gt;
+&lt;h2 id="chapter-3-looking-inside-llm"&gt;Chapter 3: Looking Inside LLM&lt;/h2&gt;
+&lt;h3 id="31-overview-of-transformer-models"&gt;3.1 Overview of Transformer Models&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-mermaid" data-lang="mermaid"&gt;
+flowchart TD
+ Z[Sentence]--&amp;gt;A(Tokenizers)
+ A --&amp;gt;|tokens_i|B(Embedding_i)
+ B --&amp;gt; C(Stack of Transformer Blocks)
+ C--&amp;gt;|Output Vector_i|D[LM Head]
+ classDef default fill:#CCE6FF,stroke:#84BCF5,textColor:#1C2B33,fontFamily:trebuchet ms;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id="311-inputs-and-outputs-of-a-trained-transformer-llm"&gt;3.1.1 Inputs and Outputs of a Trained Transformer LLM&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Input: prompt + previous_generation&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Output: most probable token&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Code:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; torch
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; transformers &lt;span style="color:#f92672"&gt;import&lt;/span&gt; AutoModelForCausalLM, AutoTokenizer, pipeline
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Load model and tokenizer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tokenizer &lt;span style="color:#f92672"&gt;=&lt;/span&gt; AutoTokenizer&lt;span style="color:#f92672"&gt;.&lt;/span&gt;from_pretrained(&lt;span style="color:#e6db74"&gt;&amp;#34;microsoft/Phi-3-mini-4k-instruct&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;model &lt;span style="color:#f92672"&gt;=&lt;/span&gt; AutoModelForCausalLM&lt;span style="color:#f92672"&gt;.&lt;/span&gt;from_pretrained(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;microsoft/Phi-3-mini-4k-instruct&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; device_map&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;cuda&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; torch_dtype&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;auto&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; trust_remote_code&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Create a pipeline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;generator &lt;span style="color:#f92672"&gt;=&lt;/span&gt; pipeline(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;text-generation&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; model&lt;span style="color:#f92672"&gt;=&lt;/span&gt;model,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tokenizer&lt;span style="color:#f92672"&gt;=&lt;/span&gt;tokenizer,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; return_full_text&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;False&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_new_tokens&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;50&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; do_sample&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;False&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;prompt &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Write an email apologizing to Sarah for the tragic gardening mishap. Explain how it happened.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;output &lt;span style="color:#f92672"&gt;=&lt;/span&gt; generator(prompt)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="312-components-of-forward-pass"&gt;3.1.2 Components of Forward Pass&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;This refers to what happens between input_prompt and output_token
+&lt;ul&gt;
+&lt;li&gt;input_prompt &amp;ndash;&amp;gt; Transformer LLM (Forward Pass) &amp;ndash;&amp;gt; output_token&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Components
+&lt;ol&gt;
+&lt;li&gt;Tokenizer
+&lt;ol&gt;
+&lt;li&gt;token &amp;ndash;&amp;gt; token_id &amp;ndash;&amp;gt; token embeddings&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Stack of Transformer Blocks
+&lt;ol&gt;
+&lt;li&gt;block 1&lt;/li&gt;
+&lt;li&gt;block n&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;LM Head
+&lt;ol&gt;
+&lt;li&gt;Can be: a simple NN layer, sequence classification heads, token classification heads&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Understanding a model output&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;Phi3ForCausalLM(
+ (model): Phi3Model(
+ (embed_tokens): Embedding(32064, 3072, padding_idx=32000)
+ (embed_dropout): Dropout(p=0.0, inplace=False)
+ (layers): ModuleList(
+ (0-31): 32 x Phi3DecoderLayer(
+ (self_attn): Phi3Attention(
+ (o_proj): Linear(in_features=3072, out_features=3072, bias=False)
+ (qkv_proj): Linear(in_features=3072, out_features=9216, bias=False)
+ (rotary_emb): Phi3RotaryEmbedding()
+ )
+ (mlp): Phi3MLP(
+ (gate_up_proj): Linear(in_features=3072, out_features=16384, bias=False)
+ (down_proj): Linear(in_features=8192, out_features=3072, bias=False)
+ (activation_fn): SiLU()
+ )
+ (input_layernorm): Phi3RMSNorm()
+ (resid_attn_dropout): Dropout(p=0.0, inplace=False)
+ (resid_mlp_dropout): Dropout(p=0.0, inplace=False)
+ (post_attention_layernorm): Phi3RMSNorm()
+ )
+ )
+ (norm): Phi3RMSNorm()
+ )
+ (lm_head): Linear(in_features=3072, out_features=32064, bias=False)
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;lm_head output is
+&lt;ul&gt;
+&lt;li&gt;1 row, with 6 tokens, each token being 32064 bits long&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;This shows us the various nested layers of the model. The majority of the model is labeled model, followed by lm_head.&lt;/li&gt;
+&lt;li&gt;Inside the Phi3Model model, we see the embeddings matrix embed_tokens and its dimensions. It has 32,064 tokens each with a vector size of 3,072.&lt;/li&gt;
+&lt;li&gt;Skipping the dropout layer for now, we can see the next major component is the stack of Transformer decoder layers. It contains 32 blocks of type Phi3DecoderLayer.&lt;/li&gt;
+&lt;li&gt;Each of these Transformer blocks includes an attention layer and a feedforward neural network (also known as an mlp or multilevel perceptron). We’ll cover these in more detail later in the chapter.&lt;/li&gt;
+&lt;li&gt;Finally, we see the lm_head taking a vector of size 3,072 and outputting a vector equivalent to the number of tokens the model knows. That output is the probability score for each token that helps us select the output token.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="313-choosing-a-single-token-from-the-probability-distribution-samplingdecoding"&gt;3.1.3 Choosing a Single Token From the Probability Distribution (Sampling/Decoding)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Code&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;prompt &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;The capital of France is&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Tokenize the input prompt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;input_ids &lt;span style="color:#f92672"&gt;=&lt;/span&gt; tokenizer(prompt, return_tensors&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;pt&amp;#34;&lt;/span&gt;)&lt;span style="color:#f92672"&gt;.&lt;/span&gt;input_ids
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Tokenize the input prompt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;input_ids &lt;span style="color:#f92672"&gt;=&lt;/span&gt; input_ids&lt;span style="color:#f92672"&gt;.&lt;/span&gt;to(&lt;span style="color:#e6db74"&gt;&amp;#34;cuda&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Get the output of the model before the lm_head&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;model_output &lt;span style="color:#f92672"&gt;=&lt;/span&gt; model&lt;span style="color:#f92672"&gt;.&lt;/span&gt;model(input_ids)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Get the output of the lm_head&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lm_head_output &lt;span style="color:#f92672"&gt;=&lt;/span&gt; model&lt;span style="color:#f92672"&gt;.&lt;/span&gt;lm_head(model_output[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lm_head_output is of the shape [1, 6, 32064] (from model output before). We can access the token probability scores for the last generated token using lm_head_output[0,-1], which uses the index 0 across the batch dimension; the index –1 gets us the last token in the sequence. This is now a list of probability scores for all 32,064 tokens. We can get the top scoring token ID, and then decode it to arrive at the text of the generated output token:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;token_id &lt;span style="color:#f92672"&gt;=&lt;/span&gt; lm_head_output[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;,&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;argmax(&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tokenizer&lt;span style="color:#f92672"&gt;.&lt;/span&gt;decode(token_id)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# PARIS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="314-parallel-token-processing-and-context-size"&gt;3.1.4 Parallel Token Processing and Context Size&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;LLM is highly parallelized
+&lt;ul&gt;
+&lt;li&gt;each token_i in the context window (ie 4k tokens) is a parallel stream to the tokenizer &amp;ndash;&amp;gt; transformer block &amp;ndash;&amp;gt; LLM head &amp;ndash;&amp;gt; output_i_vector!!!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;For text generation, only the ==last output vector== (ie most current token) is used to generate the probability of next token&lt;/li&gt;
+&lt;li&gt;Example
+&lt;ul&gt;
+&lt;li&gt;If you’re following along with the code examples, recall that the output of lm_head was of the shape [1, 6, 32064]. That was because the input to it was of the shape [1, 6, 3072], which is a batch of one input string, containing six tokens, each of them represented by a vector of size 3,072 corresponding to the output vectors after the stack of Transformer blocks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;model_output[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;shape
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#torch.Size([1, 6, 3072])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lm_head_output
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;torch&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Size([&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;6&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;32064&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="315-speeding-up-generation-by-caching-keys-and-values"&gt;3.1.5 Speeding Up Generation By Caching Keys and values&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Remember, we use only the last output vector to generate the next token&lt;/p&gt;</description></item><item><title>Machine Learning Interview</title><link>https://thomaschangsf.github.io/books/machine-learning/machine-learning-system-design-interview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thomaschangsf.github.io/books/machine-learning/machine-learning-system-design-interview/</guid><description>&lt;hr&gt;
+&lt;h1 id="1-clarify-requirement"&gt;1 Clarify Requirement&lt;/h1&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Chapter 2: Visual Search system&lt;/li&gt;
+&lt;li&gt;Chapter 3: Google Street View Blurring system&lt;/li&gt;
+&lt;li&gt;Chapter 4: Youtube Video Search&lt;/li&gt;
+&lt;li&gt;Chapter 5: Harmful Content Detection&lt;/li&gt;
+&lt;li&gt;Chapter 6: Video Recommendation Service&lt;/li&gt;
+&lt;li&gt;Chapter 7: Event Recommendation Service&lt;/li&gt;
+&lt;li&gt;Chapter 8: Ad Click Prediction&lt;/li&gt;
+&lt;li&gt;Chapter 9: Similar Listings on Vacation Rental&lt;/li&gt;
+&lt;li&gt;Chapter 10: Personalized News Feed&lt;/li&gt;
+&lt;li&gt;Chapter 11: People You May Know&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id="2-frame-as-ml"&gt;2 Frame as ML&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h3 id="defining-the-ml-objective"&gt;Defining the ML Objective&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Maximize # user clicks&lt;/li&gt;
+&lt;li&gt;Maximize # completed videos&lt;/li&gt;
+&lt;li&gt;Maximize watch time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="specify-input-and-output"&gt;Specify Input and Output&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Late vs Early Fusion (Ch5)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="ml-category"&gt;ML Category&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;High Level
+&lt;ul&gt;
+&lt;li&gt;Supervised
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Classification&lt;/p&gt;</description></item></channel></rss>
