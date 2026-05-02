@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Auto Deploy to GitHub Pages
+name: "1. Build & Deploy Site"
 
 on:
   push:
