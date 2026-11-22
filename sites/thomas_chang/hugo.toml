@@ -13,6 +13,7 @@ relativeURLs = true
     email = "thomas.w.chang@gmail.com"
     github = "thomaschangsf"
     linkedin = "thomaschangsf" # Assuming standard naming
+    mermaidTheme = "dark"
     
     [params.hero]
         title = "Thomas Chang"
